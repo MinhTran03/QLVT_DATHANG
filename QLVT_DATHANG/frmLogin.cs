@@ -7,13 +7,14 @@ namespace QLVT_DATHANG
 {
    using Utility;
    using Constant;
+   using DevExpress.XtraEditors;
 
-   public partial class frmLogin : Form
+   public partial class frmLogin : XtraForm
    {
       public frmLogin()
       {
          InitializeComponent();
-         txtMK.PasswordChar = '•';
+         txtMK.Properties.PasswordChar = '•';
       }
 
       private void frmLogin_Load(object sender, EventArgs e)

@@ -42,10 +42,10 @@
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
          this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
          this.btnDel = new DevExpress.XtraBars.BarButtonItem();
+         this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
          this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
          this.btnExit = new DevExpress.XtraBars.BarButtonItem();
          this.btnSave = new DevExpress.XtraBars.BarButtonItem();
-         this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
          this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
          this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -225,12 +225,12 @@
          this.barNV.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnAdd),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnExit),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSave),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnExit)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelEdit)});
          this.barNV.OptionsBar.MultiLine = true;
          this.barNV.OptionsBar.UseWholeRow = true;
          this.barNV.Text = "Main menu";
@@ -262,6 +262,16 @@
          this.btnDel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          this.btnDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDel_ItemClick);
          // 
+         // btnUndo
+         // 
+         this.btnUndo.Caption = "PHỤC HỒI";
+         this.btnUndo.Enabled = false;
+         this.btnUndo.Id = 4;
+         this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUndo.ImageOptions.SvgImage")));
+         this.btnUndo.Name = "btnUndo";
+         this.btnUndo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
+         // 
          // btnRefresh
          // 
          this.btnRefresh.Caption = "LÀM MỚI";
@@ -289,15 +299,6 @@
          this.btnSave.Name = "btnSave";
          this.btnSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
-         // 
-         // btnUndo
-         // 
-         this.btnUndo.Caption = "PHỤC HỒI";
-         this.btnUndo.Id = 4;
-         this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUndo.ImageOptions.SvgImage")));
-         this.btnUndo.Name = "btnUndo";
-         this.btnUndo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-         this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
          // 
          // btnCancelEdit
          // 

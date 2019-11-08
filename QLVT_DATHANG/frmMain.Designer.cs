@@ -1,33 +1,33 @@
 ﻿namespace QLVT_DATHANG
 {
-    partial class frmMain
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+   partial class frmMain
+   {
+      /// <summary>
+      /// Required designer variable.
+      /// </summary>
+      private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      /// <summary>
+      /// Clean up any resources being used.
+      /// </summary>
+      /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+      protected override void Dispose(bool disposing)
+      {
+         if (disposing && (components != null))
+         {
+            components.Dispose();
+         }
+         base.Dispose(disposing);
+      }
 
-        #region Windows Form Designer generated code
+      #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+      /// <summary>
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// </summary>
+      private void InitializeComponent()
+      {
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
          this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -119,6 +119,7 @@
          // 
          // ribbonStatusBar1
          // 
+         this.ribbonStatusBar1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.ribbonStatusBar1.ItemLinks.Add(this.bsiMaNV);
          this.ribbonStatusBar1.ItemLinks.Add(this.bsiHoTenNV);
          this.ribbonStatusBar1.ItemLinks.Add(this.bsiNhom);
@@ -153,20 +154,20 @@
          this.ResumeLayout(false);
          this.PerformLayout();
 
-        }
+      }
 
-        #endregion
+      #endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbpCategory;
-        private DevExpress.XtraBars.BarButtonItem btnNhanVien;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
-        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
-        private DevExpress.XtraBars.BarStaticItem bsiMaNV;
-        private DevExpress.XtraBars.BarStaticItem bsiHoTenNV;
-        private DevExpress.XtraBars.BarStaticItem bsiNhom;
-        private DevExpress.XtraBars.BarButtonItem btnVatTu;
+      private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+      private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+      private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbpCategory;
+      private DevExpress.XtraBars.BarButtonItem btnNhanVien;
+      private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
+      private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+      private DevExpress.XtraBars.BarStaticItem bsiMaNV;
+      private DevExpress.XtraBars.BarStaticItem bsiHoTenNV;
+      private DevExpress.XtraBars.BarStaticItem bsiNhom;
+      private DevExpress.XtraBars.BarButtonItem btnVatTu;
    }
 }
 

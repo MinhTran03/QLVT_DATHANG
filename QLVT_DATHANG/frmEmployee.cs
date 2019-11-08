@@ -3,32 +3,56 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace QLVT_DATHANG
 {
-   using Constant;
    using DevExpress.Utils;
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
    using DevExpress.XtraEditors.Controls;
    using DevExpress.XtraEditors.Mask;
    using DevExpress.XtraGrid.Views.Base;
-   using System.Collections;
+   using Constant;
    using Utility;
 
-   public partial class frmEmployee : Form
+   public partial class frmEmployee : XtraForm
    {
-      private string _maCN;
+      private string _currentDeploymentId;
       private int _currentPosition;
       private ButtonActionType _buttonAction;
-      private Stack _userDo;
+      private MyStack _userDo;
+      private DataRow _row;
 
       public frmEmployee()
       {
          InitializeComponent();
          SetupControls();
       }
+
+      private void frmEmployee_Load(object sender, EventArgs e)
+      {
+         _buttonAction = ButtonActionType.None;
+         _userDo = new MyStack();
+         _userDo.StackPushed += userDo_StackPushed;
+         _userDo.StackPopped += userDo_StackPopped;
+
+         LoadTable();
+         DisableEditMode();
+
+         _currentDeploymentId = ((DataRowView)bdsNV[0])["MACN"].ToString().Trim();
+
+         // Quyền công ty => enable combobox chi nhánh
+         if (UtilDB.CurrentGroup.Equals("congty"))
+         {
+            SetupDSCN();
+            this.cboEmpDep.Visible = true;
+            this.btnAdd.Enabled = false;
+            this.btnEdit.Enabled = false;
+            this.btnDel.Enabled = false;
+         }
+      }
+
+      #region METHOD
 
       public void SetupControls()
       {
@@ -69,27 +93,21 @@ namespace QLVT_DATHANG
          dtpEmpBirth.Properties.Mask.BeepOnError = true;
          dtpEmpBirth.Properties.AllowNullInput = DefaultBoolean.True;
          //dtpEmpBirth.Properties.NullValuePrompt = "Pick a day";
-
-         btnRefresh.Enabled = false;
       }
 
-      private void frmEmployee_Load(object sender, EventArgs e)
+      private void userDo_StackPopped(object sender, StackEventAgrs e)
       {
-         LoadTable();
-         DisableFormNV();
-
-         _maCN = ((DataRowView)bdsNV[0])["MACN"].ToString().Trim();
-         _buttonAction = ButtonActionType.None;
-         _userDo = new Stack();
-
-         // Quyền công ty => enable combobox chi nhánh
-         if (UtilDB.CurrentGroup.Equals("congty"))
+         if (_userDo.Count == 0)
          {
-            SetupDSCN();
-            this.cboEmpDep.Visible = true;
-            this.btnAdd.Enabled = false;
-            this.btnEdit.Enabled = false;
-            this.btnDel.Enabled = false;
+            btnUndo.Enabled = false;
+         }
+      }
+
+      private void userDo_StackPushed(object sender, StackEventAgrs e)
+      {
+         if (_userDo.Count == 1)
+         {
+            btnUndo.Enabled = true;
          }
       }
 
@@ -136,7 +154,7 @@ namespace QLVT_DATHANG
          this.cboEmpDep.ValueMember = UtilDB.ValueMemberDSPM;
       }
 
-      private void EnableFormNV()
+      private void EnableEditMode()
       {
          gcNV.Enabled = false;
          gbNV.Enabled = true;
@@ -146,18 +164,16 @@ namespace QLVT_DATHANG
          btnEdit.Enabled = false;
          btnExit.Enabled = false;
          btnRefresh.Enabled = false;
+         btnUndo.Enabled = false;
 
          btnCancelEdit.Enabled = true;
          btnCancelEdit.Visibility = BarItemVisibility.Always;
 
          btnSave.Enabled = true;
          btnSave.Visibility = BarItemVisibility.Always;
-
-         //btnUndo.Enabled = true;
-         //btnUndo.Visibility = BarItemVisibility.Always;
       }
 
-      private void DisableFormNV()
+      private void DisableEditMode()
       {
          btnDel.Enabled = (bdsNV.Count == 0) ? false : true;
          txtEmpDelStatus.ReadOnly = true;
@@ -171,16 +187,107 @@ namespace QLVT_DATHANG
          btnEdit.Enabled = true;
          btnExit.Enabled = true;
          btnRefresh.Enabled = true;
+         btnUndo.Enabled = (_userDo.Count == 0) ? false : true;
 
          btnCancelEdit.Enabled = false;
          btnCancelEdit.Visibility = BarItemVisibility.Never;
 
          btnSave.Enabled = false;
          btnSave.Visibility = BarItemVisibility.Never;
-
-         //btnUndo.Enabled = false;
-         //btnUndo.Visibility = BarItemVisibility.Never;
       }
+
+      public void ShowError(Exception e)
+      {
+         string message = e.Message + "\n";
+         string source = "Source: " + e.Source + "\n";
+         string targetSite = "Method: " + e.TargetSite + "\n";
+         XtraMessageBox.Show(source + targetSite + message, MessageCons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+         Console.WriteLine(e.StackTrace);
+         if (e.GetType() == typeof(SqlException))
+         {
+            Console.WriteLine("===>" + ((SqlException)e).Number.ToString());
+         }
+      }
+
+      private void Undo()
+      {
+         ButtonAction action = (ButtonAction)_userDo.Pop();
+         switch (action.ActionType)
+         {
+            case ButtonActionType.Add:
+               // xóa dữ liệu mới
+               bdsNV.Remove(action.SaveDataRow);
+               break;
+            case ButtonActionType.Edit:
+               // sửa lại dữ liệu cũ
+               int position = bdsNV.Find("MANV", action.SaveDataRow["MANV"]);
+               for (int i = 0; i < 7; i++)
+               {
+                  ((DataRowView)bdsNV[position])[i] = action.SaveDataRow[i];
+               }
+               bdsNV.EndEdit();
+               bdsNV.ResetCurrentItem();
+               break;
+            case ButtonActionType.None:
+               break;
+            default:
+               break;
+         }
+         this.taNV.Update(this.dataSet.NhanVien);
+      }
+
+      private bool SaveEmployee()
+      {
+         try
+         {
+            if (_buttonAction == ButtonActionType.Add)
+            {
+               if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
+               {
+                  XtraMessageBox.Show("Mã tồn tại");
+                  txtEmpId.Focus();
+                  txtEmpId.SelectAll();
+                  return false;
+               }
+               _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsNV[bdsNV.Position]));
+            }
+            _buttonAction = ButtonActionType.None;
+
+            bdsNV.EndEdit();
+            gbNV.Enabled = false;
+            bdsNV.ResetCurrentItem();
+            this.taNV.Update(this.dataSet.NhanVien);
+         }
+         catch (Exception ex)
+         {
+            // #load lại từ database
+            dataSet.EnforceConstraints = false;
+            this.taNV.Fill(this.dataSet.NhanVien);
+            dataSet.EnforceConstraints = true;
+            ShowError(ex);
+            return false;
+         }
+         bdsNV.Position = _currentPosition;
+         DisableEditMode();
+         return true;
+      }
+
+      private void EditEmployee()
+      {
+         // lưu lại trạng thái nút ấn
+         _currentPosition = bdsNV.Position;
+         _buttonAction = ButtonActionType.Edit;
+
+         // lưu lại datarow để undo
+         _row = ((DataRow)bdsNV[_currentPosition]);
+         _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[_currentPosition])));
+
+         EnableEditMode();
+      }
+
+      #endregion
+
+      #region BUTTON EVENT
 
       private void cboEmpDep_SelectedIndexChanged(object sender, EventArgs e)
       {
@@ -209,24 +316,9 @@ namespace QLVT_DATHANG
          else
          {
             LoadTable();
-            _maCN = ((DataRowView)bdsNV[0])["MACN"].ToString();
+            _currentDeploymentId = ((DataRowView)bdsNV[0])["MACN"].ToString();
          }
       }
-
-      public void ShowError(Exception e)
-      {
-         string message = e.Message + "\n";
-         string source = "Source: " + e.Source + "\n";
-         string targetSite = "Method: " + e.TargetSite + "\n";
-         XtraMessageBox.Show(source + targetSite + message, MessageCons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-         Console.WriteLine(e.StackTrace);
-         if (e.GetType() == typeof(SqlException))
-         {
-            Console.WriteLine("===>" + ((SqlException)e).Number.ToString());
-         }
-      }
-
-      #region BAR BUTTON EVENT
 
       private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
       {
@@ -235,10 +327,10 @@ namespace QLVT_DATHANG
 
          bdsNV.AddNew();
          txtEmpDelStatus.EditValue = "0";
-         txtEmpDepartment.EditValue = _maCN;
+         txtEmpDepartment.EditValue = _currentDeploymentId;
          spiEmpSalary.EditValue = CommonCons.MinSalary;
 
-         EnableFormNV();
+         EnableEditMode();
          txtEmpId.Focus();
       }
 
@@ -312,7 +404,6 @@ namespace QLVT_DATHANG
 
       private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
       {
-         //bdsNV.CancelEdit();
          Undo();
       }
 
@@ -326,12 +417,13 @@ namespace QLVT_DATHANG
             bdsNV.CancelEdit();
             bdsNV.ResetCurrentItem();
             bdsNV.Position = _currentPosition;
+            _buttonAction = ButtonActionType.None;
          }
          catch (Exception ex)
          {
             ShowError(ex);
          }
-         DisableFormNV();
+         DisableEditMode();
       }
 
       private void gcNV_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -364,70 +456,6 @@ namespace QLVT_DATHANG
                   break;
             }
          }
-      }
-
-      private void Undo()
-      {
-         ButtonAction action = (ButtonAction) _userDo.Pop();
-         switch (action.ActionType)
-         {
-            case ButtonActionType.Add:
-               // xóa dữ liệu mới
-               bdsNV.Remove(action.SaveDataRow);
-               break;
-            case ButtonActionType.Edit:
-               // sửa lại dữ liệu cũ
-               //((DataRowView)bdsNV[5]) = action.SaveDataRow;
-               break;
-            case ButtonActionType.None:
-               break;
-            default:
-               break;
-         }
-         this.taNV.Update(this.dataSet.NhanVien);
-      }
-
-      private bool SaveEmployee()
-      {
-         try
-         {
-            if (_buttonAction == ButtonActionType.Add)
-            {
-               if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
-               {
-                  XtraMessageBox.Show("Mã tồn tại");
-                  txtEmpId.Focus();
-                  txtEmpId.SelectAll();
-                  return false;
-               }
-               _userDo.Push(new ButtonAction(_buttonAction, (DataRowView) bdsNV[bdsNV.Position]));
-            }
-            _buttonAction = ButtonActionType.None;
-
-            bdsNV.EndEdit();
-            gbNV.Enabled = false;
-            bdsNV.ResetCurrentItem();
-            this.taNV.Update(this.dataSet.NhanVien);
-         }
-         catch (Exception ex)
-         {
-            // #load lại từ database
-            dataSet.EnforceConstraints = false;
-            this.taNV.Fill(this.dataSet.NhanVien);
-            dataSet.EnforceConstraints = true;
-            ShowError(ex);
-            return false;
-         }
-         bdsNV.Position = _currentPosition;
-         DisableFormNV();
-         return true;
-      }
-
-      private void EditEmployee()
-      {
-         _currentPosition = bdsNV.Position;
-         _buttonAction = ButtonActionType.Edit;
-         EnableFormNV();
       }
 
       #endregion

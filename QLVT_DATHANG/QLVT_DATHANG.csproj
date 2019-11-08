@@ -107,8 +107,13 @@
       <DependentUpon>frmMaterials.cs</DependentUpon>
     </Compile>
     <Compile Include="Constant\MessageCons.cs" />
+    <Compile Include="ImagTextEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utility\ButtonAction.cs" />
     <Compile Include="Utility\ButtonActionType.cs" />
+    <Compile Include="Utility\MyStack.cs" />
+    <Compile Include="Utility\StackEventAgrs.cs" />
     <Compile Include="Utility\UtilDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

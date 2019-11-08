@@ -64,10 +64,7 @@ namespace QLVT_DATHANG.Utility
          SqlCommand sqlcmd = new SqlCommand(cmdText, SqlConnection);
          sqlcmd.CommandType = CommandType.Text;
 
-         if (SqlConnection.State == ConnectionState.Closed)
-         {
-            SqlConnection.Open();
-         }
+         OpenConnection();
          try
          {
             myreader = sqlcmd.ExecuteReader();
