@@ -37,8 +37,10 @@
          this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
          this.lblServerPM = new DevExpress.XtraEditors.LabelControl();
          this.cboChiNhanh = new System.Windows.Forms.ComboBox();
+         this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
          ((System.ComponentModel.ISupportInitialize)(this.txtTK.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMK.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          this.SuspendLayout();
          // 
          // labelControl1
@@ -133,6 +135,16 @@
          this.cboChiNhanh.TabIndex = 2;
          this.cboChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cboChiNhanh_SelectedIndexChanged);
          // 
+         // pictureEdit1
+         // 
+         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources.icons8_show_password_16;
+         this.pictureEdit1.Location = new System.Drawing.Point(351, 101);
+         this.pictureEdit1.Name = "pictureEdit1";
+         this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+         this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+         this.pictureEdit1.Size = new System.Drawing.Size(20, 20);
+         this.pictureEdit1.TabIndex = 8;
+         // 
          // frmLogin
          // 
          this.Appearance.BorderColor = System.Drawing.Color.Gray;
@@ -141,6 +153,7 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(421, 240);
+         this.Controls.Add(this.pictureEdit1);
          this.Controls.Add(this.cboChiNhanh);
          this.Controls.Add(this.lblServerPM);
          this.Controls.Add(this.btnLogin);
@@ -159,6 +172,7 @@
          this.Load += new System.EventHandler(this.frmLogin_Load);
          ((System.ComponentModel.ISupportInitialize)(this.txtTK.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMK.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -174,5 +188,6 @@
       private DevExpress.XtraEditors.SimpleButton btnLogin;
       private DevExpress.XtraEditors.LabelControl lblServerPM;
       private System.Windows.Forms.ComboBox cboChiNhanh;
+      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
    }
 }

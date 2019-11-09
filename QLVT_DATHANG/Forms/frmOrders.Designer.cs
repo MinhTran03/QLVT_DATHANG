@@ -61,6 +61,13 @@
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
+         this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
+         this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
+         this.cTDDHDataGridView = new System.Windows.Forms.DataGridView();
+         this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).BeginInit();
@@ -71,6 +78,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.cTDDHDataGridView)).BeginInit();
          this.SuspendLayout();
          // 
          // bmPN
@@ -323,6 +332,7 @@
          this.splitContainerControl1.Name = "splitContainerControl1";
          this.splitContainerControl1.Panel1.Controls.Add(this.gbOrder);
          this.splitContainerControl1.Panel1.Text = "Panel1";
+         this.splitContainerControl1.Panel2.Controls.Add(this.cTDDHDataGridView);
          this.splitContainerControl1.Panel2.Text = "Panel2";
          this.splitContainerControl1.Size = new System.Drawing.Size(732, 154);
          this.splitContainerControl1.SplitterPosition = 367;
@@ -367,6 +377,55 @@
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
          // 
+         // bdsCTDDH
+         // 
+         this.bdsCTDDH.DataMember = "FK_CTDDH_DatHang";
+         this.bdsCTDDH.DataSource = this.bdsOrder;
+         // 
+         // taCTDDH
+         // 
+         this.taCTDDH.ClearBeforeFill = true;
+         // 
+         // cTDDHDataGridView
+         // 
+         this.cTDDHDataGridView.AutoGenerateColumns = false;
+         this.cTDDHDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+         this.cTDDHDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+         this.cTDDHDataGridView.DataSource = this.bdsCTDDH;
+         this.cTDDHDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.cTDDHDataGridView.Location = new System.Drawing.Point(0, 0);
+         this.cTDDHDataGridView.Name = "cTDDHDataGridView";
+         this.cTDDHDataGridView.Size = new System.Drawing.Size(360, 154);
+         this.cTDDHDataGridView.TabIndex = 0;
+         // 
+         // dataGridViewTextBoxColumn1
+         // 
+         this.dataGridViewTextBoxColumn1.DataPropertyName = "MasoDDH";
+         this.dataGridViewTextBoxColumn1.HeaderText = "MasoDDH";
+         this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+         // 
+         // dataGridViewTextBoxColumn2
+         // 
+         this.dataGridViewTextBoxColumn2.DataPropertyName = "MAVT";
+         this.dataGridViewTextBoxColumn2.HeaderText = "MAVT";
+         this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+         // 
+         // dataGridViewTextBoxColumn3
+         // 
+         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
+         this.dataGridViewTextBoxColumn3.HeaderText = "SOLUONG";
+         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+         // 
+         // dataGridViewTextBoxColumn4
+         // 
+         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
+         this.dataGridViewTextBoxColumn4.HeaderText = "DONGIA";
+         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+         // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,6 +453,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.cTDDHDataGridView)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -432,5 +493,12 @@
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDeployment;
+      private System.Windows.Forms.BindingSource bdsCTDDH;
+      private DataSetTableAdapters.CTDDHTableAdapter taCTDDH;
+      private System.Windows.Forms.DataGridView cTDDHDataGridView;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
    }
 }

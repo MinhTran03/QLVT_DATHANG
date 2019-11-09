@@ -86,10 +86,13 @@
          this.taCN = new QLVT_DATHANG.DataSetTableAdapters.ChiNhanhTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          this.gbEmployee = new DevExpress.XtraEditors.GroupControl();
+         this.comboBox1 = new System.Windows.Forms.ComboBox();
          this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+         this.chiNhanh1BindingSource = new System.Windows.Forms.BindingSource(this.components);
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+         this.chiNhanh1TableAdapter = new QLVT_DATHANG.DataSetTableAdapters.ChiNhanh1TableAdapter();
          mANVLabel = new System.Windows.Forms.Label();
          hOLabel = new System.Windows.Forms.Label();
          dIACHILabel = new System.Windows.Forms.Label();
@@ -120,6 +123,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbEmployee)).BeginInit();
          this.gbEmployee.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.chiNhanh1BindingSource)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
          this.SuspendLayout();
@@ -382,6 +386,7 @@
          // taNVManager
          // 
          this.taNVManager.BackupDataSetBeforeUpdate = false;
+         this.taNVManager.ChiNhanh1TableAdapter = null;
          this.taNVManager.ChiNhanhTableAdapter = null;
          this.taNVManager.CTDDHTableAdapter = null;
          this.taNVManager.CTPNTableAdapter = null;
@@ -679,6 +684,7 @@
          // 
          // gbEmployee
          // 
+         this.gbEmployee.Controls.Add(this.comboBox1);
          this.gbEmployee.Controls.Add(this.pictureEdit1);
          this.gbEmployee.Controls.Add(this.txtEmpId);
          this.gbEmployee.Controls.Add(this.txtEmpDelStatus);
@@ -703,6 +709,17 @@
          this.gbEmployee.TabIndex = 16;
          this.gbEmployee.Text = "Thông tin Nhân Viên";
          // 
+         // comboBox1
+         // 
+         this.comboBox1.DataSource = this.chiNhanh1BindingSource;
+         this.comboBox1.DisplayMember = "TrangThaiXoa";
+         this.comboBox1.FormattingEnabled = true;
+         this.comboBox1.Location = new System.Drawing.Point(797, 75);
+         this.comboBox1.Name = "comboBox1";
+         this.comboBox1.Size = new System.Drawing.Size(121, 21);
+         this.comboBox1.TabIndex = 17;
+         this.comboBox1.ValueMember = "MANV";
+         // 
          // pictureEdit1
          // 
          this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources.id_card_96px;
@@ -712,6 +729,11 @@
          this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
          this.pictureEdit1.Size = new System.Drawing.Size(196, 144);
          this.pictureEdit1.TabIndex = 16;
+         // 
+         // chiNhanh1BindingSource
+         // 
+         this.chiNhanh1BindingSource.DataMember = "ChiNhanh1";
+         this.chiNhanh1BindingSource.DataSource = this.dataSet;
          // 
          // splitterControl1
          // 
@@ -740,6 +762,10 @@
          this.labelControl1.Size = new System.Drawing.Size(81, 13);
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
+         // 
+         // chiNhanh1TableAdapter
+         // 
+         this.chiNhanh1TableAdapter.ClearBeforeFill = true;
          // 
          // frmEmployee
          // 
@@ -786,6 +812,7 @@
          this.gbEmployee.ResumeLayout(false);
          this.gbEmployee.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.chiNhanh1BindingSource)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
@@ -849,5 +876,8 @@
       private DevExpress.XtraEditors.PictureEdit pictureEdit1;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
+      private System.Windows.Forms.BindingSource chiNhanh1BindingSource;
+      private DataSetTableAdapters.ChiNhanh1TableAdapter chiNhanh1TableAdapter;
+      private System.Windows.Forms.ComboBox comboBox1;
    }
 }

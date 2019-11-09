@@ -17,14 +17,14 @@ namespace QLVT_DATHANG.Forms
 
       private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
-         Form nvForm = CheckExists(typeof(frmEmployee));
+         Form nvForm = CheckExists(typeof(XtraForm1));
          if (nvForm != null)
          {
             nvForm.Activate();
          }
          else
          {
-            frmEmployee f = new frmEmployee();
+            XtraForm1 f = new XtraForm1();
             f.MdiParent = this;
             f.Show();
          }

@@ -223,36 +223,37 @@ namespace QLVT_DATHANG.Forms
 
       private bool SaveEmployee()
       {
-         try
-         {
-            if (_buttonAction == ButtonActionType.Add)
+         if (int.Parse(spiEmpSalary.EditValue.ToString()) < 15)
+            try
             {
-               if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
+               if (_buttonAction == ButtonActionType.Add)
                {
-                  XtraMessageBox.Show("Mã tồn tại");
-                  txtEmpId.Focus();
-                  txtEmpId.SelectAll();
-                  return false;
+                  if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
+                  {
+                     XtraMessageBox.Show("Mã tồn tại");
+                     txtEmpId.Focus();
+                     txtEmpId.SelectAll();
+                     return false;
+                  }
+                  _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsNV[bdsNV.Position]));
                }
-               _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsNV[bdsNV.Position]));
+               _buttonAction = ButtonActionType.None;
+
+               bdsNV.EndEdit();
+               gbEmployee.Enabled = false;
+               bdsNV.ResetCurrentItem();
+               this.taNV.Update(this.dataSet.NhanVien);
             }
-            _buttonAction = ButtonActionType.None;
+            catch (Exception ex)
+            {
+               // #load lại từ database
+               dataSet.EnforceConstraints = false;
+               this.taNV.Fill(this.dataSet.NhanVien);
+               dataSet.EnforceConstraints = true;
 
-            bdsNV.EndEdit();
-            gbEmployee.Enabled = false;
-            bdsNV.ResetCurrentItem();
-            this.taNV.Update(this.dataSet.NhanVien);
-         }
-         catch (Exception ex)
-         {
-            // #load lại từ database
-            dataSet.EnforceConstraints = false;
-            this.taNV.Fill(this.dataSet.NhanVien);
-            dataSet.EnforceConstraints = true;
-
-            UtilCommon.ShowError(ex);
-            return false;
-         }
+               UtilCommon.ShowError(ex);
+               return false;
+            }
          bdsNV.Position = _currentPosition;
          DisableEditMode();
          return true;

@@ -111,12 +111,15 @@ namespace QLVT_DATHANG.Forms
       {
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
          this.taOrder.Connection.ConnectionString =
+            this.taCTDDH.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
             this.dataSet.EnforceConstraints = false;
 
             this.taOrder.Fill(this.dataSet.DatHang);
+
+            this.taCTDDH.Fill(this.dataSet.CTDDH);
 
             //this.dataSet.EnforceConstraints = true;
          }
