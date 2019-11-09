@@ -33,7 +33,7 @@ namespace QLVT_DATHANG.Utility
                                 $"password={CurrentPassword}";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-               //connection.Open();
+               connection.Open();
             }
             return 1;
          }

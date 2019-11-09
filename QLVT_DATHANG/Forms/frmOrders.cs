@@ -4,23 +4,22 @@ using System.Data;
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
-   using DevExpress.XtraEditors;
    using Utility;
 
-   public partial class frmGoodsDeliveryNote : XtraForm
+   public partial class frmOrders : DevExpress.XtraEditors.XtraForm
    {
       private string _currentDeploymentId;
       //private int _currentPosition;
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
 
-      public frmGoodsDeliveryNote()
+      public frmOrders()
       {
          InitializeComponent();
          SetupControls();
       }
 
-      private void frmGoodsDeliveryNote_Load(object sender, EventArgs e)
+      private void frmOrders_Load(object sender, EventArgs e)
       {
          _buttonAction = ButtonActionType.None;
          _userDo = new MyStack();
@@ -30,7 +29,7 @@ namespace QLVT_DATHANG.Forms
          LoadTable();
          DisableEditMode();
 
-         _currentDeploymentId = ((DataRowView)bdsPX[0])["MAPX"].ToString().Trim();
+         _currentDeploymentId = ((DataRowView)bdsOrder[0])["MasoDDH"].ToString().Trim();
 
          // Quyền công ty => enable combobox chi nhánh
          ShowControlsByGroup(UtilDB.CurrentGroup);
@@ -111,14 +110,13 @@ namespace QLVT_DATHANG.Forms
       private void LoadTable()
       {
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
-         this.taPX.Connection.ConnectionString =
+         this.taOrder.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
             this.dataSet.EnforceConstraints = false;
 
-            // TODO: This line of code loads data into the 'dataSet.PhieuNhap' table. You can move, or remove it, as needed.
-            this.taPX.Fill(this.dataSet.PhieuXuat);
+            this.taOrder.Fill(this.dataSet.DatHang);
 
             //this.dataSet.EnforceConstraints = true;
          }
@@ -130,10 +128,10 @@ namespace QLVT_DATHANG.Forms
 
       private void DisableEditMode()
       {
-         btnDel.Enabled = (bdsPX.Count == 0) ? false : true;
+         btnDel.Enabled = (bdsOrder.Count == 0) ? false : true;
 
-         gcDeliveryNote.Enabled = true;
-         gbDeliveryNote.Enabled = false;
+         gcOrder.Enabled = true;
+         gbOrder.Enabled = false;
 
          btnAdd.Enabled = true;
          btnDel.Enabled = true;
@@ -150,6 +148,5 @@ namespace QLVT_DATHANG.Forms
       }
 
       #endregion
-
    }
 }

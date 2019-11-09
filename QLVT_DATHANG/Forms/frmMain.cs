@@ -71,5 +71,50 @@ namespace QLVT_DATHANG.Forms
             f.Show();
          }
       }
+
+      private void btnDepot_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         Form nvForm = CheckExists(typeof(frmDepot));
+         if (nvForm != null)
+         {
+            nvForm.Activate();
+         }
+         else
+         {
+            frmDepot f = new frmDepot();
+            f.MdiParent = this;
+            f.Show();
+         }
+      }
+
+      private void btnOrder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         Form nvForm = CheckExists(typeof(frmOrders));
+         if (nvForm != null)
+         {
+            nvForm.Activate();
+         }
+         else
+         {
+            frmOrders f = new frmOrders();
+            f.MdiParent = this;
+            f.Show();
+         }
+      }
+
+      private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         Form nvForm = CheckExists(typeof(frmGoodsReceivedNote));
+         if (nvForm != null)
+         {
+            nvForm.Activate();
+         }
+         else
+         {
+            frmGoodsReceivedNote f = new frmGoodsReceivedNote();
+            f.MdiParent = this;
+            f.Show();
+         }
+      }
    }
 }

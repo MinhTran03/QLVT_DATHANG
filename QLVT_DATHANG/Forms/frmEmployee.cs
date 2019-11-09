@@ -6,15 +6,14 @@ using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
+   using Constant;
    using DevExpress.Utils;
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
    using DevExpress.XtraEditors.Controls;
    using DevExpress.XtraEditors.Mask;
    using DevExpress.XtraGrid.Views.Base;
-   using Constant;
    using Utility;
-   using System.Collections.Generic;
 
    public partial class frmEmployee : XtraForm
    {
@@ -52,7 +51,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (grName.Equals("congty"))
          {
-            UtilCommon.SetupDSCN(this.cboEmpDep);
+            UtilCommon.SetupDSCN(this.cboDeployment);
             this.pnPickDepartment.Visible = true;
             this.btnAdd.Enabled = false;
             this.btnEdit.Enabled = false;
@@ -136,11 +135,11 @@ namespace QLVT_DATHANG.Forms
             // TODO: This line of code loads data into the 'dataSet.NhanVien' table. You can move, or remove it, as needed.
             this.taNV.Fill(this.dataSet.NhanVien);
 
-            // TODO: This line of code loads data into the 'dataSet.PhieuXuat' table. You can move, or remove it, as needed.
-            this.taPX.Fill(this.dataSet.PhieuXuat);
-
             // TODO: This line of code loads data into the 'dataSet.DatHang' table. You can move, or remove it, as needed.
             this.taDH.Fill(this.dataSet.DatHang);
+
+            // TODO: This line of code loads data into the 'dataSet.PhieuXuat' table. You can move, or remove it, as needed.
+            this.taPX.Fill(this.dataSet.PhieuXuat);
 
             // TODO: This line of code loads data into the 'dataSet.PhieuNhap' table. You can move, or remove it, as needed.
             this.taPN.Fill(this.dataSet.PhieuNhap);
@@ -155,8 +154,8 @@ namespace QLVT_DATHANG.Forms
 
       private void EnableEditMode()
       {
-         gcNV.Enabled = false;
-         gbNV.Enabled = true;
+         gcEmployee.Enabled = false;
+         gbEmployee.Enabled = true;
 
          btnAdd.Enabled = false;
          btnDel.Enabled = false;
@@ -178,8 +177,8 @@ namespace QLVT_DATHANG.Forms
          txtEmpDelStatus.ReadOnly = true;
          txtEmpDepartment.ReadOnly = true;
 
-         gcNV.Enabled = true;
-         gbNV.Enabled = false;
+         gcEmployee.Enabled = true;
+         gbEmployee.Enabled = false;
 
          btnAdd.Enabled = true;
          btnDel.Enabled = true;
@@ -240,7 +239,7 @@ namespace QLVT_DATHANG.Forms
             _buttonAction = ButtonActionType.None;
 
             bdsNV.EndEdit();
-            gbNV.Enabled = false;
+            gbEmployee.Enabled = false;
             bdsNV.ResetCurrentItem();
             this.taNV.Update(this.dataSet.NhanVien);
          }
@@ -278,13 +277,13 @@ namespace QLVT_DATHANG.Forms
 
       private void cboEmpDep_SelectedIndexChanged(object sender, EventArgs e)
       {
-         if (cboEmpDep.SelectedValue.ToString() == "System.Data.DataRowView") return;
+         if (cboDeployment.SelectedValue.ToString() == "System.Data.DataRowView") return;
 
          // đổi server
-         UtilDB.ServerName = cboEmpDep.SelectedValue.ToString();
+         UtilDB.ServerName = cboDeployment.SelectedValue.ToString();
 
          // đổi login
-         if (cboEmpDep.SelectedIndex != UtilDB.CurrentDepId)
+         if (cboDeployment.SelectedIndex != UtilDB.CurrentDepId)
          {
             UtilDB.CurrentLogin = MyConfig.RemoteLogin;
             UtilDB.CurrentPassword = MyConfig.RemotePassword;
@@ -298,7 +297,7 @@ namespace QLVT_DATHANG.Forms
          //
          if (UtilDB.Connect() == 0)
          {
-            XtraMessageBox.Show(MessageCons.ErrorConnectDepartment, string.Empty, MessageBoxButtons.OK);
+            XtraMessageBox.Show(MessageCons.ErrorConnectDepartment, MessageCons.CaptionError, MessageBoxButtons.OK);
          }
          else
          {
@@ -382,7 +381,7 @@ namespace QLVT_DATHANG.Forms
          try
          {
             //txtEmpDep.Text = null;
-            gbNV.Enabled = false;
+            gbEmployee.Enabled = false;
             bdsNV.CancelEdit();
             bdsNV.ResetCurrentItem();
             bdsNV.Position = _currentPosition;
@@ -402,7 +401,7 @@ namespace QLVT_DATHANG.Forms
 
       private void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
       {
-         if (gbNV.Enabled == true)
+         if (gbEmployee.Enabled == true)
          {
             var result = XtraMessageBox.Show(MessageCons.ExitWhileEditing, MessageCons.CaptionQuestion,
                                        MessageBoxButtons.YesNoCancel,
@@ -477,7 +476,7 @@ namespace QLVT_DATHANG.Forms
 
       private bool IsExistEmployee(int employeeId)
       {
-         string strLenh = string.Format("EXEC sp_timnhanvien {0}", employeeId);
+         string strLenh = string.Format(MyConfig.ExecSPTimNhanVien, employeeId);
          bool exist = false;
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {

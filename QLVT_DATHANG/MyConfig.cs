@@ -13,5 +13,7 @@ namespace QLVT_DATHANG
       public static string RemotePassword = "123456";
 
       public static string ExecSPThongTinDangNhap = "EXEC sp_login '{0}'";
+      public static string ExecSPTimNhanVien = "EXEC sp_timnhanvien {0}";
+      public static string ExecSPTimVatTu = "EXEC sp_timvattu '{0}'";
    }
 }

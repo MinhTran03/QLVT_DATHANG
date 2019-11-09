@@ -155,7 +155,7 @@
          this.MaximizeBox = false;
          this.Name = "frmLogin";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-         this.Text = "Login";
+         this.Text = "LOGIN";
          this.Load += new System.EventHandler(this.frmLogin_Load);
          ((System.ComponentModel.ISupportInitialize)(this.txtTK.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMK.Properties)).EndInit();

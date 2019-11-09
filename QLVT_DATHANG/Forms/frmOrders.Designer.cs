@@ -1,6 +1,6 @@
 ﻿namespace QLVT_DATHANG.Forms
 {
-   partial class frmGoodsDeliveryNote
+   partial class frmOrders
    {
       /// <summary>
       /// Required designer variable.
@@ -29,11 +29,7 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoodsDeliveryNote));
-         this.dataSet = new QLVT_DATHANG.DataSet();
-         this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
-         this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-         this.gbDeliveryNote = new DevExpress.XtraEditors.GroupControl();
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -49,66 +45,33 @@
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+         this.dataSet = new QLVT_DATHANG.DataSet();
+         this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
+         this.taOrder = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
+         this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
+         this.gcOrder = new DevExpress.XtraGrid.GridControl();
+         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+         this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
+         this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+         this.gbOrder = new DevExpress.XtraEditors.GroupControl();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
-         this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
-         this.taPX = new QLVT_DATHANG.DataSetTableAdapters.PhieuXuatTableAdapter();
-         this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
-         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-         this.gcDeliveryNote = new DevExpress.XtraGrid.GridControl();
-         this.colMAPX = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colHOTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
+         ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
          this.splitContainerControl1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.gbDeliveryNote)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gcDeliveryNote)).BeginInit();
          this.SuspendLayout();
-         // 
-         // dataSet
-         // 
-         this.dataSet.DataSetName = "DataSet";
-         this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-         // 
-         // splitterControl1
-         // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 274);
-         this.splitterControl1.Name = "splitterControl1";
-         this.splitterControl1.Size = new System.Drawing.Size(785, 5);
-         this.splitterControl1.TabIndex = 6;
-         this.splitterControl1.TabStop = false;
-         // 
-         // splitContainerControl1
-         // 
-         this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.splitContainerControl1.Location = new System.Drawing.Point(0, 279);
-         this.splitContainerControl1.Name = "splitContainerControl1";
-         this.splitContainerControl1.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-         this.splitContainerControl1.Panel1.Controls.Add(this.gbDeliveryNote);
-         this.splitContainerControl1.Panel1.Text = "Panel1";
-         this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-         this.splitContainerControl1.Panel2.Text = "Panel2";
-         this.splitContainerControl1.Size = new System.Drawing.Size(785, 166);
-         this.splitContainerControl1.SplitterPosition = 388;
-         this.splitContainerControl1.TabIndex = 7;
-         // 
-         // gbDeliveryNote
-         // 
-         this.gbDeliveryNote.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbDeliveryNote.Location = new System.Drawing.Point(0, 0);
-         this.gbDeliveryNote.Name = "gbDeliveryNote";
-         this.gbDeliveryNote.Size = new System.Drawing.Size(384, 162);
-         this.gbDeliveryNote.TabIndex = 0;
-         this.gbDeliveryNote.Text = "Thông tin Phiếu Xuất";
          // 
          // bmPN
          // 
@@ -234,15 +197,15 @@
          this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.bmPN;
-         this.barDockControlTop.Size = new System.Drawing.Size(785, 24);
+         this.barDockControlTop.Size = new System.Drawing.Size(732, 24);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 445);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 409);
          this.barDockControlBottom.Manager = this.bmPN;
-         this.barDockControlBottom.Size = new System.Drawing.Size(785, 23);
+         this.barDockControlBottom.Size = new System.Drawing.Size(732, 23);
          // 
          // barDockControlLeft
          // 
@@ -250,15 +213,129 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 421);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 385);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(785, 24);
+         this.barDockControlRight.Location = new System.Drawing.Point(732, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 421);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 385);
+         // 
+         // dataSet
+         // 
+         this.dataSet.DataSetName = "DataSet";
+         this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+         // 
+         // bdsOrder
+         // 
+         this.bdsOrder.DataMember = "DatHang";
+         this.bdsOrder.DataSource = this.dataSet;
+         // 
+         // taOrder
+         // 
+         this.taOrder.ClearBeforeFill = true;
+         // 
+         // tableAdapterManager
+         // 
+         this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+         this.tableAdapterManager.ChiNhanhTableAdapter = null;
+         this.tableAdapterManager.CTDDHTableAdapter = null;
+         this.tableAdapterManager.CTPNTableAdapter = null;
+         this.tableAdapterManager.CTPXTableAdapter = null;
+         this.tableAdapterManager.DatHangTableAdapter = this.taOrder;
+         this.tableAdapterManager.KhoTableAdapter = null;
+         this.tableAdapterManager.NhanVienTableAdapter = null;
+         this.tableAdapterManager.PhieuNhapTableAdapter = null;
+         this.tableAdapterManager.PhieuXuatTableAdapter = null;
+         this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+         this.tableAdapterManager.VattuTableAdapter = null;
+         // 
+         // gcOrder
+         // 
+         this.gcOrder.DataSource = this.bdsOrder;
+         this.gcOrder.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcOrder.Location = new System.Drawing.Point(0, 54);
+         this.gcOrder.MainView = this.gridView1;
+         this.gcOrder.MenuManager = this.bmPN;
+         this.gcOrder.Name = "gcOrder";
+         this.gcOrder.Size = new System.Drawing.Size(732, 196);
+         this.gcOrder.TabIndex = 5;
+         this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+         // 
+         // gridView1
+         // 
+         this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMasoDDH,
+            this.colNGAY,
+            this.colNhaCC,
+            this.colMANV});
+         this.gridView1.GridControl = this.gcOrder;
+         this.gridView1.Name = "gridView1";
+         this.gridView1.OptionsBehavior.Editable = false;
+         this.gridView1.OptionsView.ShowGroupPanel = false;
+         this.gridView1.OptionsView.ShowViewCaption = true;
+         this.gridView1.ViewCaption = "Danh sách Đơn Đặt Hàng";
+         // 
+         // colMasoDDH
+         // 
+         this.colMasoDDH.FieldName = "MasoDDH";
+         this.colMasoDDH.Name = "colMasoDDH";
+         this.colMasoDDH.Visible = true;
+         this.colMasoDDH.VisibleIndex = 0;
+         // 
+         // colNGAY
+         // 
+         this.colNGAY.FieldName = "NGAY";
+         this.colNGAY.Name = "colNGAY";
+         this.colNGAY.Visible = true;
+         this.colNGAY.VisibleIndex = 1;
+         // 
+         // colNhaCC
+         // 
+         this.colNhaCC.FieldName = "NhaCC";
+         this.colNhaCC.Name = "colNhaCC";
+         this.colNhaCC.Visible = true;
+         this.colNhaCC.VisibleIndex = 2;
+         // 
+         // colMANV
+         // 
+         this.colMANV.FieldName = "MANV";
+         this.colMANV.Name = "colMANV";
+         this.colMANV.Visible = true;
+         this.colMANV.VisibleIndex = 3;
+         // 
+         // splitterControl1
+         // 
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
+         this.splitterControl1.Location = new System.Drawing.Point(0, 250);
+         this.splitterControl1.Name = "splitterControl1";
+         this.splitterControl1.Size = new System.Drawing.Size(732, 5);
+         this.splitterControl1.TabIndex = 6;
+         this.splitterControl1.TabStop = false;
+         // 
+         // splitContainerControl1
+         // 
+         this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.splitContainerControl1.Location = new System.Drawing.Point(0, 255);
+         this.splitContainerControl1.Name = "splitContainerControl1";
+         this.splitContainerControl1.Panel1.Controls.Add(this.gbOrder);
+         this.splitContainerControl1.Panel1.Text = "Panel1";
+         this.splitContainerControl1.Panel2.Text = "Panel2";
+         this.splitContainerControl1.Size = new System.Drawing.Size(732, 154);
+         this.splitContainerControl1.SplitterPosition = 367;
+         this.splitContainerControl1.TabIndex = 7;
+         // 
+         // gbOrder
+         // 
+         this.gbOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gbOrder.Location = new System.Drawing.Point(0, 0);
+         this.gbOrder.Name = "gbOrder";
+         this.gbOrder.Size = new System.Drawing.Size(367, 154);
+         this.gbOrder.TabIndex = 0;
+         this.gbOrder.Text = "Thông tin Đơn Đặt Hàng";
          // 
          // pnPickDepartment
          // 
@@ -267,8 +344,8 @@
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
          this.pnPickDepartment.Name = "pnPickDepartment";
-         this.pnPickDepartment.Size = new System.Drawing.Size(785, 30);
-         this.pnPickDepartment.TabIndex = 24;
+         this.pnPickDepartment.Size = new System.Drawing.Size(732, 30);
+         this.pnPickDepartment.TabIndex = 23;
          this.pnPickDepartment.Visible = false;
          // 
          // labelControl1
@@ -290,148 +367,70 @@
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
          // 
-         // bdsPX
-         // 
-         this.bdsPX.DataMember = "PhieuXuat";
-         this.bdsPX.DataSource = this.dataSet;
-         // 
-         // taPX
-         // 
-         this.taPX.ClearBeforeFill = true;
-         // 
-         // tableAdapterManager
-         // 
-         this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-         this.tableAdapterManager.ChiNhanhTableAdapter = null;
-         this.tableAdapterManager.CTDDHTableAdapter = null;
-         this.tableAdapterManager.CTPNTableAdapter = null;
-         this.tableAdapterManager.CTPXTableAdapter = null;
-         this.tableAdapterManager.DatHangTableAdapter = null;
-         this.tableAdapterManager.KhoTableAdapter = null;
-         this.tableAdapterManager.NhanVienTableAdapter = null;
-         this.tableAdapterManager.PhieuNhapTableAdapter = null;
-         this.tableAdapterManager.PhieuXuatTableAdapter = this.taPX;
-         this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-         this.tableAdapterManager.VattuTableAdapter = null;
-         // 
-         // gridView1
-         // 
-         this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMAPX,
-            this.colNGAY,
-            this.colHOTENKH,
-            this.colMANV});
-         this.gridView1.GridControl = this.gcDeliveryNote;
-         this.gridView1.Name = "gridView1";
-         this.gridView1.OptionsBehavior.Editable = false;
-         this.gridView1.OptionsView.ShowGroupPanel = false;
-         this.gridView1.OptionsView.ShowViewCaption = true;
-         this.gridView1.ViewCaption = "Danh sách Phiếu Xuất";
-         // 
-         // gcDeliveryNote
-         // 
-         this.gcDeliveryNote.DataSource = this.bdsPX;
-         this.gcDeliveryNote.Dock = System.Windows.Forms.DockStyle.Top;
-         this.gcDeliveryNote.Location = new System.Drawing.Point(0, 54);
-         this.gcDeliveryNote.MainView = this.gridView1;
-         this.gcDeliveryNote.MenuManager = this.bmPN;
-         this.gcDeliveryNote.Name = "gcDeliveryNote";
-         this.gcDeliveryNote.Size = new System.Drawing.Size(785, 220);
-         this.gcDeliveryNote.TabIndex = 0;
-         this.gcDeliveryNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-         // 
-         // colMAPX
-         // 
-         this.colMAPX.FieldName = "MAPX";
-         this.colMAPX.Name = "colMAPX";
-         this.colMAPX.Visible = true;
-         this.colMAPX.VisibleIndex = 0;
-         // 
-         // colNGAY
-         // 
-         this.colNGAY.FieldName = "NGAY";
-         this.colNGAY.Name = "colNGAY";
-         this.colNGAY.Visible = true;
-         this.colNGAY.VisibleIndex = 1;
-         // 
-         // colHOTENKH
-         // 
-         this.colHOTENKH.FieldName = "HOTENKH";
-         this.colHOTENKH.Name = "colHOTENKH";
-         this.colHOTENKH.Visible = true;
-         this.colHOTENKH.VisibleIndex = 2;
-         // 
-         // colMANV
-         // 
-         this.colMANV.FieldName = "MANV";
-         this.colMANV.Name = "colMANV";
-         this.colMANV.Visible = true;
-         this.colMANV.VisibleIndex = 3;
-         // 
-         // frmGoodsDeliveryNote
+         // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(785, 468);
+         this.ClientSize = new System.Drawing.Size(732, 432);
          this.Controls.Add(this.splitContainerControl1);
          this.Controls.Add(this.splitterControl1);
-         this.Controls.Add(this.gcDeliveryNote);
+         this.Controls.Add(this.gcOrder);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);
          this.Controls.Add(this.barDockControlTop);
-         this.Name = "frmGoodsDeliveryNote";
-         this.Text = "QUẢN LÝ PHIẾU XUẤT";
-         this.Load += new System.EventHandler(this.frmGoodsDeliveryNote_Load);
+         this.Name = "frmOrders";
+         this.Text = "QUẢN LÝ ĐƠN ĐẶT HÀNG";
+         this.Load += new System.EventHandler(this.frmOrders_Load);
+         ((System.ComponentModel.ISupportInitialize)(this.bmPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
          this.splitContainerControl1.ResumeLayout(false);
-         ((System.ComponentModel.ISupportInitialize)(this.gbDeliveryNote)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bmPN)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gcDeliveryNote)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
       }
 
       #endregion
-      private DataSet dataSet;
-      private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-      private DevExpress.XtraEditors.SplitterControl splitterControl1;
-      private DevExpress.XtraEditors.GroupControl gbDeliveryNote;
+
       private DevExpress.XtraBars.BarManager bmPN;
       private DevExpress.XtraBars.Bar bar2;
       private DevExpress.XtraBars.BarButtonItem btnAdd;
-      private DevExpress.XtraBars.BarButtonItem btnDel;
       private DevExpress.XtraBars.BarButtonItem btnEdit;
+      private DevExpress.XtraBars.BarButtonItem btnDel;
+      private DevExpress.XtraBars.BarButtonItem btnUndo;
+      private DevExpress.XtraBars.BarButtonItem btnRefresh;
       private DevExpress.XtraBars.BarButtonItem btnSave;
+      private DevExpress.XtraBars.BarButtonItem btnCancelEdit;
+      private DevExpress.XtraBars.BarButtonItem btnExit;
       private DevExpress.XtraBars.Bar bar3;
       private DevExpress.XtraBars.BarDockControl barDockControlTop;
       private DevExpress.XtraBars.BarDockControl barDockControlBottom;
       private DevExpress.XtraBars.BarDockControl barDockControlLeft;
       private DevExpress.XtraBars.BarDockControl barDockControlRight;
-      private DevExpress.XtraBars.BarButtonItem btnUndo;
-      private DevExpress.XtraBars.BarButtonItem btnRefresh;
-      private DevExpress.XtraBars.BarButtonItem btnExit;
-      private DevExpress.XtraBars.BarButtonItem btnCancelEdit;
+      private System.Windows.Forms.BindingSource bdsOrder;
+      private DataSet dataSet;
+      private DataSetTableAdapters.DatHangTableAdapter taOrder;
+      private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
+      private DevExpress.XtraGrid.GridControl gcOrder;
+      private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+      private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
+      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
+      private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
+      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
+      private DevExpress.XtraEditors.SplitterControl splitterControl1;
+      private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+      private DevExpress.XtraEditors.GroupControl gbOrder;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDeployment;
-      private System.Windows.Forms.BindingSource bdsPX;
-      private DataSetTableAdapters.PhieuXuatTableAdapter taPX;
-      private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-      private DevExpress.XtraGrid.GridControl gcDeliveryNote;
-      private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-      private DevExpress.XtraGrid.Columns.GridColumn colMAPX;
-      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
-      private DevExpress.XtraGrid.Columns.GridColumn colHOTENKH;
-      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
    }
 }

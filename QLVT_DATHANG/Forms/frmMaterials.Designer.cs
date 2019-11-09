@@ -52,7 +52,7 @@
          this.bar3 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
          this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
-         this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
+         this.btnDel = new DevExpress.XtraBars.BarButtonItem();
          this.btnReload = new DevExpress.XtraBars.BarButtonItem();
          this.btnExit = new DevExpress.XtraBars.BarButtonItem();
          this.btnSave = new DevExpress.XtraBars.BarButtonItem();
@@ -66,6 +66,12 @@
          this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
          this.gbVT = new DevExpress.XtraEditors.GroupControl();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
+         this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
+         this.taCTPX = new QLVT_DATHANG.DataSetTableAdapters.CTPXTableAdapter();
+         this.bdsCTPN = new System.Windows.Forms.BindingSource(this.components);
+         this.taCTPN = new QLVT_DATHANG.DataSetTableAdapters.CTPNTableAdapter();
+         this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
+         this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
          mAVTLabel = new System.Windows.Forms.Label();
          tENVTLabel = new System.Windows.Forms.Label();
          dVTLabel = new System.Windows.Forms.Label();
@@ -81,6 +87,9 @@
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).BeginInit();
          this.gbVT.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
          this.SuspendLayout();
          // 
          // mAVTLabel
@@ -161,7 +170,7 @@
          this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(873, 290);
+         this.gcVT.Size = new System.Drawing.Size(873, 208);
          this.gcVT.TabIndex = 6;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMaterial});
@@ -277,7 +286,7 @@
          this.bmVT.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnAdd,
             this.btnEdit,
-            this.btnDelete,
+            this.btnDel,
             this.btnReload,
             this.btnExit,
             this.btnSave,
@@ -295,7 +304,7 @@
          this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAdd, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnReload, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -321,13 +330,13 @@
          this.btnEdit.Name = "btnEdit";
          this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
          // 
-         // btnDelete
+         // btnDel
          // 
-         this.btnDelete.Caption = "XÓA";
-         this.btnDelete.Id = 2;
-         this.btnDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDelete.ImageOptions.SvgImage")));
-         this.btnDelete.Name = "btnDelete";
-         this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
+         this.btnDel.Caption = "XÓA";
+         this.btnDel.Id = 2;
+         this.btnDel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDel.ImageOptions.SvgImage")));
+         this.btnDel.Name = "btnDel";
+         this.btnDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
          // 
          // btnReload
          // 
@@ -431,20 +440,47 @@
          this.gbVT.Controls.Add(this.spiSLT);
          this.gbVT.Controls.Add(dVTLabel);
          this.gbVT.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbVT.Location = new System.Drawing.Point(0, 314);
+         this.gbVT.Location = new System.Drawing.Point(0, 232);
          this.gbVT.Name = "gbVT";
-         this.gbVT.Size = new System.Drawing.Size(873, 173);
+         this.gbVT.Size = new System.Drawing.Size(873, 255);
          this.gbVT.TabIndex = 19;
          this.gbVT.Text = "Thông tin Vật Tư";
          // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 314);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 232);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(873, 5);
          this.splitterControl1.TabIndex = 24;
          this.splitterControl1.TabStop = false;
+         // 
+         // bdsCTPX
+         // 
+         this.bdsCTPX.DataMember = "FK_CTPX_VatTu";
+         this.bdsCTPX.DataSource = this.bdsVT;
+         // 
+         // taCTPX
+         // 
+         this.taCTPX.ClearBeforeFill = true;
+         // 
+         // bdsCTPN
+         // 
+         this.bdsCTPN.DataMember = "FK_CTPN_VatTu";
+         this.bdsCTPN.DataSource = this.bdsVT;
+         // 
+         // taCTPN
+         // 
+         this.taCTPN.ClearBeforeFill = true;
+         // 
+         // bdsCTDDH
+         // 
+         this.bdsCTDDH.DataMember = "FK_CTDDH_VatTu";
+         this.bdsCTDDH.DataSource = this.bdsVT;
+         // 
+         // taCTDDH
+         // 
+         this.taCTDDH.ClearBeforeFill = true;
          // 
          // frmMaterials
          // 
@@ -460,7 +496,7 @@
          this.Controls.Add(this.barDockControl1);
          this.Margin = new System.Windows.Forms.Padding(2);
          this.Name = "frmMaterials";
-         this.Text = "Quản Lý Vật Tư";
+         this.Text = "QUẢN LÝ VẬT TƯ";
          this.Load += new System.EventHandler(this.frmMaterials_Load);
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
@@ -474,6 +510,9 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).EndInit();
          this.gbVT.ResumeLayout(false);
          this.gbVT.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -498,7 +537,7 @@
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarButtonItem btnAdd;
         private DevExpress.XtraBars.BarButtonItem btnEdit;
-        private DevExpress.XtraBars.BarButtonItem btnDelete;
+        private DevExpress.XtraBars.BarButtonItem btnDel;
         private DevExpress.XtraBars.BarButtonItem btnReload;
         private DevExpress.XtraBars.BarButtonItem btnExit;
         private DevExpress.XtraBars.BarButtonItem btnSave;
@@ -512,5 +551,11 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
       private DevExpress.XtraEditors.GroupControl gbVT;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
+      private System.Windows.Forms.BindingSource bdsCTPX;
+      private DataSetTableAdapters.CTPXTableAdapter taCTPX;
+      private System.Windows.Forms.BindingSource bdsCTPN;
+      private DataSetTableAdapters.CTPNTableAdapter taCTPN;
+      private System.Windows.Forms.BindingSource bdsCTDDH;
+      private DataSetTableAdapters.CTDDHTableAdapter taCTDDH;
    }
 }

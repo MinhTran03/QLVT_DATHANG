@@ -3,6 +3,7 @@
    public class MessageCons
    {
       public static string DeleteEmployee = "Bạn có chắc muốn xóa nhân viên {0} {1}";
+      public static string DeleteMaterials = "Bạn có chắc muốn xóa vật tư {0}";
       public static string ExitWhileEditing = "Bạn có muốn lưu thay đổi trước khi thoát?";
 
       public static string ErrorDeleteEmployee = "Nhập viên đã lập {0}, không được xóa!!!";

@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
-   using Utility;
    using Constant;
    using DevExpress.XtraEditors;
+   using Utility;
 
    public partial class frmLogin : XtraForm
    {

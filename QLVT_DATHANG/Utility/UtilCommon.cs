@@ -6,6 +6,7 @@ namespace QLVT_DATHANG.Utility
 {
    using DevExpress.XtraEditors;
    using Constant;
+   using System.Data;
 
    public class UtilCommon
    {

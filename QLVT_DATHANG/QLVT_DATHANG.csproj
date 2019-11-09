@@ -82,6 +82,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmDepot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDepot.Designer.cs">
+      <DependentUpon>frmDepot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmGoodsDeliveryNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,18 @@
       <DependentUpon>frmMaterials.cs</DependentUpon>
     </Compile>
     <Compile Include="Constant\MessageCons.cs" />
+    <Compile Include="Forms\frmOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmOrders.Designer.cs">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGoodsReceivedNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGoodsReceivedNote.Designer.cs">
+      <DependentUpon>frmGoodsReceivedNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImagTextEdit.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -125,6 +143,9 @@
     <Compile Include="Utility\UtilDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmDepot.resx">
+      <DependentUpon>frmDepot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGoodsDeliveryNote.resx">
       <DependentUpon>frmGoodsDeliveryNote.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +160,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMaterials.resx">
       <DependentUpon>frmMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmOrders.resx">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGoodsReceivedNote.resx">
+      <DependentUpon>frmGoodsReceivedNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

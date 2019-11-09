@@ -72,8 +72,8 @@
          this.colLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colTrangThaiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.gcNV = new DevExpress.XtraGrid.GridControl();
-         this.cboEmpDep = new System.Windows.Forms.ComboBox();
+         this.gcEmployee = new DevExpress.XtraGrid.GridControl();
+         this.cboDeployment = new System.Windows.Forms.ComboBox();
          this.txtEmpDelStatus = new DevExpress.XtraEditors.TextEdit();
          this.lblTTX = new System.Windows.Forms.Label();
          this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
@@ -85,7 +85,7 @@
          this.bdsCN = new System.Windows.Forms.BindingSource(this.components);
          this.taCN = new QLVT_DATHANG.DataSetTableAdapters.ChiNhanhTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-         this.gbNV = new DevExpress.XtraEditors.GroupControl();
+         this.gbEmployee = new DevExpress.XtraEditors.GroupControl();
          this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
@@ -110,15 +110,15 @@
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpFirstName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvNV)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gcNV)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gcEmployee)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gbNV)).BeginInit();
-         this.gbNV.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.gbEmployee)).BeginInit();
+         this.gbEmployee.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
@@ -515,7 +515,7 @@
             this.colMACN,
             this.colTrangThaiXoa});
          this.gvNV.DetailHeight = 404;
-         this.gvNV.GridControl = this.gcNV;
+         this.gvNV.GridControl = this.gcEmployee;
          this.gvNV.Name = "gvNV";
          this.gvNV.OptionsBehavior.Editable = false;
          this.gvNV.OptionsBehavior.ReadOnly = true;
@@ -592,32 +592,32 @@
          this.colTrangThaiXoa.Visible = true;
          this.colTrangThaiXoa.VisibleIndex = 7;
          // 
-         // gcNV
+         // gcEmployee
          // 
-         this.gcNV.DataSource = this.bdsNV;
-         this.gcNV.Dock = System.Windows.Forms.DockStyle.Top;
-         this.gcNV.Location = new System.Drawing.Point(0, 54);
-         this.gcNV.MainView = this.gvNV;
-         this.gcNV.Margin = new System.Windows.Forms.Padding(4);
-         this.gcNV.MenuManager = this.bmNV;
-         this.gcNV.Name = "gcNV";
-         this.gcNV.Size = new System.Drawing.Size(982, 192);
-         this.gcNV.TabIndex = 0;
-         this.gcNV.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+         this.gcEmployee.DataSource = this.bdsNV;
+         this.gcEmployee.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcEmployee.Location = new System.Drawing.Point(0, 54);
+         this.gcEmployee.MainView = this.gvNV;
+         this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
+         this.gcEmployee.MenuManager = this.bmNV;
+         this.gcEmployee.Name = "gcEmployee";
+         this.gcEmployee.Size = new System.Drawing.Size(982, 192);
+         this.gcEmployee.TabIndex = 0;
+         this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvNV});
-         this.gcNV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gcNV_MouseDoubleClick);
+         this.gcEmployee.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gcNV_MouseDoubleClick);
          // 
-         // cboEmpDep
+         // cboDeployment
          // 
-         this.cboEmpDep.BackColor = System.Drawing.SystemColors.Window;
-         this.cboEmpDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.cboEmpDep.FlatStyle = System.Windows.Forms.FlatStyle.System;
-         this.cboEmpDep.FormattingEnabled = true;
-         this.cboEmpDep.Location = new System.Drawing.Point(99, 5);
-         this.cboEmpDep.Name = "cboEmpDep";
-         this.cboEmpDep.Size = new System.Drawing.Size(193, 21);
-         this.cboEmpDep.TabIndex = 1;
-         this.cboEmpDep.SelectedIndexChanged += new System.EventHandler(this.cboEmpDep_SelectedIndexChanged);
+         this.cboDeployment.BackColor = System.Drawing.SystemColors.Window;
+         this.cboDeployment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboDeployment.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.cboDeployment.FormattingEnabled = true;
+         this.cboDeployment.Location = new System.Drawing.Point(99, 5);
+         this.cboDeployment.Name = "cboDeployment";
+         this.cboDeployment.Size = new System.Drawing.Size(193, 21);
+         this.cboDeployment.TabIndex = 1;
+         this.cboDeployment.SelectedIndexChanged += new System.EventHandler(this.cboEmpDep_SelectedIndexChanged);
          // 
          // txtEmpDelStatus
          // 
@@ -677,31 +677,31 @@
          // 
          this.dxErrorProvider.ContainerControl = this;
          // 
-         // gbNV
+         // gbEmployee
          // 
-         this.gbNV.Controls.Add(this.pictureEdit1);
-         this.gbNV.Controls.Add(this.txtEmpId);
-         this.gbNV.Controls.Add(this.txtEmpDelStatus);
-         this.gbNV.Controls.Add(mANVLabel);
-         this.gbNV.Controls.Add(this.lblTTX);
-         this.gbNV.Controls.Add(this.txtEmpFirstName);
-         this.gbNV.Controls.Add(this.txtEmpDepartment);
-         this.gbNV.Controls.Add(hOLabel);
-         this.gbNV.Controls.Add(mACNLabel);
-         this.gbNV.Controls.Add(label1);
-         this.gbNV.Controls.Add(lUONGLabel);
-         this.gbNV.Controls.Add(this.txtEmpLastName);
-         this.gbNV.Controls.Add(this.spiEmpSalary);
-         this.gbNV.Controls.Add(this.txtEmpAddr);
-         this.gbNV.Controls.Add(nGAYSINHLabel);
-         this.gbNV.Controls.Add(dIACHILabel);
-         this.gbNV.Controls.Add(this.dtpEmpBirth);
-         this.gbNV.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbNV.Location = new System.Drawing.Point(0, 251);
-         this.gbNV.Name = "gbNV";
-         this.gbNV.Size = new System.Drawing.Size(982, 232);
-         this.gbNV.TabIndex = 16;
-         this.gbNV.Text = "Thông tin Nhân Viên";
+         this.gbEmployee.Controls.Add(this.pictureEdit1);
+         this.gbEmployee.Controls.Add(this.txtEmpId);
+         this.gbEmployee.Controls.Add(this.txtEmpDelStatus);
+         this.gbEmployee.Controls.Add(mANVLabel);
+         this.gbEmployee.Controls.Add(this.lblTTX);
+         this.gbEmployee.Controls.Add(this.txtEmpFirstName);
+         this.gbEmployee.Controls.Add(this.txtEmpDepartment);
+         this.gbEmployee.Controls.Add(hOLabel);
+         this.gbEmployee.Controls.Add(mACNLabel);
+         this.gbEmployee.Controls.Add(label1);
+         this.gbEmployee.Controls.Add(lUONGLabel);
+         this.gbEmployee.Controls.Add(this.txtEmpLastName);
+         this.gbEmployee.Controls.Add(this.spiEmpSalary);
+         this.gbEmployee.Controls.Add(this.txtEmpAddr);
+         this.gbEmployee.Controls.Add(nGAYSINHLabel);
+         this.gbEmployee.Controls.Add(dIACHILabel);
+         this.gbEmployee.Controls.Add(this.dtpEmpBirth);
+         this.gbEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gbEmployee.Location = new System.Drawing.Point(0, 251);
+         this.gbEmployee.Name = "gbEmployee";
+         this.gbEmployee.Size = new System.Drawing.Size(982, 232);
+         this.gbEmployee.TabIndex = 16;
+         this.gbEmployee.Text = "Thông tin Nhân Viên";
          // 
          // pictureEdit1
          // 
@@ -725,7 +725,7 @@
          // pnPickDepartment
          // 
          this.pnPickDepartment.Controls.Add(this.labelControl1);
-         this.pnPickDepartment.Controls.Add(this.cboEmpDep);
+         this.pnPickDepartment.Controls.Add(this.cboDeployment);
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
          this.pnPickDepartment.Name = "pnPickDepartment";
@@ -747,9 +747,9 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(982, 483);
-         this.Controls.Add(this.gbNV);
+         this.Controls.Add(this.gbEmployee);
          this.Controls.Add(this.splitterControl1);
-         this.Controls.Add(this.gcNV);
+         this.Controls.Add(this.gcEmployee);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
@@ -775,16 +775,16 @@
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpFirstName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvNV)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gcNV)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gcEmployee)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gbNV)).EndInit();
-         this.gbNV.ResumeLayout(false);
-         this.gbNV.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.gbEmployee)).EndInit();
+         this.gbEmployee.ResumeLayout(false);
+         this.gbEmployee.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
@@ -819,7 +819,7 @@
       private DevExpress.XtraEditors.TextEdit txtEmpFirstName;
       private DevExpress.XtraEditors.TextEdit txtEmpId;
       private DevExpress.XtraEditors.SpinEdit spiEmpSalary;
-      private DevExpress.XtraGrid.GridControl gcNV;
+      private DevExpress.XtraGrid.GridControl gcEmployee;
       private DevExpress.XtraGrid.Views.Grid.GridView gvNV;
       private DevExpress.XtraGrid.Columns.GridColumn colMANV;
       private DevExpress.XtraGrid.Columns.GridColumn colHO;
@@ -830,7 +830,7 @@
       private DevExpress.XtraGrid.Columns.GridColumn colMACN;
       private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiXoa;
       private DevExpress.XtraBars.BarButtonItem btnCancelEdit;
-      private System.Windows.Forms.ComboBox cboEmpDep;
+      private System.Windows.Forms.ComboBox cboDeployment;
       private DevExpress.XtraEditors.TextEdit txtEmpDepartment;
       private System.Windows.Forms.BindingSource bdsPX;
       private DataSetTableAdapters.PhieuXuatTableAdapter taPX;
@@ -844,7 +844,7 @@
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private DevExpress.XtraEditors.TextEdit txtEmpDelStatus;
       private DevExpress.XtraBars.Docking.DockManager dockManager1;
-      private DevExpress.XtraEditors.GroupControl gbNV;
+      private DevExpress.XtraEditors.GroupControl gbEmployee;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
       private DevExpress.XtraEditors.PictureEdit pictureEdit1;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;

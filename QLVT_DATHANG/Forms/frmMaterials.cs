@@ -1,67 +1,95 @@
-﻿using System;
+﻿using QLVT_DATHANG.Constant;
+using QLVT_DATHANG.Utility;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using QLVT_DATHANG.Utility;
 
 namespace QLVT_DATHANG.Forms
 {
+   using DevExpress.Utils;
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
    using DevExpress.XtraEditors.Mask;
 
    public partial class frmMaterials : XtraForm
    {
-
+      private string _currentDeploymentId;
       private int _currentPosition;
+      private ButtonActionType _buttonAction;
+      private MyStack _userDo;
 
       public frmMaterials()
       {
          InitializeComponent();
+         SetupControls();
+      }
 
-         txtMaterialName.Properties.Mask.MaskType = MaskType.RegEx;
-         txtMaterialName.Properties.Mask.EditMask = "[a-zA-Z ]+";
+      private void frmMaterials_Load(object sender, EventArgs e)
+      {
+         _buttonAction = ButtonActionType.None;
+         _userDo = new MyStack();
+
+         LoadTable();
+         EnableForm();
+
+         _currentDeploymentId = ((DataRowView)bdsVT[0])["MAVT"].ToString().Trim();
+      }
+
+      #region METHOD
+
+      private void SetupControls()
+      {
+         string nameRegex = "[\u0000-\u001F\007F-\u009F]+(\\s{1}[\u0000-\u001F\007F-\u009F]+)*"; // regex with one space between 2 character
+
+         txtMaterialName.Properties.Mask.MaskType = MaskType.None;
+         txtMaterialName.Properties.Mask.EditMask = nameRegex;
+         txtMaterialName.Properties.Mask.BeepOnError = true;
+         txtMaterialName.Properties.AllowNullInput = DefaultBoolean.True;
 
          spiSLT.Properties.Mask.MaskType = MaskType.Numeric;
          spiSLT.Properties.Increment = 1;
       }
+
       private void LoadTable()
       {
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
          this.taVT.Connection.ConnectionString =
-            UtilDB.ConnectionString;
+               this.taCTDDH.Connection.ConnectionString =
+               this.taCTPN.Connection.ConnectionString =
+               this.taCTPX.Connection.ConnectionString =
+                              UtilDB.ConnectionString;
+
          try
          {
             this.dataSet.EnforceConstraints = false;
 
             this.taVT.Fill(this.dataSet.Vattu);
 
-            this.dataSet.EnforceConstraints = true;
+            this.taCTDDH.Fill(this.dataSet.CTDDH);
+
+            this.taCTPX.Fill(this.dataSet.CTPX);
+
+            this.taCTPN.Fill(this.dataSet.CTPN);
+
+            //this.dataSet.EnforceConstraints = true;
          }
          catch (Exception ex)
          {
-            ShowError(ex);
+            UtilCommon.ShowError(ex);
          }
       }
 
-      private void ChangeStateInputForm(bool state)
+      private void DisableForm()
       {
-         foreach (var item in gbVT.Controls)
-         {
-            if (item.GetType() != typeof(Label))
-            {
-               ((Control)item).Enabled = state;
-            }
-         }
-      }
+         btnDel.Enabled = (bdsVT.Count == 0) ? false : true;
 
-      private void ChangeStateAddMaterials()
-      {
          gcVT.Enabled = false;
-         ChangeStateInputForm(true);
+         gbVT.Enabled = true;
 
          btnAdd.Enabled = false;
-         btnDelete.Enabled = false;
+         btnEdit.Enabled = false;
+         btnDel.Enabled = false;
          btnReload.Enabled = false;
          btnExit.Enabled = false;
 
@@ -75,14 +103,14 @@ namespace QLVT_DATHANG.Forms
          btnUndo.Visibility = BarItemVisibility.Always;
       }
 
-      private void RecoverDefaultState()
+      private void EnableForm()
       {
-         //gbNV.Enabled = false;
+         gbVT.Enabled = false;
          gcVT.Enabled = true;
-         ChangeStateInputForm(false);
 
          btnAdd.Enabled = true;
-         btnDelete.Enabled = true;
+         btnEdit.Enabled = true;
+         btnDel.Enabled = true;
          btnExit.Enabled = true;
          btnReload.Enabled = true;
 
@@ -96,42 +124,62 @@ namespace QLVT_DATHANG.Forms
          btnUndo.Visibility = BarItemVisibility.Never;
       }
 
-      public void ShowError(Exception e)
+      private bool IsExistMaterial(string departmentId)
       {
-         string message = e.Message + "\n";
-         string source = "Source: " + e.Source + "\n";
-         string targetSite = "Method: " + e.TargetSite + "\n";
-         MessageBox.Show(source + targetSite + message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-         Console.WriteLine(e.StackTrace);
-         if (e.GetType() == typeof(SqlException))
+         string strLenh = string.Format(MyConfig.ExecSPTimVatTu, departmentId);
+         bool exist = false;
+         using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
-            Console.WriteLine("===>" + ((SqlException)e).Number.ToString());
+            connection.Open();
+            SqlCommand sqlcmd = new SqlCommand(strLenh, connection);
+            sqlcmd.CommandType = CommandType.Text;
+            try
+            {
+               SqlDataReader myreader = sqlcmd.ExecuteReader();
+               exist = true;
+            }
+            catch (SqlException)
+            {
+               exist = false;
+            }
          }
+         return exist;
       }
 
-      private void frmMaterials_Load(object sender, EventArgs e)
-      {
-
-         LoadTable();
-         ChangeStateInputForm(false);
-      }
-
-      private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
-      {
-         _currentPosition = bdsVT.Position;
-
-         bdsVT.AddNew();
-         ChangeStateAddMaterials();
-         txtMaterialId.Focus();
-      }
-
-      private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+      private bool SaveMaterials()
       {
          try
          {
-            bdsVT.EndEdit();
-            bdsVT.ResetCurrentItem();
-            this.taVT.Update(this.dataSet.Vattu);
+            if (_buttonAction == ButtonActionType.Add)
+            {
+               if (IsExistMaterial(txtMaterialId.EditValue.ToString()))
+               {
+                  XtraMessageBox.Show("Mã vật tư đã tồn tại");
+                  txtMaterialId.Focus();
+                  return false;
+               }
+               else
+               {
+
+                  _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsVT[bdsVT.Position]));
+
+                  _buttonAction = ButtonActionType.None;
+
+                  bdsVT.EndEdit();
+                  gbVT.Enabled = false;
+                  bdsVT.ResetCurrentItem();
+                  this.taVT.Update(this.dataSet.Vattu);
+               }
+
+            }
+            else
+            {
+               bdsVT.EndEdit();
+               gbVT.Enabled = false;
+               bdsVT.ResetCurrentItem();
+               this.taVT.Update(this.dataSet.Vattu);
+            }
+
          }
          catch (Exception ex)
          {
@@ -140,29 +188,78 @@ namespace QLVT_DATHANG.Forms
 
             this.taVT.Fill(this.dataSet.Vattu);
 
-            dataSet.EnforceConstraints = true;
-            ShowError(ex);
+            //dataSet.EnforceConstraints = true;
+            UtilCommon.ShowError(ex);
+            return false;
          }
          bdsVT.Position = _currentPosition;
-         RecoverDefaultState();
+         EnableForm();
+         return true;
       }
 
-      private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      private void Undo()
       {
-         bdsVT.CancelEdit();
+         ButtonAction action = (ButtonAction)_userDo.Pop();
+         switch (action.ActionType)
+         {
+            case ButtonActionType.Add:
+               // xóa dữ liệu mới
+               bdsVT.Remove(action.SaveDataRow);
+               break;
+            case ButtonActionType.Edit:
+               // sửa lại dữ liệu cũ
+               //((DataRowView)bdsNV[5]) = action.SaveDataRow;
+               break;
+            case ButtonActionType.None:
+               break;
+            default:
+               break;
+         }
+         this.taVT.Update(this.dataSet.Vattu);
       }
 
-      private void btnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      #endregion
+
+      #region EVENTS
+
+      private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         _buttonAction = ButtonActionType.Add;
+         _currentPosition = bdsVT.Position;
+
+         bdsVT.AddNew();
+         DisableForm();
+         txtMaterialId.Focus();
+      }
+
+      private void btnEdit_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         _buttonAction = ButtonActionType.Edit;
+         _currentPosition = bdsVT.Position;
+         DisableForm();
+      }
+
+      private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         SaveMaterials();
+      }
+
+      private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         Undo();
+      }
+
+      private void btnExit_ItemClick(object sender, ItemClickEventArgs e)
       {
          this.Close();
       }
 
-      private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      private void btnReload_ItemClick(object sender, ItemClickEventArgs e)
       {
          LoadTable();
       }
 
-      private void btnCancelEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      private void btnCancelEdit_ItemClick(object sender, ItemClickEventArgs e)
       {
          try
          {
@@ -172,16 +269,16 @@ namespace QLVT_DATHANG.Forms
          }
          catch (Exception ex)
          {
-            ShowError(ex);
+            UtilCommon.ShowError(ex);
          }
-         RecoverDefaultState();
+         EnableForm();
       }
 
       private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
       {
          _currentPosition = bdsVT.Position;
          string ten = ((DataRowView)bdsVT[_currentPosition])["TENVT"].ToString();
-         var result = MessageBox.Show($"Bạn có chắc muốn xóa {ten}", "QESTION",
+         var result = XtraMessageBox.Show(string.Format(MessageCons.DeleteMaterials, ten), MessageCons.CaptionQuestion,
                                       MessageBoxButtons.YesNo, MessageBoxIcon.Question);
          if (result == DialogResult.Yes)
          {
@@ -192,15 +289,11 @@ namespace QLVT_DATHANG.Forms
             }
             catch (Exception ex)
             {
-               ShowError(ex);
+               UtilCommon.ShowError(ex);
             }
          }
       }
 
-      private void btnEdit_ItemClick(object sender, ItemClickEventArgs e)
-      {
-         _currentPosition = bdsVT.Position;
-         ChangeStateAddMaterials();
-      }
+      #endregion
    }
 }
