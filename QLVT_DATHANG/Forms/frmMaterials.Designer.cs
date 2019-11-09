@@ -1,4 +1,4 @@
-﻿namespace QLVT_DATHANG
+﻿namespace QLVT_DATHANG.Forms
 {
     partial class frmMaterials
     {
@@ -39,7 +39,7 @@
          this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
          this.taVTManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.gcVT = new DevExpress.XtraGrid.GridControl();
-         this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+         this.gvMaterial = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colTENVT = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,7 +48,6 @@
          this.txtMaterialName = new DevExpress.XtraEditors.TextEdit();
          this.txtDVT = new DevExpress.XtraEditors.TextEdit();
          this.spiSLT = new DevExpress.XtraEditors.SpinEdit();
-         this.gbVT = new System.Windows.Forms.GroupBox();
          this.bmVT = new DevExpress.XtraBars.BarManager(this.components);
          this.bar3 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -65,6 +64,8 @@
          this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+         this.gbVT = new DevExpress.XtraEditors.GroupControl();
+         this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          mAVTLabel = new System.Windows.Forms.Label();
          tENVTLabel = new System.Windows.Forms.Label();
          dVTLabel = new System.Windows.Forms.Label();
@@ -72,52 +73,53 @@
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcVT)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvMaterial)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDVT.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).BeginInit();
-         this.gbVT.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gbVT)).BeginInit();
+         this.gbVT.SuspendLayout();
          this.SuspendLayout();
          // 
          // mAVTLabel
          // 
          mAVTLabel.AutoSize = true;
-         mAVTLabel.Location = new System.Drawing.Point(150, 18);
+         mAVTLabel.Location = new System.Drawing.Point(139, 30);
          mAVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          mAVTLabel.Name = "mAVTLabel";
-         mAVTLabel.Size = new System.Drawing.Size(68, 13);
+         mAVTLabel.Size = new System.Drawing.Size(65, 13);
          mAVTLabel.TabIndex = 10;
          mAVTLabel.Text = "MÃ VẬT TƯ:";
          // 
          // tENVTLabel
          // 
          tENVTLabel.AutoSize = true;
-         tENVTLabel.Location = new System.Drawing.Point(150, 54);
+         tENVTLabel.Location = new System.Drawing.Point(139, 66);
          tENVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          tENVTLabel.Name = "tENVTLabel";
-         tENVTLabel.Size = new System.Drawing.Size(74, 13);
+         tENVTLabel.Size = new System.Drawing.Size(69, 13);
          tENVTLabel.TabIndex = 11;
          tENVTLabel.Text = "TÊN VẬT TƯ:";
          // 
          // dVTLabel
          // 
          dVTLabel.AutoSize = true;
-         dVTLabel.Location = new System.Drawing.Point(150, 88);
+         dVTLabel.Location = new System.Drawing.Point(139, 100);
          dVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          dVTLabel.Name = "dVTLabel";
-         dVTLabel.Size = new System.Drawing.Size(76, 13);
+         dVTLabel.Size = new System.Drawing.Size(74, 13);
          dVTLabel.TabIndex = 16;
          dVTLabel.Text = "ĐƠN VỊ TÍNH:";
          // 
          // sOLUONGTONLabel
          // 
          sOLUONGTONLabel.AutoSize = true;
-         sOLUONGTONLabel.Location = new System.Drawing.Point(150, 124);
+         sOLUONGTONLabel.Location = new System.Drawing.Point(139, 136);
          sOLUONGTONLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          sOLUONGTONLabel.Name = "sOLUONGTONLabel";
-         sOLUONGTONLabel.Size = new System.Drawing.Size(92, 13);
+         sOLUONGTONLabel.Size = new System.Drawing.Size(87, 13);
          sOLUONGTONLabel.TabIndex = 17;
          sOLUONGTONLabel.Text = "SỐ LƯỢNG TỒN:";
          // 
@@ -156,26 +158,29 @@
          this.gcVT.Dock = System.Windows.Forms.DockStyle.Top;
          this.gcVT.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Location = new System.Drawing.Point(0, 24);
-         this.gcVT.MainView = this.gridView2;
+         this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(873, 196);
+         this.gcVT.Size = new System.Drawing.Size(873, 290);
          this.gcVT.TabIndex = 6;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gvMaterial});
          // 
-         // gridView2
+         // gvMaterial
          // 
-         this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+         this.gvMaterial.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAVT,
             this.colTENVT,
             this.colDVT,
             this.colSOLUONGTON});
-         this.gridView2.DetailHeight = 284;
-         this.gridView2.GridControl = this.gcVT;
-         this.gridView2.Name = "gridView2";
-         this.gridView2.OptionsBehavior.Editable = false;
-         this.gridView2.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckAllDetails;
+         this.gvMaterial.DetailHeight = 284;
+         this.gvMaterial.GridControl = this.gcVT;
+         this.gvMaterial.Name = "gvMaterial";
+         this.gvMaterial.OptionsBehavior.Editable = false;
+         this.gvMaterial.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckAllDetails;
+         this.gvMaterial.OptionsView.ShowGroupPanel = false;
+         this.gvMaterial.OptionsView.ShowViewCaption = true;
+         this.gvMaterial.ViewCaption = "Danh Sách Vật Tư";
          // 
          // colMAVT
          // 
@@ -220,7 +225,7 @@
          // txtMaterialId
          // 
          this.txtMaterialId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "MAVT", true));
-         this.txtMaterialId.Location = new System.Drawing.Point(247, 16);
+         this.txtMaterialId.Location = new System.Drawing.Point(236, 28);
          this.txtMaterialId.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialId.Name = "txtMaterialId";
          this.txtMaterialId.Size = new System.Drawing.Size(111, 20);
@@ -229,7 +234,7 @@
          // txtMaterialName
          // 
          this.txtMaterialName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "TENVT", true));
-         this.txtMaterialName.Location = new System.Drawing.Point(247, 51);
+         this.txtMaterialName.Location = new System.Drawing.Point(236, 63);
          this.txtMaterialName.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialName.Name = "txtMaterialName";
          this.txtMaterialName.Size = new System.Drawing.Size(111, 20);
@@ -238,7 +243,7 @@
          // txtDVT
          // 
          this.txtDVT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "DVT", true));
-         this.txtDVT.Location = new System.Drawing.Point(247, 85);
+         this.txtDVT.Location = new System.Drawing.Point(236, 97);
          this.txtDVT.Margin = new System.Windows.Forms.Padding(2);
          this.txtDVT.Name = "txtDVT";
          this.txtDVT.Size = new System.Drawing.Size(111, 20);
@@ -252,33 +257,13 @@
             0,
             0,
             0});
-         this.spiSLT.Location = new System.Drawing.Point(247, 121);
+         this.spiSLT.Location = new System.Drawing.Point(236, 133);
          this.spiSLT.Margin = new System.Windows.Forms.Padding(2);
          this.spiSLT.Name = "spiSLT";
          this.spiSLT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.spiSLT.Size = new System.Drawing.Size(111, 20);
          this.spiSLT.TabIndex = 18;
-         // 
-         // gbVT
-         // 
-         this.gbVT.Controls.Add(this.txtMaterialName);
-         this.gbVT.Controls.Add(sOLUONGTONLabel);
-         this.gbVT.Controls.Add(this.txtMaterialId);
-         this.gbVT.Controls.Add(this.spiSLT);
-         this.gbVT.Controls.Add(mAVTLabel);
-         this.gbVT.Controls.Add(dVTLabel);
-         this.gbVT.Controls.Add(tENVTLabel);
-         this.gbVT.Controls.Add(this.txtDVT);
-         this.gbVT.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbVT.Location = new System.Drawing.Point(0, 220);
-         this.gbVT.Margin = new System.Windows.Forms.Padding(2);
-         this.gbVT.Name = "gbVT";
-         this.gbVT.Padding = new System.Windows.Forms.Padding(2);
-         this.gbVT.Size = new System.Drawing.Size(873, 212);
-         this.gbVT.TabIndex = 19;
-         this.gbVT.TabStop = false;
-         this.gbVT.Text = "Thông tin Vật Tư";
          // 
          // bmVT
          // 
@@ -397,7 +382,7 @@
          // 
          this.barDockControl2.CausesValidation = false;
          this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControl2.Location = new System.Drawing.Point(0, 432);
+         this.barDockControl2.Location = new System.Drawing.Point(0, 487);
          this.barDockControl2.Manager = this.bmVT;
          this.barDockControl2.Margin = new System.Windows.Forms.Padding(2);
          this.barDockControl2.Size = new System.Drawing.Size(873, 0);
@@ -409,7 +394,7 @@
          this.barDockControl3.Location = new System.Drawing.Point(0, 24);
          this.barDockControl3.Manager = this.bmVT;
          this.barDockControl3.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl3.Size = new System.Drawing.Size(0, 408);
+         this.barDockControl3.Size = new System.Drawing.Size(0, 463);
          // 
          // barDockControl4
          // 
@@ -418,7 +403,7 @@
          this.barDockControl4.Location = new System.Drawing.Point(873, 24);
          this.barDockControl4.Manager = this.bmVT;
          this.barDockControl4.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl4.Size = new System.Drawing.Size(0, 408);
+         this.barDockControl4.Size = new System.Drawing.Size(0, 463);
          // 
          // bar2
          // 
@@ -435,11 +420,38 @@
          this.barButtonItem2.Id = 9;
          this.barButtonItem2.Name = "barButtonItem2";
          // 
+         // gbVT
+         // 
+         this.gbVT.Controls.Add(this.txtMaterialName);
+         this.gbVT.Controls.Add(mAVTLabel);
+         this.gbVT.Controls.Add(sOLUONGTONLabel);
+         this.gbVT.Controls.Add(this.txtDVT);
+         this.gbVT.Controls.Add(this.txtMaterialId);
+         this.gbVT.Controls.Add(tENVTLabel);
+         this.gbVT.Controls.Add(this.spiSLT);
+         this.gbVT.Controls.Add(dVTLabel);
+         this.gbVT.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gbVT.Location = new System.Drawing.Point(0, 314);
+         this.gbVT.Name = "gbVT";
+         this.gbVT.Size = new System.Drawing.Size(873, 173);
+         this.gbVT.TabIndex = 19;
+         this.gbVT.Text = "Thông tin Vật Tư";
+         // 
+         // splitterControl1
+         // 
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
+         this.splitterControl1.Location = new System.Drawing.Point(0, 314);
+         this.splitterControl1.Name = "splitterControl1";
+         this.splitterControl1.Size = new System.Drawing.Size(873, 5);
+         this.splitterControl1.TabIndex = 24;
+         this.splitterControl1.TabStop = false;
+         // 
          // frmMaterials
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(873, 432);
+         this.ClientSize = new System.Drawing.Size(873, 487);
+         this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gbVT);
          this.Controls.Add(this.gcVT);
          this.Controls.Add(this.barDockControl3);
@@ -453,14 +465,15 @@
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcVT)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvMaterial)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDVT.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bmVT)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gbVT)).EndInit();
          this.gbVT.ResumeLayout(false);
          this.gbVT.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.bmVT)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -472,7 +485,7 @@
         private DataSetTableAdapters.VattuTableAdapter taVT;
         private DataSetTableAdapters.TableAdapterManager taVTManager;
         private DevExpress.XtraGrid.GridControl gcVT;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvMaterial;
         private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
         private DevExpress.XtraGrid.Columns.GridColumn colTENVT;
         private DevExpress.XtraGrid.Columns.GridColumn colDVT;
@@ -481,7 +494,6 @@
         private DevExpress.XtraEditors.TextEdit txtMaterialName;
         private DevExpress.XtraEditors.TextEdit txtDVT;
         private DevExpress.XtraEditors.SpinEdit spiSLT;
-        private System.Windows.Forms.GroupBox gbVT;
         private DevExpress.XtraBars.BarManager bmVT;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarButtonItem btnAdd;
@@ -498,5 +510,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControl4;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-    }
+      private DevExpress.XtraEditors.GroupControl gbVT;
+      private DevExpress.XtraEditors.SplitterControl splitterControl1;
+   }
 }

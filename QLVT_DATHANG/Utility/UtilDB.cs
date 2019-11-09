@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using QLVT_DATHANG.Constant;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -7,20 +9,12 @@ namespace QLVT_DATHANG.Utility
 {
    public class UtilDB
    {
-      public static string DisplayMemberDSPM = "TENCN";
-      public static string ValueMemberDSPM = "TENSERVER";
-
-      public static SqlConnection SqlConnection = new SqlConnection();
       public static string ConnectionString = null;
-      public static SqlDataReader MyReader;
       public static string ServerName = null;
       public static string UserName = null; // Mã nhân viên
       public static string CurrentLogin = null;
       public static string CurrentPassword = null;
-
-      public static string DatabaseName = "QLVT_DATHANG";
-      public static string RemoteLogin = "HTKN";
-      public static string RemotePassword = "123456";
+      
       public static string BackupLogin = null;
       public static string BackupPassword = null;
       public static string CurrentGroup = null;
@@ -31,65 +25,72 @@ namespace QLVT_DATHANG.Utility
                                                                   //public static frmMain frmChinh;
       public static int Connect()
       {
-         if (SqlConnection != null && SqlConnection.State == ConnectionState.Open)
-            SqlConnection.Close();
          try
          {
             ConnectionString = $"Data Source={ServerName};" +
-                    $"Initial Catalog={DatabaseName};" +
-                    $"User ID={CurrentLogin};" +
-                    $"password={CurrentPassword}";
-            SqlConnection.ConnectionString = ConnectionString;
-            SqlConnection.Open();
+                                $"Initial Catalog={MyConfig.DatabaseName};" +
+                                $"User ID={CurrentLogin};" +
+                                $"password={CurrentPassword}";
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+               //connection.Open();
+            }
             return 1;
          }
 
          catch (Exception e)
          {
-            MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.\n " +
+            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.\n " +
                             e.Message, string.Empty, MessageBoxButtons.OK);
             return 0;
          }
       }
 
-      public static void OpenConnection()
+      public static bool GetAndSaveUserInfo()
       {
-         if (null != SqlConnection && SqlConnection.State == ConnectionState.Closed)
-            SqlConnection.Open();
+         string cmdText = string.Format(MyConfig.ExecSPThongTinDangNhap, CurrentLogin);
+         SqlDataReader reader;
+         bool flag = true;
+         using (SqlConnection connection = new SqlConnection(ConnectionString))
+         {
+            connection.Open();
+            SqlCommand sqlcmd = new SqlCommand(cmdText, connection);
+            sqlcmd.CommandType = CommandType.Text;
+
+            try
+            {
+               reader = sqlcmd.ExecuteReader();
+               if (reader == null) flag = false;
+
+               reader.Read();
+
+               UserName = reader.GetString(0);     // Lay user name
+               if (Convert.IsDBNull(UserName))
+               {
+                  XtraMessageBox.Show(MessageCons.ErrorLogin, MessageCons.CaptionError, MessageBoxButtons.OK);
+                  flag = false;
+               }
+               CurrentFullName = reader.GetString(1);
+               CurrentGroup = reader.GetString(2);
+            }
+            catch (SqlException ex)
+            {
+               XtraMessageBox.Show(ex.Message);
+               flag = false;
+            }
+         }
+         return flag;
       }
 
-      public static SqlDataReader ExecSqlDataReader(string cmdText)
+      public static DataTable ExecSqlDataTable(string cmdText, string connectionString)
       {
-         SqlDataReader myreader;
-         SqlCommand sqlcmd = new SqlCommand(cmdText, SqlConnection);
-         sqlcmd.CommandType = CommandType.Text;
-
-         OpenConnection();
-         try
-         {
-            myreader = sqlcmd.ExecuteReader();
-            return myreader;
-         }
-         catch (SqlException ex)
-         {
-            SqlConnection.Close();
-            MessageBox.Show(ex.Message);
-            return null;
-         }
-      }
-
-      public static DataTable ExecSqlDataTable(string cmdText)
-      {
-         if (SqlConnection.State == ConnectionState.Closed)
-         {
-            SqlConnection.Open();
-         }
-
          DataTable dt = new DataTable();
-         SqlDataAdapter da = new SqlDataAdapter(cmdText, SqlConnection);
-         da.Fill(dt);
-
-         SqlConnection.Close();
+         using (SqlConnection connection = new SqlConnection(connectionString))
+         {
+            connection.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmdText, connection);
+            da.Fill(dt);
+         }
          return dt;
       }
    }

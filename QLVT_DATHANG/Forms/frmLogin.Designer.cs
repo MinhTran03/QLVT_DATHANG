@@ -1,4 +1,4 @@
-﻿namespace QLVT_DATHANG
+﻿namespace QLVT_DATHANG.Forms
 {
    partial class frmLogin
    {
@@ -49,7 +49,7 @@
          this.labelControl1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
          this.labelControl1.Name = "labelControl1";
          this.labelControl1.Size = new System.Drawing.Size(108, 16);
-         this.labelControl1.TabIndex = 8;
+         this.labelControl1.TabIndex = 1;
          this.labelControl1.Text = "Chọn chi nhánh:";
          // 
          // labelControl2
@@ -60,7 +60,7 @@
          this.labelControl2.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
          this.labelControl2.Name = "labelControl2";
          this.labelControl2.Size = new System.Drawing.Size(105, 16);
-         this.labelControl2.TabIndex = 9;
+         this.labelControl2.TabIndex = 3;
          this.labelControl2.Text = "Tên đăng nhập:";
          // 
          // labelControl3
@@ -71,7 +71,7 @@
          this.labelControl3.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
          this.labelControl3.Name = "labelControl3";
          this.labelControl3.Size = new System.Drawing.Size(61, 16);
-         this.labelControl3.TabIndex = 10;
+         this.labelControl3.TabIndex = 5;
          this.labelControl3.Text = "Mật khẩu";
          // 
          // txtTK
@@ -82,8 +82,8 @@
          this.txtTK.Name = "txtTK";
          this.txtTK.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtTK.Properties.Appearance.Options.UseFont = true;
-         this.txtTK.Size = new System.Drawing.Size(190, 22);
-         this.txtTK.TabIndex = 12;
+         this.txtTK.Size = new System.Drawing.Size(223, 22);
+         this.txtTK.TabIndex = 4;
          // 
          // txtMK
          // 
@@ -94,8 +94,8 @@
          this.txtMK.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMK.Properties.Appearance.Options.UseFont = true;
          this.txtMK.Properties.Appearance.Options.UseImage = true;
-         this.txtMK.Size = new System.Drawing.Size(190, 22);
-         this.txtMK.TabIndex = 13;
+         this.txtMK.Size = new System.Drawing.Size(223, 22);
+         this.txtMK.TabIndex = 6;
          // 
          // btnLogin
          // 
@@ -105,7 +105,7 @@
          this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
          this.btnLogin.Name = "btnLogin";
          this.btnLogin.Size = new System.Drawing.Size(111, 23);
-         this.btnLogin.TabIndex = 14;
+         this.btnLogin.TabIndex = 7;
          this.btnLogin.Text = "Đăng Nhập";
          this.btnLogin.Click += new System.EventHandler(this.btnDangNhap_Click);
          // 
@@ -117,7 +117,7 @@
          this.lblServerPM.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
          this.lblServerPM.Name = "lblServerPM";
          this.lblServerPM.Size = new System.Drawing.Size(142, 16);
-         this.lblServerPM.TabIndex = 15;
+         this.lblServerPM.TabIndex = 0;
          this.lblServerPM.Text = "tên server đăng nhập";
          // 
          // cboChiNhanh
@@ -129,8 +129,8 @@
          this.cboChiNhanh.Location = new System.Drawing.Point(150, 55);
          this.cboChiNhanh.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
          this.cboChiNhanh.Name = "cboChiNhanh";
-         this.cboChiNhanh.Size = new System.Drawing.Size(189, 24);
-         this.cboChiNhanh.TabIndex = 16;
+         this.cboChiNhanh.Size = new System.Drawing.Size(223, 24);
+         this.cboChiNhanh.TabIndex = 2;
          this.cboChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cboChiNhanh_SelectedIndexChanged);
          // 
          // frmLogin
@@ -140,7 +140,7 @@
          this.Appearance.Options.UseFont = true;
          this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(409, 240);
+         this.ClientSize = new System.Drawing.Size(421, 240);
          this.Controls.Add(this.cboChiNhanh);
          this.Controls.Add(this.lblServerPM);
          this.Controls.Add(this.btnLogin);

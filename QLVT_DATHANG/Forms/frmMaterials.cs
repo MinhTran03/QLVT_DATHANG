@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using QLVT_DATHANG.Utility;
 
-namespace QLVT_DATHANG
+namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
+   using DevExpress.XtraEditors;
    using DevExpress.XtraEditors.Mask;
 
-   public partial class frmMaterials : Form
+   public partial class frmMaterials : XtraForm
    {
 
       private int _currentPosition;

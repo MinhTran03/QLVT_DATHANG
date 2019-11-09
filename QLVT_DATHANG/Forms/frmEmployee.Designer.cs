@@ -1,33 +1,33 @@
-﻿namespace QLVT_DATHANG
+﻿namespace QLVT_DATHANG.Forms
 {
-    partial class frmEmployee
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+   partial class frmEmployee
+   {
+      /// <summary>
+      /// Required designer variable.
+      /// </summary>
+      private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      /// <summary>
+      /// Clean up any resources being used.
+      /// </summary>
+      /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+      protected override void Dispose(bool disposing)
+      {
+         if (disposing && (components != null))
+         {
+            components.Dispose();
+         }
+         base.Dispose(disposing);
+      }
 
-        #region Windows Form Designer generated code
+      #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+      /// <summary>
+      /// Required method for Designer support - do not modify
+      /// the contents of this method with the code editor.
+      /// </summary>
+      private void InitializeComponent()
+      {
          this.components = new System.ComponentModel.Container();
          System.Windows.Forms.Label mANVLabel;
          System.Windows.Forms.Label hOLabel;
@@ -44,16 +44,14 @@
          this.btnDel = new DevExpress.XtraBars.BarButtonItem();
          this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
          this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
-         this.btnExit = new DevExpress.XtraBars.BarButtonItem();
          this.btnSave = new DevExpress.XtraBars.BarButtonItem();
          this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
+         this.btnExit = new DevExpress.XtraBars.BarButtonItem();
          this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
          this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-         this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-         this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.bdsNV = new System.Windows.Forms.BindingSource(this.components);
          this.taNV = new QLVT_DATHANG.DataSetTableAdapters.NhanVienTableAdapter();
@@ -90,6 +88,8 @@
          this.gbNV = new DevExpress.XtraEditors.GroupControl();
          this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
+         this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
+         this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          mANVLabel = new System.Windows.Forms.Label();
          hOLabel = new System.Windows.Forms.Label();
          dIACHILabel = new System.Windows.Forms.Label();
@@ -120,6 +120,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbNV)).BeginInit();
          this.gbNV.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
+         this.pnPickDepartment.SuspendLayout();
          this.SuspendLayout();
          // 
          // mANVLabel
@@ -210,11 +212,9 @@
             this.btnUndo,
             this.btnRefresh,
             this.btnExit,
-            this.btnCancelEdit,
-            this.barButtonItem1,
-            this.skinPaletteDropDownButtonItem1});
+            this.btnCancelEdit});
          this.bmNV.MainMenu = this.barNV;
-         this.bmNV.MaxItemId = 22;
+         this.bmNV.MaxItemId = 28;
          // 
          // barNV
          // 
@@ -228,9 +228,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDel),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnExit),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSave),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelEdit)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelEdit),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnExit)});
          this.barNV.OptionsBar.MultiLine = true;
          this.barNV.OptionsBar.UseWholeRow = true;
          this.barNV.Text = "Main menu";
@@ -281,15 +281,6 @@
          this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
          // 
-         // btnExit
-         // 
-         this.btnExit.Caption = "THOÁT";
-         this.btnExit.Id = 7;
-         this.btnExit.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_exit_16;
-         this.btnExit.Name = "btnExit";
-         this.btnExit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-         this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
-         // 
          // btnSave
          // 
          this.btnSave.Caption = "GHI";
@@ -309,6 +300,15 @@
          this.btnCancelEdit.Name = "btnCancelEdit";
          this.btnCancelEdit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          this.btnCancelEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelEdit_ItemClick);
+         // 
+         // btnExit
+         // 
+         this.btnExit.Caption = "THOÁT";
+         this.btnExit.Id = 7;
+         this.btnExit.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_exit_16;
+         this.btnExit.Name = "btnExit";
+         this.btnExit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
          // 
          // barDockControlTop
          // 
@@ -363,19 +363,6 @@
             "DevExpress.XtraBars.TabFormControl",
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
             "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
-         // 
-         // barButtonItem1
-         // 
-         this.barButtonItem1.Caption = "barButtonItem1";
-         this.barButtonItem1.Id = 10;
-         this.barButtonItem1.Name = "barButtonItem1";
-         // 
-         // skinPaletteDropDownButtonItem1
-         // 
-         this.skinPaletteDropDownButtonItem1.Enabled = false;
-         this.skinPaletteDropDownButtonItem1.Id = 21;
-         this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
-         this.skinPaletteDropDownButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          // 
          // dataSet
          // 
@@ -533,6 +520,9 @@
          this.gvNV.OptionsBehavior.Editable = false;
          this.gvNV.OptionsBehavior.ReadOnly = true;
          this.gvNV.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckAllDetails;
+         this.gvNV.OptionsView.ShowGroupPanel = false;
+         this.gvNV.OptionsView.ShowViewCaption = true;
+         this.gvNV.ViewCaption = "Danh sách Nhân Viên";
          this.gvNV.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvNV_CustomColumnDisplayText);
          // 
          // colMANV
@@ -606,13 +596,12 @@
          // 
          this.gcNV.DataSource = this.bdsNV;
          this.gcNV.Dock = System.Windows.Forms.DockStyle.Top;
-         this.gcNV.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
-         this.gcNV.Location = new System.Drawing.Point(0, 24);
+         this.gcNV.Location = new System.Drawing.Point(0, 54);
          this.gcNV.MainView = this.gvNV;
          this.gcNV.Margin = new System.Windows.Forms.Padding(4);
          this.gcNV.MenuManager = this.bmNV;
          this.gcNV.Name = "gcNV";
-         this.gcNV.Size = new System.Drawing.Size(982, 248);
+         this.gcNV.Size = new System.Drawing.Size(982, 192);
          this.gcNV.TabIndex = 0;
          this.gcNV.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvNV});
@@ -620,13 +609,14 @@
          // 
          // cboEmpDep
          // 
+         this.cboEmpDep.BackColor = System.Drawing.SystemColors.Window;
          this.cboEmpDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboEmpDep.FlatStyle = System.Windows.Forms.FlatStyle.System;
          this.cboEmpDep.FormattingEnabled = true;
-         this.cboEmpDep.Location = new System.Drawing.Point(4, 29);
+         this.cboEmpDep.Location = new System.Drawing.Point(99, 5);
          this.cboEmpDep.Name = "cboEmpDep";
-         this.cboEmpDep.Size = new System.Drawing.Size(261, 23);
+         this.cboEmpDep.Size = new System.Drawing.Size(193, 21);
          this.cboEmpDep.TabIndex = 1;
-         this.cboEmpDep.Visible = false;
          this.cboEmpDep.SelectedIndexChanged += new System.EventHandler(this.cboEmpDep_SelectedIndexChanged);
          // 
          // txtEmpDelStatus
@@ -707,9 +697,9 @@
          this.gbNV.Controls.Add(dIACHILabel);
          this.gbNV.Controls.Add(this.dtpEmpBirth);
          this.gbNV.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbNV.Location = new System.Drawing.Point(0, 272);
+         this.gbNV.Location = new System.Drawing.Point(0, 251);
          this.gbNV.Name = "gbNV";
-         this.gbNV.Size = new System.Drawing.Size(982, 211);
+         this.gbNV.Size = new System.Drawing.Size(982, 232);
          this.gbNV.TabIndex = 16;
          this.gbNV.Text = "Thông tin Nhân Viên";
          // 
@@ -726,21 +716,41 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 272);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 246);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(982, 5);
          this.splitterControl1.TabIndex = 17;
          this.splitterControl1.TabStop = false;
          // 
+         // pnPickDepartment
+         // 
+         this.pnPickDepartment.Controls.Add(this.labelControl1);
+         this.pnPickDepartment.Controls.Add(this.cboEmpDep);
+         this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
+         this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
+         this.pnPickDepartment.Name = "pnPickDepartment";
+         this.pnPickDepartment.Size = new System.Drawing.Size(982, 30);
+         this.pnPickDepartment.TabIndex = 22;
+         this.pnPickDepartment.Visible = false;
+         // 
+         // labelControl1
+         // 
+         this.labelControl1.Location = new System.Drawing.Point(12, 9);
+         this.labelControl1.Name = "labelControl1";
+         this.labelControl1.Size = new System.Drawing.Size(81, 13);
+         this.labelControl1.TabIndex = 2;
+         this.labelControl1.Text = "Chọn Chi Nhánh:";
+         // 
          // frmEmployee
          // 
+         this.Appearance.Options.UseFont = true;
          this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(982, 483);
-         this.Controls.Add(this.splitterControl1);
-         this.Controls.Add(this.cboEmpDep);
          this.Controls.Add(this.gbNV);
+         this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gcNV);
+         this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);
@@ -776,50 +786,52 @@
          this.gbNV.ResumeLayout(false);
          this.gbNV.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
+         this.pnPickDepartment.ResumeLayout(false);
+         this.pnPickDepartment.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
-        }
+      }
 
-        #endregion
+      #endregion
 
-        private DevExpress.XtraBars.BarManager bmNV;
-        private DevExpress.XtraBars.Bar barNV;
-        private DevExpress.XtraBars.BarDockControl barDockControlTop;
-        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
-        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
-        private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem btnAdd;
-        private DevExpress.XtraBars.BarButtonItem btnDel;
-        private DevExpress.XtraBars.BarButtonItem btnEdit;
-        private System.Windows.Forms.BindingSource bdsNV;
-        private DataSet dataSet;
-        private DataSetTableAdapters.NhanVienTableAdapter taNV;
-        private DataSetTableAdapters.TableAdapterManager taNVManager;
-        private DevExpress.XtraBars.BarButtonItem btnSave;
-        private DevExpress.XtraBars.BarButtonItem btnUndo;
-        private DevExpress.XtraBars.BarButtonItem btnRefresh;
-        private DevExpress.XtraBars.BarButtonItem btnExit;
-        private DevExpress.XtraEditors.DateEdit dtpEmpBirth;
-        private DevExpress.XtraEditors.TextEdit txtEmpAddr;
-        private DevExpress.XtraEditors.TextEdit txtEmpLastName;
-        private DevExpress.XtraEditors.TextEdit txtEmpFirstName;
-        private DevExpress.XtraEditors.TextEdit txtEmpId;
-        private DevExpress.XtraEditors.SpinEdit spiEmpSalary;
-        private DevExpress.XtraGrid.GridControl gcNV;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvNV;
-        private DevExpress.XtraGrid.Columns.GridColumn colMANV;
-        private DevExpress.XtraGrid.Columns.GridColumn colHO;
-        private DevExpress.XtraGrid.Columns.GridColumn colTEN;
-        private DevExpress.XtraGrid.Columns.GridColumn colDIACHI;
-        private DevExpress.XtraGrid.Columns.GridColumn colNGAYSINH;
-        private DevExpress.XtraGrid.Columns.GridColumn colLUONG;
-        private DevExpress.XtraGrid.Columns.GridColumn colMACN;
-        private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiXoa;
-        private DevExpress.XtraBars.BarButtonItem btnCancelEdit;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private System.Windows.Forms.ComboBox cboEmpDep;
-        private DevExpress.XtraEditors.TextEdit txtEmpDepartment;
+      private DevExpress.XtraBars.BarManager bmNV;
+      private DevExpress.XtraBars.Bar barNV;
+      private DevExpress.XtraBars.BarDockControl barDockControlTop;
+      private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+      private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+      private DevExpress.XtraBars.BarDockControl barDockControlRight;
+      private DevExpress.XtraBars.BarButtonItem btnAdd;
+      private DevExpress.XtraBars.BarButtonItem btnDel;
+      private DevExpress.XtraBars.BarButtonItem btnEdit;
+      private System.Windows.Forms.BindingSource bdsNV;
+      private DataSet dataSet;
+      private DataSetTableAdapters.NhanVienTableAdapter taNV;
+      private DataSetTableAdapters.TableAdapterManager taNVManager;
+      private DevExpress.XtraBars.BarButtonItem btnSave;
+      private DevExpress.XtraBars.BarButtonItem btnUndo;
+      private DevExpress.XtraBars.BarButtonItem btnRefresh;
+      private DevExpress.XtraBars.BarButtonItem btnExit;
+      private DevExpress.XtraEditors.DateEdit dtpEmpBirth;
+      private DevExpress.XtraEditors.TextEdit txtEmpAddr;
+      private DevExpress.XtraEditors.TextEdit txtEmpLastName;
+      private DevExpress.XtraEditors.TextEdit txtEmpFirstName;
+      private DevExpress.XtraEditors.TextEdit txtEmpId;
+      private DevExpress.XtraEditors.SpinEdit spiEmpSalary;
+      private DevExpress.XtraGrid.GridControl gcNV;
+      private DevExpress.XtraGrid.Views.Grid.GridView gvNV;
+      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
+      private DevExpress.XtraGrid.Columns.GridColumn colHO;
+      private DevExpress.XtraGrid.Columns.GridColumn colTEN;
+      private DevExpress.XtraGrid.Columns.GridColumn colDIACHI;
+      private DevExpress.XtraGrid.Columns.GridColumn colNGAYSINH;
+      private DevExpress.XtraGrid.Columns.GridColumn colLUONG;
+      private DevExpress.XtraGrid.Columns.GridColumn colMACN;
+      private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiXoa;
+      private DevExpress.XtraBars.BarButtonItem btnCancelEdit;
+      private System.Windows.Forms.ComboBox cboEmpDep;
+      private DevExpress.XtraEditors.TextEdit txtEmpDepartment;
       private System.Windows.Forms.BindingSource bdsPX;
       private DataSetTableAdapters.PhieuXuatTableAdapter taPX;
       private System.Windows.Forms.BindingSource bdsPN;
@@ -831,10 +843,11 @@
       private System.Windows.Forms.Label lblTTX;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private DevExpress.XtraEditors.TextEdit txtEmpDelStatus;
-      private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem1;
       private DevExpress.XtraBars.Docking.DockManager dockManager1;
       private DevExpress.XtraEditors.GroupControl gbNV;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
       private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+      private DevExpress.XtraEditors.PanelControl pnPickDepartment;
+      private DevExpress.XtraEditors.LabelControl labelControl1;
    }
 }

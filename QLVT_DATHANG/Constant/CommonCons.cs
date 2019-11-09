@@ -5,7 +5,6 @@ namespace QLVT_DATHANG.Constant
 {
    public class CommonCons
    {
-      public static string MachineName = Environment.MachineName;
       public static CultureInfo CiVNI = new CultureInfo("vi-VN");
 
       public static string DonDatHang = "đơn đặt hàng";
@@ -17,5 +16,9 @@ namespace QLVT_DATHANG.Constant
       public static string ErrorSalary = "Lương phải lớn hơn " + string.Format(CiVNI, "{0:c0}", Convert.ToDecimal(MinSalary));
       public static string ErrorEmployeeId = "Mã nhân viên không hợp lệ";
       public static string ErrorNotNull = "Vui lòng nhập dữ liệu";
+
+      public static string CongTyGroupName = "congty";
+      public static string ChiNhanhGroupName = "chinhanh";
+      public static string UserGroupName = "user";
    }
 }

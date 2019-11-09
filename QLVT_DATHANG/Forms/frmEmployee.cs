@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace QLVT_DATHANG
+namespace QLVT_DATHANG.Forms
 {
    using DevExpress.Utils;
    using DevExpress.XtraBars;
@@ -14,6 +14,7 @@ namespace QLVT_DATHANG
    using DevExpress.XtraGrid.Views.Base;
    using Constant;
    using Utility;
+   using System.Collections.Generic;
 
    public partial class frmEmployee : XtraForm
    {
@@ -21,7 +22,7 @@ namespace QLVT_DATHANG
       private int _currentPosition;
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
-      private DataRow _row;
+      //private DataRow _row;
 
       public frmEmployee()
       {
@@ -42,19 +43,24 @@ namespace QLVT_DATHANG
          _currentDeploymentId = ((DataRowView)bdsNV[0])["MACN"].ToString().Trim();
 
          // Quyền công ty => enable combobox chi nhánh
-         if (UtilDB.CurrentGroup.Equals("congty"))
+         ShowControlsByGroup(UtilDB.CurrentGroup);
+      }
+
+      #region METHOD
+
+      private void ShowControlsByGroup(string grName)
+      {
+         if (grName.Equals("congty"))
          {
-            SetupDSCN();
-            this.cboEmpDep.Visible = true;
+            UtilCommon.SetupDSCN(this.cboEmpDep);
+            this.pnPickDepartment.Visible = true;
             this.btnAdd.Enabled = false;
             this.btnEdit.Enabled = false;
             this.btnDel.Enabled = false;
          }
       }
 
-      #region METHOD
-
-      public void SetupControls()
+      private void SetupControls()
       {
          string nameRegex = "[\u0000-\u001F\007F-\u009F]+(\\s{1}[\u0000-\u001F\007F-\u009F]+)*"; // regex with one space between 2 character
 
@@ -143,15 +149,8 @@ namespace QLVT_DATHANG
          }
          catch (Exception ex)
          {
-            ShowError(ex);
+            UtilCommon.ShowError(ex);
          }
-      }
-
-      public void SetupDSCN()
-      {
-         this.cboEmpDep.DataSource = UtilDB.BdsDSPM;
-         this.cboEmpDep.DisplayMember = UtilDB.DisplayMemberDSPM;
-         this.cboEmpDep.ValueMember = UtilDB.ValueMemberDSPM;
       }
 
       private void EnableEditMode()
@@ -194,19 +193,6 @@ namespace QLVT_DATHANG
 
          btnSave.Enabled = false;
          btnSave.Visibility = BarItemVisibility.Never;
-      }
-
-      public void ShowError(Exception e)
-      {
-         string message = e.Message + "\n";
-         string source = "Source: " + e.Source + "\n";
-         string targetSite = "Method: " + e.TargetSite + "\n";
-         XtraMessageBox.Show(source + targetSite + message, MessageCons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-         Console.WriteLine(e.StackTrace);
-         if (e.GetType() == typeof(SqlException))
-         {
-            Console.WriteLine("===>" + ((SqlException)e).Number.ToString());
-         }
       }
 
       private void Undo()
@@ -264,7 +250,8 @@ namespace QLVT_DATHANG
             dataSet.EnforceConstraints = false;
             this.taNV.Fill(this.dataSet.NhanVien);
             dataSet.EnforceConstraints = true;
-            ShowError(ex);
+
+            UtilCommon.ShowError(ex);
             return false;
          }
          bdsNV.Position = _currentPosition;
@@ -279,15 +266,15 @@ namespace QLVT_DATHANG
          _buttonAction = ButtonActionType.Edit;
 
          // lưu lại datarow để undo
-         _row = ((DataRow)bdsNV[_currentPosition]);
-         _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[_currentPosition])));
+         //_row = ((DataRow)bdsNV[_currentPosition]);
+         //_userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[_currentPosition])));
 
          EnableEditMode();
       }
 
       #endregion
 
-      #region BUTTON EVENT
+      #region EVENTS
 
       private void cboEmpDep_SelectedIndexChanged(object sender, EventArgs e)
       {
@@ -299,8 +286,8 @@ namespace QLVT_DATHANG
          // đổi login
          if (cboEmpDep.SelectedIndex != UtilDB.CurrentDepId)
          {
-            UtilDB.CurrentLogin = UtilDB.RemoteLogin;
-            UtilDB.CurrentPassword = UtilDB.RemotePassword;
+            UtilDB.CurrentLogin = MyConfig.RemoteLogin;
+            UtilDB.CurrentPassword = MyConfig.RemotePassword;
          }
          else
          {
@@ -363,28 +350,10 @@ namespace QLVT_DATHANG
                }
                catch (Exception ex)
                {
-                  ShowError(ex);
+                  UtilCommon.ShowError(ex);
                }
             }
          }
-      }
-
-      private string CheckPhieuDaLap()
-      {
-         string message = null;
-         if (bdsDH.Count > 0)
-         {
-            message = CommonCons.DonDatHang;
-         }
-         else if (bdsPN.Count > 0)
-         {
-            message = CommonCons.PhieuLap;
-         }
-         else if (bdsPX.Count > 0)
-         {
-            message = CommonCons.PhieuXuat;
-         }
-         return message;
       }
 
       private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
@@ -421,7 +390,7 @@ namespace QLVT_DATHANG
          }
          catch (Exception ex)
          {
-            ShowError(ex);
+            UtilCommon.ShowError(ex);
          }
          DisableEditMode();
       }
@@ -509,19 +478,41 @@ namespace QLVT_DATHANG
       private bool IsExistEmployee(int employeeId)
       {
          string strLenh = string.Format("EXEC sp_timnhanvien {0}", employeeId);
-         SqlCommand sqlcmd = new SqlCommand(strLenh, UtilDB.SqlConnection);
-         sqlcmd.CommandType = CommandType.Text;
+         bool exist = false;
+         using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
+         {
+            connection.Open();
+            SqlCommand sqlcmd = new SqlCommand(strLenh, connection);
+            sqlcmd.CommandType = CommandType.Text;
+            try
+            {
+               SqlDataReader myreader = sqlcmd.ExecuteReader();
+               exist = true;
+            }
+            catch (SqlException)
+            {
+               exist = false;
+            }
+         }
+         return exist;
+      }
 
-         try
+      private string CheckPhieuDaLap()
+      {
+         string message = null;
+         if (bdsDH.Count > 0)
          {
-            UtilDB.OpenConnection();
-            SqlDataReader myreader = sqlcmd.ExecuteReader();
-            return true;
+            message = CommonCons.DonDatHang;
          }
-         catch (SqlException)
+         else if (bdsPN.Count > 0)
          {
-            return false;
+            message = CommonCons.PhieuLap;
          }
+         else if (bdsPX.Count > 0)
+         {
+            message = CommonCons.PhieuXuat;
+         }
+         return message;
       }
 
       //private bool ValidateFormEmp()
@@ -557,6 +548,5 @@ namespace QLVT_DATHANG
       //}
 
       #endregion
-
    }
 }

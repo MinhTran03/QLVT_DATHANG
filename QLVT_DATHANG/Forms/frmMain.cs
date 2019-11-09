@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace QLVT_DATHANG
+namespace QLVT_DATHANG.Forms
 {
    using Utility;
 
@@ -10,14 +10,9 @@ namespace QLVT_DATHANG
       public frmMain()
       {
          InitializeComponent();
-      }
-
-      public void ShowMenu()
-      {
          bsiMaNV.Caption = "Mã NV : " + UtilDB.UserName;
          bsiHoTenNV.Caption = "Họ tên nhân viên : " + UtilDB.CurrentFullName;
          bsiNhom.Caption = "Nhóm : " + UtilDB.CurrentGroup;
-         // Phân quyền
       }
 
       private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -60,7 +55,21 @@ namespace QLVT_DATHANG
             f.MdiParent = this;
             f.Show();
          }
+      }
 
+      private void btnPN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         Form nvForm = CheckExists(typeof(frmGoodsDeliveryNote));
+         if (nvForm != null)
+         {
+            nvForm.Activate();
+         }
+         else
+         {
+            frmGoodsDeliveryNote f = new frmGoodsDeliveryNote();
+            f.MdiParent = this;
+            f.Show();
+         }
       }
    }
 }

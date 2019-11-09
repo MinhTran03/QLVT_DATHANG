@@ -4,6 +4,7 @@ using System.Windows.Forms;
 namespace QLVT_DATHANG
 {
    using DevExpress.UserSkins;
+   using Forms;
 
    static class Program
    {
