@@ -14,6 +14,7 @@ namespace QLVT_DATHANG.Forms
       {
          InitializeComponent();
          txtMK.Properties.PasswordChar = '•';
+         pbHienPW.Properties.AllowFocused = false;
       }
 
       private void frmLogin_Load(object sender, EventArgs e)
@@ -35,6 +36,7 @@ namespace QLVT_DATHANG.Forms
          {
             UtilCommon.ShowError(ex);
          }
+         txtTK.Select();
       }
 
       private void cboChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,16 +60,18 @@ namespace QLVT_DATHANG.Forms
 
       private void btnDangNhap_Click(object sender, EventArgs e)
       {
-         if (txtTK.Text.Trim() == string.Empty || txtMK.Text.Trim() == string.Empty)
+         if (errorProvider.HasErrors)
          {
-            XtraMessageBox.Show(MessageCons.ErrorEmptyValueLogin, MessageCons.CaptionError, MessageBoxButtons.OK);
+            XtraMessageBox.Show(Cons.ErrorEmptyValueLogin, Cons.CaptionWarning, 
+                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            errorProvider.GetControlsWithError()[0].Select();
             return;
          }
 
          // gán username và password vào connectionString và kết nối thử
          if (!IsLogin()) return;
 
-         UtilDB.CurrentDepId = cboChiNhanh.SelectedIndex;
+         UtilDB.CurrentDeployment = cboChiNhanh.SelectedIndex;
          UtilDB.BackupLogin = UtilDB.CurrentLogin;
          UtilDB.BackupPassword = UtilDB.CurrentPassword;
 
@@ -78,6 +82,51 @@ namespace QLVT_DATHANG.Forms
          this.Hide();
          formMain.Closed += (s, args) => this.Show();
          formMain.Show();
+      }
+
+      private void pbHienPW_MouseDown(object sender, MouseEventArgs e)
+      {
+         txtMK.Properties.PasswordChar = '\0';
+         pbHienPW.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+      }
+
+      private void pbHienPW_MouseUp(object sender, MouseEventArgs e)
+      {
+         txtMK.Properties.PasswordChar = '•';
+         pbHienPW.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+      }
+
+      private void btnExit_Click(object sender, EventArgs e)
+      {
+         this.Close();
+      }
+
+      private void txtTK_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+      {
+         var value = (sender as TextEdit).EditValue.ToString();
+         if (string.IsNullOrWhiteSpace(value))
+         {
+            errorProvider.SetError((sender as BaseEdit), Cons.ErrorNotNullUserName);
+         }
+         else
+         {
+            errorProvider.SetError((sender as BaseEdit), string.Empty);
+         }
+         e.Cancel = false;
+      }
+
+      private void txtMK_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+      {
+         var value = (sender as TextEdit).EditValue.ToString();
+         if (string.IsNullOrWhiteSpace(value))
+         {
+            errorProvider.SetError((sender as BaseEdit), Cons.ErrorNotNullPassword);
+         }
+         else
+         {
+            errorProvider.SetError((sender as BaseEdit), string.Empty);
+         }
+         e.Cancel = false;
       }
    }
 }

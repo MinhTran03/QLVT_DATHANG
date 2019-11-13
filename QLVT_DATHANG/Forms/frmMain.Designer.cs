@@ -40,6 +40,7 @@
          this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
          this.btnDepot = new DevExpress.XtraBars.BarButtonItem();
          this.btnOrder = new DevExpress.XtraBars.BarButtonItem();
+         this.btnRegister = new DevExpress.XtraBars.BarButtonItem();
          this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
          this.rbpCategory = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
          this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -64,10 +65,11 @@
             this.btnPN,
             this.barButtonItem1,
             this.btnDepot,
-            this.btnOrder});
+            this.btnOrder,
+            this.btnRegister});
          this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
          this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-         this.ribbonControl1.MaxItemId = 11;
+         this.ribbonControl1.MaxItemId = 12;
          this.ribbonControl1.Name = "ribbonControl1";
          this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -147,6 +149,14 @@
          this.btnOrder.Name = "btnOrder";
          this.btnOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOrder_ItemClick);
          // 
+         // btnRegister
+         // 
+         this.btnRegister.Caption = "Đăng Ký Tài Khoản";
+         this.btnRegister.Id = 11;
+         this.btnRegister.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRegister.ImageOptions.SvgImage")));
+         this.btnRegister.Name = "btnRegister";
+         this.btnRegister.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegister_ItemClick);
+         // 
          // ribbonPage1
          // 
          this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -159,6 +169,7 @@
          this.rbpCategory.ItemLinks.Add(this.btnNhanVien);
          this.rbpCategory.ItemLinks.Add(this.btnVatTu);
          this.rbpCategory.ItemLinks.Add(this.btnDepot);
+         this.rbpCategory.ItemLinks.Add(this.btnRegister);
          this.rbpCategory.Name = "rbpCategory";
          this.rbpCategory.Text = "DANH MỤC";
          // 
@@ -209,6 +220,7 @@
          this.StatusBar = this.ribbonStatusBar1;
          this.Text = "QUẢN LÝ VẬT TƯ ĐẶT HÀNG";
          this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+         this.Load += new System.EventHandler(this.frmMain_Load);
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
          this.ResumeLayout(false);
@@ -234,6 +246,7 @@
       private DevExpress.XtraBars.BarButtonItem barButtonItem1;
       private DevExpress.XtraBars.BarButtonItem btnDepot;
       private DevExpress.XtraBars.BarButtonItem btnOrder;
+      private DevExpress.XtraBars.BarButtonItem btnRegister;
    }
 }
 

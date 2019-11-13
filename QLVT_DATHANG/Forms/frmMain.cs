@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
+   using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
+   using DevExpress.XtraEditors;
+   using QLVT_DATHANG.Constant;
    using Utility;
 
    public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -17,14 +20,14 @@ namespace QLVT_DATHANG.Forms
 
       private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
-         Form nvForm = CheckExists(typeof(XtraForm1));
+         Form nvForm = CheckExists(typeof(frmEmployee));
          if (nvForm != null)
          {
             nvForm.Activate();
          }
          else
          {
-            XtraForm1 f = new XtraForm1();
+            frmEmployee f = new frmEmployee();
             f.MdiParent = this;
             f.Show();
          }
@@ -114,6 +117,31 @@ namespace QLVT_DATHANG.Forms
             frmGoodsReceivedNote f = new frmGoodsReceivedNote();
             f.MdiParent = this;
             f.Show();
+         }
+      }
+
+      private void btnRegister_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         if (!UtilDB.CurrentGroup.Equals(Cons.UserGroupName))
+         {
+            FlyoutAction flyoutAction = new FlyoutAction()
+            {
+               Caption = Cons.CaptionCreateLogin,
+            };
+            CustomFlyoutDialog.ShowForm(this, flyoutAction, new frmRegister());
+         }
+         else
+         {
+            XtraMessageBox.Show(Cons.WarningUserCreateTK, Cons.CaptionWarning, 
+               MessageBoxButtons.OK, MessageBoxIcon.Warning);
+         }
+      }
+
+      private void frmMain_Load(object sender, EventArgs e)
+      {
+         if (UtilDB.CurrentGroup.Equals(Cons.UserGroupName))
+         {
+            btnRegister.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
          }
       }
    }

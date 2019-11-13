@@ -290,7 +290,7 @@
          // gcDepot
          // 
          this.gcDepot.DataSource = this.bdsDepot;
-         this.gcDepot.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcDepot.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcDepot.Location = new System.Drawing.Point(0, 54);
          this.gcDepot.MainView = this.gridView1;
          this.gcDepot.MenuManager = this.bmOrder;
@@ -356,7 +356,7 @@
          this.gbDepot.Controls.Add(this.txtDepotAddress);
          this.gbDepot.Controls.Add(mACNLabel);
          this.gbDepot.Controls.Add(this.txtEmpDepartment);
-         this.gbDepot.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gbDepot.Dock = System.Windows.Forms.DockStyle.Bottom;
          this.gbDepot.Location = new System.Drawing.Point(0, 279);
          this.gbDepot.Name = "gbDepot";
          this.gbDepot.Size = new System.Drawing.Size(800, 171);
@@ -432,7 +432,7 @@
          // 
          // splitterControl1
          // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
          this.splitterControl1.Location = new System.Drawing.Point(0, 274);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(800, 5);
@@ -453,10 +453,10 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(800, 450);
-         this.Controls.Add(this.gbDepot);
-         this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gcDepot);
          this.Controls.Add(this.pnPickDepartment);
+         this.Controls.Add(this.splitterControl1);
+         this.Controls.Add(this.gbDepot);
          this.Controls.Add(this.barDockControl3);
          this.Controls.Add(this.barDockControl4);
          this.Controls.Add(this.barDockControl2);

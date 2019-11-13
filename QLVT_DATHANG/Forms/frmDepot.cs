@@ -133,7 +133,7 @@ namespace QLVT_DATHANG.Forms
          UtilDB.ServerName = cboDeployment.SelectedValue.ToString();
 
          // đổi login
-         if (cboDeployment.SelectedIndex != UtilDB.CurrentDepId)
+         if (cboDeployment.SelectedIndex != UtilDB.CurrentDeployment)
          {
             UtilDB.CurrentLogin = MyConfig.RemoteLogin;
             UtilDB.CurrentPassword = MyConfig.RemotePassword;
@@ -147,7 +147,7 @@ namespace QLVT_DATHANG.Forms
          //
          if (UtilDB.Connect() == 0)
          {
-            XtraMessageBox.Show(MessageCons.ErrorConnectDepartment, MessageCons.CaptionError, MessageBoxButtons.OK);
+            XtraMessageBox.Show(Cons.ErrorConnectDepartment, Cons.CaptionError, MessageBoxButtons.OK);
          }
          else
          {

@@ -14,12 +14,12 @@ namespace QLVT_DATHANG.Utility
       public static string UserName = null; // Mã nhân viên
       public static string CurrentLogin = null;
       public static string CurrentPassword = null;
-      
+
       public static string BackupLogin = null;
       public static string BackupPassword = null;
       public static string CurrentGroup = null;
       public static string CurrentFullName = null;
-      public static int CurrentDepId = 0;
+      public static int CurrentDeployment = 0;
 
       public static BindingSource BdsDSPM = new BindingSource();  // giữ bdsPM khi đăng nhập
                                                                   //public static frmMain frmChinh;
@@ -40,8 +40,8 @@ namespace QLVT_DATHANG.Utility
 
          catch (Exception e)
          {
-            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.\n " +
-                            e.Message, string.Empty, MessageBoxButtons.OK);
+            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Tên đăng nhập và Mật khẩu.\n" +
+                            e.Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return 0;
          }
       }
@@ -67,7 +67,7 @@ namespace QLVT_DATHANG.Utility
                UserName = reader.GetString(0);     // Lay user name
                if (Convert.IsDBNull(UserName))
                {
-                  XtraMessageBox.Show(MessageCons.ErrorLogin, MessageCons.CaptionError, MessageBoxButtons.OK);
+                  XtraMessageBox.Show(Cons.ErrorLogin, Cons.CaptionError, MessageBoxButtons.OK);
                   flag = false;
                }
                CurrentFullName = reader.GetString(1);
@@ -75,7 +75,7 @@ namespace QLVT_DATHANG.Utility
             }
             catch (SqlException ex)
             {
-               XtraMessageBox.Show(ex.Message);
+               XtraMessageBox.Show(ex.Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                flag = false;
             }
          }

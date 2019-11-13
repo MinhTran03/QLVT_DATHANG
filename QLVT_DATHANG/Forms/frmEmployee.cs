@@ -223,37 +223,37 @@ namespace QLVT_DATHANG.Forms
 
       private bool SaveEmployee()
       {
-         if (int.Parse(spiEmpSalary.EditValue.ToString()) < 15)
-            try
+         try
+         {
+            if (_buttonAction == ButtonActionType.Add)
             {
-               if (_buttonAction == ButtonActionType.Add)
+               if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
                {
-                  if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
-                  {
-                     XtraMessageBox.Show("Mã tồn tại");
-                     txtEmpId.Focus();
-                     txtEmpId.SelectAll();
-                     return false;
-                  }
-                  _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsNV[bdsNV.Position]));
+                  XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning, 
+                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                  txtEmpId.Focus();
+                  txtEmpId.SelectAll();
+                  return false;
                }
-               _buttonAction = ButtonActionType.None;
-
-               bdsNV.EndEdit();
-               gbEmployee.Enabled = false;
-               bdsNV.ResetCurrentItem();
-               this.taNV.Update(this.dataSet.NhanVien);
+               _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsNV[bdsNV.Position]));
             }
-            catch (Exception ex)
-            {
-               // #load lại từ database
-               dataSet.EnforceConstraints = false;
-               this.taNV.Fill(this.dataSet.NhanVien);
-               dataSet.EnforceConstraints = true;
 
-               UtilCommon.ShowError(ex);
-               return false;
-            }
+            bdsNV.EndEdit();
+            gbEmployee.Enabled = false;
+            bdsNV.ResetCurrentItem();
+            this.taNV.Update(this.dataSet.NhanVien);
+            _buttonAction = ButtonActionType.None;
+         }
+         catch (Exception ex)
+         {
+            // #load lại từ database
+            dataSet.EnforceConstraints = false;
+            this.taNV.Fill(this.dataSet.NhanVien);
+            dataSet.EnforceConstraints = true;
+
+            UtilCommon.ShowError(ex);
+            return false;
+         }
          bdsNV.Position = _currentPosition;
          DisableEditMode();
          return true;
@@ -284,7 +284,7 @@ namespace QLVT_DATHANG.Forms
          UtilDB.ServerName = cboDeployment.SelectedValue.ToString();
 
          // đổi login
-         if (cboDeployment.SelectedIndex != UtilDB.CurrentDepId)
+         if (cboDeployment.SelectedIndex != UtilDB.CurrentDeployment)
          {
             UtilDB.CurrentLogin = MyConfig.RemoteLogin;
             UtilDB.CurrentPassword = MyConfig.RemotePassword;
@@ -298,7 +298,7 @@ namespace QLVT_DATHANG.Forms
          //
          if (UtilDB.Connect() == 0)
          {
-            XtraMessageBox.Show(MessageCons.ErrorConnectDepartment, MessageCons.CaptionError, MessageBoxButtons.OK);
+            XtraMessageBox.Show(Cons.ErrorConnectDepartment, Cons.CaptionError, MessageBoxButtons.OK);
          }
          else
          {
@@ -315,7 +315,7 @@ namespace QLVT_DATHANG.Forms
          bdsNV.AddNew();
          txtEmpDelStatus.EditValue = "0";
          txtEmpDepartment.EditValue = _currentDeploymentId;
-         spiEmpSalary.EditValue = CommonCons.MinSalary;
+         spiEmpSalary.EditValue = Cons.MinSalary;
 
          EnableEditMode();
          txtEmpId.Focus();
@@ -331,15 +331,15 @@ namespace QLVT_DATHANG.Forms
          string phieuLap = CheckPhieuDaLap();
          if (phieuLap != null)
          {
-            string text = string.Format(MessageCons.ErrorDeleteEmployee, phieuLap);
-            XtraMessageBox.Show(text, MessageCons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            string text = string.Format(Cons.ErrorDeleteEmployee, phieuLap);
+            XtraMessageBox.Show(text, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
          else
          {
             _currentPosition = bdsNV.Position;
             string ho = ((DataRowView)bdsNV[_currentPosition])["HO"].ToString();
             string ten = ((DataRowView)bdsNV[_currentPosition])["TEN"].ToString();
-            var result = XtraMessageBox.Show(string.Format(MessageCons.DeleteEmployee, ho, ten), MessageCons.CaptionQuestion,
+            var result = XtraMessageBox.Show(string.Format(Cons.AskDeleteEmployee, ho, ten), Cons.CaptionQuestion,
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
@@ -404,7 +404,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (gbEmployee.Enabled == true)
          {
-            var result = XtraMessageBox.Show(MessageCons.ExitWhileEditing, MessageCons.CaptionQuestion,
+            var result = XtraMessageBox.Show(Cons.AskExitWhileEditing, Cons.CaptionQuestion,
                                        MessageBoxButtons.YesNoCancel,
                                        MessageBoxIcon.Question);
             switch (result)
@@ -439,7 +439,7 @@ namespace QLVT_DATHANG.Forms
             if (!(e.Value is DBNull))
             {
                decimal price = Convert.ToDecimal(e.Value);
-               e.DisplayText = string.Format(CommonCons.CiVNI, "{0:c0}", price);
+               e.DisplayText = string.Format(Cons.CiVNI, "{0:c0}", price);
             }
          }
       }
@@ -449,7 +449,7 @@ namespace QLVT_DATHANG.Forms
          if (!(e.Value is DBNull))
          {
             decimal price = Convert.ToDecimal(e.Value);
-            e.DisplayText = string.Format(CommonCons.CiVNI, "{0:c0}", price);
+            e.DisplayText = string.Format(Cons.CiVNI, "{0:c0}", price);
          }
       }
 
@@ -457,7 +457,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (!(e.Value is DBNull))
          {
-            TextInfo cultInfo = new CultureInfo("vi-VN", false).TextInfo;
+            TextInfo cultInfo = Cons.CiVNI.TextInfo;
             (sender as TextEdit).EditValue = cultInfo.ToTitleCase(e.DisplayText);
          }
       }
@@ -466,7 +466,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (!(e.Value is DBNull))
          {
-            TextInfo cultInfo = new CultureInfo("vi-VN", false).TextInfo;
+            TextInfo cultInfo = Cons.CiVNI.TextInfo;
             (sender as TextEdit).EditValue = cultInfo.ToTitleCase(e.DisplayText);
          }
       }
@@ -477,8 +477,8 @@ namespace QLVT_DATHANG.Forms
 
       private bool IsExistEmployee(int employeeId)
       {
-         string strLenh = string.Format(MyConfig.ExecSPTimNhanVien, employeeId);
          bool exist = false;
+         string strLenh = string.Format(MyConfig.ExecSPTimNhanVien, employeeId);
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
             connection.Open();
@@ -486,7 +486,7 @@ namespace QLVT_DATHANG.Forms
             sqlcmd.CommandType = CommandType.Text;
             try
             {
-               SqlDataReader myreader = sqlcmd.ExecuteReader();
+               sqlcmd.ExecuteNonQuery();
                exist = true;
             }
             catch (SqlException)
@@ -502,15 +502,15 @@ namespace QLVT_DATHANG.Forms
          string message = null;
          if (bdsDH.Count > 0)
          {
-            message = CommonCons.DonDatHang;
+            message = Cons.DonDatHang;
          }
          else if (bdsPN.Count > 0)
          {
-            message = CommonCons.PhieuLap;
+            message = Cons.PhieuLap;
          }
          else if (bdsPX.Count > 0)
          {
-            message = CommonCons.PhieuXuat;
+            message = Cons.PhieuXuat;
          }
          return message;
       }

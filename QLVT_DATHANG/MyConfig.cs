@@ -6,14 +6,15 @@ namespace QLVT_DATHANG
    {
       public static string MachineName = Environment.MachineName;
 
-      public static string DisplayMemberDSPM = "TENCN";
-      public static string ValueMemberDSPM = "TENSERVER";
-      public static string DatabaseName = "QLVT_DATHANG";
-      public static string RemoteLogin = "HTKN";
-      public static string RemotePassword = "123456";
+      public const string DisplayMemberDSPM = "TENCN";
+      public const string ValueMemberDSPM = "TENSERVER";
+      public const string DatabaseName = "QLVT_DATHANG";
+      public const string RemoteLogin = "HTKN";
+      public const string RemotePassword = "123456";
 
-      public static string ExecSPThongTinDangNhap = "EXEC sp_login '{0}'";
-      public static string ExecSPTimNhanVien = "EXEC sp_timnhanvien {0}";
-      public static string ExecSPTimVatTu = "EXEC sp_timvattu '{0}'";
+      public const string ExecSPThongTinDangNhap = "EXEC sp_login '{0}'";
+      public const string ExecSPTimNhanVien = "EXEC sp_timnhanvien {0}";
+      public const string ExecSPTimVatTu = "EXEC sp_timvattu '{0}'";
+      public const string ExecSPTaoTaiKhoan = "EXEC sp_createlogin '{0}', '{1}', '{2}', '{3}'";
    }
 }

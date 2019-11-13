@@ -29,7 +29,13 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
+         System.Windows.Forms.Label masoDDHLabel;
+         System.Windows.Forms.Label nGAYLabel;
+         System.Windows.Forms.Label nhaCCLabel;
+         System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -40,14 +46,13 @@
          this.btnSave = new DevExpress.XtraBars.BarButtonItem();
          this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
          this.btnExit = new DevExpress.XtraBars.BarButtonItem();
-         this.bar3 = new DevExpress.XtraBars.Bar();
          this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
          this.dataSet = new QLVT_DATHANG.DataSet();
-         this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
-         this.taOrder = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
+         this.bdsDDH = new System.Windows.Forms.BindingSource(this.components);
+         this.taDDH = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
          this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.gcOrder = new DevExpress.XtraGrid.GridControl();
          this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -56,37 +61,96 @@
          this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
-         this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+         this.sccOrder = new DevExpress.XtraEditors.SplitContainerControl();
          this.gbOrder = new DevExpress.XtraEditors.GroupControl();
+         this.txtEmployeeId = new DevExpress.XtraEditors.TextEdit();
+         this.cboEmployee = new System.Windows.Forms.ComboBox();
+         this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
+         this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
+         this.dtpOrderDate = new DevExpress.XtraEditors.DateEdit();
+         this.dtpProvider = new DevExpress.XtraEditors.TextEdit();
+         this.gbOrderDetail = new DevExpress.XtraEditors.GroupControl();
+         this.gcOrderDetail = new System.Windows.Forms.DataGridView();
+         this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+         this.bdsVT = new System.Windows.Forms.BindingSource(this.components);
+         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
-         this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
          this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
-         this.cTDDHDataGridView = new System.Windows.Forms.DataGridView();
-         this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
+         this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
+         masoDDHLabel = new System.Windows.Forms.Label();
+         nGAYLabel = new System.Windows.Forms.Label();
+         nhaCCLabel = new System.Windows.Forms.Label();
+         mANVLabel = new System.Windows.Forms.Label();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-         this.splitContainerControl1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.sccOrder)).BeginInit();
+         this.sccOrder.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
+         this.gbOrder.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpProvider.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).BeginInit();
+         this.gbOrderDetail.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.cTDDHDataGridView)).BeginInit();
          this.SuspendLayout();
+         // 
+         // masoDDHLabel
+         // 
+         masoDDHLabel.AutoSize = true;
+         masoDDHLabel.Location = new System.Drawing.Point(47, 60);
+         masoDDHLabel.Name = "masoDDHLabel";
+         masoDDHLabel.Size = new System.Drawing.Size(112, 13);
+         masoDDHLabel.TabIndex = 0;
+         masoDDHLabel.Text = "Mã Số Đơn Đặt Hàng:";
+         // 
+         // nGAYLabel
+         // 
+         nGAYLabel.AutoSize = true;
+         nGAYLabel.Location = new System.Drawing.Point(47, 86);
+         nGAYLabel.Name = "nGAYLabel";
+         nGAYLabel.Size = new System.Drawing.Size(57, 13);
+         nGAYLabel.TabIndex = 2;
+         nGAYLabel.Text = "Ngày Đặt:";
+         // 
+         // nhaCCLabel
+         // 
+         nhaCCLabel.AutoSize = true;
+         nhaCCLabel.Location = new System.Drawing.Point(47, 112);
+         nhaCCLabel.Name = "nhaCCLabel";
+         nhaCCLabel.Size = new System.Drawing.Size(80, 13);
+         nhaCCLabel.TabIndex = 4;
+         nhaCCLabel.Text = "Nhà Cung Cấp:";
+         // 
+         // mANVLabel
+         // 
+         mANVLabel.AutoSize = true;
+         mANVLabel.Location = new System.Drawing.Point(47, 138);
+         mANVLabel.Name = "mANVLabel";
+         mANVLabel.Size = new System.Drawing.Size(76, 13);
+         mANVLabel.TabIndex = 6;
+         mANVLabel.Text = "Mã Nhân Viên:";
          // 
          // bmPN
          // 
          this.bmPN.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
          this.bmPN.DockControls.Add(this.barDockControlTop);
          this.bmPN.DockControls.Add(this.barDockControlBottom);
          this.bmPN.DockControls.Add(this.barDockControlLeft);
@@ -102,8 +166,7 @@
             this.btnExit,
             this.btnCancelEdit});
          this.bmPN.MainMenu = this.bar2;
-         this.bmPN.MaxItemId = 8;
-         this.bmPN.StatusBar = this.bar3;
+         this.bmPN.MaxItemId = 30;
          // 
          // bar2
          // 
@@ -188,33 +251,21 @@
          this.btnExit.Name = "btnExit";
          this.btnExit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          // 
-         // bar3
-         // 
-         this.bar3.BarName = "Status bar";
-         this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-         this.bar3.DockCol = 0;
-         this.bar3.DockRow = 0;
-         this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-         this.bar3.OptionsBar.AllowQuickCustomization = false;
-         this.bar3.OptionsBar.DrawDragBorder = false;
-         this.bar3.OptionsBar.UseWholeRow = true;
-         this.bar3.Text = "Status bar";
-         // 
          // barDockControlTop
          // 
          this.barDockControlTop.CausesValidation = false;
          this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.bmPN;
-         this.barDockControlTop.Size = new System.Drawing.Size(732, 24);
+         this.barDockControlTop.Size = new System.Drawing.Size(853, 24);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 409);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 476);
          this.barDockControlBottom.Manager = this.bmPN;
-         this.barDockControlBottom.Size = new System.Drawing.Size(732, 23);
+         this.barDockControlBottom.Size = new System.Drawing.Size(853, 0);
          // 
          // barDockControlLeft
          // 
@@ -222,29 +273,29 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 385);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 452);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(732, 24);
+         this.barDockControlRight.Location = new System.Drawing.Point(853, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 385);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 452);
          // 
          // dataSet
          // 
          this.dataSet.DataSetName = "DataSet";
          this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
          // 
-         // bdsOrder
+         // bdsDDH
          // 
-         this.bdsOrder.DataMember = "DatHang";
-         this.bdsOrder.DataSource = this.dataSet;
+         this.bdsDDH.DataMember = "DatHang";
+         this.bdsDDH.DataSource = this.dataSet;
          // 
-         // taOrder
+         // taDDH
          // 
-         this.taOrder.ClearBeforeFill = true;
+         this.taDDH.ClearBeforeFill = true;
          // 
          // tableAdapterManager
          // 
@@ -253,7 +304,7 @@
          this.tableAdapterManager.CTDDHTableAdapter = null;
          this.tableAdapterManager.CTPNTableAdapter = null;
          this.tableAdapterManager.CTPXTableAdapter = null;
-         this.tableAdapterManager.DatHangTableAdapter = this.taOrder;
+         this.tableAdapterManager.DatHangTableAdapter = this.taDDH;
          this.tableAdapterManager.KhoTableAdapter = null;
          this.tableAdapterManager.NhanVienTableAdapter = null;
          this.tableAdapterManager.PhieuNhapTableAdapter = null;
@@ -263,13 +314,15 @@
          // 
          // gcOrder
          // 
-         this.gcOrder.DataSource = this.bdsOrder;
-         this.gcOrder.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcOrder.DataSource = this.bdsDDH;
+         this.gcOrder.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcOrder.Location = new System.Drawing.Point(0, 54);
+         this.gcOrder.LookAndFeel.SkinName = "DevExpress Dark Style";
+         this.gcOrder.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
          this.gcOrder.MainView = this.gridView1;
          this.gcOrder.MenuManager = this.bmPN;
          this.gcOrder.Name = "gcOrder";
-         this.gcOrder.Size = new System.Drawing.Size(732, 196);
+         this.gcOrder.Size = new System.Drawing.Size(853, 214);
          this.gcOrder.TabIndex = 5;
          this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -290,6 +343,7 @@
          // 
          // colMasoDDH
          // 
+         this.colMasoDDH.Caption = "MÃ SỐ ĐƠN ĐẶT HÀNG";
          this.colMasoDDH.FieldName = "MasoDDH";
          this.colMasoDDH.Name = "colMasoDDH";
          this.colMasoDDH.Visible = true;
@@ -297,6 +351,7 @@
          // 
          // colNGAY
          // 
+         this.colNGAY.Caption = "NGÀY ĐẶT";
          this.colNGAY.FieldName = "NGAY";
          this.colNGAY.Name = "colNGAY";
          this.colNGAY.Visible = true;
@@ -304,6 +359,7 @@
          // 
          // colNhaCC
          // 
+         this.colNhaCC.Caption = "NHÀ CUNG CẤP";
          this.colNhaCC.FieldName = "NhaCC";
          this.colNhaCC.Name = "colNhaCC";
          this.colNhaCC.Visible = true;
@@ -311,6 +367,7 @@
          // 
          // colMANV
          // 
+         this.colMANV.Caption = "MÃ NHÂN VIÊN";
          this.colMANV.FieldName = "MANV";
          this.colMANV.Name = "colMANV";
          this.colMANV.Visible = true;
@@ -318,34 +375,202 @@
          // 
          // splitterControl1
          // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 250);
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.splitterControl1.Location = new System.Drawing.Point(0, 268);
          this.splitterControl1.Name = "splitterControl1";
-         this.splitterControl1.Size = new System.Drawing.Size(732, 5);
+         this.splitterControl1.Size = new System.Drawing.Size(853, 5);
          this.splitterControl1.TabIndex = 6;
          this.splitterControl1.TabStop = false;
          // 
-         // splitContainerControl1
+         // sccOrder
          // 
-         this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.splitContainerControl1.Location = new System.Drawing.Point(0, 255);
-         this.splitContainerControl1.Name = "splitContainerControl1";
-         this.splitContainerControl1.Panel1.Controls.Add(this.gbOrder);
-         this.splitContainerControl1.Panel1.Text = "Panel1";
-         this.splitContainerControl1.Panel2.Controls.Add(this.cTDDHDataGridView);
-         this.splitContainerControl1.Panel2.Text = "Panel2";
-         this.splitContainerControl1.Size = new System.Drawing.Size(732, 154);
-         this.splitContainerControl1.SplitterPosition = 367;
-         this.splitContainerControl1.TabIndex = 7;
+         this.sccOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.sccOrder.Location = new System.Drawing.Point(0, 273);
+         this.sccOrder.Name = "sccOrder";
+         this.sccOrder.Panel1.Controls.Add(this.gbOrder);
+         this.sccOrder.Panel1.Text = "Panel1";
+         this.sccOrder.Panel2.Controls.Add(this.gbOrderDetail);
+         this.sccOrder.Panel2.Text = "Panel2";
+         this.sccOrder.Size = new System.Drawing.Size(853, 203);
+         this.sccOrder.SplitterPosition = 442;
+         this.sccOrder.TabIndex = 7;
          // 
          // gbOrder
          // 
+         this.gbOrder.Controls.Add(this.txtEmployeeId);
+         this.gbOrder.Controls.Add(this.cboEmployee);
+         this.gbOrder.Controls.Add(masoDDHLabel);
+         this.gbOrder.Controls.Add(this.txtOrderId);
+         this.gbOrder.Controls.Add(nGAYLabel);
+         this.gbOrder.Controls.Add(this.dtpOrderDate);
+         this.gbOrder.Controls.Add(nhaCCLabel);
+         this.gbOrder.Controls.Add(this.dtpProvider);
+         this.gbOrder.Controls.Add(mANVLabel);
          this.gbOrder.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrder.Location = new System.Drawing.Point(0, 0);
          this.gbOrder.Name = "gbOrder";
-         this.gbOrder.Size = new System.Drawing.Size(367, 154);
+         this.gbOrder.Size = new System.Drawing.Size(442, 203);
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin Đơn Đặt Hàng";
+         // 
+         // txtEmployeeId
+         // 
+         this.txtEmployeeId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
+         this.txtEmployeeId.Location = new System.Drawing.Point(328, 136);
+         this.txtEmployeeId.MenuManager = this.bmPN;
+         this.txtEmployeeId.Name = "txtEmployeeId";
+         this.txtEmployeeId.Size = new System.Drawing.Size(100, 20);
+         this.txtEmployeeId.TabIndex = 11;
+         // 
+         // cboEmployee
+         // 
+         this.cboEmployee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
+         this.cboEmployee.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsDDH, "MANV", true));
+         this.cboEmployee.DataSource = this.bdsDSNV;
+         this.cboEmployee.DisplayMember = "HOTEN";
+         this.cboEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboEmployee.FormattingEnabled = true;
+         this.cboEmployee.Location = new System.Drawing.Point(165, 135);
+         this.cboEmployee.Name = "cboEmployee";
+         this.cboEmployee.Size = new System.Drawing.Size(157, 21);
+         this.cboEmployee.TabIndex = 10;
+         this.cboEmployee.ValueMember = "MANV";
+         this.cboEmployee.SelectedIndexChanged += new System.EventHandler(this.cboEmployee_SelectedIndexChanged);
+         // 
+         // bdsDSNV
+         // 
+         this.bdsDSNV.DataMember = "DSNV";
+         this.bdsDSNV.DataSource = this.dataSet;
+         // 
+         // txtOrderId
+         // 
+         this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
+         this.txtOrderId.Location = new System.Drawing.Point(165, 57);
+         this.txtOrderId.MenuManager = this.bmPN;
+         this.txtOrderId.Name = "txtOrderId";
+         this.txtOrderId.Size = new System.Drawing.Size(157, 20);
+         this.txtOrderId.TabIndex = 1;
+         // 
+         // dtpOrderDate
+         // 
+         this.dtpOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NGAY", true));
+         this.dtpOrderDate.EditValue = null;
+         this.dtpOrderDate.Location = new System.Drawing.Point(165, 83);
+         this.dtpOrderDate.MenuManager = this.bmPN;
+         this.dtpOrderDate.Name = "dtpOrderDate";
+         this.dtpOrderDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpOrderDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpOrderDate.Size = new System.Drawing.Size(157, 20);
+         this.dtpOrderDate.TabIndex = 3;
+         // 
+         // dtpProvider
+         // 
+         this.dtpProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
+         this.dtpProvider.Location = new System.Drawing.Point(165, 109);
+         this.dtpProvider.MenuManager = this.bmPN;
+         this.dtpProvider.Name = "dtpProvider";
+         this.dtpProvider.Size = new System.Drawing.Size(157, 20);
+         this.dtpProvider.TabIndex = 5;
+         // 
+         // gbOrderDetail
+         // 
+         this.gbOrderDetail.CaptionImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_edit_property_16;
+         this.gbOrderDetail.CaptionLocation = DevExpress.Utils.Locations.Top;
+         this.gbOrderDetail.Controls.Add(this.gcOrderDetail);
+         this.gbOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gbOrderDetail.Location = new System.Drawing.Point(0, 0);
+         this.gbOrderDetail.Name = "gbOrderDetail";
+         this.gbOrderDetail.Size = new System.Drawing.Size(406, 203);
+         this.gbOrderDetail.TabIndex = 2;
+         this.gbOrderDetail.Text = "Chi tiết Đơn Đặt Hàng";
+         // 
+         // gcOrderDetail
+         // 
+         this.gcOrderDetail.AllowUserToAddRows = false;
+         this.gcOrderDetail.AllowUserToDeleteRows = false;
+         this.gcOrderDetail.AutoGenerateColumns = false;
+         this.gcOrderDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+         this.gcOrderDetail.BackgroundColor = System.Drawing.Color.White;
+         this.gcOrderDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+         this.gcOrderDetail.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+         this.gcOrderDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+         dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+         dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+         dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSlateGray;
+         dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+         this.gcOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+         this.gcOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+         this.gcOrderDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+         this.gcOrderDetail.DataSource = this.bdsCTDDH;
+         dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+         dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
+         dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle2;
+         this.gcOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gcOrderDetail.EnableHeadersVisualStyles = false;
+         this.gcOrderDetail.GridColor = System.Drawing.Color.White;
+         this.gcOrderDetail.Location = new System.Drawing.Point(2, 23);
+         this.gcOrderDetail.Name = "gcOrderDetail";
+         this.gcOrderDetail.RowHeadersVisible = false;
+         this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+         this.gcOrderDetail.Size = new System.Drawing.Size(402, 178);
+         this.gcOrderDetail.TabIndex = 0;
+         // 
+         // dataGridViewTextBoxColumn1
+         // 
+         this.dataGridViewTextBoxColumn1.DataPropertyName = "MasoDDH";
+         this.dataGridViewTextBoxColumn1.FillWeight = 121.8274F;
+         this.dataGridViewTextBoxColumn1.HeaderText = "MÃ SỐ ĐƠN ĐẶT HÀNG";
+         this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+         // 
+         // dataGridViewTextBoxColumn2
+         // 
+         this.dataGridViewTextBoxColumn2.DataPropertyName = "MAVT";
+         this.dataGridViewTextBoxColumn2.DataSource = this.bdsVT;
+         this.dataGridViewTextBoxColumn2.DisplayMember = "TENVT";
+         this.dataGridViewTextBoxColumn2.FillWeight = 92.72421F;
+         this.dataGridViewTextBoxColumn2.HeaderText = "MÃ VẬT TƯ";
+         this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+         this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+         this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+         this.dataGridViewTextBoxColumn2.ValueMember = "MAVT";
+         // 
+         // bdsVT
+         // 
+         this.bdsVT.DataMember = "Vattu";
+         this.bdsVT.DataSource = this.dataSet;
+         // 
+         // dataGridViewTextBoxColumn3
+         // 
+         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
+         this.dataGridViewTextBoxColumn3.FillWeight = 92.72421F;
+         this.dataGridViewTextBoxColumn3.HeaderText = "SỐ LƯỢNG";
+         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+         // 
+         // dataGridViewTextBoxColumn4
+         // 
+         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
+         this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
+         this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
+         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+         // 
+         // bdsCTDDH
+         // 
+         this.bdsCTDDH.DataMember = "FK_CTDDH_DatHang";
+         this.bdsCTDDH.DataSource = this.bdsDDH;
          // 
          // pnPickDepartment
          // 
@@ -354,7 +579,7 @@
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
          this.pnPickDepartment.Name = "pnPickDepartment";
-         this.pnPickDepartment.Size = new System.Drawing.Size(732, 30);
+         this.pnPickDepartment.Size = new System.Drawing.Size(853, 30);
          this.pnPickDepartment.TabIndex = 23;
          this.pnPickDepartment.Visible = false;
          // 
@@ -377,64 +602,28 @@
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
          // 
-         // bdsCTDDH
-         // 
-         this.bdsCTDDH.DataMember = "FK_CTDDH_DatHang";
-         this.bdsCTDDH.DataSource = this.bdsOrder;
-         // 
          // taCTDDH
          // 
          this.taCTDDH.ClearBeforeFill = true;
          // 
-         // cTDDHDataGridView
+         // taDSNV
          // 
-         this.cTDDHDataGridView.AutoGenerateColumns = false;
-         this.cTDDHDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-         this.cTDDHDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-         this.cTDDHDataGridView.DataSource = this.bdsCTDDH;
-         this.cTDDHDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.cTDDHDataGridView.Location = new System.Drawing.Point(0, 0);
-         this.cTDDHDataGridView.Name = "cTDDHDataGridView";
-         this.cTDDHDataGridView.Size = new System.Drawing.Size(360, 154);
-         this.cTDDHDataGridView.TabIndex = 0;
+         this.taDSNV.ClearBeforeFill = true;
          // 
-         // dataGridViewTextBoxColumn1
+         // taVT
          // 
-         this.dataGridViewTextBoxColumn1.DataPropertyName = "MasoDDH";
-         this.dataGridViewTextBoxColumn1.HeaderText = "MasoDDH";
-         this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-         // 
-         // dataGridViewTextBoxColumn2
-         // 
-         this.dataGridViewTextBoxColumn2.DataPropertyName = "MAVT";
-         this.dataGridViewTextBoxColumn2.HeaderText = "MAVT";
-         this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-         // 
-         // dataGridViewTextBoxColumn3
-         // 
-         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
-         this.dataGridViewTextBoxColumn3.HeaderText = "SOLUONG";
-         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-         // 
-         // dataGridViewTextBoxColumn4
-         // 
-         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
-         this.dataGridViewTextBoxColumn4.HeaderText = "DONGIA";
-         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+         this.taVT.ClearBeforeFill = true;
          // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(732, 432);
-         this.Controls.Add(this.splitContainerControl1);
-         this.Controls.Add(this.splitterControl1);
+         this.AutoScroll = true;
+         this.ClientSize = new System.Drawing.Size(853, 476);
          this.Controls.Add(this.gcOrder);
          this.Controls.Add(this.pnPickDepartment);
+         this.Controls.Add(this.splitterControl1);
+         this.Controls.Add(this.sccOrder);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);
@@ -442,19 +631,31 @@
          this.Name = "frmOrders";
          this.Text = "QUẢN LÝ ĐƠN ĐẶT HÀNG";
          this.Load += new System.EventHandler(this.frmOrders_Load);
+         this.Resize += new System.EventHandler(this.frmOrders_Resize);
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-         this.splitContainerControl1.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.sccOrder)).EndInit();
+         this.sccOrder.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
+         this.gbOrder.ResumeLayout(false);
+         this.gbOrder.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpProvider.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).EndInit();
+         this.gbOrderDetail.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.cTDDHDataGridView)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -472,14 +673,13 @@
       private DevExpress.XtraBars.BarButtonItem btnSave;
       private DevExpress.XtraBars.BarButtonItem btnCancelEdit;
       private DevExpress.XtraBars.BarButtonItem btnExit;
-      private DevExpress.XtraBars.Bar bar3;
       private DevExpress.XtraBars.BarDockControl barDockControlTop;
       private DevExpress.XtraBars.BarDockControl barDockControlBottom;
       private DevExpress.XtraBars.BarDockControl barDockControlLeft;
       private DevExpress.XtraBars.BarDockControl barDockControlRight;
-      private System.Windows.Forms.BindingSource bdsOrder;
+      private System.Windows.Forms.BindingSource bdsDDH;
       private DataSet dataSet;
-      private DataSetTableAdapters.DatHangTableAdapter taOrder;
+      private DataSetTableAdapters.DatHangTableAdapter taDDH;
       private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
       private DevExpress.XtraGrid.GridControl gcOrder;
       private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
@@ -488,16 +688,26 @@
       private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
       private DevExpress.XtraGrid.Columns.GridColumn colMANV;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
-      private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+      private DevExpress.XtraEditors.SplitContainerControl sccOrder;
       private DevExpress.XtraEditors.GroupControl gbOrder;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDeployment;
       private System.Windows.Forms.BindingSource bdsCTDDH;
       private DataSetTableAdapters.CTDDHTableAdapter taCTDDH;
-      private System.Windows.Forms.DataGridView cTDDHDataGridView;
+      private System.Windows.Forms.DataGridView gcOrderDetail;
+      private DevExpress.XtraEditors.TextEdit txtOrderId;
+      private DevExpress.XtraEditors.DateEdit dtpOrderDate;
+      private DevExpress.XtraEditors.TextEdit dtpProvider;
+      private System.Windows.Forms.BindingSource bdsDSNV;
+      private System.Windows.Forms.ComboBox cboEmployee;
+      private DataSetTableAdapters.DSNVTableAdepter taDSNV;
+      private DevExpress.XtraEditors.TextEdit txtEmployeeId;
+      private DevExpress.XtraEditors.GroupControl gbOrderDetail;
+      private System.Windows.Forms.BindingSource bdsVT;
+      private DataSetTableAdapters.VattuTableAdapter taVT;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+      private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
    }

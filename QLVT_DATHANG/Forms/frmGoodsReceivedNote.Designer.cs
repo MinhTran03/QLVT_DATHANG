@@ -285,7 +285,7 @@
          // gcReceivedNote
          // 
          this.gcReceivedNote.DataSource = this.bdsPN;
-         this.gcReceivedNote.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcReceivedNote.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcReceivedNote.Location = new System.Drawing.Point(0, 54);
          this.gcReceivedNote.MainView = this.gridView1;
          this.gcReceivedNote.MenuManager = this.bmPN;
@@ -339,7 +339,7 @@
          // 
          // splitterControl1
          // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
          this.splitterControl1.Location = new System.Drawing.Point(0, 239);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(729, 5);
@@ -348,7 +348,7 @@
          // 
          // splitContainerControl1
          // 
-         this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
          this.splitContainerControl1.Location = new System.Drawing.Point(0, 244);
          this.splitContainerControl1.Name = "splitContainerControl1";
          this.splitContainerControl1.Panel1.Controls.Add(this.gbReceivedNote);
@@ -372,10 +372,10 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(729, 409);
-         this.Controls.Add(this.splitContainerControl1);
-         this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gcReceivedNote);
          this.Controls.Add(this.pnPickDepartment);
+         this.Controls.Add(this.splitterControl1);
+         this.Controls.Add(this.splitContainerControl1);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);

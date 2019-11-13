@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
+   using DevExpress.XtraEditors;
+   using System.Drawing;
    using Utility;
 
-   public partial class frmOrders : DevExpress.XtraEditors.XtraForm
+   public partial class frmOrders : XtraForm
    {
       private string _currentDeploymentId;
       //private int _currentPosition;
       private ButtonActionType _buttonAction;
+      private int _backupWidth = 0;
       private MyStack _userDo;
 
       public frmOrders()
@@ -29,7 +33,7 @@ namespace QLVT_DATHANG.Forms
          LoadTable();
          DisableEditMode();
 
-         _currentDeploymentId = ((DataRowView)bdsOrder[0])["MasoDDH"].ToString().Trim();
+         _currentDeploymentId = ((DataRowView)bdsDDH[0])["MasoDDH"].ToString().Trim();
 
          // Quyền công ty => enable combobox chi nhánh
          ShowControlsByGroup(UtilDB.CurrentGroup);
@@ -52,43 +56,14 @@ namespace QLVT_DATHANG.Forms
 
       private void SetupControls()
       {
-         //string nameRegex = "[\u0000-\u001F\007F-\u009F]+(\\s{1}[\u0000-\u001F\007F-\u009F]+)*"; // regex with one space between 2 character
-
-         //txtEmpId.Properties.Mask.MaskType = MaskType.RegEx;
-         //txtEmpId.Properties.Mask.EditMask = "\\d+";
-         //txtEmpId.Properties.Mask.BeepOnError = true;
-         //txtEmpId.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpId.Properties.NullValuePrompt = "Id here";
-
-         //txtEmpFirstName.Properties.Mask.MaskType = MaskType.None;
-         //txtEmpFirstName.Properties.Mask.EditMask = nameRegex;
-         //txtEmpFirstName.Properties.Mask.BeepOnError = true;
-         //txtEmpFirstName.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpFirstName.Properties.NullValuePrompt = "First name here";
-
-         //txtEmpLastName.Properties.Mask.MaskType = MaskType.None;
-         //txtEmpLastName.Properties.Mask.EditMask = nameRegex;
-         //txtEmpLastName.Properties.Mask.BeepOnError = true;
-         //txtEmpLastName.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpLastName.Properties.NullValuePrompt = "Last name here";
-
-         //txtEmpAddr.Properties.Mask.BeepOnError = true;
-         //txtEmpAddr.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpAddr.Properties.NullValuePrompt = "Address here";
-
-         //spiEmpSalary.Properties.Mask.MaskType = MaskType.Numeric;
-         ////spiEmpSalary.Properties.MinValue = CommonCons.MinSalary;
-         //spiEmpSalary.Properties.Increment = 100000;
-         //spiEmpSalary.Properties.Mask.BeepOnError = true;
-         //spiEmpSalary.Properties.AllowNullInput = DefaultBoolean.True;
-         ////spiEmpSalary.Properties.NullValuePrompt = $"Min {CommonCons.MinSalary}";
-
-         //dtpEmpBirth.Properties.Mask.MaskType = MaskType.DateTime;
-         //dtpEmpBirth.Properties.Mask.EditMask = "dd//MM//yyyy";
-         //dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-1);
-         //dtpEmpBirth.Properties.Mask.BeepOnError = true;
-         //dtpEmpBirth.Properties.AllowNullInput = DefaultBoolean.True;
-         ////dtpEmpBirth.Properties.NullValuePrompt = "Pick a day";
+         gcOrderDetail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+         gcOrderDetail.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+         gcOrderDetail.BorderStyle = BorderStyle.None;
+         gcOrderDetail.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+         gcOrderDetail.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+         gcOrderDetail.EnableHeadersVisualStyles = false;
+         gcOrderDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+         gcOrderDetail.RowHeadersVisible = false;
       }
 
       private void userDo_StackPopped(object sender, StackEventAgrs e)
@@ -110,16 +85,22 @@ namespace QLVT_DATHANG.Forms
       private void LoadTable()
       {
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
-         this.taOrder.Connection.ConnectionString =
+         this.taDDH.Connection.ConnectionString =
             this.taCTDDH.Connection.ConnectionString =
+            this.taDSNV.Connection.ConnectionString =
+            this.taVT.Connection.ConnectionString = 
             UtilDB.ConnectionString;
          try
          {
             this.dataSet.EnforceConstraints = false;
 
-            this.taOrder.Fill(this.dataSet.DatHang);
+            this.taDDH.Fill(this.dataSet.DatHang);
 
             this.taCTDDH.Fill(this.dataSet.CTDDH);
+
+            this.taDSNV.Fill(this.dataSet.DSNV);
+
+            this.taVT.Fill(this.dataSet.Vattu);
 
             //this.dataSet.EnforceConstraints = true;
          }
@@ -131,10 +112,10 @@ namespace QLVT_DATHANG.Forms
 
       private void DisableEditMode()
       {
-         btnDel.Enabled = (bdsOrder.Count == 0) ? false : true;
+         btnDel.Enabled = (bdsDDH.Count == 0) ? false : true;
 
          gcOrder.Enabled = true;
-         gbOrder.Enabled = false;
+         gbOrder.Enabled = true;
 
          btnAdd.Enabled = true;
          btnDel.Enabled = true;
@@ -151,5 +132,20 @@ namespace QLVT_DATHANG.Forms
       }
 
       #endregion
+
+      private void cboEmployee_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         txtEmployeeId.EditValue = cboEmployee.SelectedValue;
+      }
+
+      private void frmOrders_Resize(object sender, EventArgs e)
+      {
+         int Width = (sender as XtraForm).Width;
+         if (Width != _backupWidth)
+         {
+            sccOrder.SplitterPosition = Width / 2;
+            _backupWidth = Width;
+         }
+      }
    }
 }

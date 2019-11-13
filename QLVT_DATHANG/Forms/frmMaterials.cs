@@ -278,7 +278,7 @@ namespace QLVT_DATHANG.Forms
       {
          _currentPosition = bdsVT.Position;
          string ten = ((DataRowView)bdsVT[_currentPosition])["TENVT"].ToString();
-         var result = XtraMessageBox.Show(string.Format(MessageCons.DeleteMaterials, ten), MessageCons.CaptionQuestion,
+         var result = XtraMessageBox.Show(string.Format(Cons.AskDeleteMaterials, ten), Cons.CaptionQuestion,
                                       MessageBoxButtons.YesNo, MessageBoxIcon.Question);
          if (result == DialogResult.Yes)
          {

@@ -4,9 +4,8 @@ using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Utility
 {
-   using DevExpress.XtraEditors;
    using Constant;
-   using System.Data;
+   using DevExpress.XtraEditors;
 
    public class UtilCommon
    {
@@ -22,7 +21,7 @@ namespace QLVT_DATHANG.Utility
          string message = e.Message + "\n";
          string source = "Source: " + e.Source + "\n";
          string targetSite = "Method: " + e.TargetSite + "\n";
-         XtraMessageBox.Show(source + targetSite + message, MessageCons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+         XtraMessageBox.Show(source + targetSite + message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
          Console.WriteLine(e.StackTrace);
          if (e.GetType() == typeof(SqlException))
          {

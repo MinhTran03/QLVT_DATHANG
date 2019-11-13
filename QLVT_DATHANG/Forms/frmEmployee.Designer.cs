@@ -51,7 +51,6 @@
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-         this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.bdsNV = new System.Windows.Forms.BindingSource(this.components);
          this.taNV = new QLVT_DATHANG.DataSetTableAdapters.NhanVienTableAdapter();
@@ -86,13 +85,10 @@
          this.taCN = new QLVT_DATHANG.DataSetTableAdapters.ChiNhanhTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          this.gbEmployee = new DevExpress.XtraEditors.GroupControl();
-         this.comboBox1 = new System.Windows.Forms.ComboBox();
          this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-         this.chiNhanh1BindingSource = new System.Windows.Forms.BindingSource(this.components);
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-         this.chiNhanh1TableAdapter = new QLVT_DATHANG.DataSetTableAdapters.ChiNhanh1TableAdapter();
          mANVLabel = new System.Windows.Forms.Label();
          hOLabel = new System.Windows.Forms.Label();
          dIACHILabel = new System.Windows.Forms.Label();
@@ -101,7 +97,6 @@
          mACNLabel = new System.Windows.Forms.Label();
          label1 = new System.Windows.Forms.Label();
          ((System.ComponentModel.ISupportInitialize)(this.bmNV)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).BeginInit();
@@ -123,7 +118,6 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbEmployee)).BeginInit();
          this.gbEmployee.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.chiNhanh1BindingSource)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
          this.SuspendLayout();
@@ -206,7 +200,6 @@
          this.bmNV.DockControls.Add(this.barDockControlBottom);
          this.bmNV.DockControls.Add(this.barDockControlLeft);
          this.bmNV.DockControls.Add(this.barDockControlRight);
-         this.bmNV.DockManager = this.dockManager1;
          this.bmNV.Form = this;
          this.bmNV.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnAdd,
@@ -350,24 +343,6 @@
          this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
          this.barDockControlRight.Size = new System.Drawing.Size(0, 459);
          // 
-         // dockManager1
-         // 
-         this.dockManager1.Form = this;
-         this.dockManager1.MenuManager = this.bmNV;
-         this.dockManager1.TopZIndexControls.AddRange(new string[] {
-            "DevExpress.XtraBars.BarDockControl",
-            "DevExpress.XtraBars.StandaloneBarDockControl",
-            "System.Windows.Forms.StatusBar",
-            "System.Windows.Forms.MenuStrip",
-            "System.Windows.Forms.StatusStrip",
-            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
-            "DevExpress.XtraBars.Ribbon.RibbonControl",
-            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
-            "DevExpress.XtraBars.Navigation.TileNavPane",
-            "DevExpress.XtraBars.TabFormControl",
-            "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
-            "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
-         // 
          // dataSet
          // 
          this.dataSet.DataSetName = "DataSet";
@@ -386,7 +361,6 @@
          // taNVManager
          // 
          this.taNVManager.BackupDataSetBeforeUpdate = false;
-         this.taNVManager.ChiNhanh1TableAdapter = null;
          this.taNVManager.ChiNhanhTableAdapter = null;
          this.taNVManager.CTDDHTableAdapter = null;
          this.taNVManager.CTPNTableAdapter = null;
@@ -600,13 +574,13 @@
          // gcEmployee
          // 
          this.gcEmployee.DataSource = this.bdsNV;
-         this.gcEmployee.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcEmployee.Location = new System.Drawing.Point(0, 54);
          this.gcEmployee.MainView = this.gvNV;
          this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
          this.gcEmployee.MenuManager = this.bmNV;
          this.gcEmployee.Name = "gcEmployee";
-         this.gcEmployee.Size = new System.Drawing.Size(982, 192);
+         this.gcEmployee.Size = new System.Drawing.Size(982, 227);
          this.gcEmployee.TabIndex = 0;
          this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvNV});
@@ -684,7 +658,6 @@
          // 
          // gbEmployee
          // 
-         this.gbEmployee.Controls.Add(this.comboBox1);
          this.gbEmployee.Controls.Add(this.pictureEdit1);
          this.gbEmployee.Controls.Add(this.txtEmpId);
          this.gbEmployee.Controls.Add(this.txtEmpDelStatus);
@@ -702,23 +675,13 @@
          this.gbEmployee.Controls.Add(nGAYSINHLabel);
          this.gbEmployee.Controls.Add(dIACHILabel);
          this.gbEmployee.Controls.Add(this.dtpEmpBirth);
-         this.gbEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbEmployee.Location = new System.Drawing.Point(0, 251);
+         this.gbEmployee.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.gbEmployee.Location = new System.Drawing.Point(0, 286);
+         this.gbEmployee.MinimumSize = new System.Drawing.Size(0, 10);
          this.gbEmployee.Name = "gbEmployee";
-         this.gbEmployee.Size = new System.Drawing.Size(982, 232);
+         this.gbEmployee.Size = new System.Drawing.Size(982, 197);
          this.gbEmployee.TabIndex = 16;
          this.gbEmployee.Text = "Thông tin Nhân Viên";
-         // 
-         // comboBox1
-         // 
-         this.comboBox1.DataSource = this.chiNhanh1BindingSource;
-         this.comboBox1.DisplayMember = "TrangThaiXoa";
-         this.comboBox1.FormattingEnabled = true;
-         this.comboBox1.Location = new System.Drawing.Point(797, 75);
-         this.comboBox1.Name = "comboBox1";
-         this.comboBox1.Size = new System.Drawing.Size(121, 21);
-         this.comboBox1.TabIndex = 17;
-         this.comboBox1.ValueMember = "MANV";
          // 
          // pictureEdit1
          // 
@@ -730,15 +693,10 @@
          this.pictureEdit1.Size = new System.Drawing.Size(196, 144);
          this.pictureEdit1.TabIndex = 16;
          // 
-         // chiNhanh1BindingSource
-         // 
-         this.chiNhanh1BindingSource.DataMember = "ChiNhanh1";
-         this.chiNhanh1BindingSource.DataSource = this.dataSet;
-         // 
          // splitterControl1
          // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 246);
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.splitterControl1.Location = new System.Drawing.Point(0, 281);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(982, 5);
          this.splitterControl1.TabIndex = 17;
@@ -763,20 +721,16 @@
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
-         // chiNhanh1TableAdapter
-         // 
-         this.chiNhanh1TableAdapter.ClearBeforeFill = true;
-         // 
          // frmEmployee
          // 
          this.Appearance.Options.UseFont = true;
          this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(982, 483);
-         this.Controls.Add(this.gbEmployee);
-         this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gcEmployee);
          this.Controls.Add(this.pnPickDepartment);
+         this.Controls.Add(this.splitterControl1);
+         this.Controls.Add(this.gbEmployee);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);
@@ -789,7 +743,6 @@
          this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmployee_FormClosing);
          this.Load += new System.EventHandler(this.frmEmployee_Load);
          ((System.ComponentModel.ISupportInitialize)(this.bmNV)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).EndInit();
@@ -812,7 +765,6 @@
          this.gbEmployee.ResumeLayout(false);
          this.gbEmployee.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.chiNhanh1BindingSource)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
@@ -870,14 +822,10 @@
       private System.Windows.Forms.Label lblTTX;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private DevExpress.XtraEditors.TextEdit txtEmpDelStatus;
-      private DevExpress.XtraBars.Docking.DockManager dockManager1;
       private DevExpress.XtraEditors.GroupControl gbEmployee;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
       private DevExpress.XtraEditors.PictureEdit pictureEdit1;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
-      private System.Windows.Forms.BindingSource chiNhanh1BindingSource;
-      private DataSetTableAdapters.ChiNhanh1TableAdapter chiNhanh1TableAdapter;
-      private System.Windows.Forms.ComboBox comboBox1;
    }
 }
