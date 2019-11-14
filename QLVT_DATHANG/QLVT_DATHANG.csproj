@@ -148,7 +148,7 @@
     <Compile Include="Forms\frmMaterials.Designer.cs">
       <DependentUpon>frmMaterials.cs</DependentUpon>
     </Compile>
-    <Compile Include="Constant\Cons.cs" />
+    <Compile Include="Utility\Cons.cs" />
     <Compile Include="Forms\frmOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,7 +178,6 @@
     <Compile Include="Forms\CustomFlyoutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utility\UtilCommon.cs" />
     <Compile Include="Utility\MyStack.cs" />
     <Compile Include="Utility\StackEventAgrs.cs" />
     <Compile Include="Utility\UtilDB.cs" />
@@ -290,6 +289,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\164.9-register-icon-iconbunny-removebg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

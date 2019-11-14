@@ -5,7 +5,6 @@ namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
    using DevExpress.XtraEditors;
-   using QLVT_DATHANG.Constant;
    using Utility;
 
    public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -15,7 +14,22 @@ namespace QLVT_DATHANG.Forms
          InitializeComponent();
          bsiMaNV.Caption = "Mã NV : " + UtilDB.UserName;
          bsiHoTenNV.Caption = "Họ tên nhân viên : " + UtilDB.CurrentFullName;
-         bsiNhom.Caption = "Nhóm : " + UtilDB.CurrentGroup;
+         string gr = null;
+         switch (UtilDB.CurrentGroup)
+         {
+            case Cons.UserGroupName:
+               gr = "User";
+               break;
+            case Cons.ChiNhanhGroupName:
+               gr = "Chi Nhánh";
+               break;
+            case Cons.CongTyGroupName:
+               gr = "Công Ty";
+               break;
+            default:
+               break;
+         }
+         bsiNhom.Caption = "Nhóm : " + gr;
       }
 
       private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -132,7 +146,7 @@ namespace QLVT_DATHANG.Forms
          }
          else
          {
-            XtraMessageBox.Show(Cons.WarningUserCreateTK, Cons.CaptionWarning, 
+            XtraMessageBox.Show(Cons.WarningUserCreateTK, Cons.CaptionWarning,
                MessageBoxButtons.OK, MessageBoxIcon.Warning);
          }
       }

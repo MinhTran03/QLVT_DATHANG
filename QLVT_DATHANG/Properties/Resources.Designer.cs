@@ -63,6 +63,16 @@ namespace QLVT_DATHANG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _164_9_register_icon_iconbunny_removebg {
+            get {
+                object obj = ResourceManager.GetObject("164.9-register-icon-iconbunny-removebg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_cancel_file_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8_cancel_file_16", resourceCulture);

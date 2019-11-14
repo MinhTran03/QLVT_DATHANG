@@ -45,7 +45,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (grName.Equals("congty"))
          {
-            UtilCommon.SetupDSCN(cboDeployment);
+            UtilDB.SetupDSCN(cboDeployment);
             cboDeployment.Visible = true;
 
             btnAdd.Enabled = false;
@@ -106,7 +106,7 @@ namespace QLVT_DATHANG.Forms
          }
          catch (Exception ex)
          {
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
          }
       }
 

@@ -47,6 +47,8 @@
          this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
          this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
          this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+         this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+         this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
          this.SuspendLayout();
@@ -66,10 +68,12 @@
             this.barButtonItem1,
             this.btnDepot,
             this.btnOrder,
-            this.btnRegister});
+            this.btnRegister,
+            this.barStaticItem1,
+            this.barStaticItem2});
          this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
          this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-         this.ribbonControl1.MaxItemId = 12;
+         this.ribbonControl1.MaxItemId = 14;
          this.ribbonControl1.Name = "ribbonControl1";
          this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -92,18 +96,29 @@
          // 
          this.bsiMaNV.Caption = "MANV";
          this.bsiMaNV.Id = 2;
+         this.bsiMaNV.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiMaNV.ItemAppearance.Hovered.FontStyleDelta = System.Drawing.FontStyle.Bold;
+         this.bsiMaNV.ItemAppearance.Hovered.Options.UseFont = true;
+         this.bsiMaNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiMaNV.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+         this.bsiMaNV.ItemAppearance.Normal.Options.UseFont = true;
          this.bsiMaNV.Name = "bsiMaNV";
          // 
          // bsiHoTenNV
          // 
          this.bsiHoTenNV.Caption = "HOTENNV";
          this.bsiHoTenNV.Id = 3;
+         this.bsiHoTenNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiHoTenNV.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+         this.bsiHoTenNV.ItemAppearance.Normal.Options.UseFont = true;
          this.bsiHoTenNV.Name = "bsiHoTenNV";
          // 
          // bsiNhom
          // 
          this.bsiNhom.Caption = "NHOM";
          this.bsiNhom.Id = 4;
+         this.bsiNhom.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiNhom.ItemAppearance.Normal.Options.UseFont = true;
          this.bsiNhom.Name = "bsiNhom";
          // 
          // btnVatTu
@@ -192,7 +207,9 @@
          // 
          this.ribbonStatusBar1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.ribbonStatusBar1.ItemLinks.Add(this.bsiMaNV);
+         this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem1);
          this.ribbonStatusBar1.ItemLinks.Add(this.bsiHoTenNV);
+         this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem2);
          this.ribbonStatusBar1.ItemLinks.Add(this.bsiNhom);
          this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 422);
          this.ribbonStatusBar1.Name = "ribbonStatusBar1";
@@ -202,6 +219,18 @@
          // xtraTabbedMdiManager1
          // 
          this.xtraTabbedMdiManager1.MdiParent = this;
+         // 
+         // barStaticItem1
+         // 
+         this.barStaticItem1.Caption = "|";
+         this.barStaticItem1.Id = 12;
+         this.barStaticItem1.Name = "barStaticItem1";
+         // 
+         // barStaticItem2
+         // 
+         this.barStaticItem2.Caption = "|";
+         this.barStaticItem2.Id = 13;
+         this.barStaticItem2.Name = "barStaticItem2";
          // 
          // frmMain
          // 
@@ -247,6 +276,8 @@
       private DevExpress.XtraBars.BarButtonItem btnDepot;
       private DevExpress.XtraBars.BarButtonItem btnOrder;
       private DevExpress.XtraBars.BarButtonItem btnRegister;
+      private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+      private DevExpress.XtraBars.BarStaticItem barStaticItem2;
    }
 }
 

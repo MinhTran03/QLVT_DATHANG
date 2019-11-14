@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
-   using Constant;
    using DevExpress.Utils;
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
@@ -49,13 +48,17 @@ namespace QLVT_DATHANG.Forms
 
       private void ShowControlsByGroup(string grName)
       {
-         if (grName.Equals("congty"))
+         if (grName.Equals(Cons.CongTyGroupName))
          {
-            UtilCommon.SetupDSCN(this.cboDeployment);
+            UtilDB.SetupDSCN(this.cboDeployment);
             this.pnPickDepartment.Visible = true;
             this.btnAdd.Enabled = false;
             this.btnEdit.Enabled = false;
             this.btnDel.Enabled = false;
+         }
+         else if (grName.Equals(Cons.UserGroupName))
+         {
+            btnCreateLogin.Enabled = false;
          }
       }
 
@@ -148,7 +151,7 @@ namespace QLVT_DATHANG.Forms
          }
          catch (Exception ex)
          {
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
          }
       }
 
@@ -229,7 +232,7 @@ namespace QLVT_DATHANG.Forms
             {
                if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
                {
-                  XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning, 
+                  XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
                   txtEmpId.Focus();
                   txtEmpId.SelectAll();
@@ -251,7 +254,7 @@ namespace QLVT_DATHANG.Forms
             this.taNV.Fill(this.dataSet.NhanVien);
             dataSet.EnforceConstraints = true;
 
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
             return false;
          }
          bdsNV.Position = _currentPosition;
@@ -276,9 +279,15 @@ namespace QLVT_DATHANG.Forms
 
       #region EVENTS
 
+      private void btnCreateLogin_Click(object sender, EventArgs e)
+      {
+         int employeeId = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString());
+         CustomFlyoutDialog.ShowForm(this, null, new frmRegister(employeeId));
+      }
+
       private void cboEmpDep_SelectedIndexChanged(object sender, EventArgs e)
       {
-         if (cboDeployment.SelectedValue.ToString() == "System.Data.DataRowView") return;
+         if (cboDeployment.SelectedValue.ToString().Equals("System.Data.DataRowView")) return;
 
          // đổi server
          UtilDB.ServerName = cboDeployment.SelectedValue.ToString();
@@ -350,7 +359,7 @@ namespace QLVT_DATHANG.Forms
                }
                catch (Exception ex)
                {
-                  UtilCommon.ShowError(ex);
+                  UtilDB.ShowError(ex);
                }
             }
          }
@@ -390,7 +399,7 @@ namespace QLVT_DATHANG.Forms
          }
          catch (Exception ex)
          {
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
          }
          DisableEditMode();
       }

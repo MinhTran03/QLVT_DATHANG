@@ -1,26 +1,32 @@
-﻿using QLVT_DATHANG.Constant;
+﻿using DevExpress.XtraEditors;
 using QLVT_DATHANG.Utility;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System;
 
 namespace QLVT_DATHANG.Forms
 {
    public partial class frmRegister : XtraUserControl
    {
+      public frmRegister(int employeeId)
+      {
+         InitializeComponent();
+         txtEmpoyeeId.EditValue = employeeId;
+      }
+
       public frmRegister()
       {
          InitializeComponent();
       }
 
-      private void btnExit_Click(object sender, System.EventArgs e)
+      private void btnExit_Click(object sender, EventArgs e)
       {
+         errorProvider.ClearErrors();
          ((Form)this.TopLevelControl).Close();
       }
 
-      private void frmRegister_Load(object sender, System.EventArgs e)
+      private void frmRegister_Load(object sender, EventArgs e)
       {
          radCongTy.Tag = Cons.CongTyGroupName;
          radChiNhanh.Tag = Cons.ChiNhanhGroupName;
@@ -43,13 +49,14 @@ namespace QLVT_DATHANG.Forms
 
       private void textBoxNotNull_Validating(object sender, System.ComponentModel.CancelEventArgs e)
       {
-         var value = (sender as TextEdit).EditValue.ToString();
-         if (string.IsNullOrWhiteSpace(value))
+         var value = (sender as TextEdit).EditValue;
+         if (null == value)
          {
             errorProvider.SetError((sender as BaseEdit), Cons.ErrorNotNull);
          }
          else
          {
+            // remove error
             errorProvider.SetError((sender as BaseEdit), string.Empty);
          }
          e.Cancel = false;
@@ -63,6 +70,7 @@ namespace QLVT_DATHANG.Forms
             string pass = txtPassword.Text;
             int empId = int.Parse(txtEmpoyeeId.Text);
             string roleName = GetCheckedRole();
+
             bool result = CreateLogin(loginName, pass, empId, roleName);
             if (result)
             {
@@ -76,7 +84,7 @@ namespace QLVT_DATHANG.Forms
       {
          foreach (var control in lcRegister.Controls)
          {
-            if(control is RadioButton)
+            if (control is RadioButton)
             {
                var radio = (control as RadioButton);
                if (radio.Checked) return radio.Tag.ToString();
@@ -101,7 +109,7 @@ namespace QLVT_DATHANG.Forms
             }
             catch (Exception ex)
             {
-               UtilCommon.ShowError(ex);
+               UtilDB.ShowError(ex);
                result = false;
             }
          }
@@ -120,22 +128,30 @@ namespace QLVT_DATHANG.Forms
             isValid = false;
          }
          // kiểm tra password match
-         if(txtPassword.EditValue.Equals(txtConfirmPassword.EditValue) == false)
+         else if (txtPassword.EditValue.Equals(txtConfirmPassword.EditValue) == false)
          {
             XtraMessageBox.Show(Cons.ErrorConfirmPW, Cons.CaptionError,
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             txtConfirmPassword.EditValue = string.Empty;
-            txtPassword.SelectAll();
+            txtPassword.Select();
             isValid = false;
          }
          // kiểm tra radio button checked
-         if(GetCheckedRole() == null)
+         else if (GetCheckedRole() == null)
          {
             XtraMessageBox.Show(Cons.ErrorNotCheckedRole, Cons.CaptionError,
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             isValid = false;
          }
          return isValid;
+      }
+
+      private void textbox_Leave(object sender, EventArgs e)
+      {
+         if (string.IsNullOrEmpty((sender as TextEdit).Text))
+         {
+            (sender as TextEdit).EditValue = null;
+         }
       }
    }
 }

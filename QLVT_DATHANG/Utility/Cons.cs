@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace QLVT_DATHANG.Constant
+namespace QLVT_DATHANG.Utility
 {
    public class Cons
    {

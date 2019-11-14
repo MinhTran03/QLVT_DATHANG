@@ -1,5 +1,4 @@
-﻿using QLVT_DATHANG.Constant;
-using QLVT_DATHANG.Utility;
+﻿using QLVT_DATHANG.Utility;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -76,7 +75,7 @@ namespace QLVT_DATHANG.Forms
          }
          catch (Exception ex)
          {
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
          }
       }
 
@@ -189,7 +188,7 @@ namespace QLVT_DATHANG.Forms
             this.taVT.Fill(this.dataSet.Vattu);
 
             //dataSet.EnforceConstraints = true;
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
             return false;
          }
          bdsVT.Position = _currentPosition;
@@ -269,7 +268,7 @@ namespace QLVT_DATHANG.Forms
          }
          catch (Exception ex)
          {
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
          }
          EnableForm();
       }
@@ -289,7 +288,7 @@ namespace QLVT_DATHANG.Forms
             }
             catch (Exception ex)
             {
-               UtilCommon.ShowError(ex);
+               UtilDB.ShowError(ex);
             }
          }
       }

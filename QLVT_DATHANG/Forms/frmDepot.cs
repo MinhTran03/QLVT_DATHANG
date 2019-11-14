@@ -8,7 +8,6 @@ namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
-   using QLVT_DATHANG.Constant;
 
    public partial class frmDepot : XtraForm
    {
@@ -44,7 +43,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (grName.Equals("congty"))
          {
-            UtilCommon.SetupDSCN(this.cboDeployment);
+            UtilDB.SetupDSCN(this.cboDeployment);
             this.pnPickDepartment.Visible = true;
             this.btnAdd.Enabled = false;
             this.btnEdit.Enabled = false;
@@ -107,7 +106,7 @@ namespace QLVT_DATHANG.Forms
          }
          catch (Exception ex)
          {
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
          }
       }
 
@@ -127,7 +126,7 @@ namespace QLVT_DATHANG.Forms
 
       private void cboDeployment_SelectedIndexChanged(object sender, EventArgs e)
       {
-         if (cboDeployment.SelectedValue.ToString() == "System.Data.DataRowView") return;
+         if (cboDeployment.SelectedValue.ToString().Equals("System.Data.DataRowView")) return;
 
          // đổi server
          UtilDB.ServerName = cboDeployment.SelectedValue.ToString();

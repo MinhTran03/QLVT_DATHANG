@@ -4,8 +4,8 @@ using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
-   using Constant;
    using DevExpress.XtraEditors;
+   using System.Data;
    using Utility;
 
    public partial class frmLogin : XtraForm
@@ -27,42 +27,34 @@ namespace QLVT_DATHANG.Forms
          {
             UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable("SELECT * FROM V_DS_PHANMANH", cnnStr);
 
-            UtilCommon.SetupDSCN(cboChiNhanh);
+            UtilDB.SetupDSCN(cboChiNhanh);
 
             cboChiNhanh.SelectedIndex = -1;
             cboChiNhanh.SelectedIndex = 0;
          }
          catch (SqlException ex)
          {
-            UtilCommon.ShowError(ex);
+            UtilDB.ShowError(ex);
          }
          txtTK.Select();
       }
 
       private void cboChiNhanh_SelectedIndexChanged(object sender, EventArgs e)
       {
+         if (cboChiNhanh.SelectedValue == null) return;
          try
          {
             UtilDB.ServerName = cboChiNhanh.SelectedValue.ToString();
             lblServerPM.Text = UtilDB.ServerName;
          }
-         catch (Exception) { };
-      }
-
-      private bool IsLogin()
-      {
-         UtilDB.CurrentLogin = txtTK.Text;
-         UtilDB.CurrentPassword = txtMK.Text;
-
-         if (UtilDB.Connect() == 0) return false;
-         return true;
+         catch (Exception ex) { UtilDB.ShowError(ex); }
       }
 
       private void btnDangNhap_Click(object sender, EventArgs e)
       {
          if (errorProvider.HasErrors)
          {
-            XtraMessageBox.Show(Cons.ErrorEmptyValueLogin, Cons.CaptionWarning, 
+            XtraMessageBox.Show(Cons.ErrorEmptyValueLogin, Cons.CaptionWarning,
                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
             errorProvider.GetControlsWithError()[0].Select();
             return;
@@ -75,7 +67,7 @@ namespace QLVT_DATHANG.Forms
          UtilDB.BackupLogin = UtilDB.CurrentLogin;
          UtilDB.BackupPassword = UtilDB.CurrentPassword;
 
-         if (!UtilDB.GetAndSaveUserInfo()) return;
+         if (!GetAndSaveUserInfoFromDB()) return;
 
          // Copy tren stack overflow
          frmMain formMain = new frmMain();
@@ -127,6 +119,65 @@ namespace QLVT_DATHANG.Forms
             errorProvider.SetError((sender as BaseEdit), string.Empty);
          }
          e.Cancel = false;
+      }
+
+      /// <summary>
+      /// Kiểm tra username và mật khẩu có connect được với server
+      /// Lưu lại username và mật khẩu vào UtilDB
+      /// </summary>
+      /// <returns>true nếu connect thành công</returns>
+      private bool IsLogin()
+      {
+         UtilDB.CurrentLogin = txtTK.Text;
+         UtilDB.CurrentPassword = txtMK.Text;
+
+         if (UtilDB.Connect() == 0) return false;
+         return true;
+      }
+
+      /// <summary>
+      /// Dùng username và mật khẩu khi connect thành công
+      /// Exec sp_login để lấy Nhóm quyền, Tên, Mã NV
+      /// </summary>
+      /// <returns></returns>
+      public static bool GetAndSaveUserInfoFromDB()
+      {
+         bool flag = true;
+         string cmdText = string.Format(MyConfig.ExecSPThongTinDangNhap, UtilDB.CurrentLogin);
+         using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
+         {
+            connection.Open();
+            SqlCommand sqlcmd = new SqlCommand(cmdText, connection);
+            sqlcmd.CommandType = CommandType.Text;
+
+            using (SqlDataReader reader = sqlcmd.ExecuteReader())
+            {
+               try
+               {
+                  if (reader == null) flag = false;
+
+                  reader.Read();
+
+                  UtilDB.UserName = reader.GetString(0);     // Lay MANV
+                  if (Convert.IsDBNull(UtilDB.UserName))
+                  {
+                     XtraMessageBox.Show(Cons.ErrorLogin, Cons.CaptionError, MessageBoxButtons.OK);
+                     flag = false;
+                  }
+                  else
+                  {
+                     UtilDB.CurrentFullName = reader.GetString(1);
+                     UtilDB.CurrentGroup = reader.GetString(2);
+                  }
+               }
+               catch (SqlException ex)
+               {
+                  XtraMessageBox.Show(ex.Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  flag = false;
+               }
+            }
+         }
+         return flag;
       }
    }
 }

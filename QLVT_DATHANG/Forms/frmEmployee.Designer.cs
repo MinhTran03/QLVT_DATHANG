@@ -89,6 +89,8 @@
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+         this.cmsEmployee = new System.Windows.Forms.ContextMenuStrip(this.components);
+         this.btnCreateLogin = new System.Windows.Forms.ToolStripMenuItem();
          mANVLabel = new System.Windows.Forms.Label();
          hOLabel = new System.Windows.Forms.Label();
          dIACHILabel = new System.Windows.Forms.Label();
@@ -120,6 +122,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
+         this.cmsEmployee.SuspendLayout();
          this.SuspendLayout();
          // 
          // mANVLabel
@@ -573,6 +576,7 @@
          // 
          // gcEmployee
          // 
+         this.gcEmployee.ContextMenuStrip = this.cmsEmployee;
          this.gcEmployee.DataSource = this.bdsNV;
          this.gcEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcEmployee.Location = new System.Drawing.Point(0, 54);
@@ -721,6 +725,20 @@
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
+         // cmsEmployee
+         // 
+         this.cmsEmployee.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCreateLogin});
+         this.cmsEmployee.Name = "cmsEmployee";
+         this.cmsEmployee.Size = new System.Drawing.Size(181, 48);
+         // 
+         // btnCreateLogin
+         // 
+         this.btnCreateLogin.Name = "btnCreateLogin";
+         this.btnCreateLogin.Size = new System.Drawing.Size(180, 22);
+         this.btnCreateLogin.Text = "Tạo tài khoản";
+         this.btnCreateLogin.Click += new System.EventHandler(this.btnCreateLogin_Click);
+         // 
          // frmEmployee
          // 
          this.Appearance.Options.UseFont = true;
@@ -768,6 +786,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
+         this.cmsEmployee.ResumeLayout(false);
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -827,5 +846,7 @@
       private DevExpress.XtraEditors.PictureEdit pictureEdit1;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
+      private System.Windows.Forms.ContextMenuStrip cmsEmployee;
+      private System.Windows.Forms.ToolStripMenuItem btnCreateLogin;
    }
 }

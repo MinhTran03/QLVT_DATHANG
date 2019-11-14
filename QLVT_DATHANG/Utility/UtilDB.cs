@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using QLVT_DATHANG.Constant;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -22,16 +21,32 @@ namespace QLVT_DATHANG.Utility
       public static int CurrentDeployment = 0;
 
       public static BindingSource BdsDSPM = new BindingSource();  // giữ bdsPM khi đăng nhập
-                                                                  //public static frmMain frmChinh;
+
+      public static DataTable ExecSqlDataTable(string cmdText, string connectionString)
+      {
+         DataTable dt = new DataTable();
+         using (SqlConnection connection = new SqlConnection(connectionString))
+         {
+            connection.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmdText, connection);
+            da.Fill(dt);
+         }
+         return dt;
+      }
+
+      /// <summary>
+      /// Kiểm tra kết nối dùng username và password người dùng nhập
+      /// </summary>
+      /// <returns></returns>
       public static int Connect()
       {
          try
          {
-            ConnectionString = $"Data Source={ServerName};" +
+            UtilDB.ConnectionString = $"Data Source={UtilDB.ServerName};" +
                                 $"Initial Catalog={MyConfig.DatabaseName};" +
-                                $"User ID={CurrentLogin};" +
-                                $"password={CurrentPassword}";
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+                                $"User ID={UtilDB.CurrentLogin};" +
+                                $"password={UtilDB.CurrentPassword}";
+            using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
             {
                connection.Open();
             }
@@ -46,52 +61,28 @@ namespace QLVT_DATHANG.Utility
          }
       }
 
-      public static bool GetAndSaveUserInfo()
+      /// <summary>
+      /// Setup combobox hiển thị các chi nhánh hiện có
+      /// </summary>
+      /// <param name="comboBox"></param>
+      public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox)
       {
-         string cmdText = string.Format(MyConfig.ExecSPThongTinDangNhap, CurrentLogin);
-         SqlDataReader reader;
-         bool flag = true;
-         using (SqlConnection connection = new SqlConnection(ConnectionString))
-         {
-            connection.Open();
-            SqlCommand sqlcmd = new SqlCommand(cmdText, connection);
-            sqlcmd.CommandType = CommandType.Text;
-
-            try
-            {
-               reader = sqlcmd.ExecuteReader();
-               if (reader == null) flag = false;
-
-               reader.Read();
-
-               UserName = reader.GetString(0);     // Lay user name
-               if (Convert.IsDBNull(UserName))
-               {
-                  XtraMessageBox.Show(Cons.ErrorLogin, Cons.CaptionError, MessageBoxButtons.OK);
-                  flag = false;
-               }
-               CurrentFullName = reader.GetString(1);
-               CurrentGroup = reader.GetString(2);
-            }
-            catch (SqlException ex)
-            {
-               XtraMessageBox.Show(ex.Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-               flag = false;
-            }
-         }
-         return flag;
+         comboBox.DataSource = BdsDSPM;
+         comboBox.DisplayMember = MyConfig.DisplayMemberDSPM;
+         comboBox.ValueMember = MyConfig.ValueMemberDSPM;
       }
 
-      public static DataTable ExecSqlDataTable(string cmdText, string connectionString)
+      public static void ShowError(Exception e)
       {
-         DataTable dt = new DataTable();
-         using (SqlConnection connection = new SqlConnection(connectionString))
+         string message = e.Message + "\n";
+         string source = "Source: " + e.Source + "\n";
+         string targetSite = "Method: " + e.TargetSite + "\n";
+         XtraMessageBox.Show(source + targetSite + message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+         Console.WriteLine(e.StackTrace);
+         if (e.GetType() == typeof(SqlException))
          {
-            connection.Open();
-            SqlDataAdapter da = new SqlDataAdapter(cmdText, connection);
-            da.Fill(dt);
+            Console.WriteLine("===>" + ((SqlException)e).Number.ToString());
          }
-         return dt;
       }
    }
 }
