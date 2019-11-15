@@ -16,5 +16,6 @@ namespace QLVT_DATHANG
       public const string ExecSPTimNhanVien = "EXEC sp_timnhanvien {0}";
       public const string ExecSPTimVatTu = "EXEC sp_timvattu '{0}'";
       public const string ExecSPTaoTaiKhoan = "EXEC sp_createlogin '{0}', '{1}', '{2}', '{3}'";
+      public const string ExecSPKiemTraNVCoTaiKhoan = "EXEC sp_timtaikhoannhanvien '{0}'";
    }
 }

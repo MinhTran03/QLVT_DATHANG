@@ -282,7 +282,25 @@ namespace QLVT_DATHANG.Forms
       private void btnCreateLogin_Click(object sender, EventArgs e)
       {
          int employeeId = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString());
-         CustomFlyoutDialog.ShowForm(this, null, new frmRegister(employeeId));
+
+         string strLenh = string.Format(MyConfig.ExecSPKiemTraNVCoTaiKhoan, employeeId);
+         using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
+         {
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(strLenh, connection))
+            {
+               command.CommandType = CommandType.Text;
+               try
+               {
+                  command.ExecuteNonQuery();
+                  XtraMessageBox.Show("Nhân viên đã tạo tài khoản");
+               }
+               catch (SqlException)
+               {
+                  CustomFlyoutDialog.ShowForm(this, null, new frmRegister(employeeId));
+               }
+            }
+         }
       }
 
       private void cboEmpDep_SelectedIndexChanged(object sender, EventArgs e)
@@ -491,16 +509,18 @@ namespace QLVT_DATHANG.Forms
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
             connection.Open();
-            SqlCommand sqlcmd = new SqlCommand(strLenh, connection);
-            sqlcmd.CommandType = CommandType.Text;
-            try
+            using (SqlCommand sqlcmd = new SqlCommand(strLenh, connection))
             {
-               sqlcmd.ExecuteNonQuery();
-               exist = true;
-            }
-            catch (SqlException)
-            {
-               exist = false;
+               sqlcmd.CommandType = CommandType.Text;
+               try
+               {
+                  sqlcmd.ExecuteNonQuery();
+                  exist = true;
+               }
+               catch (SqlException)
+               {
+                  exist = false;
+               }
             }
          }
          return exist;
