@@ -41,14 +41,14 @@
          this.btnDepot = new DevExpress.XtraBars.BarButtonItem();
          this.btnOrder = new DevExpress.XtraBars.BarButtonItem();
          this.btnRegister = new DevExpress.XtraBars.BarButtonItem();
+         this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+         this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
          this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
          this.rbpCategory = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
          this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
          this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
          this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
          this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-         this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-         this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
          this.SuspendLayout();
@@ -172,6 +172,18 @@
          this.btnRegister.Name = "btnRegister";
          this.btnRegister.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegister_ItemClick);
          // 
+         // barStaticItem1
+         // 
+         this.barStaticItem1.Caption = "|";
+         this.barStaticItem1.Id = 12;
+         this.barStaticItem1.Name = "barStaticItem1";
+         // 
+         // barStaticItem2
+         // 
+         this.barStaticItem2.Caption = "|";
+         this.barStaticItem2.Id = 13;
+         this.barStaticItem2.Name = "barStaticItem2";
+         // 
          // ribbonPage1
          // 
          this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -220,18 +232,6 @@
          // 
          this.xtraTabbedMdiManager1.MdiParent = this;
          // 
-         // barStaticItem1
-         // 
-         this.barStaticItem1.Caption = "|";
-         this.barStaticItem1.Id = 12;
-         this.barStaticItem1.Name = "barStaticItem1";
-         // 
-         // barStaticItem2
-         // 
-         this.barStaticItem2.Caption = "|";
-         this.barStaticItem2.Id = 13;
-         this.barStaticItem2.Name = "barStaticItem2";
-         // 
          // frmMain
          // 
          this.Appearance.Options.UseFont = true;
@@ -241,6 +241,7 @@
          this.Controls.Add(this.ribbonStatusBar1);
          this.Controls.Add(this.ribbonControl1);
          this.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.IsMdiContainer = true;
          this.Margin = new System.Windows.Forms.Padding(4);
          this.Name = "frmMain";

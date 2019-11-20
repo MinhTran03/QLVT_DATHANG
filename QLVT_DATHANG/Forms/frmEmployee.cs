@@ -13,6 +13,7 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraEditors.Mask;
    using DevExpress.XtraGrid.Views.Base;
    using Utility;
+   using UserControls;
 
    public partial class frmEmployee : XtraForm
    {
@@ -112,10 +113,7 @@ namespace QLVT_DATHANG.Forms
 
       private void userDo_StackPushed(object sender, StackEventAgrs e)
       {
-         if (_userDo.Count == 1)
-         {
-            btnUndo.Enabled = true;
-         }
+         btnUndo.Enabled = true;
       }
 
       private void LoadTable()
@@ -200,7 +198,7 @@ namespace QLVT_DATHANG.Forms
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
-
+      
          switch (action.ActionType)
          {
             case ButtonActionType.Add:
@@ -373,7 +371,6 @@ namespace QLVT_DATHANG.Forms
          }
 
          _currentPosition = bdsNV.Position;
-         _buttonAction = ButtonActionType.Delete;
 
          string ho = ((DataRowView)bdsNV[_currentPosition])["HO"].ToString();
          string ten = ((DataRowView)bdsNV[_currentPosition])["TEN"].ToString();
@@ -385,7 +382,7 @@ namespace QLVT_DATHANG.Forms
             try
             {
                // lưu lại data trước khi xóa
-               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[_currentPosition]).Row.ItemArray));
+               _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[_currentPosition]).Row.ItemArray));
 
                bdsNV.RemoveCurrent();
                this.taNV.Update(this.dataSet.NhanVien);

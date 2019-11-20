@@ -164,13 +164,13 @@
          // gcVT
          // 
          this.gcVT.DataSource = this.bdsVT;
-         this.gcVT.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcVT.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcVT.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Location = new System.Drawing.Point(0, 24);
          this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(873, 208);
+         this.gcVT.Size = new System.Drawing.Size(873, 203);
          this.gcVT.TabIndex = 6;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMaterial});
@@ -193,7 +193,7 @@
          // 
          // colMAVT
          // 
-         this.colMAVT.Caption = "MÃ Vật TƯ";
+         this.colMAVT.Caption = "MÃ VẬT TƯ";
          this.colMAVT.FieldName = "MAVT";
          this.colMAVT.MinWidth = 19;
          this.colMAVT.Name = "colMAVT";
@@ -439,7 +439,7 @@
          this.gbVT.Controls.Add(tENVTLabel);
          this.gbVT.Controls.Add(this.spiSLT);
          this.gbVT.Controls.Add(dVTLabel);
-         this.gbVT.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gbVT.Dock = System.Windows.Forms.DockStyle.Bottom;
          this.gbVT.Location = new System.Drawing.Point(0, 232);
          this.gbVT.Name = "gbVT";
          this.gbVT.Size = new System.Drawing.Size(873, 255);
@@ -448,8 +448,8 @@
          // 
          // splitterControl1
          // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 232);
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.splitterControl1.Location = new System.Drawing.Point(0, 227);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(873, 5);
          this.splitterControl1.TabIndex = 24;
@@ -487,9 +487,9 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(873, 487);
+         this.Controls.Add(this.gcVT);
          this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gbVT);
-         this.Controls.Add(this.gcVT);
          this.Controls.Add(this.barDockControl3);
          this.Controls.Add(this.barDockControl4);
          this.Controls.Add(this.barDockControl2);

@@ -39,9 +39,6 @@
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
-         this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
-         this.btnDel = new DevExpress.XtraBars.BarButtonItem();
-         this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
          this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
          this.btnSave = new DevExpress.XtraBars.BarButtonItem();
          this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -63,12 +60,12 @@
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.sccOrder = new DevExpress.XtraEditors.SplitContainerControl();
          this.gbOrder = new DevExpress.XtraEditors.GroupControl();
-         this.searchLookUpEdit1 = new DevExpress.XtraEditors.SearchLookUpEdit();
+         this.lkeEmployee = new DevExpress.XtraEditors.SearchLookUpEdit();
          this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
          this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
          this.dtpOrderDate = new DevExpress.XtraEditors.DateEdit();
-         this.dtpProvider = new DevExpress.XtraEditors.TextEdit();
+         this.txtProvider = new DevExpress.XtraEditors.TextEdit();
          this.gbOrderDetail = new DevExpress.XtraEditors.GroupControl();
          this.gcOrderDetail = new System.Windows.Forms.DataGridView();
          this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +73,8 @@
          this.bdsVT = new System.Windows.Forms.BindingSource(this.components);
          this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.cmsOrderDetail = new System.Windows.Forms.ContextMenuStrip(this.components);
+         this.btnAddOrderDetail = new System.Windows.Forms.ToolStripMenuItem();
          this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -83,6 +82,7 @@
          this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
+         this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          masoDDHLabel = new System.Windows.Forms.Label();
          nGAYLabel = new System.Windows.Forms.Label();
          nhaCCLabel = new System.Windows.Forms.Label();
@@ -96,57 +96,63 @@
          this.sccOrder.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          this.gbOrder.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dtpProvider.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtProvider.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).BeginInit();
          this.gbOrderDetail.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).BeginInit();
+         this.cmsOrderDetail.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
          this.SuspendLayout();
          // 
          // masoDDHLabel
          // 
          masoDDHLabel.AutoSize = true;
-         masoDDHLabel.Location = new System.Drawing.Point(17, 26);
+         masoDDHLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         masoDDHLabel.Location = new System.Drawing.Point(64, 61);
          masoDDHLabel.Name = "masoDDHLabel";
-         masoDDHLabel.Size = new System.Drawing.Size(112, 13);
+         masoDDHLabel.Size = new System.Drawing.Size(124, 13);
          masoDDHLabel.TabIndex = 0;
-         masoDDHLabel.Text = "Mã Số Đơn Đặt Hàng:";
+         masoDDHLabel.Text = "Mã số đơn đặt hàng:";
          // 
          // nGAYLabel
          // 
          nGAYLabel.AutoSize = true;
-         nGAYLabel.Location = new System.Drawing.Point(17, 52);
+         nGAYLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         nGAYLabel.Location = new System.Drawing.Point(125, 113);
          nGAYLabel.Name = "nGAYLabel";
-         nGAYLabel.Size = new System.Drawing.Size(57, 13);
+         nGAYLabel.Size = new System.Drawing.Size(63, 13);
          nGAYLabel.TabIndex = 2;
-         nGAYLabel.Text = "Ngày Đặt:";
+         nGAYLabel.Text = "Ngày đặt:";
          // 
          // nhaCCLabel
          // 
          nhaCCLabel.AutoSize = true;
-         nhaCCLabel.Location = new System.Drawing.Point(17, 78);
+         nhaCCLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         nhaCCLabel.Location = new System.Drawing.Point(99, 87);
          nhaCCLabel.Name = "nhaCCLabel";
-         nhaCCLabel.Size = new System.Drawing.Size(80, 13);
+         nhaCCLabel.Size = new System.Drawing.Size(89, 13);
          nhaCCLabel.TabIndex = 4;
-         nhaCCLabel.Text = "Nhà Cung Cấp:";
+         nhaCCLabel.Text = "Nhà cung cấp:";
          // 
          // mANVLabel
          // 
          mANVLabel.AutoSize = true;
-         mANVLabel.Location = new System.Drawing.Point(17, 104);
+         mANVLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         mANVLabel.Location = new System.Drawing.Point(119, 139);
          mANVLabel.Name = "mANVLabel";
-         mANVLabel.Size = new System.Drawing.Size(59, 13);
+         mANVLabel.Size = new System.Drawing.Size(69, 13);
          mANVLabel.TabIndex = 6;
-         mANVLabel.Text = "Nhân Viên:";
+         mANVLabel.Text = "Nhân viên:";
          // 
          // bmPN
          // 
@@ -159,10 +165,7 @@
          this.bmPN.Form = this;
          this.bmPN.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnAdd,
-            this.btnDel,
-            this.btnEdit,
             this.btnSave,
-            this.btnUndo,
             this.btnRefresh,
             this.btnExit,
             this.btnCancelEdit});
@@ -177,9 +180,6 @@
          this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
          this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnAdd),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSave),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelEdit),
@@ -195,30 +195,7 @@
          this.btnAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdd.ImageOptions.SvgImage")));
          this.btnAdd.Name = "btnAdd";
          this.btnAdd.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-         // 
-         // btnEdit
-         // 
-         this.btnEdit.Caption = "SỬA";
-         this.btnEdit.Id = 2;
-         this.btnEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEdit.ImageOptions.SvgImage")));
-         this.btnEdit.Name = "btnEdit";
-         this.btnEdit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-         // 
-         // btnDel
-         // 
-         this.btnDel.Caption = "XÓA";
-         this.btnDel.Id = 1;
-         this.btnDel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDel.ImageOptions.SvgImage")));
-         this.btnDel.Name = "btnDel";
-         this.btnDel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-         // 
-         // btnUndo
-         // 
-         this.btnUndo.Caption = "PHỤC HỒI";
-         this.btnUndo.Id = 4;
-         this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUndo.ImageOptions.SvgImage")));
-         this.btnUndo.Name = "btnUndo";
-         this.btnUndo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAdd_ItemClick);
          // 
          // btnRefresh
          // 
@@ -227,22 +204,27 @@
          this.btnRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRefresh.ImageOptions.SvgImage")));
          this.btnRefresh.Name = "btnRefresh";
          this.btnRefresh.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
          // 
          // btnSave
          // 
          this.btnSave.Caption = "GHI";
+         this.btnSave.Enabled = false;
          this.btnSave.Id = 3;
          this.btnSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSave.ImageOptions.SvgImage")));
          this.btnSave.Name = "btnSave";
          this.btnSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
          // 
          // btnCancelEdit
          // 
          this.btnCancelEdit.Caption = "HỦY";
+         this.btnCancelEdit.Enabled = false;
          this.btnCancelEdit.Id = 7;
          this.btnCancelEdit.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_cancel_file_16;
          this.btnCancelEdit.Name = "btnCancelEdit";
          this.btnCancelEdit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnCancelEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelEdit_ItemClick);
          // 
          // btnExit
          // 
@@ -251,6 +233,7 @@
          this.btnExit.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_exit_16;
          this.btnExit.Name = "btnExit";
          this.btnExit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
          // 
          // barDockControlTop
          // 
@@ -317,6 +300,7 @@
          // 
          this.gcOrder.DataSource = this.bdsDDH;
          this.gcOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gcOrder.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gcOrder.Location = new System.Drawing.Point(0, 54);
          this.gcOrder.LookAndFeel.SkinName = "DevExpress Dark Style";
          this.gcOrder.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
@@ -398,13 +382,15 @@
          // 
          // gbOrder
          // 
-         this.gbOrder.Controls.Add(this.searchLookUpEdit1);
+         this.gbOrder.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbOrder.AppearanceCaption.Options.UseFont = true;
+         this.gbOrder.Controls.Add(this.lkeEmployee);
          this.gbOrder.Controls.Add(masoDDHLabel);
          this.gbOrder.Controls.Add(this.txtOrderId);
          this.gbOrder.Controls.Add(nGAYLabel);
          this.gbOrder.Controls.Add(this.dtpOrderDate);
          this.gbOrder.Controls.Add(nhaCCLabel);
-         this.gbOrder.Controls.Add(this.dtpProvider);
+         this.gbOrder.Controls.Add(this.txtProvider);
          this.gbOrder.Controls.Add(mANVLabel);
          this.gbOrder.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrder.Location = new System.Drawing.Point(0, 0);
@@ -413,25 +399,28 @@
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin Đơn Đặt Hàng";
          // 
-         // searchLookUpEdit1
+         // lkeEmployee
          // 
-         this.searchLookUpEdit1.CausesValidation = false;
-         this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
-         this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
-         this.searchLookUpEdit1.Location = new System.Drawing.Point(135, 101);
-         this.searchLookUpEdit1.MenuManager = this.bmPN;
-         this.searchLookUpEdit1.Name = "searchLookUpEdit1";
-         this.searchLookUpEdit1.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-         this.searchLookUpEdit1.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-         this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+         this.lkeEmployee.CausesValidation = false;
+         this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
+         this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
+         this.lkeEmployee.Location = new System.Drawing.Point(194, 136);
+         this.lkeEmployee.MenuManager = this.bmPN;
+         this.lkeEmployee.Name = "lkeEmployee";
+         this.lkeEmployee.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+         this.lkeEmployee.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lkeEmployee.Properties.Appearance.Options.UseFont = true;
+         this.lkeEmployee.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+         this.lkeEmployee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.DropDown)});
-         this.searchLookUpEdit1.Properties.DataSource = this.bdsDSNV;
-         this.searchLookUpEdit1.Properties.DisplayMember = "HOTEN";
-         this.searchLookUpEdit1.Properties.NullText = "";
-         this.searchLookUpEdit1.Properties.PopupView = this.searchLookUpEdit1View;
-         this.searchLookUpEdit1.Properties.ValueMember = "MANV";
-         this.searchLookUpEdit1.Size = new System.Drawing.Size(157, 20);
-         this.searchLookUpEdit1.TabIndex = 12;
+         this.lkeEmployee.Properties.DataSource = this.bdsDSNV;
+         this.lkeEmployee.Properties.DisplayMember = "HOTEN";
+         this.lkeEmployee.Properties.NullText = "";
+         this.lkeEmployee.Properties.PopupView = this.searchLookUpEdit1View;
+         this.lkeEmployee.Properties.ReadOnly = true;
+         this.lkeEmployee.Properties.ValueMember = "MANV";
+         this.lkeEmployee.Size = new System.Drawing.Size(157, 20);
+         this.lkeEmployee.TabIndex = 12;
          // 
          // bdsDSNV
          // 
@@ -448,9 +437,11 @@
          // txtOrderId
          // 
          this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
-         this.txtOrderId.Location = new System.Drawing.Point(135, 23);
+         this.txtOrderId.Location = new System.Drawing.Point(194, 58);
          this.txtOrderId.MenuManager = this.bmPN;
          this.txtOrderId.Name = "txtOrderId";
+         this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtOrderId.Properties.Appearance.Options.UseFont = true;
          this.txtOrderId.Size = new System.Drawing.Size(157, 20);
          this.txtOrderId.TabIndex = 1;
          // 
@@ -458,27 +449,34 @@
          // 
          this.dtpOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NGAY", true));
          this.dtpOrderDate.EditValue = null;
-         this.dtpOrderDate.Location = new System.Drawing.Point(135, 49);
+         this.dtpOrderDate.Location = new System.Drawing.Point(194, 110);
          this.dtpOrderDate.MenuManager = this.bmPN;
          this.dtpOrderDate.Name = "dtpOrderDate";
+         this.dtpOrderDate.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.dtpOrderDate.Properties.Appearance.Options.UseFont = true;
          this.dtpOrderDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.dtpOrderDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpOrderDate.Properties.ReadOnly = true;
          this.dtpOrderDate.Size = new System.Drawing.Size(157, 20);
          this.dtpOrderDate.TabIndex = 3;
          // 
-         // dtpProvider
+         // txtProvider
          // 
-         this.dtpProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
-         this.dtpProvider.Location = new System.Drawing.Point(135, 75);
-         this.dtpProvider.MenuManager = this.bmPN;
-         this.dtpProvider.Name = "dtpProvider";
-         this.dtpProvider.Size = new System.Drawing.Size(157, 20);
-         this.dtpProvider.TabIndex = 5;
+         this.txtProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
+         this.txtProvider.Location = new System.Drawing.Point(194, 84);
+         this.txtProvider.MenuManager = this.bmPN;
+         this.txtProvider.Name = "txtProvider";
+         this.txtProvider.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtProvider.Properties.Appearance.Options.UseFont = true;
+         this.txtProvider.Size = new System.Drawing.Size(157, 20);
+         this.txtProvider.TabIndex = 5;
          // 
          // gbOrderDetail
          // 
+         this.gbOrderDetail.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbOrderDetail.AppearanceCaption.Options.UseFont = true;
          this.gbOrderDetail.CaptionImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_edit_property_16;
          this.gbOrderDetail.CaptionLocation = DevExpress.Utils.Locations.Top;
          this.gbOrderDetail.Controls.Add(this.gcOrderDetail);
@@ -501,7 +499,7 @@
          this.gcOrderDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
          dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
          dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-         dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
          dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSlateGray;
          dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -513,6 +511,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
+         this.gcOrderDetail.ContextMenuStrip = this.cmsOrderDetail;
          this.gcOrderDetail.DataSource = this.bdsCTDDH;
          dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
          dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -529,6 +528,7 @@
          this.gcOrderDetail.Name = "gcOrderDetail";
          this.gcOrderDetail.RowHeadersVisible = false;
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+         this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gcOrderDetail.Size = new System.Drawing.Size(402, 178);
          this.gcOrderDetail.TabIndex = 0;
          // 
@@ -570,6 +570,20 @@
          this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
          this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
          // 
+         // cmsOrderDetail
+         // 
+         this.cmsOrderDetail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAddOrderDetail});
+         this.cmsOrderDetail.Name = "cmsOrderDetail";
+         this.cmsOrderDetail.Size = new System.Drawing.Size(172, 26);
+         // 
+         // btnAddOrderDetail
+         // 
+         this.btnAddOrderDetail.Name = "btnAddOrderDetail";
+         this.btnAddOrderDetail.Size = new System.Drawing.Size(171, 22);
+         this.btnAddOrderDetail.Text = "Thêm chi tiết DDH";
+         this.btnAddOrderDetail.Click += new System.EventHandler(this.btnAddOrderDetail_Click);
+         // 
          // bdsCTDDH
          // 
          this.bdsCTDDH.DataMember = "FK_CTDDH_DatHang";
@@ -588,9 +602,11 @@
          // 
          // labelControl1
          // 
-         this.labelControl1.Location = new System.Drawing.Point(12, 9);
+         this.labelControl1.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl1.Appearance.Options.UseFont = true;
+         this.labelControl1.Location = new System.Drawing.Point(12, 8);
          this.labelControl1.Name = "labelControl1";
-         this.labelControl1.Size = new System.Drawing.Size(81, 13);
+         this.labelControl1.Size = new System.Drawing.Size(98, 13);
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
@@ -599,8 +615,9 @@
          this.cboDeployment.BackColor = System.Drawing.SystemColors.Window;
          this.cboDeployment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cboDeployment.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.cboDeployment.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.cboDeployment.FormattingEnabled = true;
-         this.cboDeployment.Location = new System.Drawing.Point(99, 5);
+         this.cboDeployment.Location = new System.Drawing.Point(116, 5);
          this.cboDeployment.Name = "cboDeployment";
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
@@ -616,6 +633,10 @@
          // taVT
          // 
          this.taVT.ClearBeforeFill = true;
+         // 
+         // dxErrorProvider
+         // 
+         this.dxErrorProvider.ContainerControl = this;
          // 
          // frmOrders
          // 
@@ -645,21 +666,23 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
          this.gbOrder.ResumeLayout(false);
          this.gbOrder.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dtpProvider.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtProvider.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).EndInit();
          this.gbOrderDetail.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
+         this.cmsOrderDetail.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -670,9 +693,6 @@
       private DevExpress.XtraBars.BarManager bmPN;
       private DevExpress.XtraBars.Bar bar2;
       private DevExpress.XtraBars.BarButtonItem btnAdd;
-      private DevExpress.XtraBars.BarButtonItem btnEdit;
-      private DevExpress.XtraBars.BarButtonItem btnDel;
-      private DevExpress.XtraBars.BarButtonItem btnUndo;
       private DevExpress.XtraBars.BarButtonItem btnRefresh;
       private DevExpress.XtraBars.BarButtonItem btnSave;
       private DevExpress.XtraBars.BarButtonItem btnCancelEdit;
@@ -702,7 +722,7 @@
       private System.Windows.Forms.DataGridView gcOrderDetail;
       private DevExpress.XtraEditors.TextEdit txtOrderId;
       private DevExpress.XtraEditors.DateEdit dtpOrderDate;
-      private DevExpress.XtraEditors.TextEdit dtpProvider;
+      private DevExpress.XtraEditors.TextEdit txtProvider;
       private System.Windows.Forms.BindingSource bdsDSNV;
       private DataSetTableAdapters.DSNVTableAdepter taDSNV;
       private DevExpress.XtraEditors.GroupControl gbOrderDetail;
@@ -712,7 +732,10 @@
       private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-      private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEdit1;
+      private DevExpress.XtraEditors.SearchLookUpEdit lkeEmployee;
       private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+      private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
+      private System.Windows.Forms.ContextMenuStrip cmsOrderDetail;
+      private System.Windows.Forms.ToolStripMenuItem btnAddOrderDetail;
    }
 }

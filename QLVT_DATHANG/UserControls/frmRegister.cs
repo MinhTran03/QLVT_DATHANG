@@ -1,12 +1,14 @@
 ﻿using DevExpress.XtraEditors;
-using QLVT_DATHANG.Utility;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace QLVT_DATHANG.Forms
+namespace QLVT_DATHANG.UserControls
 {
+
+   using Utility;
+
    public partial class frmRegister : XtraUserControl
    {
       public frmRegister(int employeeId)

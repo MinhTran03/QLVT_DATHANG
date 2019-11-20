@@ -1,4 +1,4 @@
-﻿namespace QLVT_DATHANG.Forms
+﻿namespace QLVT_DATHANG.UserControls
 {
    partial class frmRegister
    {

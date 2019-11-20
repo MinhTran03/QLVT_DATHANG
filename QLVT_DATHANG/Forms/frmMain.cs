@@ -6,6 +6,7 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
    using DevExpress.XtraEditors;
    using Utility;
+   using UserControls;
 
    public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
    {

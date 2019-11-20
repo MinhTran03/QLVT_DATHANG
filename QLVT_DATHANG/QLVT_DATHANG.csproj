@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ED2FF8E6-96DD-41F9-866E-57353443B872}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QLVT_DATHANG</RootNamespace>
     <AssemblyName>QLVT_DATHANG</AssemblyName>
@@ -148,6 +148,12 @@
     <Compile Include="Forms\frmMaterials.Designer.cs">
       <DependentUpon>frmMaterials.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\frmInputOrderDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\frmInputOrderDetail.Designer.cs">
+      <DependentUpon>frmInputOrderDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\Cons.cs" />
     <Compile Include="Forms\frmOrders.cs">
       <SubType>Form</SubType>
@@ -161,10 +167,10 @@
     <Compile Include="Forms\frmGoodsReceivedNote.Designer.cs">
       <DependentUpon>frmGoodsReceivedNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmRegister.cs">
+    <Compile Include="UserControls\frmRegister.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\frmRegister.Designer.cs">
+    <Compile Include="UserControls\frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="MyConfig.cs" />
@@ -207,7 +213,10 @@
     <EmbeddedResource Include="Forms\frmGoodsReceivedNote.resx">
       <DependentUpon>frmGoodsReceivedNote.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmRegister.resx">
+    <EmbeddedResource Include="UserControls\frmInputOrderDetail.resx">
+      <DependentUpon>frmInputOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
