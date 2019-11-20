@@ -6,12 +6,12 @@ namespace QLVT_DATHANG.Utility
    {
       public ButtonActionType ActionType { get; set; }
 
-      public DataRowView SaveDataRow { get; set; }
+      public object[] SaveItems { get; set; }
 
-      public ButtonAction(ButtonActionType actionType, DataRowView saveDataRow)
+      public ButtonAction(ButtonActionType actionType, object[] saveItems)
       {
-         ActionType = actionType;
-         SaveDataRow = saveDataRow;
+         this.ActionType = actionType;
+         this.SaveItems = saveItems;
       }
    }
 }

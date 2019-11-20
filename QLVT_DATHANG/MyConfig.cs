@@ -17,5 +17,8 @@ namespace QLVT_DATHANG
       public const string ExecSPTimVatTu = "EXEC sp_timvattu '{0}'";
       public const string ExecSPTaoTaiKhoan = "EXEC sp_createlogin '{0}', '{1}', '{2}', '{3}'";
       public const string ExecSPKiemTraNVCoTaiKhoan = "EXEC sp_timtaikhoannhanvien '{0}'";
+
+      // Mã error khi exec sp raise error
+      public const int ErrorCodeDatabase = 18;
    }
 }

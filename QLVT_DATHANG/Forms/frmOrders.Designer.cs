@@ -63,9 +63,9 @@
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.sccOrder = new DevExpress.XtraEditors.SplitContainerControl();
          this.gbOrder = new DevExpress.XtraEditors.GroupControl();
-         this.txtEmployeeId = new DevExpress.XtraEditors.TextEdit();
-         this.cboEmployee = new System.Windows.Forms.ComboBox();
+         this.searchLookUpEdit1 = new DevExpress.XtraEditors.SearchLookUpEdit();
          this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
+         this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
          this.dtpOrderDate = new DevExpress.XtraEditors.DateEdit();
          this.dtpProvider = new DevExpress.XtraEditors.TextEdit();
@@ -96,8 +96,9 @@
          this.sccOrder.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          this.gbOrder.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).BeginInit();
@@ -114,7 +115,7 @@
          // masoDDHLabel
          // 
          masoDDHLabel.AutoSize = true;
-         masoDDHLabel.Location = new System.Drawing.Point(47, 60);
+         masoDDHLabel.Location = new System.Drawing.Point(17, 26);
          masoDDHLabel.Name = "masoDDHLabel";
          masoDDHLabel.Size = new System.Drawing.Size(112, 13);
          masoDDHLabel.TabIndex = 0;
@@ -123,7 +124,7 @@
          // nGAYLabel
          // 
          nGAYLabel.AutoSize = true;
-         nGAYLabel.Location = new System.Drawing.Point(47, 86);
+         nGAYLabel.Location = new System.Drawing.Point(17, 52);
          nGAYLabel.Name = "nGAYLabel";
          nGAYLabel.Size = new System.Drawing.Size(57, 13);
          nGAYLabel.TabIndex = 2;
@@ -132,7 +133,7 @@
          // nhaCCLabel
          // 
          nhaCCLabel.AutoSize = true;
-         nhaCCLabel.Location = new System.Drawing.Point(47, 112);
+         nhaCCLabel.Location = new System.Drawing.Point(17, 78);
          nhaCCLabel.Name = "nhaCCLabel";
          nhaCCLabel.Size = new System.Drawing.Size(80, 13);
          nhaCCLabel.TabIndex = 4;
@@ -141,11 +142,11 @@
          // mANVLabel
          // 
          mANVLabel.AutoSize = true;
-         mANVLabel.Location = new System.Drawing.Point(47, 138);
+         mANVLabel.Location = new System.Drawing.Point(17, 104);
          mANVLabel.Name = "mANVLabel";
-         mANVLabel.Size = new System.Drawing.Size(76, 13);
+         mANVLabel.Size = new System.Drawing.Size(59, 13);
          mANVLabel.TabIndex = 6;
-         mANVLabel.Text = "Mã Nhân Viên:";
+         mANVLabel.Text = "Nhân Viên:";
          // 
          // bmPN
          // 
@@ -397,8 +398,7 @@
          // 
          // gbOrder
          // 
-         this.gbOrder.Controls.Add(this.txtEmployeeId);
-         this.gbOrder.Controls.Add(this.cboEmployee);
+         this.gbOrder.Controls.Add(this.searchLookUpEdit1);
          this.gbOrder.Controls.Add(masoDDHLabel);
          this.gbOrder.Controls.Add(this.txtOrderId);
          this.gbOrder.Controls.Add(nGAYLabel);
@@ -413,39 +413,42 @@
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin Đơn Đặt Hàng";
          // 
-         // txtEmployeeId
+         // searchLookUpEdit1
          // 
-         this.txtEmployeeId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
-         this.txtEmployeeId.Location = new System.Drawing.Point(328, 136);
-         this.txtEmployeeId.MenuManager = this.bmPN;
-         this.txtEmployeeId.Name = "txtEmployeeId";
-         this.txtEmployeeId.Size = new System.Drawing.Size(100, 20);
-         this.txtEmployeeId.TabIndex = 11;
-         // 
-         // cboEmployee
-         // 
-         this.cboEmployee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
-         this.cboEmployee.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsDDH, "MANV", true));
-         this.cboEmployee.DataSource = this.bdsDSNV;
-         this.cboEmployee.DisplayMember = "HOTEN";
-         this.cboEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.cboEmployee.FormattingEnabled = true;
-         this.cboEmployee.Location = new System.Drawing.Point(165, 135);
-         this.cboEmployee.Name = "cboEmployee";
-         this.cboEmployee.Size = new System.Drawing.Size(157, 21);
-         this.cboEmployee.TabIndex = 10;
-         this.cboEmployee.ValueMember = "MANV";
-         this.cboEmployee.SelectedIndexChanged += new System.EventHandler(this.cboEmployee_SelectedIndexChanged);
+         this.searchLookUpEdit1.CausesValidation = false;
+         this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
+         this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
+         this.searchLookUpEdit1.Location = new System.Drawing.Point(135, 101);
+         this.searchLookUpEdit1.MenuManager = this.bmPN;
+         this.searchLookUpEdit1.Name = "searchLookUpEdit1";
+         this.searchLookUpEdit1.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+         this.searchLookUpEdit1.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+         this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.DropDown)});
+         this.searchLookUpEdit1.Properties.DataSource = this.bdsDSNV;
+         this.searchLookUpEdit1.Properties.DisplayMember = "HOTEN";
+         this.searchLookUpEdit1.Properties.NullText = "";
+         this.searchLookUpEdit1.Properties.PopupView = this.searchLookUpEdit1View;
+         this.searchLookUpEdit1.Properties.ValueMember = "MANV";
+         this.searchLookUpEdit1.Size = new System.Drawing.Size(157, 20);
+         this.searchLookUpEdit1.TabIndex = 12;
          // 
          // bdsDSNV
          // 
          this.bdsDSNV.DataMember = "DSNV";
          this.bdsDSNV.DataSource = this.dataSet;
          // 
+         // searchLookUpEdit1View
+         // 
+         this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+         this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+         this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+         this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+         // 
          // txtOrderId
          // 
          this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
-         this.txtOrderId.Location = new System.Drawing.Point(165, 57);
+         this.txtOrderId.Location = new System.Drawing.Point(135, 23);
          this.txtOrderId.MenuManager = this.bmPN;
          this.txtOrderId.Name = "txtOrderId";
          this.txtOrderId.Size = new System.Drawing.Size(157, 20);
@@ -455,7 +458,7 @@
          // 
          this.dtpOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NGAY", true));
          this.dtpOrderDate.EditValue = null;
-         this.dtpOrderDate.Location = new System.Drawing.Point(165, 83);
+         this.dtpOrderDate.Location = new System.Drawing.Point(135, 49);
          this.dtpOrderDate.MenuManager = this.bmPN;
          this.dtpOrderDate.Name = "dtpOrderDate";
          this.dtpOrderDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -468,7 +471,7 @@
          // dtpProvider
          // 
          this.dtpProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
-         this.dtpProvider.Location = new System.Drawing.Point(165, 109);
+         this.dtpProvider.Location = new System.Drawing.Point(135, 75);
          this.dtpProvider.MenuManager = this.bmPN;
          this.dtpProvider.Name = "dtpProvider";
          this.dtpProvider.Size = new System.Drawing.Size(157, 20);
@@ -642,8 +645,9 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
          this.gbOrder.ResumeLayout(false);
          this.gbOrder.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).EndInit();
@@ -700,9 +704,7 @@
       private DevExpress.XtraEditors.DateEdit dtpOrderDate;
       private DevExpress.XtraEditors.TextEdit dtpProvider;
       private System.Windows.Forms.BindingSource bdsDSNV;
-      private System.Windows.Forms.ComboBox cboEmployee;
       private DataSetTableAdapters.DSNVTableAdepter taDSNV;
-      private DevExpress.XtraEditors.TextEdit txtEmployeeId;
       private DevExpress.XtraEditors.GroupControl gbOrderDetail;
       private System.Windows.Forms.BindingSource bdsVT;
       private DataSetTableAdapters.VattuTableAdapter taVT;
@@ -710,5 +712,7 @@
       private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+      private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEdit1;
+      private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
    }
 }

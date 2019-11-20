@@ -4,6 +4,7 @@
    {
       None,
       Add,
+      Delete,
       Edit
    }
 }

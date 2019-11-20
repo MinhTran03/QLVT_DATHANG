@@ -20,7 +20,6 @@ namespace QLVT_DATHANG.Forms
       private int _currentPosition;
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
-      //private DataRow _row;
 
       public frmEmployee()
       {
@@ -200,24 +199,29 @@ namespace QLVT_DATHANG.Forms
       private void Undo()
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
+         int position = -1;
+
          switch (action.ActionType)
          {
             case ButtonActionType.Add:
                // xóa dữ liệu mới
-               bdsNV.Remove(action.SaveDataRow);
+               position = bdsNV.Find("MANV", action.SaveItems[0]);
+               bdsNV.Remove((DataRowView)bdsNV[position]);
                break;
             case ButtonActionType.Edit:
                // sửa lại dữ liệu cũ
-               int position = bdsNV.Find("MANV", action.SaveDataRow["MANV"]);
-               for (int i = 0; i < 7; i++)
-               {
-                  ((DataRowView)bdsNV[position])[i] = action.SaveDataRow[i];
-               }
+               position = bdsNV.Find("MANV", action.SaveItems[0]);
+               ((DataRowView)bdsNV[position]).Row.ItemArray = action.SaveItems;
                bdsNV.EndEdit();
-               bdsNV.ResetCurrentItem();
+               //bdsNV.ResetCurrentItem();
+               break;
+            case ButtonActionType.Delete:
+               position = bdsNV.Count;
+               bdsNV.AddNew();
+               ((DataRowView)bdsNV[position]).Row.ItemArray = action.SaveItems;
+               bdsNV.EndEdit();
                break;
             case ButtonActionType.None:
-               break;
             default:
                break;
          }
@@ -238,12 +242,14 @@ namespace QLVT_DATHANG.Forms
                   txtEmpId.SelectAll();
                   return false;
                }
-               _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsNV[bdsNV.Position]));
+
+               // Lưu vô stack trạng thái nút nhấn và data bị thay đổi
+               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray));
             }
 
             bdsNV.EndEdit();
             gbEmployee.Enabled = false;
-            bdsNV.ResetCurrentItem();
+            //bdsNV.ResetCurrentItem();
             this.taNV.Update(this.dataSet.NhanVien);
             _buttonAction = ButtonActionType.None;
          }
@@ -268,9 +274,9 @@ namespace QLVT_DATHANG.Forms
          _currentPosition = bdsNV.Position;
          _buttonAction = ButtonActionType.Edit;
 
-         // lưu lại datarow để undo
-         //_row = ((DataRow)bdsNV[_currentPosition]);
-         //_userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[_currentPosition])));
+         // lưu lại data để undo
+         var row = ((DataRowView)bdsNV[_currentPosition]).Row.ItemArray;
+         _userDo.Push(new ButtonAction(_buttonAction, row));
 
          EnableEditMode();
       }
@@ -295,9 +301,12 @@ namespace QLVT_DATHANG.Forms
                   command.ExecuteNonQuery();
                   XtraMessageBox.Show("Nhân viên đã tạo tài khoản");
                }
-               catch (SqlException)
+               catch (Exception ex)
                {
-                  CustomFlyoutDialog.ShowForm(this, null, new frmRegister(employeeId));
+                  if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
+                     CustomFlyoutDialog.ShowForm(this, null, new frmRegister(employeeId));
+                  else
+                     UtilDB.ShowError(ex);
                }
             }
          }
@@ -360,25 +369,30 @@ namespace QLVT_DATHANG.Forms
          {
             string text = string.Format(Cons.ErrorDeleteEmployee, phieuLap);
             XtraMessageBox.Show(text, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
          }
-         else
+
+         _currentPosition = bdsNV.Position;
+         _buttonAction = ButtonActionType.Delete;
+
+         string ho = ((DataRowView)bdsNV[_currentPosition])["HO"].ToString();
+         string ten = ((DataRowView)bdsNV[_currentPosition])["TEN"].ToString();
+         var result = XtraMessageBox.Show(string.Format(Cons.AskDeleteEmployee, ho, ten), Cons.CaptionQuestion,
+                                       MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+         if (result == DialogResult.Yes)
          {
-            _currentPosition = bdsNV.Position;
-            string ho = ((DataRowView)bdsNV[_currentPosition])["HO"].ToString();
-            string ten = ((DataRowView)bdsNV[_currentPosition])["TEN"].ToString();
-            var result = XtraMessageBox.Show(string.Format(Cons.AskDeleteEmployee, ho, ten), Cons.CaptionQuestion,
-                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            try
             {
-               try
-               {
-                  bdsNV.RemoveCurrent();
-                  this.taNV.Update(this.dataSet.NhanVien);
-               }
-               catch (Exception ex)
-               {
-                  UtilDB.ShowError(ex);
-               }
+               // lưu lại data trước khi xóa
+               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[_currentPosition]).Row.ItemArray));
+
+               bdsNV.RemoveCurrent();
+               this.taNV.Update(this.dataSet.NhanVien);
+            }
+            catch (Exception ex)
+            {
+               UtilDB.ShowError(ex);
             }
          }
       }
@@ -517,9 +531,12 @@ namespace QLVT_DATHANG.Forms
                   sqlcmd.ExecuteNonQuery();
                   exist = true;
                }
-               catch (SqlException)
+               catch (Exception ex)
                {
-                  exist = false;
+                  if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
+                     exist = false;
+                  else
+                     UtilDB.ShowError(ex);
                }
             }
          }

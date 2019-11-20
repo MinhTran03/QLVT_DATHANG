@@ -137,9 +137,12 @@ namespace QLVT_DATHANG.Forms
                SqlDataReader myreader = sqlcmd.ExecuteReader();
                exist = true;
             }
-            catch (SqlException)
+            catch (Exception ex)
             {
-               exist = false;
+               if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
+                  exist = false;
+               else
+                  UtilDB.ShowError(ex);
             }
          }
          return exist;
@@ -159,8 +162,7 @@ namespace QLVT_DATHANG.Forms
                }
                else
                {
-
-                  _userDo.Push(new ButtonAction(_buttonAction, (DataRowView)bdsVT[bdsVT.Position]));
+                  _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsVT[bdsVT.Position]).Row.ItemArray));
 
                   _buttonAction = ButtonActionType.None;
 
@@ -203,7 +205,7 @@ namespace QLVT_DATHANG.Forms
          {
             case ButtonActionType.Add:
                // xóa dữ liệu mới
-               bdsVT.Remove(action.SaveDataRow);
+               bdsVT.Remove(action.SaveItems);
                break;
             case ButtonActionType.Edit:
                // sửa lại dữ liệu cũ

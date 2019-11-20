@@ -12,15 +12,17 @@ namespace QLVT_DATHANG.Forms
    public partial class frmOrders : XtraForm
    {
       private string _currentDeploymentId;
-      //private int _currentPosition;
+      private int _currentPosition;
       private ButtonActionType _buttonAction;
-      private int _backupWidth = 0;
       private MyStack _userDo;
+      private int _backupWidth = 0;
 
       public frmOrders()
       {
          InitializeComponent();
          SetupControls();
+
+         //gridView1.Columns[0].OptionsColumn.AllowEdit = false;
       }
 
       private void frmOrders_Load(object sender, EventArgs e)
@@ -132,11 +134,6 @@ namespace QLVT_DATHANG.Forms
       }
 
       #endregion
-
-      private void cboEmployee_SelectedIndexChanged(object sender, EventArgs e)
-      {
-         txtEmployeeId.EditValue = cboEmployee.SelectedValue;
-      }
 
       private void frmOrders_Resize(object sender, EventArgs e)
       {

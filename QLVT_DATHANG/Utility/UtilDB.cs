@@ -53,10 +53,10 @@ namespace QLVT_DATHANG.Utility
             return 1;
          }
 
-         catch (Exception e)
+         catch (Exception)
          {
-            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Tên đăng nhập và Mật khẩu.\n" +
-                            e.Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Tên đăng nhập và Mật khẩu.\n", 
+                                 Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return 0;
          }
       }
