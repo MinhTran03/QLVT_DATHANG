@@ -2,58 +2,146 @@
 using QLVT_DATHANG.Utility;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace QLVT_DATHANG.UserControls
 {
    public partial class frmInputOrderDetail : XtraUserControl
    {
       private int _maxQuantity;
+      private BindingSource _bdsCTDDH;
+      private BindingSource _bdsVT;
 
-      public frmInputOrderDetail(string orderId)
+      public frmInputOrderDetail(string orderId, BindingSource bdsCTDDH, BindingSource bdsVT)
       {
          InitializeComponent();
 
          spiCost.Properties.Increment = 100000;
          txtOrderId.EditValue = orderId;
+         _bdsCTDDH = bdsCTDDH;
+         _bdsVT = bdsVT;
       }
 
       private void frmInputOrderDetail_Load(object sender, EventArgs e)
       {
-         this.taVT.Connection.ConnectionString =
-            UtilDB.ConnectionString;
-
-         try
-         {
-            this.dataSet.EnforceConstraints = false;
-
-            this.taVT.Fill(this.dataSet.Vattu);
-         }
-         catch (Exception ex)
-         {
-            UtilDB.ShowError(ex);
-         }
+         gcVT.DataSource = _bdsVT;
+         txtMaterialId.DataBindings.Add(new Binding("EditValue", _bdsVT, "TENVT", true));
+         txtMaterialId.DataBindings.Add(new Binding("Tag", _bdsVT, "MAVT", true));
       }
 
       private void txtMaterialId_EditValueChanged(object sender, EventArgs e)
       {
-         if (bdsVT.Position > 0)
+         if (_bdsVT.Position >= 0)
          {
-            _maxQuantity = int.Parse(((DataRowView)bdsVT[bdsVT.Position])["SOLUONGTON"].ToString());
-            Console.WriteLine(_maxQuantity);
+            _maxQuantity = int.Parse(((DataRowView)_bdsVT[_bdsVT.Position])["SOLUONGTON"].ToString());
          }
       }
 
       private void spiQuantity_Validating(object sender, System.ComponentModel.CancelEventArgs e)
       {
-         e.Cancel = false;
          var editVal = spiQuantity.EditValue;
-         if (!(editVal is null) && int.Parse(editVal.ToString()) > _maxQuantity)
+         if (!(editVal is null))
          {
-            dxErrorProvider.SetError((sender as BaseEdit), "Số lượng bạn chọn vượt quá số lượng tồn");
+            if (int.Parse(editVal.ToString()) > _maxQuantity)
+            {
+               dxErrorProvider.SetError((sender as BaseEdit), Cons.ErrorOutOfQuantity);
+               e.Cancel = true;
+            }
+            else if (int.Parse(editVal.ToString()) < 0)
+            {
+               dxErrorProvider.SetError((sender as BaseEdit), Cons.ErrorBelowThenZero);
+               e.Cancel = true;
+            }
          }
          else
          {
             dxErrorProvider.SetError((sender as BaseEdit), string.Empty);
+            e.Cancel = false;
+         }
+      }
+
+      private void spiCost_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+      {
+         if (!(e.Value is DBNull))
+         {
+            decimal price = Convert.ToDecimal(e.Value);
+            e.DisplayText = string.Format(Cons.CiVNI, "{0:c0}", price);
+         }
+      }
+
+      private bool CheckContainOrderDetail(string materialId)
+      {
+         bool exist = false;
+
+         for (int i = 0; i < _bdsCTDDH.Count; i++)
+         {
+            if (materialId.Equals(((DataRowView)_bdsCTDDH[i])["MAVT"].ToString()))
+            {
+               exist = true;
+               break;
+            }
+         }
+
+         return exist;
+      }
+
+      private void btnSave_Click(object sender, EventArgs e)
+      {
+         int orderDetailQuantity = int.Parse(spiQuantity.EditValue.ToString());
+         string materialId = txtMaterialId.Tag.ToString();
+
+         if (CheckContainOrderDetail(materialId))
+         {
+            XtraMessageBox.Show("Vật tư đã lập ddh");
+            return;
+         }
+
+         object[] orderDetailData = new object[4];
+         orderDetailData[0] = txtOrderId.EditValue.ToString();
+         orderDetailData[1] = materialId;
+         orderDetailData[2] = orderDetailQuantity;
+         orderDetailData[3] = float.Parse(spiCost.EditValue.ToString());
+
+         // Ghi tạm dữ liệu vào bdsCTDDH, close form => update vô database
+         _bdsCTDDH.AddNew();
+         // Count - 1 vì AddNew() xong Count + 1
+         ((DataRowView)_bdsCTDDH[_bdsCTDDH.Count - 1]).Row.ItemArray = orderDetailData;
+         _bdsCTDDH.EndEdit();
+
+         // Giảm số lượng tồn xuống
+         int total = int.Parse(((DataRowView)_bdsVT[_bdsVT.Position])["SOLUONGTON"].ToString());
+         total -= orderDetailQuantity;
+         ((DataRowView)_bdsVT[_bdsVT.Position])["SOLUONGTON"] = total;
+
+         // Xóa data trên form
+         spiQuantity.EditValue = null;
+         spiCost.EditValue = null;
+         _bdsVT.Position = 0;
+      }
+
+      private void btnExit_Click(object sender, EventArgs e)
+      {
+         var result = XtraMessageBox.Show(Cons.AskExit, Cons.CaptionQuestion,
+                                       MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+         if (result == DialogResult.Yes)
+            ((Form)this.TopLevelControl).Close();
+      }
+
+      private void spiCost_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+      {
+         var editVal = spiQuantity.EditValue;
+         if (!(editVal is null))
+         {
+            if (float.Parse(editVal.ToString()) < 0)
+            {
+               dxErrorProvider.SetError((sender as BaseEdit), Cons.ErrorBelowThenZero);
+               e.Cancel = true;
+            }
+         }
+         else
+         {
+            dxErrorProvider.SetError((sender as BaseEdit), string.Empty);
+            e.Cancel = false;
          }
       }
    }

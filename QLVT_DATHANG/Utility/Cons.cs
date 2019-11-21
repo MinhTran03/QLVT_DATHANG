@@ -22,6 +22,8 @@ namespace QLVT_DATHANG.Utility
       public const string ErrorNotCheckedRole = "Vui lòng chọn quyền cho tài khoản";
       public const string ErrorDuplicateEmpoyeeId = "Mã nhân viên đã tồn tại";
       public const string ErrorDuplicateOrderId = "Mã đơn đặt hàng đã tồn tại";
+      public const string ErrorOutOfQuantity = "Số lượng bạn chọn vượt quá số lượng tồn";
+      public const string ErrorBelowThenZero = "Giá trị không được nhỏ hơn 0";
 
       public const string WarningUserCreateTK = "User không có quyền tạo tài khoản";
 
@@ -35,6 +37,7 @@ namespace QLVT_DATHANG.Utility
       public const string AskDeleteMaterials = "Bạn có chắc muốn xóa vật tư {0}";
       public const string AskDeleteOrder = "Bạn có chắc muốn xóa đơn đặt hàng {0}";
       public const string AskExitWhileEditing = "Bạn có muốn lưu thay đổi trước khi thoát?";
+      public const string AskExit = "Bạn chắc chắn muốn thoát, dữ liệu trên form sẽ không được lưu???";
 
       public const string ErrorDeleteEmployee = "Nhập viên đã lập {0}, không được xóa!!!";
       public const string ErrorConnectDepartment = "Lỗi kết nối về chi nhánh mới";

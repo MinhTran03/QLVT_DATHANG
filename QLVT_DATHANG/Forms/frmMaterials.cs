@@ -6,10 +6,8 @@ using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
-   using DevExpress.Utils;
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
-   using DevExpress.XtraEditors.Mask;
 
    public partial class frmMaterials : XtraForm
    {
@@ -39,15 +37,15 @@ namespace QLVT_DATHANG.Forms
 
       private void SetupControls()
       {
-         string nameRegex = "[\u0000-\u001F\007F-\u009F]+(\\s{1}[\u0000-\u001F\007F-\u009F]+)*"; // regex with one space between 2 character
+         //string nameRegex = "[\u0000-\u001F\007F-\u009F]+(\\s{1}[\u0000-\u001F\007F-\u009F]+)*"; // regex with one space between 2 character
 
-         txtMaterialName.Properties.Mask.MaskType = MaskType.None;
-         txtMaterialName.Properties.Mask.EditMask = nameRegex;
-         txtMaterialName.Properties.Mask.BeepOnError = true;
-         txtMaterialName.Properties.AllowNullInput = DefaultBoolean.True;
+         //txtMaterialName.Properties.Mask.MaskType = MaskType.None;
+         //txtMaterialName.Properties.Mask.EditMask = nameRegex;
+         //txtMaterialName.Properties.Mask.BeepOnError = true;
+         //txtMaterialName.Properties.AllowNullInput = DefaultBoolean.True;
 
-         spiSLT.Properties.Mask.MaskType = MaskType.Numeric;
-         spiSLT.Properties.Increment = 1;
+         //spiSLT.Properties.Mask.MaskType = MaskType.Numeric;
+         //spiSLT.Properties.Increment = 1;
       }
 
       private void LoadTable()
@@ -123,9 +121,9 @@ namespace QLVT_DATHANG.Forms
          btnUndo.Visibility = BarItemVisibility.Never;
       }
 
-      private bool IsExistMaterial(string departmentId)
+      private bool IsExistMaterial(string materialId)
       {
-         string strLenh = string.Format(MyConfig.ExecSPTimVatTu, departmentId);
+         string strLenh = string.Format(MyConfig.ExecSPTimVatTu, materialId);
          bool exist = false;
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
@@ -171,7 +169,6 @@ namespace QLVT_DATHANG.Forms
                   bdsVT.ResetCurrentItem();
                   this.taVT.Update(this.dataSet.Vattu);
                }
-
             }
             else
             {
@@ -180,7 +177,6 @@ namespace QLVT_DATHANG.Forms
                bdsVT.ResetCurrentItem();
                this.taVT.Update(this.dataSet.Vattu);
             }
-
          }
          catch (Exception ex)
          {

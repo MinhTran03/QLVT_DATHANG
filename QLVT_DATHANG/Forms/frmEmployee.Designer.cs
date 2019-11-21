@@ -72,6 +72,8 @@
          this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colTrangThaiXoa = new DevExpress.XtraGrid.Columns.GridColumn();
          this.gcEmployee = new DevExpress.XtraGrid.GridControl();
+         this.cmsEmployee = new System.Windows.Forms.ContextMenuStrip(this.components);
+         this.btnCreateLogin = new System.Windows.Forms.ToolStripMenuItem();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
          this.txtEmpDelStatus = new DevExpress.XtraEditors.TextEdit();
          this.lblTTX = new System.Windows.Forms.Label();
@@ -89,8 +91,6 @@
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-         this.cmsEmployee = new System.Windows.Forms.ContextMenuStrip(this.components);
-         this.btnCreateLogin = new System.Windows.Forms.ToolStripMenuItem();
          mANVLabel = new System.Windows.Forms.Label();
          hOLabel = new System.Windows.Forms.Label();
          dIACHILabel = new System.Windows.Forms.Label();
@@ -111,6 +111,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcEmployee)).BeginInit();
+         this.cmsEmployee.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).BeginInit();
@@ -122,7 +123,6 @@
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
-         this.cmsEmployee.SuspendLayout();
          this.SuspendLayout();
          // 
          // mANVLabel
@@ -502,6 +502,7 @@
          this.gvNV.OptionsBehavior.Editable = false;
          this.gvNV.OptionsBehavior.ReadOnly = true;
          this.gvNV.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckAllDetails;
+         this.gvNV.OptionsSelection.MultiSelect = true;
          this.gvNV.OptionsView.ShowGroupPanel = false;
          this.gvNV.OptionsView.ShowViewCaption = true;
          this.gvNV.ViewCaption = "Danh sách Nhân Viên";
@@ -589,6 +590,20 @@
          this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvNV});
          this.gcEmployee.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gcNV_MouseDoubleClick);
+         // 
+         // cmsEmployee
+         // 
+         this.cmsEmployee.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCreateLogin});
+         this.cmsEmployee.Name = "cmsEmployee";
+         this.cmsEmployee.Size = new System.Drawing.Size(146, 26);
+         // 
+         // btnCreateLogin
+         // 
+         this.btnCreateLogin.Name = "btnCreateLogin";
+         this.btnCreateLogin.Size = new System.Drawing.Size(145, 22);
+         this.btnCreateLogin.Text = "Tạo tài khoản";
+         this.btnCreateLogin.Click += new System.EventHandler(this.btnCreateLogin_Click);
          // 
          // cboDeployment
          // 
@@ -725,20 +740,6 @@
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
-         // cmsEmployee
-         // 
-         this.cmsEmployee.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCreateLogin});
-         this.cmsEmployee.Name = "cmsEmployee";
-         this.cmsEmployee.Size = new System.Drawing.Size(181, 48);
-         // 
-         // btnCreateLogin
-         // 
-         this.btnCreateLogin.Name = "btnCreateLogin";
-         this.btnCreateLogin.Size = new System.Drawing.Size(180, 22);
-         this.btnCreateLogin.Text = "Tạo tài khoản";
-         this.btnCreateLogin.Click += new System.EventHandler(this.btnCreateLogin_Click);
-         // 
          // frmEmployee
          // 
          this.Appearance.Options.UseFont = true;
@@ -773,6 +774,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvNV)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcEmployee)).EndInit();
+         this.cmsEmployee.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).EndInit();
@@ -786,7 +788,6 @@
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
-         this.cmsEmployee.ResumeLayout(false);
          this.ResumeLayout(false);
          this.PerformLayout();
 

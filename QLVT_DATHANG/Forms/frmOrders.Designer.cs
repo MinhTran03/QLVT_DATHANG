@@ -68,11 +68,7 @@
          this.txtProvider = new DevExpress.XtraEditors.TextEdit();
          this.gbOrderDetail = new DevExpress.XtraEditors.GroupControl();
          this.gcOrderDetail = new System.Windows.Forms.DataGridView();
-         this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
          this.bdsVT = new System.Windows.Forms.BindingSource(this.components);
-         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.cmsOrderDetail = new System.Windows.Forms.ContextMenuStrip(this.components);
          this.btnAddOrderDetail = new System.Windows.Forms.ToolStripMenuItem();
          this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
@@ -83,6 +79,10 @@
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+         this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.TENVT = new System.Windows.Forms.DataGridViewComboBoxColumn();
+         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          masoDDHLabel = new System.Windows.Forms.Label();
          nGAYLabel = new System.Windows.Forms.Label();
          nhaCCLabel = new System.Windows.Forms.Label();
@@ -118,7 +118,7 @@
          // 
          masoDDHLabel.AutoSize = true;
          masoDDHLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         masoDDHLabel.Location = new System.Drawing.Point(64, 61);
+         masoDDHLabel.Location = new System.Drawing.Point(7, 51);
          masoDDHLabel.Name = "masoDDHLabel";
          masoDDHLabel.Size = new System.Drawing.Size(124, 13);
          masoDDHLabel.TabIndex = 0;
@@ -128,7 +128,7 @@
          // 
          nGAYLabel.AutoSize = true;
          nGAYLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nGAYLabel.Location = new System.Drawing.Point(125, 113);
+         nGAYLabel.Location = new System.Drawing.Point(68, 103);
          nGAYLabel.Name = "nGAYLabel";
          nGAYLabel.Size = new System.Drawing.Size(63, 13);
          nGAYLabel.TabIndex = 2;
@@ -138,7 +138,7 @@
          // 
          nhaCCLabel.AutoSize = true;
          nhaCCLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nhaCCLabel.Location = new System.Drawing.Point(99, 87);
+         nhaCCLabel.Location = new System.Drawing.Point(42, 77);
          nhaCCLabel.Name = "nhaCCLabel";
          nhaCCLabel.Size = new System.Drawing.Size(89, 13);
          nhaCCLabel.TabIndex = 4;
@@ -148,7 +148,7 @@
          // 
          mANVLabel.AutoSize = true;
          mANVLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mANVLabel.Location = new System.Drawing.Point(119, 139);
+         mANVLabel.Location = new System.Drawing.Point(62, 129);
          mANVLabel.Name = "mANVLabel";
          mANVLabel.Size = new System.Drawing.Size(69, 13);
          mANVLabel.TabIndex = 6;
@@ -247,7 +247,7 @@
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 476);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 446);
          this.barDockControlBottom.Manager = this.bmPN;
          this.barDockControlBottom.Size = new System.Drawing.Size(853, 0);
          // 
@@ -257,7 +257,7 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 452);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 422);
          // 
          // barDockControlRight
          // 
@@ -265,7 +265,7 @@
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControlRight.Location = new System.Drawing.Point(853, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 452);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 422);
          // 
          // dataSet
          // 
@@ -307,7 +307,7 @@
          this.gcOrder.MainView = this.gridView1;
          this.gcOrder.MenuManager = this.bmPN;
          this.gcOrder.Name = "gcOrder";
-         this.gcOrder.Size = new System.Drawing.Size(853, 214);
+         this.gcOrder.Size = new System.Drawing.Size(853, 191);
          this.gcOrder.TabIndex = 5;
          this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -337,6 +337,8 @@
          // colNGAY
          // 
          this.colNGAY.Caption = "NGÀY ĐẶT";
+         this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
+         this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.colNGAY.FieldName = "NGAY";
          this.colNGAY.Name = "colNGAY";
          this.colNGAY.Visible = true;
@@ -361,7 +363,7 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 268);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 245);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(853, 5);
          this.splitterControl1.TabIndex = 6;
@@ -370,14 +372,14 @@
          // sccOrder
          // 
          this.sccOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.sccOrder.Location = new System.Drawing.Point(0, 273);
+         this.sccOrder.Location = new System.Drawing.Point(0, 250);
          this.sccOrder.Name = "sccOrder";
          this.sccOrder.Panel1.Controls.Add(this.gbOrder);
          this.sccOrder.Panel1.Text = "Panel1";
          this.sccOrder.Panel2.Controls.Add(this.gbOrderDetail);
          this.sccOrder.Panel2.Text = "Panel2";
-         this.sccOrder.Size = new System.Drawing.Size(853, 203);
-         this.sccOrder.SplitterPosition = 442;
+         this.sccOrder.Size = new System.Drawing.Size(853, 196);
+         this.sccOrder.SplitterPosition = 315;
          this.sccOrder.TabIndex = 7;
          // 
          // gbOrder
@@ -395,7 +397,7 @@
          this.gbOrder.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrder.Location = new System.Drawing.Point(0, 0);
          this.gbOrder.Name = "gbOrder";
-         this.gbOrder.Size = new System.Drawing.Size(442, 203);
+         this.gbOrder.Size = new System.Drawing.Size(315, 196);
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin Đơn Đặt Hàng";
          // 
@@ -404,7 +406,7 @@
          this.lkeEmployee.CausesValidation = false;
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
-         this.lkeEmployee.Location = new System.Drawing.Point(194, 136);
+         this.lkeEmployee.Location = new System.Drawing.Point(137, 126);
          this.lkeEmployee.MenuManager = this.bmPN;
          this.lkeEmployee.Name = "lkeEmployee";
          this.lkeEmployee.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -437,7 +439,7 @@
          // txtOrderId
          // 
          this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
-         this.txtOrderId.Location = new System.Drawing.Point(194, 58);
+         this.txtOrderId.Location = new System.Drawing.Point(137, 48);
          this.txtOrderId.MenuManager = this.bmPN;
          this.txtOrderId.Name = "txtOrderId";
          this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -449,7 +451,7 @@
          // 
          this.dtpOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NGAY", true));
          this.dtpOrderDate.EditValue = null;
-         this.dtpOrderDate.Location = new System.Drawing.Point(194, 110);
+         this.dtpOrderDate.Location = new System.Drawing.Point(137, 100);
          this.dtpOrderDate.MenuManager = this.bmPN;
          this.dtpOrderDate.Name = "dtpOrderDate";
          this.dtpOrderDate.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -458,6 +460,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.dtpOrderDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpOrderDate.Properties.Mask.EditMask = "dd/MM/yyyy";
          this.dtpOrderDate.Properties.ReadOnly = true;
          this.dtpOrderDate.Size = new System.Drawing.Size(157, 20);
          this.dtpOrderDate.TabIndex = 3;
@@ -465,7 +468,7 @@
          // txtProvider
          // 
          this.txtProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
-         this.txtProvider.Location = new System.Drawing.Point(194, 84);
+         this.txtProvider.Location = new System.Drawing.Point(137, 74);
          this.txtProvider.MenuManager = this.bmPN;
          this.txtProvider.Name = "txtProvider";
          this.txtProvider.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -483,7 +486,7 @@
          this.gbOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrderDetail.Location = new System.Drawing.Point(0, 0);
          this.gbOrderDetail.Name = "gbOrderDetail";
-         this.gbOrderDetail.Size = new System.Drawing.Size(406, 203);
+         this.gbOrderDetail.Size = new System.Drawing.Size(533, 196);
          this.gbOrderDetail.TabIndex = 2;
          this.gbOrderDetail.Text = "Chi tiết Đơn Đặt Hàng";
          // 
@@ -508,7 +511,7 @@
          this.gcOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.gcOrderDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
+            this.TENVT,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
          this.gcOrderDetail.ContextMenuStrip = this.cmsOrderDetail;
@@ -526,49 +529,17 @@
          this.gcOrderDetail.GridColor = System.Drawing.Color.White;
          this.gcOrderDetail.Location = new System.Drawing.Point(2, 23);
          this.gcOrderDetail.Name = "gcOrderDetail";
+         this.gcOrderDetail.ReadOnly = true;
          this.gcOrderDetail.RowHeadersVisible = false;
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcOrderDetail.Size = new System.Drawing.Size(402, 178);
+         this.gcOrderDetail.Size = new System.Drawing.Size(529, 171);
          this.gcOrderDetail.TabIndex = 0;
-         // 
-         // dataGridViewTextBoxColumn1
-         // 
-         this.dataGridViewTextBoxColumn1.DataPropertyName = "MasoDDH";
-         this.dataGridViewTextBoxColumn1.FillWeight = 121.8274F;
-         this.dataGridViewTextBoxColumn1.HeaderText = "MÃ SỐ ĐƠN ĐẶT HÀNG";
-         this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-         // 
-         // dataGridViewTextBoxColumn2
-         // 
-         this.dataGridViewTextBoxColumn2.DataPropertyName = "MAVT";
-         this.dataGridViewTextBoxColumn2.DataSource = this.bdsVT;
-         this.dataGridViewTextBoxColumn2.DisplayMember = "TENVT";
-         this.dataGridViewTextBoxColumn2.FillWeight = 92.72421F;
-         this.dataGridViewTextBoxColumn2.HeaderText = "MÃ VẬT TƯ";
-         this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-         this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-         this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-         this.dataGridViewTextBoxColumn2.ValueMember = "MAVT";
          // 
          // bdsVT
          // 
          this.bdsVT.DataMember = "Vattu";
          this.bdsVT.DataSource = this.dataSet;
-         // 
-         // dataGridViewTextBoxColumn3
-         // 
-         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
-         this.dataGridViewTextBoxColumn3.FillWeight = 92.72421F;
-         this.dataGridViewTextBoxColumn3.HeaderText = "SỐ LƯỢNG";
-         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-         // 
-         // dataGridViewTextBoxColumn4
-         // 
-         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
-         this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
-         this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
-         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
          // 
          // cmsOrderDetail
          // 
@@ -638,12 +609,48 @@
          // 
          this.dxErrorProvider.ContainerControl = this;
          // 
+         // dataGridViewTextBoxColumn1
+         // 
+         this.dataGridViewTextBoxColumn1.DataPropertyName = "MasoDDH";
+         this.dataGridViewTextBoxColumn1.FillWeight = 121.8274F;
+         this.dataGridViewTextBoxColumn1.HeaderText = "MÃ SỐ ĐƠN ĐẶT HÀNG";
+         this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+         this.dataGridViewTextBoxColumn1.ReadOnly = true;
+         // 
+         // TENVT
+         // 
+         this.TENVT.DataPropertyName = "MAVT";
+         this.TENVT.DataSource = this.bdsVT;
+         this.TENVT.DisplayMember = "TENVT";
+         this.TENVT.HeaderText = "TÊN VẬT TƯ";
+         this.TENVT.Name = "TENVT";
+         this.TENVT.ReadOnly = true;
+         this.TENVT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+         this.TENVT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+         this.TENVT.ValueMember = "MAVT";
+         // 
+         // dataGridViewTextBoxColumn3
+         // 
+         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
+         this.dataGridViewTextBoxColumn3.FillWeight = 92.72421F;
+         this.dataGridViewTextBoxColumn3.HeaderText = "SỐ LƯỢNG";
+         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+         this.dataGridViewTextBoxColumn3.ReadOnly = true;
+         // 
+         // dataGridViewTextBoxColumn4
+         // 
+         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
+         this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
+         this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
+         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+         this.dataGridViewTextBoxColumn4.ReadOnly = true;
+         // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(853, 476);
+         this.ClientSize = new System.Drawing.Size(853, 446);
          this.Controls.Add(this.gcOrder);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
@@ -717,7 +724,6 @@
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDeployment;
-      private System.Windows.Forms.BindingSource bdsCTDDH;
       private DataSetTableAdapters.CTDDHTableAdapter taCTDDH;
       private System.Windows.Forms.DataGridView gcOrderDetail;
       private DevExpress.XtraEditors.TextEdit txtOrderId;
@@ -728,14 +734,15 @@
       private DevExpress.XtraEditors.GroupControl gbOrderDetail;
       private System.Windows.Forms.BindingSource bdsVT;
       private DataSetTableAdapters.VattuTableAdapter taVT;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-      private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
       private DevExpress.XtraEditors.SearchLookUpEdit lkeEmployee;
       private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private System.Windows.Forms.ContextMenuStrip cmsOrderDetail;
       private System.Windows.Forms.ToolStripMenuItem btnAddOrderDetail;
+      private System.Windows.Forms.BindingSource bdsCTDDH;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+      private System.Windows.Forms.DataGridViewComboBoxColumn TENVT;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
    }
 }

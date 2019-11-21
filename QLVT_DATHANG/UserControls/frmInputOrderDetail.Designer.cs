@@ -35,15 +35,11 @@
          System.Windows.Forms.Label dONGIALabel;
          this.gbOrderDetail = new DevExpress.XtraEditors.GroupControl();
          this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-         this.btnNext = new DevExpress.XtraEditors.SimpleButton();
+         this.btnExit = new DevExpress.XtraEditors.SimpleButton();
          this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
          this.txtMaterialId = new DevExpress.XtraEditors.TextEdit();
-         this.bdsVT = new System.Windows.Forms.BindingSource(this.components);
-         this.dataSet = new QLVT_DATHANG.DataSet();
          this.spiQuantity = new DevExpress.XtraEditors.SpinEdit();
          this.spiCost = new DevExpress.XtraEditors.SpinEdit();
-         this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
-         this.taVTManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.gcVT = new DevExpress.XtraGrid.GridControl();
          this.gvMaterial = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,8 +55,6 @@
          this.gbOrderDetail.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiQuantity.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiCost.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcVT)).BeginInit();
@@ -113,7 +107,7 @@
          this.gbOrderDetail.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbOrderDetail.AppearanceCaption.Options.UseFont = true;
          this.gbOrderDetail.Controls.Add(this.btnSave);
-         this.gbOrderDetail.Controls.Add(this.btnNext);
+         this.gbOrderDetail.Controls.Add(this.btnExit);
          this.gbOrderDetail.Controls.Add(masoDDHLabel);
          this.gbOrderDetail.Controls.Add(this.txtOrderId);
          this.gbOrderDetail.Controls.Add(mAVTLabel);
@@ -125,25 +119,27 @@
          this.gbOrderDetail.Dock = System.Windows.Forms.DockStyle.Left;
          this.gbOrderDetail.Location = new System.Drawing.Point(0, 0);
          this.gbOrderDetail.Name = "gbOrderDetail";
-         this.gbOrderDetail.Size = new System.Drawing.Size(430, 235);
+         this.gbOrderDetail.Size = new System.Drawing.Size(427, 235);
          this.gbOrderDetail.TabIndex = 2;
          this.gbOrderDetail.Text = "Chi tiết Đơn Đặt Hàng";
          // 
          // btnSave
          // 
-         this.btnSave.Location = new System.Drawing.Point(233, 188);
+         this.btnSave.Location = new System.Drawing.Point(127, 188);
          this.btnSave.Name = "btnSave";
          this.btnSave.Size = new System.Drawing.Size(75, 23);
          this.btnSave.TabIndex = 9;
          this.btnSave.Text = "Ghi";
+         this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
          // 
-         // btnNext
+         // btnExit
          // 
-         this.btnNext.Location = new System.Drawing.Point(116, 188);
-         this.btnNext.Name = "btnNext";
-         this.btnNext.Size = new System.Drawing.Size(75, 23);
-         this.btnNext.TabIndex = 8;
-         this.btnNext.Text = "Nhập tiếp";
+         this.btnExit.Location = new System.Drawing.Point(236, 188);
+         this.btnExit.Name = "btnExit";
+         this.btnExit.Size = new System.Drawing.Size(75, 23);
+         this.btnExit.TabIndex = 8;
+         this.btnExit.Text = "Thoát";
+         this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
          // 
          // txtOrderId
          // 
@@ -157,8 +153,6 @@
          // 
          // txtMaterialId
          // 
-         this.txtMaterialId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVT, "TENVT", true));
-         this.txtMaterialId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "MAVT", true));
          this.txtMaterialId.Location = new System.Drawing.Point(155, 98);
          this.txtMaterialId.Name = "txtMaterialId";
          this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -168,21 +162,10 @@
          this.txtMaterialId.TabIndex = 3;
          this.txtMaterialId.EditValueChanged += new System.EventHandler(this.txtMaterialId_EditValueChanged);
          // 
-         // bdsVT
-         // 
-         this.bdsVT.DataMember = "Vattu";
-         this.bdsVT.DataSource = this.dataSet;
-         // 
-         // dataSet
-         // 
-         this.dataSet.DataSetName = "DataSet";
-         this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-         // 
          // spiQuantity
          // 
-         this.spiQuantity.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "SOLUONGTON", true));
          this.spiQuantity.EditValue = new decimal(new int[] {
-            1,
+            0,
             0,
             0,
             0});
@@ -214,37 +197,19 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.spiCost.Size = new System.Drawing.Size(166, 20);
          this.spiCost.TabIndex = 7;
-         // 
-         // taVT
-         // 
-         this.taVT.ClearBeforeFill = true;
-         // 
-         // taVTManager
-         // 
-         this.taVTManager.BackupDataSetBeforeUpdate = false;
-         this.taVTManager.ChiNhanhTableAdapter = null;
-         this.taVTManager.CTDDHTableAdapter = null;
-         this.taVTManager.CTPNTableAdapter = null;
-         this.taVTManager.CTPXTableAdapter = null;
-         this.taVTManager.DatHangTableAdapter = null;
-         this.taVTManager.KhoTableAdapter = null;
-         this.taVTManager.NhanVienTableAdapter = null;
-         this.taVTManager.PhieuNhapTableAdapter = null;
-         this.taVTManager.PhieuXuatTableAdapter = null;
-         this.taVTManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-         this.taVTManager.VattuTableAdapter = this.taVT;
+         this.spiCost.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiCost_CustomDisplayText);
+         this.spiCost.Validating += new System.ComponentModel.CancelEventHandler(this.spiCost_Validating);
          // 
          // gcVT
          // 
-         this.gcVT.DataSource = this.bdsVT;
          this.gcVT.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcVT.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcVT.Location = new System.Drawing.Point(430, 0);
+         this.gcVT.Location = new System.Drawing.Point(427, 0);
          this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(438, 235);
+         this.gcVT.Size = new System.Drawing.Size(441, 235);
          this.gcVT.TabIndex = 7;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMaterial});
@@ -323,8 +288,6 @@
          this.gbOrderDetail.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiQuantity.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiCost.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcVT)).EndInit();
@@ -337,10 +300,6 @@
       #endregion
 
       private DevExpress.XtraEditors.GroupControl gbOrderDetail;
-      private DataSet dataSet;
-      private System.Windows.Forms.BindingSource bdsVT;
-      private DataSetTableAdapters.VattuTableAdapter taVT;
-      private DataSetTableAdapters.TableAdapterManager taVTManager;
       private DevExpress.XtraGrid.GridControl gcVT;
       private DevExpress.XtraGrid.Views.Grid.GridView gvMaterial;
       private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
@@ -352,7 +311,7 @@
       private DevExpress.XtraEditors.SpinEdit spiQuantity;
       private DevExpress.XtraEditors.SpinEdit spiCost;
       private DevExpress.XtraEditors.SimpleButton btnSave;
-      private DevExpress.XtraEditors.SimpleButton btnNext;
+      private DevExpress.XtraEditors.SimpleButton btnExit;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
    }
 }

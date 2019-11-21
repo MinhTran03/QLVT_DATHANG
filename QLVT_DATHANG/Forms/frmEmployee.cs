@@ -14,6 +14,7 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraGrid.Views.Base;
    using Utility;
    using UserControls;
+   using System.Drawing;
 
    public partial class frmEmployee : XtraForm
    {
@@ -198,7 +199,7 @@ namespace QLVT_DATHANG.Forms
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
-      
+
          switch (action.ActionType)
          {
             case ButtonActionType.Add:
@@ -214,6 +215,7 @@ namespace QLVT_DATHANG.Forms
                //bdsNV.ResetCurrentItem();
                break;
             case ButtonActionType.Delete:
+               // Thêm dữ liệu cũ vào
                position = bdsNV.Count;
                bdsNV.AddNew();
                ((DataRowView)bdsNV[position]).Row.ItemArray = action.SaveItems;
@@ -277,6 +279,66 @@ namespace QLVT_DATHANG.Forms
          _userDo.Push(new ButtonAction(_buttonAction, row));
 
          EnableEditMode();
+      }
+
+      private void DeleteEmployee(int position)
+      {
+         string phieuLap = CheckPhieuDaLap();
+         if (phieuLap != null)
+         {
+            string text = string.Format(Cons.ErrorDeleteEmployee, phieuLap);
+            XtraMessageBox.Show(text, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+         }
+
+         _currentPosition = position;
+
+         bool isAsk = true;
+         string ho = ((DataRowView)bdsNV[_currentPosition])["HO"].ToString();
+         string ten = ((DataRowView)bdsNV[_currentPosition])["TEN"].ToString();
+         DialogResult result = DialogResult.Yes;
+         if(isAsk)
+            result = ShowDeleteConfirm(string.Format(Cons.AskDeleteEmployee, ho, ten), Cons.CaptionQuestion, null, ref isAsk);
+
+         if (result == DialogResult.Yes)
+         {
+            try
+            {
+               // lưu lại data trước khi xóa
+               _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[_currentPosition]).Row.ItemArray));
+
+               bdsNV.RemoveCurrent();
+               this.taNV.Update(this.dataSet.NhanVien);
+            }
+            catch (Exception ex)
+            {
+               UtilDB.ShowError(ex);
+            }
+         }
+      }
+
+      private DialogResult ShowDeleteConfirm(string text, string caption, Icon icon, ref bool isChecked)
+      {
+         DialogResult[] buttons = new DialogResult[]
+         {
+            DialogResult.Yes,
+            DialogResult.No
+         };
+         XtraMessageBoxArgs args = new XtraMessageBoxArgs(this, text, caption, buttons, icon, 0);
+
+         CheckEdit edit = new CheckEdit();
+         edit.Checked = isChecked;
+         args.Showing += (o, arg) =>
+         {
+            edit.Text = "Do not show again";
+            edit.Width = 150;
+            edit.Location = new Point(20, 70);
+            arg.Form.MinimumSize = new Size(200, 135);
+            arg.Form.Controls.Add(edit);
+         };
+
+         isChecked = edit.Checked;
+         return XtraMessageBox.Show(args);
       }
 
       #endregion
@@ -362,34 +424,17 @@ namespace QLVT_DATHANG.Forms
 
       private void btnDel_ItemClick(object sender, ItemClickEventArgs e)
       {
-         string phieuLap = CheckPhieuDaLap();
-         if (phieuLap != null)
+         var selectedPosition = gvNV.GetSelectedRows();
+         int length = selectedPosition.Length;
+         if (length > 0)
          {
-            string text = string.Format(Cons.ErrorDeleteEmployee, phieuLap);
-            XtraMessageBox.Show(text, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
-         }
-
-         _currentPosition = bdsNV.Position;
-
-         string ho = ((DataRowView)bdsNV[_currentPosition])["HO"].ToString();
-         string ten = ((DataRowView)bdsNV[_currentPosition])["TEN"].ToString();
-         var result = XtraMessageBox.Show(string.Format(Cons.AskDeleteEmployee, ho, ten), Cons.CaptionQuestion,
-                                       MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-         if (result == DialogResult.Yes)
-         {
-            try
+            var result = XtraMessageBox.Show(string.Format("Bạn chắc chắn muốn xóa {0} nhân viên", length), Cons.CaptionQuestion, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
             {
-               // lưu lại data trước khi xóa
-               _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[_currentPosition]).Row.ItemArray));
-
-               bdsNV.RemoveCurrent();
-               this.taNV.Update(this.dataSet.NhanVien);
-            }
-            catch (Exception ex)
-            {
-               UtilDB.ShowError(ex);
+               for (int index = 0; index < selectedPosition.Length; index++)
+               {
+                  DeleteEmployee(selectedPosition[index]);
+               }
             }
          }
       }

@@ -271,6 +271,8 @@
          this.spiSLT.Name = "spiSLT";
          this.spiSLT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.spiSLT.Properties.IsFloatValue = false;
+         this.spiSLT.Properties.Mask.EditMask = "N00";
          this.spiSLT.Size = new System.Drawing.Size(111, 20);
          this.spiSLT.TabIndex = 18;
          // 

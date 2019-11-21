@@ -95,6 +95,8 @@ namespace QLVT_DATHANG.Forms
 
       private void EnableEditMode()
       {
+         gbOrderDetail.Enabled = false;
+
          gcOrder.Enabled = false;
          gbOrder.Enabled = true;
 
@@ -111,6 +113,8 @@ namespace QLVT_DATHANG.Forms
 
       private void DisableEditMode()
       {
+         gbOrderDetail.Enabled = true;
+
          gcOrder.Enabled = true;
          gbOrder.Enabled = false;
 
@@ -259,7 +263,22 @@ namespace QLVT_DATHANG.Forms
          };
 
          string orderId = txtOrderId.EditValue.ToString();
-         CustomFlyoutDialog.ShowForm(this, flyoutAction, new frmInputOrderDetail(orderId));
+         using (frmInputOrderDetail inputOrderDetail = new frmInputOrderDetail(orderId, bdsCTDDH, bdsVT))
+         {
+            CustomFlyoutDialog.ShowForm(this, flyoutAction, inputOrderDetail);
+            inputOrderDetail.Disposed += (o, arg) =>
+            {
+               try
+               {
+                  this.taCTDDH.Update(this.dataSet.CTDDH);
+                  this.taVT.Update(this.dataSet.Vattu);
+               }
+               catch (Exception ex)
+               {
+                  UtilDB.ShowError(ex);
+               }
+            };
+         }
       }
    }
 }
