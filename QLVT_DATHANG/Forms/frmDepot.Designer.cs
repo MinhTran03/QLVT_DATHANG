@@ -428,7 +428,6 @@
          this.cboDeployment.Name = "cboDeployment";
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
-         this.cboDeployment.SelectedIndexChanged += new System.EventHandler(this.cboDeployment_SelectedIndexChanged);
          // 
          // splitterControl1
          // 

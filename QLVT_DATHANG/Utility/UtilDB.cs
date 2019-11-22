@@ -61,15 +61,45 @@ namespace QLVT_DATHANG.Utility
          }
       }
 
+      public delegate void LoadTable();
+
       /// <summary>
       /// Setup combobox hiển thị các chi nhánh hiện có
       /// </summary>
       /// <param name="comboBox"></param>
-      public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox)
+      public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox, LoadTable loadTable)
       {
          comboBox.DataSource = BdsDSPM;
          comboBox.DisplayMember = MyConfig.DisplayMemberDSPM;
          comboBox.ValueMember = MyConfig.ValueMemberDSPM;
+
+         comboBox.SelectedIndexChanged += (o, e) =>
+         {
+            // đổi server
+            UtilDB.ServerName = comboBox.SelectedValue.ToString();
+
+            // đổi login
+            if (comboBox.SelectedIndex != UtilDB.CurrentDeployment)
+            {
+               UtilDB.CurrentLogin = MyConfig.RemoteLogin;
+               UtilDB.CurrentPassword = MyConfig.RemotePassword;
+            }
+            else
+            {
+               UtilDB.CurrentLogin = UtilDB.BackupLogin;
+               UtilDB.CurrentPassword = UtilDB.BackupPassword;
+            }
+
+            //
+            if (UtilDB.Connect() == 0)
+            {
+               XtraMessageBox.Show(Cons.ErrorConnectDepartment, Cons.CaptionError, MessageBoxButtons.OK);
+            }
+            else
+            {
+               loadTable();
+            }
+         };
       }
 
       public static void ShowError(Exception e)

@@ -46,23 +46,30 @@ namespace QLVT_DATHANG.Forms
       {
          if (grName.Equals(Cons.CongTyGroupName))
          {
-            UtilDB.SetupDSCN(cboDeployment);
-            cboDeployment.Visible = true;
-
-            btnAdd.Enabled = false;
+            UtilDB.SetupDSCN(this.cboDeployment, LoadTable);
+            this.pnPickDepartment.Visible = true;
+            this.btnAdd.Enabled = false;
          }
       }
 
       private void SetupControls()
       {
          gcOrderDetail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-         gcOrderDetail.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+         gcOrderDetail.Columns[3].DefaultCellStyle.FormatProvider = Cons.CiVNI;
+         gcOrderDetail.Columns[3].DefaultCellStyle.Format = "c0";
+
          gcOrderDetail.BorderStyle = BorderStyle.None;
-         gcOrderDetail.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-         gcOrderDetail.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+         gcOrderDetail.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+         gcOrderDetail.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+         gcOrderDetail.DefaultCellStyle.SelectionBackColor = Color.FromArgb(226, 234, 253);
+         gcOrderDetail.DefaultCellStyle.SelectionForeColor = Color.Black;
+         gcOrderDetail.BackgroundColor = Color.White;
+
          gcOrderDetail.EnableHeadersVisualStyles = false;
-         gcOrderDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-         gcOrderDetail.RowHeadersVisible = false;
+         gcOrderDetail.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+         gcOrderDetail.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(246, 246, 247);
+         gcOrderDetail.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+         gcOrderDetail.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 10);
       }
 
       private void LoadTable()
@@ -280,5 +287,6 @@ namespace QLVT_DATHANG.Forms
             };
          }
       }
+
    }
 }

@@ -42,7 +42,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (grName.Equals("congty"))
          {
-            UtilDB.SetupDSCN(cboDeployment);
+            UtilDB.SetupDSCN(cboDeployment, LoadTable);
             cboDeployment.Visible = true;
 
             btnAdd.Enabled = false;

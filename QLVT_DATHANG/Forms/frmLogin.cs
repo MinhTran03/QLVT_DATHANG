@@ -27,7 +27,9 @@ namespace QLVT_DATHANG.Forms
          {
             UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable("SELECT * FROM V_DS_PHANMANH", cnnStr);
 
-            UtilDB.SetupDSCN(cboChiNhanh);
+            cboChiNhanh.DataSource = UtilDB.BdsDSPM;
+            cboChiNhanh.DisplayMember = MyConfig.DisplayMemberDSPM;
+            cboChiNhanh.ValueMember = MyConfig.ValueMemberDSPM;
 
             cboChiNhanh.SelectedIndex = -1;
             cboChiNhanh.SelectedIndex = 0;

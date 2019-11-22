@@ -502,7 +502,6 @@
          this.gvNV.OptionsBehavior.Editable = false;
          this.gvNV.OptionsBehavior.ReadOnly = true;
          this.gvNV.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.CheckAllDetails;
-         this.gvNV.OptionsSelection.MultiSelect = true;
          this.gvNV.OptionsView.ShowGroupPanel = false;
          this.gvNV.OptionsView.ShowViewCaption = true;
          this.gvNV.ViewCaption = "Danh sách Nhân Viên";
@@ -615,7 +614,6 @@
          this.cboDeployment.Name = "cboDeployment";
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
-         this.cboDeployment.SelectedIndexChanged += new System.EventHandler(this.cboEmpDep_SelectedIndexChanged);
          // 
          // txtEmpDelStatus
          // 

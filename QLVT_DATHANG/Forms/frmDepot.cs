@@ -1,8 +1,5 @@
 ﻿using QLVT_DATHANG.Utility;
 using System;
-using System.Data;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
@@ -12,7 +9,6 @@ namespace QLVT_DATHANG.Forms
    public partial class frmDepot : XtraForm
    {
       private MyStack _userDo;
-      private string _currentDeploymentId;
       private ButtonActionType _buttonAction;
 
       public frmDepot()
@@ -31,8 +27,6 @@ namespace QLVT_DATHANG.Forms
          LoadTable();
          DisableEditMode();
 
-         _currentDeploymentId = ((DataRowView)bdsDepot[0])["MAKHO"].ToString().Trim();
-
          // Quyền công ty => enable combobox chi nhánh
          ShowControlsByGroup(UtilDB.CurrentGroup);
       }
@@ -43,7 +37,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (grName.Equals("congty"))
          {
-            UtilDB.SetupDSCN(this.cboDeployment);
+            UtilDB.SetupDSCN(this.cboDeployment, LoadTable);
             this.pnPickDepartment.Visible = true;
             this.btnAdd.Enabled = false;
             this.btnEdit.Enabled = false;
@@ -122,37 +116,6 @@ namespace QLVT_DATHANG.Forms
       private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
       {
 
-      }
-
-      private void cboDeployment_SelectedIndexChanged(object sender, EventArgs e)
-      {
-         if (cboDeployment.SelectedValue.ToString().Equals("System.Data.DataRowView")) return;
-
-         // đổi server
-         UtilDB.ServerName = cboDeployment.SelectedValue.ToString();
-
-         // đổi login
-         if (cboDeployment.SelectedIndex != UtilDB.CurrentDeployment)
-         {
-            UtilDB.CurrentLogin = MyConfig.RemoteLogin;
-            UtilDB.CurrentPassword = MyConfig.RemotePassword;
-         }
-         else
-         {
-            UtilDB.CurrentLogin = UtilDB.BackupLogin;
-            UtilDB.CurrentPassword = UtilDB.BackupPassword;
-         }
-
-         //
-         if (UtilDB.Connect() == 0)
-         {
-            XtraMessageBox.Show(Cons.ErrorConnectDepartment, Cons.CaptionError, MessageBoxButtons.OK);
-         }
-         else
-         {
-            LoadTable();
-            _currentDeploymentId = ((DataRowView)bdsDepot[0])["MAKHO"].ToString();
-         }
       }
 
       #endregion

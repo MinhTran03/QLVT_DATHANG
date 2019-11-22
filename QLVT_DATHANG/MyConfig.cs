@@ -18,6 +18,7 @@ namespace QLVT_DATHANG
       public const string ExecSPTimNhanVien = "EXEC sp_timnhanvien {0}";
       public const string ExecSPTimVatTu = "EXEC sp_timvattu '{0}'";
       public const string ExecSPTimDDH = "EXEC sp_timddh '{0}'";
+      public const string ExecSPXoaLogin = "EXEC sp_removelogin '{0}'";
 
       // Mã error khi exec sp raise error
       public const int ErrorCodeDatabase = 18;
