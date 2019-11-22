@@ -410,8 +410,10 @@ namespace QLVT_DATHANG.Forms
             //txtEmpDep.Text = null;
             gbEmployee.Enabled = false;
             bdsNV.CancelEdit();
-            bdsNV.ResetCurrentItem();
+            //bdsNV.ResetCurrentItem();
             bdsNV.Position = _currentPosition;
+            if (_buttonAction == ButtonActionType.Edit)
+               _userDo.Pop();
             _buttonAction = ButtonActionType.None;
          }
          catch (Exception ex)
@@ -542,7 +544,7 @@ namespace QLVT_DATHANG.Forms
 
       private bool IsExistEmployee(int employeeId)
       {
-         bool exist = false;
+         bool exist = true;
          string strLenh = string.Format(MyConfig.ExecSPTimNhanVien, employeeId);
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
@@ -553,7 +555,6 @@ namespace QLVT_DATHANG.Forms
                try
                {
                   sqlcmd.ExecuteNonQuery();
-                  exist = true;
                }
                catch (Exception ex)
                {

@@ -4,7 +4,7 @@ namespace QLVT_DATHANG
 {
    public class MyConfig
    {
-      public static string MachineName = Environment.MachineName + "\\KAI";
+      public static string MachineName = Environment.MachineName;
 
       public const string DisplayMemberDSPM = "TENCN";
       public const string ValueMemberDSPM = "TENSERVER";

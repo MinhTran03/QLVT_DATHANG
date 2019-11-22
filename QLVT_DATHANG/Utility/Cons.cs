@@ -21,6 +21,8 @@ namespace QLVT_DATHANG.Utility
       public const string ErrorConfirmPW = "Mật khẩu và Mật khẩu nhập lại không khớp";
       public const string ErrorNotCheckedRole = "Vui lòng chọn quyền cho tài khoản";
       public const string ErrorDuplicateEmpoyeeId = "Mã nhân viên đã tồn tại";
+      public const string ErrorDuplicateMaterialId = "Mã vật tư đã tồn tại";
+      public const string ErrorDuplicateDeportId = "Mã kho đã tồn tại";
       public const string ErrorDuplicateOrderId = "Mã đơn đặt hàng đã tồn tại";
       public const string ErrorOutOfQuantity = "Số lượng bạn chọn vượt quá số lượng tồn";
       public const string ErrorBelowThenZero = "Giá trị không được nhỏ hơn 0";
@@ -41,6 +43,7 @@ namespace QLVT_DATHANG.Utility
       public const string AskExit = "Bạn chắc chắn muốn thoát, dữ liệu trên form sẽ không được lưu???";
 
       public const string ErrorDeleteEmployee = "Nhập viên đã lập {0}, không được xóa!!!";
+      public const string ErrorDeleteMaterial = "Vật tư có trong {0}, không được xóa!!!";
       public const string ErrorConnectDepartment = "Lỗi kết nối về chi nhánh mới";
       public const string ErrorEmptyValueLogin = "Tên đăng nhập và Mật khẩu không được để trống";
       public const string ErrorEmptyValue = "Vui lòng nhập đầy đủ dữ liệu";
