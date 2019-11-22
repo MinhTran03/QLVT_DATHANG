@@ -36,6 +36,7 @@ namespace QLVT_DATHANG.Utility
       public const string AskDeleteEmployee = "Bạn có chắc muốn xóa nhân viên {0} {1}";
       public const string AskDeleteMaterials = "Bạn có chắc muốn xóa vật tư {0}";
       public const string AskDeleteOrder = "Bạn có chắc muốn xóa đơn đặt hàng {0}";
+      public const string AskDeleteDepot = "Bạn có chắc muốn xóa kho hàng {0}";
       public const string AskExitWhileEditing = "Bạn có muốn lưu thay đổi trước khi thoát?";
       public const string AskExit = "Bạn chắc chắn muốn thoát, dữ liệu trên form sẽ không được lưu???";
 

@@ -5,13 +5,18 @@ namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
+    using DevExpress.XtraEditors.DXErrorProvider;
+    using System.Data.SqlClient;
+    using System.Drawing;
 
-   public partial class frmDepot : XtraForm
+    public partial class frmDepot : XtraForm
    {
-      private MyStack _userDo;
-      private ButtonActionType _buttonAction;
+        private string _currentDeploymentId;
+        private int _currentPosition;
+        private ButtonActionType _buttonAction;
+        private MyStack _userDo;
 
-      public frmDepot()
+        public frmDepot()
       {
          InitializeComponent();
          SetupControls();
@@ -19,13 +24,15 @@ namespace QLVT_DATHANG.Forms
 
       private void frmDepot_Load(object sender, EventArgs e)
       {
-         _buttonAction = ButtonActionType.None;
-         _userDo = new MyStack();
-         _userDo.StackPushed += userDo_StackPushed;
-         _userDo.StackPopped += userDo_StackPopped;
+            _buttonAction = ButtonActionType.None;
+            _userDo = new MyStack();
+            _userDo.StackPushed += userDo_StackPushed;
+            _userDo.StackPopped += userDo_StackPopped;
 
-         LoadTable();
-         DisableEditMode();
+            LoadTable();
+            DisableEditMode();
+
+         _currentDeploymentId = ((DataRowView)bdsDepot[0])["MACN"].ToString().Trim();
 
          // Quyền công ty => enable combobox chi nhánh
          ShowControlsByGroup(UtilDB.CurrentGroup);
@@ -61,7 +68,26 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
-      private void DisableEditMode()
+        private void EnableEditMode()
+        {
+            gcDepot.Enabled = false;
+            gbDepot.Enabled = true;
+
+            btnAdd.Enabled = false;
+            btnDel.Enabled = false;
+            btnEdit.Enabled = false;
+            btnExit.Enabled = false;
+            btnRefresh.Enabled = false;
+            btnUndo.Enabled = false;
+
+            btnCancelEdit.Enabled = true;
+            btnCancelEdit.Visibility = BarItemVisibility.Always;
+
+            btnSave.Enabled = true;
+            btnSave.Visibility = BarItemVisibility.Always;
+        }
+
+        private void DisableEditMode()
       {
          btnDel.Enabled = (bdsDepot.Count == 0) ? false : true;
          txtEmpDepartment.ReadOnly = true;
@@ -109,15 +135,240 @@ namespace QLVT_DATHANG.Forms
 
       }
 
-      #endregion
+        #endregion
 
-      #region EVENTS
+        #region EVENTS
 
       private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
       {
 
       }
 
-      #endregion
-   }
+        private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            _currentPosition = bdsDepot.Position;
+            _buttonAction = ButtonActionType.Add;
+
+            bdsDepot.AddNew();
+            txtEmpDepartment.EditValue = _currentDeploymentId;
+
+            EnableEditMode();
+            txtDepotId.Focus();
+        }
+
+        private void btnEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            EditDepot();
+        }
+
+        private void btnDel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DeleteDepot();
+        }
+
+        private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Undo();
+        }
+
+        private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            LoadTable();
+        }
+
+        private void btnExit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SaveDepot();
+        }
+
+        #endregion
+
+        private void EditDepot()
+        {
+            // lưu lại trạng thái nút ấn
+            _currentPosition = bdsDepot.Position;
+            _buttonAction = ButtonActionType.Edit;
+
+            // lưu lại data để undo
+            var row = ((DataRowView)bdsDepot[_currentPosition]).Row.ItemArray;
+            _userDo.Push(new ButtonAction(_buttonAction, row));
+
+            EnableEditMode();
+        }
+
+        private void DeleteDepot()
+        {
+            _currentPosition = bdsDepot.Position;
+
+            bool isAsk = true;
+            string ten = ((DataRowView)bdsDepot[_currentPosition])["TENKHO"].ToString();
+            DialogResult result = DialogResult.Yes;
+            if (isAsk)
+                result = ShowDeleteConfirm(string.Format(Cons.AskDeleteDepot, ten), Cons.CaptionQuestion, null, ref isAsk);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // lưu lại data trước khi xóa
+                    _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsDepot[_currentPosition]).Row.ItemArray));
+
+                    bdsDepot.RemoveCurrent();
+                    this.taDepot.Update(this.dataSet.Kho);
+                }
+                catch (Exception ex)
+                {
+                    UtilDB.ShowError(ex);
+                }
+            }
+        }
+
+        private DialogResult ShowDeleteConfirm(string text, string caption, Icon icon, ref bool isChecked)
+        {
+            DialogResult[] buttons = new DialogResult[]
+            {
+            DialogResult.Yes,
+            DialogResult.No
+            };
+            XtraMessageBoxArgs args = new XtraMessageBoxArgs(this, text, caption, buttons, icon, 0);
+
+            CheckEdit edit = new CheckEdit();
+            edit.Checked = isChecked;
+            args.Showing += (o, arg) =>
+            {
+                edit.Text = "Do not show again";
+                edit.Width = 150;
+                edit.Location = new Point(20, 70);
+                arg.Form.MinimumSize = new Size(200, 135);
+                arg.Form.Controls.Add(edit);
+            };
+
+            isChecked = edit.Checked;
+            return XtraMessageBox.Show(args);
+        }
+
+        private void Undo()
+        {
+            ButtonAction action = (ButtonAction)_userDo.Pop();
+            int position = -1;
+
+            switch (action.ActionType)
+            {
+                case ButtonActionType.Add:
+                    // xóa dữ liệu mới
+                    position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
+                    bdsDepot.Remove((DataRowView)bdsDepot[position]);
+                    break;
+                case ButtonActionType.Edit:
+                    // sửa lại dữ liệu cũ
+                    position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
+                    ((DataRowView)bdsDepot[position]).Row.ItemArray = action.SaveItems;
+                    bdsDepot.EndEdit();
+                    //bdsNV.ResetCurrentItem();
+                    break;
+                case ButtonActionType.Delete:
+                    // Thêm dữ liệu cũ vào
+                    position = bdsDepot.Count;
+                    bdsDepot.AddNew();
+                    ((DataRowView)bdsDepot[position]).Row.ItemArray = action.SaveItems;
+                    bdsDepot.EndEdit();
+                    break;
+                case ButtonActionType.None:
+                default:
+                    break;
+            }
+            this.taDepot.Update(this.dataSet.Kho);
+        }
+
+        private bool SaveDepot()
+        {
+            try
+            {
+                if (_buttonAction == ButtonActionType.Add)
+                {
+                    if (IsExistDepot(txtDepotId.EditValue.ToString()))
+                    {
+                        XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
+                           MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtDepotId.Focus();
+                        txtDepotId.SelectAll();
+                        return false;
+                    }
+
+                    // Lưu vô stack trạng thái nút nhấn và data bị thay đổi
+                    _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsDepot[bdsDepot.Position]).Row.ItemArray));
+                }
+
+                bdsDepot.EndEdit();
+                gbDepot.Enabled = false;
+                //bdsNV.ResetCurrentItem();
+                this.taDepot.Update(this.dataSet.Kho);
+                _buttonAction = ButtonActionType.None;
+            }
+            catch (Exception ex)
+            {
+                // #load lại từ database
+                dataSet.EnforceConstraints = false;
+                this.taDepot.Fill(this.dataSet.Kho);
+                dataSet.EnforceConstraints = true;
+
+                UtilDB.ShowError(ex);
+                return false;
+            }
+            bdsDepot.Position = _currentPosition;
+            DisableEditMode();
+            return true;
+        }
+
+        private bool IsExistDepot(String depotId)
+        {
+            bool exist = false;
+            string strLenh = string.Format(MyConfig.ExecSPTimKho, depotId);
+            using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand sqlcmd = new SqlCommand(strLenh, connection))
+                {
+                    sqlcmd.CommandType = CommandType.Text;
+                    try
+                    {
+                        sqlcmd.ExecuteNonQuery();
+                        exist = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
+                            exist = false;
+                        else
+                            UtilDB.ShowError(ex);
+                    }
+                }
+            }
+            return exist;
+        }
+
+        private void btnCancelEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dxErrorProvider.ClearErrors();
+
+            try
+            {
+                gbDepot.Enabled = false;
+                bdsDepot.CancelEdit();
+                bdsDepot.ResetCurrentItem();
+                bdsDepot.Position = _currentPosition;
+                _buttonAction = ButtonActionType.None;
+            }
+            catch (Exception ex)
+            {
+                UtilDB.ShowError(ex);
+            }
+            DisableEditMode();
+        }
+    }
 }
