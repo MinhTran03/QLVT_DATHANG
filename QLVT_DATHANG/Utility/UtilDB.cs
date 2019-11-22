@@ -66,7 +66,8 @@ namespace QLVT_DATHANG.Utility
       /// <summary>
       /// Setup combobox hiển thị các chi nhánh hiện có
       /// </summary>
-      /// <param name="comboBox"></param>
+      /// <param name="comboBox">Control ComboBox</param>
+      /// <param name="loadTable">Delegate load các bindingSource khi chuyển chi nhánh</param>
       public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox, LoadTable loadTable)
       {
          comboBox.DataSource = BdsDSPM;
