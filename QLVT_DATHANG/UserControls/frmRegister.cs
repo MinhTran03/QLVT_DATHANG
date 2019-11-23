@@ -15,11 +15,21 @@ namespace QLVT_DATHANG.UserControls
       {
          InitializeComponent();
          txtEmpoyeeId.EditValue = employeeId;
+
+         LoadDSNV();
       }
 
       public frmRegister()
       {
          InitializeComponent();
+
+         LoadDSNV();
+      }
+
+      private void LoadDSNV()
+      {
+         this.taDSNV.Connection.ConnectionString = UtilDB.ConnectionString;
+         this.taDSNV.Fill(this.dataSet.DSNV);
       }
 
       private void btnExit_Click(object sender, EventArgs e)
@@ -30,17 +40,17 @@ namespace QLVT_DATHANG.UserControls
 
       private void frmRegister_Load(object sender, EventArgs e)
       {
-         radCongTy.Tag = Cons.CongTyGroupName;
-         radChiNhanh.Tag = Cons.ChiNhanhGroupName;
-         radUser.Tag = Cons.UserGroupName;
+         radCongTy.Tag = MyConfig.CongTyGroupName;
+         radChiNhanh.Tag = MyConfig.ChiNhanhGroupName;
+         radUser.Tag = MyConfig.UserGroupName;
 
          txtPassword.Properties.PasswordChar = txtConfirmPassword.Properties.PasswordChar = '•';
          switch (UtilDB.CurrentGroup)
          {
-            case Cons.CongTyGroupName:
+            case MyConfig.CongTyGroupName:
                radCongTy.Checked = true;
                break;
-            case Cons.ChiNhanhGroupName:
+            case MyConfig.ChiNhanhGroupName:
                radChiNhanh.Enabled = true;
                radUser.Enabled = true;
                break;
@@ -111,7 +121,25 @@ namespace QLVT_DATHANG.UserControls
             }
             catch (Exception ex)
             {
-               UtilDB.ShowError(ex);
+               if (ex is SqlException)
+               {
+                  var exAsSqlExeption = ex as SqlException;
+                  if (exAsSqlExeption.Number == Cons.ErrorDuplicateLoginNameCode)
+                  {
+                     XtraMessageBox.Show(Cons.ErrorDuplicateLoginName, Cons.CaptionError,
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     txtLoginName.SelectAll();
+                  }else if(exAsSqlExeption.Number == Cons.ErrorDuplicateUserNameCode)
+                  {
+                     XtraMessageBox.Show(Cons.ErrorEmployeeHaveLogin, Cons.CaptionError,
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     slkEmployee.Focus();
+                  }
+               }
+               else
+               {
+                  UtilDB.ShowError(ex);
+               }
                result = false;
             }
          }
@@ -154,6 +182,11 @@ namespace QLVT_DATHANG.UserControls
          {
             (sender as TextEdit).EditValue = null;
          }
+      }
+
+      private void slkEmployee_EditValueChanged(object sender, EventArgs e)
+      {
+         txtEmpoyeeId.EditValue = slkEmployee.EditValue.ToString();
       }
    }
 }

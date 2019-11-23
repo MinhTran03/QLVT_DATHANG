@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraEditors;
-   using System.Data;
    using Utility;
 
    public partial class frmLogin : XtraForm
@@ -19,13 +19,13 @@ namespace QLVT_DATHANG.Forms
 
       private void frmLogin_Load(object sender, EventArgs e)
       {
-         string cnnStr = $"Data Source={MyConfig.MachineName};" +
+         string cnnStr = $"Data Source={MyConfig.RootServerName};" +
                         $"Initial Catalog={MyConfig.DatabaseName};" +
                         $"Integrated Security=True";
 
          try
          {
-            UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable("SELECT * FROM V_DS_PHANMANH", cnnStr);
+            UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable($"SELECT * FROM {MyConfig.ViewDSPMName}", cnnStr);
 
             cboChiNhanh.DataSource = UtilDB.BdsDSPM;
             cboChiNhanh.DisplayMember = MyConfig.DisplayMemberDSPM;

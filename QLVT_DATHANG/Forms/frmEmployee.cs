@@ -8,6 +8,7 @@ namespace QLVT_DATHANG.Forms
 {
    using DevExpress.Utils;
    using DevExpress.XtraBars;
+   using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
    using DevExpress.XtraEditors;
    using DevExpress.XtraEditors.Controls;
    using DevExpress.XtraEditors.Mask;
@@ -48,7 +49,7 @@ namespace QLVT_DATHANG.Forms
 
       private void ShowControlsByGroup(string grName)
       {
-         if (grName.Equals(Cons.CongTyGroupName))
+         if (grName.Equals(MyConfig.CongTyGroupName))
          {
             UtilDB.SetupDSCN(this.cboDeployment, LoadTable);
             this.pnPickDepartment.Visible = true;
@@ -56,7 +57,7 @@ namespace QLVT_DATHANG.Forms
             this.btnEdit.Enabled = false;
             this.btnDel.Enabled = false;
          }
-         else if (grName.Equals(Cons.UserGroupName))
+         else if (grName.Equals(MyConfig.UserGroupName))
          {
             btnCreateLogin.Enabled = false;
          }
@@ -237,7 +238,6 @@ namespace QLVT_DATHANG.Forms
                {
                   XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                  txtEmpId.Focus();
                   txtEmpId.SelectAll();
                   return false;
                }
@@ -314,13 +314,50 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
+      private void RemoveLoginInStack()
+      {
+         while (_userDo.Count > 0)
+         {
+            ButtonAction action = (ButtonAction)_userDo.Pop();
+            if (action.ActionType == ButtonActionType.Delete)
+            {
+               object[] data = action.SaveItems;
+               RemoveLogin(data[0].ToString());
+            }
+         }
+      }
+
+      private bool RemoveLogin(string employeeId)
+      {
+         bool isSuccess = false;
+         string strLenh = string.Format(MyConfig.ExecSPXoaLogin, employeeId);
+         using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
+         {
+            connection.Open();
+            using (SqlCommand sqlcmd = new SqlCommand(strLenh, connection))
+            {
+               sqlcmd.CommandType = CommandType.Text;
+               try
+               {
+                  sqlcmd.ExecuteNonQuery();
+                  isSuccess = true;
+               }
+               catch (Exception ex)
+               {
+                  UtilDB.ShowError(ex);
+               }
+            }
+         }
+         return isSuccess;
+      }
+
       #endregion
 
       #region EVENTS
 
       private void btnCreateLogin_Click(object sender, EventArgs e)
       {
-         int employeeId = int.Parse(((DataRowView)bdsNV[bdsNV.Position])["MANV"].ToString());
+         int employeeId = int.Parse(txtEmpId.EditValue.ToString());
 
          string strLenh = string.Format(MyConfig.ExecSPKiemTraNVCoTaiKhoan, employeeId);
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
@@ -332,14 +369,23 @@ namespace QLVT_DATHANG.Forms
                try
                {
                   command.ExecuteNonQuery();
-                  XtraMessageBox.Show("Nhân viên đã tạo tài khoản");
+                  FlyoutAction flyoutAction = new FlyoutAction()
+                  {
+                     Caption = Cons.CaptionCreateLogin,
+                  };
+                  CustomFlyoutDialog.ShowForm(this, flyoutAction, new frmRegister(employeeId));
                }
                catch (Exception ex)
                {
-                  if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
-                     CustomFlyoutDialog.ShowForm(this, null, new frmRegister(employeeId));
+                  if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumEmployeeHaveLogin)
+                  {
+                     XtraMessageBox.Show((ex as SqlException).Message, Cons.CaptionError,
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  }
                   else
+                  {
                      UtilDB.ShowError(ex);
+                  }
                }
             }
          }
@@ -394,6 +440,7 @@ namespace QLVT_DATHANG.Forms
 
       private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
       {
+         UtilDB.TrimDataInControl(gbEmployee);
          SaveEmployee();
       }
 
@@ -455,43 +502,6 @@ namespace QLVT_DATHANG.Forms
          }
 
          RemoveLoginInStack();
-      }
-
-      private void RemoveLoginInStack()
-      {
-         while (_userDo.Count > 0)
-         {
-            ButtonAction action = (ButtonAction)_userDo.Pop();
-            if (action.ActionType == ButtonActionType.Delete)
-            {
-               object[] data = action.SaveItems;
-               RemoveLogin(data[0].ToString());
-            }
-         }
-      }
-
-      private bool RemoveLogin(string employeeId)
-      {
-         bool isSuccess = false;
-         string strLenh = string.Format(MyConfig.ExecSPXoaLogin, employeeId);
-         using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
-         {
-            connection.Open();
-            using (SqlCommand sqlcmd = new SqlCommand(strLenh, connection))
-            {
-               sqlcmd.CommandType = CommandType.Text;
-               try
-               {
-                  sqlcmd.ExecuteNonQuery();
-                  isSuccess = true;
-               }
-               catch (Exception ex)
-               {
-                  UtilDB.ShowError(ex);
-               }
-            }
-         }
-         return isSuccess;
       }
 
       #endregion
@@ -558,7 +568,7 @@ namespace QLVT_DATHANG.Forms
                }
                catch (Exception ex)
                {
-                  if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
+                  if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumNotExistObject)
                      exist = false;
                   else
                      UtilDB.ShowError(ex);
@@ -619,5 +629,6 @@ namespace QLVT_DATHANG.Forms
       //}
 
       #endregion
+
    }
 }

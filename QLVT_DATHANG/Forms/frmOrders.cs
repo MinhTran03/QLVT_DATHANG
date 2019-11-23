@@ -44,7 +44,7 @@ namespace QLVT_DATHANG.Forms
 
       private void ShowControlsByGroup(string grName)
       {
-         if (grName.Equals(Cons.CongTyGroupName))
+         if (grName.Equals(MyConfig.CongTyGroupName))
          {
             UtilDB.SetupDSCN(this.cboDeployment, LoadTable);
             this.pnPickDepartment.Visible = true;
@@ -287,6 +287,5 @@ namespace QLVT_DATHANG.Forms
             };
          }
       }
-
    }
 }

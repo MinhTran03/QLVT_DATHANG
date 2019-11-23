@@ -423,7 +423,7 @@
          this.dtpEmpBirth.Properties.EditFormat.FormatString = "dd/MM/yyyy";
          this.dtpEmpBirth.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.dtpEmpBirth.Properties.FirstDayOfWeek = System.DayOfWeek.Monday;
-         this.dtpEmpBirth.Properties.Mask.EditMask = "";
+         this.dtpEmpBirth.Properties.Mask.EditMask = "dd/MM/yyyy";
          this.dtpEmpBirth.Properties.Mask.IgnoreMaskBlank = false;
          this.dtpEmpBirth.Properties.Mask.ShowPlaceHolders = false;
          this.dtpEmpBirth.Properties.MaxValue = new System.DateTime(2019, 10, 28, 0, 0, 0, 0);

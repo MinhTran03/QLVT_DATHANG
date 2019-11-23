@@ -34,10 +34,10 @@
          System.Windows.Forms.Label nhaCCLabel;
          System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -521,14 +521,14 @@
          this.gcOrderDetail.BackgroundColor = System.Drawing.Color.White;
          this.gcOrderDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
          this.gcOrderDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
-         dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-         dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSlateGray;
-         dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+         dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle5.BackColor = System.Drawing.Color.Gray;
+         dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+         dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSlateGray;
+         dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+         this.gcOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
          this.gcOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.gcOrderDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -537,14 +537,14 @@
             this.dataGridViewTextBoxColumn4});
          this.gcOrderDetail.ContextMenuStrip = this.cmsOrderDetail;
          this.gcOrderDetail.DataSource = this.bdsCTDDH;
-         dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-         dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-         dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
-         dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle3;
+         dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+         dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
+         dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle7;
          this.gcOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcOrderDetail.EnableHeadersVisualStyles = false;
          this.gcOrderDetail.GridColor = System.Drawing.Color.Silver;
@@ -552,14 +552,14 @@
          this.gcOrderDetail.Name = "gcOrderDetail";
          this.gcOrderDetail.ReadOnly = true;
          this.gcOrderDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-         dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-         dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+         dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+         dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+         dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+         dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
          this.gcOrderDetail.RowHeadersVisible = false;
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -602,9 +602,9 @@
          // dataGridViewTextBoxColumn4
          // 
          this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
-         dataGridViewCellStyle2.Format = "C0";
-         dataGridViewCellStyle2.NullValue = null;
-         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
+         dataGridViewCellStyle6.Format = "C0";
+         dataGridViewCellStyle6.NullValue = null;
+         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle6;
          this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
          this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
          this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";

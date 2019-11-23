@@ -55,20 +55,19 @@ namespace QLVT_DATHANG.Utility
 
          catch (Exception)
          {
-            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Tên đăng nhập và Mật khẩu.\n", 
+            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Tên đăng nhập và Mật khẩu.\n",
                                  Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return 0;
          }
       }
 
-      public delegate void LoadTable();
-
       /// <summary>
-      /// Setup combobox hiển thị các chi nhánh hiện có
+      /// Setup combobox hiển thị các chi nhánh hiện có và
+      /// callback load lại Table khi chuyển chi nhánh
       /// </summary>
       /// <param name="comboBox">Control ComboBox</param>
-      /// <param name="loadTable">Delegate load các bindingSource khi chuyển chi nhánh</param>
-      public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox, LoadTable loadTable)
+      /// <param name="loadTable">Action load các bindingSource khi chuyển chi nhánh</param>
+      public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox, Action loadTable)
       {
          comboBox.DataSource = BdsDSPM;
          comboBox.DisplayMember = MyConfig.DisplayMemberDSPM;
@@ -105,14 +104,30 @@ namespace QLVT_DATHANG.Utility
 
       public static void ShowError(Exception e)
       {
-         string message = e.Message + "\n";
-         string source = "Source: " + e.Source + "\n";
-         string targetSite = "Method: " + e.TargetSite + "\n";
-         XtraMessageBox.Show(source + targetSite + message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-         Console.WriteLine(e.StackTrace);
-         if (e.GetType() == typeof(SqlException))
+         if (e is SqlException)
          {
-            Console.WriteLine("===>" + ((SqlException)e).Number.ToString());
+            Console.WriteLine("MsgNumber: {0}", ((SqlException)e).Number.ToString());
+            XtraMessageBox.Show((e as SqlException).Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+         }
+         else
+         {
+            string message = e.Message + "\n";
+            string source = "Source: " + e.Source + "\n";
+            string targetSite = "Method: " + e.TargetSite + "\n";
+            XtraMessageBox.Show(source + targetSite + message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Console.WriteLine(e.StackTrace);
+         }
+      }
+
+      public static void TrimDataInControl(GroupControl groupControl)
+      {
+         foreach (var control in groupControl.Controls)
+         {
+            TextEdit textEdit = null;
+            if (control is TextEdit && (textEdit = (control as TextEdit)).ReadOnly == false)
+            {
+               textEdit.EditValue = textEdit.EditValue.ToString().Trim();
+            }
          }
       }
    }
