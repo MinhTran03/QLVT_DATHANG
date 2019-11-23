@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace QLVT_DATHANG.Forms
 {
@@ -137,7 +136,7 @@ namespace QLVT_DATHANG.Forms
             }
             catch (Exception ex)
             {
-               if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
+               if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumNotExistObject)
                   exist = false;
                else
                   UtilDB.ShowError(ex);
@@ -313,30 +312,6 @@ namespace QLVT_DATHANG.Forms
                UtilDB.ShowError(ex);
             }
          }
-      }
-
-      private DialogResult ShowDeleteConfirm(string text, string caption, Icon icon, ref bool isChecked)
-      {
-         DialogResult[] buttons = new DialogResult[]
-         {
-            DialogResult.Yes,
-            DialogResult.No
-         };
-         XtraMessageBoxArgs args = new XtraMessageBoxArgs(this, text, caption, buttons, icon, 0);
-
-         CheckEdit edit = new CheckEdit();
-         edit.Checked = isChecked;
-         args.Showing += (o, arg) =>
-         {
-            edit.Text = "Do not show again";
-            edit.Width = 150;
-            edit.Location = new Point(20, 70);
-            arg.Form.MinimumSize = new Size(200, 135);
-            arg.Form.Controls.Add(edit);
-         };
-
-         isChecked = edit.Checked;
-         return XtraMessageBox.Show(args);
       }
 
       private string CheckConstraint()

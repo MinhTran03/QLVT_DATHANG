@@ -217,6 +217,7 @@
          this.btnSave.Id = 5;
          this.btnSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSave.ImageOptions.SvgImage")));
          this.btnSave.Name = "btnSave";
+         this.btnSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
          this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
          // 
          // btnCancelEdit
@@ -225,6 +226,7 @@
          this.btnCancelEdit.Id = 7;
          this.btnCancelEdit.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_cancel_file_16;
          this.btnCancelEdit.Name = "btnCancelEdit";
+         this.btnCancelEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
          this.btnCancelEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelEdit_ItemClick);
          // 
          // btnExit

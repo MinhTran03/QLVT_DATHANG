@@ -26,6 +26,11 @@ namespace QLVT_DATHANG.Forms
          try
          {
             UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable($"SELECT * FROM {MyConfig.ViewDSPMName}", cnnStr);
+            if (UtilDB.BdsDSPM.DataSource == null)
+            {
+               Close();
+               return;
+            }
 
             cboChiNhanh.DataSource = UtilDB.BdsDSPM;
             cboChiNhanh.DisplayMember = MyConfig.DisplayMemberDSPM;
@@ -172,9 +177,9 @@ namespace QLVT_DATHANG.Forms
                      UtilDB.CurrentGroup = reader.GetString(2);
                   }
                }
-               catch (SqlException ex)
+               catch (Exception ex)
                {
-                  XtraMessageBox.Show(ex.Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  UtilDB.ShowError(ex);
                   flag = false;
                }
             }

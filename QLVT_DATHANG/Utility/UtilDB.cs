@@ -27,9 +27,17 @@ namespace QLVT_DATHANG.Utility
          DataTable dt = new DataTable();
          using (SqlConnection connection = new SqlConnection(connectionString))
          {
-            connection.Open();
-            SqlDataAdapter da = new SqlDataAdapter(cmdText, connection);
-            da.Fill(dt);
+            try
+            {
+               connection.Open();
+               SqlDataAdapter da = new SqlDataAdapter(cmdText, connection);
+               da.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+               ShowError(ex);
+               dt = null;
+            }
          }
          return dt;
       }
@@ -53,10 +61,25 @@ namespace QLVT_DATHANG.Utility
             return 1;
          }
 
-         catch (Exception)
+         catch (Exception ex)
          {
-            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Tên đăng nhập và Mật khẩu.\n",
-                                 Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (ex is SqlException)
+            {
+               var msgNum = (ex as SqlException).Number;
+               switch (msgNum)
+               {
+                  case Cons.ErrorLoginNameCannotConnectCode:
+                     //sai login name
+                     XtraMessageBox.Show(Cons.ErrorLoginNameOrPW, Cons.CaptionError,
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     break;
+                  default:
+                     XtraMessageBox.Show(Cons.ErrorCannotConnectServer, Cons.CaptionError,
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     break;
+               }
+            }
+
             return 0;
          }
       }
@@ -107,16 +130,13 @@ namespace QLVT_DATHANG.Utility
          if (e is SqlException)
          {
             Console.WriteLine("MsgNumber: {0}", ((SqlException)e).Number.ToString());
-            XtraMessageBox.Show((e as SqlException).Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Console.WriteLine((e as SqlException).Message);
          }
-         else
-         {
-            string message = e.Message + "\n";
-            string source = "Source: " + e.Source + "\n";
-            string targetSite = "Method: " + e.TargetSite + "\n";
-            XtraMessageBox.Show(source + targetSite + message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Console.WriteLine(e.StackTrace);
-         }
+         string message = e.Message + "\n";
+         string source = "Source: " + e.Source + "\n";
+         string targetSite = "Method: " + e.TargetSite + "\n";
+         XtraMessageBox.Show(source + targetSite + message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+         Console.WriteLine(e.StackTrace);
       }
 
       public static void TrimDataInControl(GroupControl groupControl)
