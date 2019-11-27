@@ -5,12 +5,14 @@ namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
-   using Utility;
+    using System.Data.SqlClient;
+    using System.Windows.Forms;
+    using Utility;
 
    public partial class frmGoodsReceivedNote : XtraForm
    {
       private string _currentDeploymentId;
-      //private int _currentPosition;
+      private int _currentPosition;
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
 
@@ -22,7 +24,10 @@ namespace QLVT_DATHANG.Forms
 
       private void GoodsReceivedNote_Load(object sender, EventArgs e)
       {
-         _buttonAction = ButtonActionType.None;
+            // TODO: This line of code loads data into the 'dataSet.DatHang' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'dataSet.DatHang' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'dataSet.CTPN' table. You can move, or remove it, as needed.
+            _buttonAction = ButtonActionType.None;
          _userDo = new MyStack();
          _userDo.StackPushed += userDo_StackPushed;
          _userDo.StackPopped += userDo_StackPopped;
@@ -112,6 +117,8 @@ namespace QLVT_DATHANG.Forms
       {
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
          this.taPN.Connection.ConnectionString =
+                this.taCTPN.Connection.ConnectionString =
+                this.taDDH.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
@@ -120,15 +127,38 @@ namespace QLVT_DATHANG.Forms
             // TODO: This line of code loads data into the 'dataSet.PhieuNhap' table. You can move, or remove it, as needed.
             this.taPN.Fill(this.dataSet.PhieuNhap);
 
-            //this.dataSet.EnforceConstraints = true;
-         }
-         catch (Exception ex)
+                this.taDDH.Fill(this.dataSet.DatHang);
+
+                this.taCTPN.Fill(this.dataSet.CTPN);
+
+                //this.dataSet.EnforceConstraints = true;
+
+            }
+            catch (Exception ex)
          {
             UtilDB.ShowError(ex);
          }
       }
 
-      private void DisableEditMode()
+        private void EnableEditMode()
+        {
+            //gbOrderDetail.Enabled = false;
+
+            gcReceivedNote.Enabled = false;
+            gbReceivedNote.Enabled = true;
+
+            btnAdd.Enabled = false;
+            btnExit.Enabled = false;
+            btnRefresh.Enabled = false;
+
+            btnCancelEdit.Enabled = true;
+            btnCancelEdit.Visibility = BarItemVisibility.Always;
+
+            btnSave.Enabled = true;
+            btnSave.Visibility = BarItemVisibility.Always;
+        }
+
+        private void DisableEditMode()
       {
          btnDel.Enabled = (bdsPN.Count == 0) ? false : true;
 
@@ -149,6 +179,131 @@ namespace QLVT_DATHANG.Forms
          btnSave.Visibility = BarItemVisibility.Never;
       }
 
-      #endregion
-   }
+        #endregion
+
+        private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            _currentPosition = bdsPN.Position;
+            _buttonAction = ButtonActionType.Add;
+
+            bdsPN.AddNew();
+
+            txtDate.EditValue = DateTime.Now;
+            txtMaNV.EditValue = UtilDB.UserName;
+
+            EnableEditMode();
+            txtMaPN.Focus();
+        }
+
+        private void btnEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            _buttonAction = ButtonActionType.Edit;
+            _currentPosition = bdsPN.Position;
+            var row = ((DataRowView)bdsPN[_currentPosition]).Row.ItemArray;
+
+            _userDo.Push(new ButtonAction(_buttonAction, row));
+            EnableEditMode();
+        }
+
+        private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SaveReceivedNote();
+        }
+
+        private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            LoadTable();
+        }
+
+        private void btnCancelEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dxErrorProvider.ClearErrors();
+            try
+            {
+                gbReceivedNote.Enabled = false;
+                bdsCTPN.CancelEdit();
+                bdsPN.ResetCurrentItem();
+                bdsPN.Position = _currentPosition;
+                _buttonAction = ButtonActionType.None;
+            }
+            catch (Exception ex)
+            {
+                UtilDB.ShowError(ex);
+            }
+            DisableEditMode();
+        }
+
+        private void btnExit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private bool SaveReceivedNote()
+        {
+            try
+            {
+                if (_buttonAction == ButtonActionType.Add)
+                {
+                    if (IsExistGoodsReceivedNote(txtMaPN.EditValue.ToString()))
+                    {
+                        XtraMessageBox.Show(Cons.ErrorDuplicateOrderId, Cons.CaptionWarning,
+                           MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtMaPN.Focus();
+                        return false;
+                    }
+                }
+
+                bdsPN.EndEdit();
+                gbReceivedNote.Enabled = false;
+                //bdsNV.ResetCurrentItem();
+                this.taPN.Update(this.dataSet.PhieuNhap);
+                _buttonAction = ButtonActionType.None;
+            }
+            catch (Exception ex)
+            {
+                // #load lại từ database
+                dataSet.EnforceConstraints = false;
+                this.taPN.Fill(this.dataSet.PhieuNhap);
+                dataSet.EnforceConstraints = true;
+
+                UtilDB.ShowError(ex);
+                return false;
+            }
+            bdsPN.Position = _currentPosition;
+            DisableEditMode();
+            return true;
+        }
+
+        private bool IsExistGoodsReceivedNote(string id)
+        {
+            bool exist = false;
+            string strLenh = string.Format(MyConfig.ExecSPTimPhieuNhap, id);
+            using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand sqlcmd = new SqlCommand(strLenh, connection))
+                {
+                    sqlcmd.CommandType = CommandType.Text;
+                    try
+                    {
+                        sqlcmd.ExecuteNonQuery();
+                        exist = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is SqlException && (ex as SqlException).Class == MyConfig.ErrorCodeDatabase)
+                            exist = false;
+                        else
+                            UtilDB.ShowError(ex);
+                    }
+                }
+            }
+            return exist;
+        }
+    }
 }
