@@ -65,6 +65,8 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmsCTPX = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnAddCTPX = new System.Windows.Forms.ToolStripMenuItem();
             this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
             this.taPX = new QLVT_DATHANG.DataSetTableAdapters.PhieuXuatTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
@@ -81,8 +83,6 @@
             this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
             this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.taCTPX = new QLVT_DATHANG.DataSetTableAdapters.CTPXTableAdapter();
-            this.cmsCTPX = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnAddCTPX = new System.Windows.Forms.ToolStripMenuItem();
             mAPXLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             hOTENKHLabel = new System.Windows.Forms.Label();
@@ -104,13 +104,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbCTPX)).BeginInit();
             this.gbCTPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTPX)).BeginInit();
+            this.cmsCTPX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDeliveryNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
             this.pnPickDepartment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
-            this.cmsCTPX.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAPXLabel
@@ -458,6 +458,21 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "DONGIA";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
+            // cmsCTPX
+            // 
+            this.cmsCTPX.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsCTPX.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAddCTPX});
+            this.cmsCTPX.Name = "cmsCTPX";
+            this.cmsCTPX.Size = new System.Drawing.Size(229, 56);
+            // 
+            // btnAddCTPX
+            // 
+            this.btnAddCTPX.Name = "btnAddCTPX";
+            this.btnAddCTPX.Size = new System.Drawing.Size(228, 24);
+            this.btnAddCTPX.Text = "Tạo Chi tiết Phiếu Xuất";
+            this.btnAddCTPX.Click += new System.EventHandler(this.btnAddCTPX_Click);
+            // 
             // bdsCTPX
             // 
             this.bdsCTPX.DataMember = "FK_CTPX_PX";
@@ -605,21 +620,6 @@
             // 
             this.taCTPX.ClearBeforeFill = true;
             // 
-            // cmsCTPX
-            // 
-            this.cmsCTPX.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsCTPX.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddCTPX});
-            this.cmsCTPX.Name = "cmsCTPX";
-            this.cmsCTPX.Size = new System.Drawing.Size(229, 56);
-            // 
-            // btnAddCTPX
-            // 
-            this.btnAddCTPX.Name = "btnAddCTPX";
-            this.btnAddCTPX.Size = new System.Drawing.Size(228, 24);
-            this.btnAddCTPX.Text = "Tạo Chi tiết Phiếu Xuất";
-            this.btnAddCTPX.Click += new System.EventHandler(this.btnAddCTPX_Click);
-            // 
             // frmGoodsDeliveryNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -656,6 +656,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbCTPX)).EndInit();
             this.gbCTPX.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTPX)).EndInit();
+            this.cmsCTPX.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDeliveryNote)).EndInit();
@@ -663,7 +664,6 @@
             this.pnPickDepartment.ResumeLayout(false);
             this.pnPickDepartment.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
-            this.cmsCTPX.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -4,12 +4,14 @@ using System.Data;
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
-   using DevExpress.XtraEditors;
+    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
+    using DevExpress.XtraEditors;
     using System.Data.SqlClient;
     using System.Windows.Forms;
     using Utility;
+    using UserControls;
 
-   public partial class frmGoodsReceivedNote : XtraForm
+    public partial class frmGoodsReceivedNote : XtraForm
    {
       private string _currentDeploymentId;
       private int _currentPosition;
@@ -267,7 +269,11 @@ namespace QLVT_DATHANG.Forms
 
         private void btnAddCTPN_Click(object sender, EventArgs e)
         {
-
+            FlyoutAction flyoutAction = new FlyoutAction()
+            {
+                Caption = Cons.CaptionCreateReceivedNote,
+            };
+            CustomFlyoutDialog.ShowForm(this, flyoutAction, new frmReceivedNote());
         }
     }
 }

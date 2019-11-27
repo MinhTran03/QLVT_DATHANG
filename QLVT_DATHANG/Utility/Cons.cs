@@ -62,6 +62,8 @@ namespace QLVT_DATHANG.Utility
 
       public const string CaptionCreateLogin = "ĐĂNG KÝ TÀI KHOẢN";
       public const string CaptionCreateOrderDetail = "Nhập Chi Tiết Đơn Đặt Hàng";
+      public const string CaptionCreateReceivedNote = "Nhập Chi Tiết Phiếu Nhập";
+      public const string CaptionCreateDeliveryNote = "Nhập Chi Tiết Phiếu Xuất";
       public const string CaptionQuestion = "QUESTION";
       public const string CaptionError = "ERROR";
       public const string CaptionWarning = "WARNING";
