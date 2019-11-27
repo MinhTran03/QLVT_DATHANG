@@ -285,7 +285,7 @@ namespace QLVT_DATHANG.Forms
             dataSet.EnforceConstraints = false;
             this.taDepot.Fill(this.dataSet.Kho);
             dataSet.EnforceConstraints = true;
-
+            if (_buttonAction == ButtonActionType.Add) _userDo.Pop();
             UtilDB.ShowError(ex);
             return false;
          }

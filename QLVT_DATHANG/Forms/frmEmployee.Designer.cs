@@ -149,7 +149,7 @@
          // dIACHILabel
          // 
          dIACHILabel.AutoSize = true;
-         dIACHILabel.Location = new System.Drawing.Point(215, 120);
+         dIACHILabel.Location = new System.Drawing.Point(215, 90);
          dIACHILabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          dIACHILabel.Name = "dIACHILabel";
          dIACHILabel.Size = new System.Drawing.Size(45, 13);
@@ -159,7 +159,7 @@
          // nGAYSINHLabel
          // 
          nGAYSINHLabel.AutoSize = true;
-         nGAYSINHLabel.Location = new System.Drawing.Point(215, 75);
+         nGAYSINHLabel.Location = new System.Drawing.Point(215, 62);
          nGAYSINHLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          nGAYSINHLabel.Name = "nGAYSINHLabel";
          nGAYSINHLabel.Size = new System.Drawing.Size(59, 13);
@@ -169,7 +169,7 @@
          // lUONGLabel
          // 
          lUONGLabel.AutoSize = true;
-         lUONGLabel.Location = new System.Drawing.Point(504, 75);
+         lUONGLabel.Location = new System.Drawing.Point(504, 62);
          lUONGLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          lUONGLabel.Name = "lUONGLabel";
          lUONGLabel.Size = new System.Drawing.Size(41, 13);
@@ -179,7 +179,7 @@
          // mACNLabel
          // 
          mACNLabel.AutoSize = true;
-         mACNLabel.Location = new System.Drawing.Point(215, 165);
+         mACNLabel.Location = new System.Drawing.Point(215, 118);
          mACNLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          mACNLabel.Name = "mACNLabel";
          mACNLabel.Size = new System.Drawing.Size(77, 13);
@@ -392,7 +392,7 @@
          // 
          this.txtEmpDepartment.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "MACN", true));
          this.txtEmpDepartment.EditValue = "";
-         this.txtEmpDepartment.Location = new System.Drawing.Point(311, 162);
+         this.txtEmpDepartment.Location = new System.Drawing.Point(311, 114);
          this.txtEmpDepartment.MenuManager = this.bmNV;
          this.txtEmpDepartment.Name = "txtEmpDepartment";
          this.txtEmpDepartment.Size = new System.Drawing.Size(167, 20);
@@ -407,7 +407,7 @@
             0,
             0});
          this.dxErrorProvider.SetIconAlignment(this.spiEmpSalary, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.spiEmpSalary.Location = new System.Drawing.Point(557, 72);
+         this.spiEmpSalary.Location = new System.Drawing.Point(557, 59);
          this.spiEmpSalary.Margin = new System.Windows.Forms.Padding(4);
          this.spiEmpSalary.MenuManager = this.bmNV;
          this.spiEmpSalary.Name = "spiEmpSalary";
@@ -424,7 +424,7 @@
          this.dtpEmpBirth.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "NGAYSINH", true));
          this.dtpEmpBirth.EditValue = new System.DateTime(2019, 11, 23, 16, 47, 55, 0);
          this.dxErrorProvider.SetIconAlignment(this.dtpEmpBirth, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.dtpEmpBirth.Location = new System.Drawing.Point(311, 72);
+         this.dtpEmpBirth.Location = new System.Drawing.Point(311, 59);
          this.dtpEmpBirth.Margin = new System.Windows.Forms.Padding(4);
          this.dtpEmpBirth.MenuManager = this.bmNV;
          this.dtpEmpBirth.Name = "dtpEmpBirth";
@@ -449,7 +449,7 @@
          this.txtEmpAddr.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "DIACHI", true));
          this.txtEmpAddr.EditValue = "";
          this.dxErrorProvider.SetIconAlignment(this.txtEmpAddr, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpAddr.Location = new System.Drawing.Point(311, 117);
+         this.txtEmpAddr.Location = new System.Drawing.Point(311, 87);
          this.txtEmpAddr.Margin = new System.Windows.Forms.Padding(4);
          this.txtEmpAddr.MenuManager = this.bmNV;
          this.txtEmpAddr.Name = "txtEmpAddr";
@@ -603,7 +603,7 @@
          this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
          this.gcEmployee.MenuManager = this.bmNV;
          this.gcEmployee.Name = "gcEmployee";
-         this.gcEmployee.Size = new System.Drawing.Size(982, 227);
+         this.gcEmployee.Size = new System.Drawing.Size(982, 274);
          this.gcEmployee.TabIndex = 0;
          this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvNV});
@@ -638,7 +638,7 @@
          // txtEmpDelStatus
          // 
          this.txtEmpDelStatus.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "TrangThaiXoa", true));
-         this.txtEmpDelStatus.Location = new System.Drawing.Point(584, 162);
+         this.txtEmpDelStatus.Location = new System.Drawing.Point(584, 114);
          this.txtEmpDelStatus.MenuManager = this.bmNV;
          this.txtEmpDelStatus.Name = "txtEmpDelStatus";
          this.txtEmpDelStatus.Size = new System.Drawing.Size(136, 20);
@@ -647,7 +647,7 @@
          // lblTTX
          // 
          this.lblTTX.AutoSize = true;
-         this.lblTTX.Location = new System.Drawing.Point(484, 165);
+         this.lblTTX.Location = new System.Drawing.Point(484, 118);
          this.lblTTX.Name = "lblTTX";
          this.lblTTX.Size = new System.Drawing.Size(83, 13);
          this.lblTTX.TabIndex = 14;
@@ -713,10 +713,10 @@
          this.gbEmployee.Controls.Add(dIACHILabel);
          this.gbEmployee.Controls.Add(this.dtpEmpBirth);
          this.gbEmployee.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.gbEmployee.Location = new System.Drawing.Point(0, 286);
+         this.gbEmployee.Location = new System.Drawing.Point(0, 333);
          this.gbEmployee.MinimumSize = new System.Drawing.Size(0, 10);
          this.gbEmployee.Name = "gbEmployee";
-         this.gbEmployee.Size = new System.Drawing.Size(982, 197);
+         this.gbEmployee.Size = new System.Drawing.Size(982, 150);
          this.gbEmployee.TabIndex = 16;
          this.gbEmployee.Text = "Thông tin Nhân Viên";
          // 
@@ -727,13 +727,13 @@
          this.pictureEdit1.MenuManager = this.bmNV;
          this.pictureEdit1.Name = "pictureEdit1";
          this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-         this.pictureEdit1.Size = new System.Drawing.Size(196, 144);
+         this.pictureEdit1.Size = new System.Drawing.Size(196, 100);
          this.pictureEdit1.TabIndex = 16;
          // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 281);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 328);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(982, 5);
          this.splitterControl1.TabIndex = 17;

@@ -35,9 +35,9 @@
          System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -64,6 +64,7 @@
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.sccOrder = new DevExpress.XtraEditors.SplitContainerControl();
          this.gbOrder = new DevExpress.XtraEditors.GroupControl();
+         this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
          this.lkeEmployee = new DevExpress.XtraEditors.SearchLookUpEdit();
          this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
          this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -99,6 +100,7 @@
          this.sccOrder.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          this.gbOrder.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
@@ -120,7 +122,7 @@
          // 
          masoDDHLabel.AutoSize = true;
          masoDDHLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         masoDDHLabel.Location = new System.Drawing.Point(7, 51);
+         masoDDHLabel.Location = new System.Drawing.Point(174, 59);
          masoDDHLabel.Name = "masoDDHLabel";
          masoDDHLabel.Size = new System.Drawing.Size(124, 13);
          masoDDHLabel.TabIndex = 0;
@@ -130,7 +132,7 @@
          // 
          nGAYLabel.AutoSize = true;
          nGAYLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nGAYLabel.Location = new System.Drawing.Point(68, 103);
+         nGAYLabel.Location = new System.Drawing.Point(174, 111);
          nGAYLabel.Name = "nGAYLabel";
          nGAYLabel.Size = new System.Drawing.Size(63, 13);
          nGAYLabel.TabIndex = 4;
@@ -140,7 +142,7 @@
          // 
          nhaCCLabel.AutoSize = true;
          nhaCCLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nhaCCLabel.Location = new System.Drawing.Point(42, 77);
+         nhaCCLabel.Location = new System.Drawing.Point(174, 85);
          nhaCCLabel.Name = "nhaCCLabel";
          nhaCCLabel.Size = new System.Drawing.Size(89, 13);
          nhaCCLabel.TabIndex = 2;
@@ -150,7 +152,7 @@
          // 
          mANVLabel.AutoSize = true;
          mANVLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mANVLabel.Location = new System.Drawing.Point(62, 129);
+         mANVLabel.Location = new System.Drawing.Point(174, 137);
          mANVLabel.Name = "mANVLabel";
          mANVLabel.Size = new System.Drawing.Size(69, 13);
          mANVLabel.TabIndex = 6;
@@ -243,15 +245,15 @@
          this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.bmPN;
-         this.barDockControlTop.Size = new System.Drawing.Size(853, 24);
+         this.barDockControlTop.Size = new System.Drawing.Size(987, 24);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 446);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 485);
          this.barDockControlBottom.Manager = this.bmPN;
-         this.barDockControlBottom.Size = new System.Drawing.Size(853, 0);
+         this.barDockControlBottom.Size = new System.Drawing.Size(987, 0);
          // 
          // barDockControlLeft
          // 
@@ -259,15 +261,15 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 422);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 461);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(853, 24);
+         this.barDockControlRight.Location = new System.Drawing.Point(987, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 422);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 461);
          // 
          // dataSet
          // 
@@ -310,7 +312,7 @@
          this.gcOrder.MainView = this.gridView1;
          this.gcOrder.MenuManager = this.bmPN;
          this.gcOrder.Name = "gcOrder";
-         this.gcOrder.Size = new System.Drawing.Size(853, 191);
+         this.gcOrder.Size = new System.Drawing.Size(987, 230);
          this.gcOrder.TabIndex = 1;
          this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -381,29 +383,30 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 245);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 284);
          this.splitterControl1.Name = "splitterControl1";
-         this.splitterControl1.Size = new System.Drawing.Size(853, 5);
+         this.splitterControl1.Size = new System.Drawing.Size(987, 5);
          this.splitterControl1.TabIndex = 2;
          this.splitterControl1.TabStop = false;
          // 
          // sccOrder
          // 
          this.sccOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.sccOrder.Location = new System.Drawing.Point(0, 250);
+         this.sccOrder.Location = new System.Drawing.Point(0, 289);
          this.sccOrder.Name = "sccOrder";
          this.sccOrder.Panel1.Controls.Add(this.gbOrder);
          this.sccOrder.Panel1.Text = "Panel1";
          this.sccOrder.Panel2.Controls.Add(this.gbOrderDetail);
          this.sccOrder.Panel2.Text = "Panel2";
-         this.sccOrder.Size = new System.Drawing.Size(853, 196);
-         this.sccOrder.SplitterPosition = 315;
+         this.sccOrder.Size = new System.Drawing.Size(987, 196);
+         this.sccOrder.SplitterPosition = 494;
          this.sccOrder.TabIndex = 7;
          // 
          // gbOrder
          // 
          this.gbOrder.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbOrder.AppearanceCaption.Options.UseFont = true;
+         this.gbOrder.Controls.Add(this.pictureEdit1);
          this.gbOrder.Controls.Add(this.lkeEmployee);
          this.gbOrder.Controls.Add(masoDDHLabel);
          this.gbOrder.Controls.Add(this.txtOrderId);
@@ -415,16 +418,30 @@
          this.gbOrder.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrder.Location = new System.Drawing.Point(0, 0);
          this.gbOrder.Name = "gbOrder";
-         this.gbOrder.Size = new System.Drawing.Size(315, 196);
+         this.gbOrder.Size = new System.Drawing.Size(494, 196);
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin Đơn Đặt Hàng";
+         // 
+         // pictureEdit1
+         // 
+         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources._162_512;
+         this.pictureEdit1.Location = new System.Drawing.Point(5, 23);
+         this.pictureEdit1.Name = "pictureEdit1";
+         this.pictureEdit1.Properties.AllowFocused = false;
+         this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+         this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+         this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+         this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+         this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+         this.pictureEdit1.Size = new System.Drawing.Size(163, 168);
+         this.pictureEdit1.TabIndex = 8;
          // 
          // lkeEmployee
          // 
          this.lkeEmployee.CausesValidation = false;
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
-         this.lkeEmployee.Location = new System.Drawing.Point(137, 126);
+         this.lkeEmployee.Location = new System.Drawing.Point(304, 134);
          this.lkeEmployee.MenuManager = this.bmPN;
          this.lkeEmployee.Name = "lkeEmployee";
          this.lkeEmployee.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -457,7 +474,7 @@
          // txtOrderId
          // 
          this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
-         this.txtOrderId.Location = new System.Drawing.Point(137, 48);
+         this.txtOrderId.Location = new System.Drawing.Point(304, 56);
          this.txtOrderId.MenuManager = this.bmPN;
          this.txtOrderId.Name = "txtOrderId";
          this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -469,7 +486,7 @@
          // 
          this.dtpOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NGAY", true));
          this.dtpOrderDate.EditValue = null;
-         this.dtpOrderDate.Location = new System.Drawing.Point(137, 100);
+         this.dtpOrderDate.Location = new System.Drawing.Point(304, 108);
          this.dtpOrderDate.MenuManager = this.bmPN;
          this.dtpOrderDate.Name = "dtpOrderDate";
          this.dtpOrderDate.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -490,7 +507,7 @@
          // txtProvider
          // 
          this.txtProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
-         this.txtProvider.Location = new System.Drawing.Point(137, 74);
+         this.txtProvider.Location = new System.Drawing.Point(304, 82);
          this.txtProvider.MenuManager = this.bmPN;
          this.txtProvider.Name = "txtProvider";
          this.txtProvider.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -508,7 +525,7 @@
          this.gbOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrderDetail.Location = new System.Drawing.Point(0, 0);
          this.gbOrderDetail.Name = "gbOrderDetail";
-         this.gbOrderDetail.Size = new System.Drawing.Size(533, 196);
+         this.gbOrderDetail.Size = new System.Drawing.Size(488, 196);
          this.gbOrderDetail.TabIndex = 0;
          this.gbOrderDetail.Text = "Chi tiết Đơn Đặt Hàng";
          // 
@@ -537,14 +554,14 @@
             this.dataGridViewTextBoxColumn4});
          this.gcOrderDetail.ContextMenuStrip = this.cmsOrderDetail;
          this.gcOrderDetail.DataSource = this.bdsCTDDH;
-         dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-         dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-         dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
-         dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle3;
+         dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+         dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
+         dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle11;
          this.gcOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcOrderDetail.EnableHeadersVisualStyles = false;
          this.gcOrderDetail.GridColor = System.Drawing.Color.Silver;
@@ -552,18 +569,18 @@
          this.gcOrderDetail.Name = "gcOrderDetail";
          this.gcOrderDetail.ReadOnly = true;
          this.gcOrderDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-         dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-         dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+         dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+         dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+         dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+         dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
          this.gcOrderDetail.RowHeadersVisible = false;
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcOrderDetail.Size = new System.Drawing.Size(529, 171);
+         this.gcOrderDetail.Size = new System.Drawing.Size(484, 171);
          this.gcOrderDetail.TabIndex = 0;
          // 
          // dataGridViewTextBoxColumn1
@@ -579,6 +596,7 @@
          this.TENVT.DataPropertyName = "MAVT";
          this.TENVT.DataSource = this.bdsVT;
          this.TENVT.DisplayMember = "TENVT";
+         this.TENVT.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
          this.TENVT.HeaderText = "TÊN VẬT TƯ";
          this.TENVT.Name = "TENVT";
          this.TENVT.ReadOnly = true;
@@ -602,9 +620,9 @@
          // dataGridViewTextBoxColumn4
          // 
          this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
-         dataGridViewCellStyle2.Format = "C0";
-         dataGridViewCellStyle2.NullValue = null;
-         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
+         dataGridViewCellStyle9.Format = "C0";
+         dataGridViewCellStyle9.NullValue = null;
+         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle9;
          this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
          this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
          this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -622,7 +640,7 @@
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
          this.pnPickDepartment.Name = "pnPickDepartment";
-         this.pnPickDepartment.Size = new System.Drawing.Size(853, 30);
+         this.pnPickDepartment.Size = new System.Drawing.Size(987, 30);
          this.pnPickDepartment.TabIndex = 0;
          this.pnPickDepartment.Visible = false;
          // 
@@ -669,7 +687,7 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(853, 446);
+         this.ClientSize = new System.Drawing.Size(987, 485);
          this.Controls.Add(this.gcOrder);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
@@ -693,6 +711,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
          this.gbOrder.ResumeLayout(false);
          this.gbOrder.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
@@ -763,5 +782,6 @@
       private System.Windows.Forms.DataGridViewComboBoxColumn TENVT;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
    }
 }

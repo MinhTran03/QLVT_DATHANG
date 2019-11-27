@@ -46,7 +46,6 @@
          this.colSOLUONGTON = new DevExpress.XtraGrid.Columns.GridColumn();
          this.txtMaterialId = new DevExpress.XtraEditors.TextEdit();
          this.txtMaterialName = new DevExpress.XtraEditors.TextEdit();
-         this.txtDVT = new DevExpress.XtraEditors.TextEdit();
          this.spiSLT = new DevExpress.XtraEditors.SpinEdit();
          this.bmVT = new DevExpress.XtraBars.BarManager(this.components);
          this.bar3 = new DevExpress.XtraBars.Bar();
@@ -65,6 +64,8 @@
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
          this.gbVT = new DevExpress.XtraEditors.GroupControl();
+         this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+         this.cboDVT = new System.Windows.Forms.ComboBox();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
          this.taCTPX = new QLVT_DATHANG.DataSetTableAdapters.CTPXTableAdapter();
@@ -83,11 +84,11 @@
          ((System.ComponentModel.ISupportInitialize)(this.gvMaterial)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDVT.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).BeginInit();
          this.gbVT.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
@@ -97,45 +98,45 @@
          // mAVTLabel
          // 
          mAVTLabel.AutoSize = true;
-         mAVTLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mAVTLabel.Location = new System.Drawing.Point(165, 30);
+         mAVTLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         mAVTLabel.Location = new System.Drawing.Point(118, 26);
          mAVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          mAVTLabel.Name = "mAVTLabel";
-         mAVTLabel.Size = new System.Drawing.Size(75, 13);
-         mAVTLabel.TabIndex = 10;
+         mAVTLabel.Size = new System.Drawing.Size(65, 13);
+         mAVTLabel.TabIndex = 1;
          mAVTLabel.Text = "MÃ VẬT TƯ:";
          // 
          // tENVTLabel
          // 
          tENVTLabel.AutoSize = true;
-         tENVTLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         tENVTLabel.Location = new System.Drawing.Point(160, 65);
+         tENVTLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         tENVTLabel.Location = new System.Drawing.Point(118, 50);
          tENVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          tENVTLabel.Name = "tENVTLabel";
-         tENVTLabel.Size = new System.Drawing.Size(80, 13);
-         tENVTLabel.TabIndex = 11;
+         tENVTLabel.Size = new System.Drawing.Size(69, 13);
+         tENVTLabel.TabIndex = 3;
          tENVTLabel.Text = "TÊN VẬT TƯ:";
          // 
          // dVTLabel
          // 
          dVTLabel.AutoSize = true;
-         dVTLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dVTLabel.Location = new System.Drawing.Point(153, 99);
+         dVTLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         dVTLabel.Location = new System.Drawing.Point(118, 75);
          dVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          dVTLabel.Name = "dVTLabel";
-         dVTLabel.Size = new System.Drawing.Size(87, 13);
-         dVTLabel.TabIndex = 16;
+         dVTLabel.Size = new System.Drawing.Size(74, 13);
+         dVTLabel.TabIndex = 5;
          dVTLabel.Text = "ĐƠN VỊ TÍNH:";
          // 
          // sOLUONGTONLabel
          // 
          sOLUONGTONLabel.AutoSize = true;
-         sOLUONGTONLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         sOLUONGTONLabel.Location = new System.Drawing.Point(139, 135);
+         sOLUONGTONLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         sOLUONGTONLabel.Location = new System.Drawing.Point(118, 101);
          sOLUONGTONLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          sOLUONGTONLabel.Name = "sOLUONGTONLabel";
-         sOLUONGTONLabel.Size = new System.Drawing.Size(101, 13);
-         sOLUONGTONLabel.TabIndex = 17;
+         sOLUONGTONLabel.Size = new System.Drawing.Size(87, 13);
+         sOLUONGTONLabel.TabIndex = 7;
          sOLUONGTONLabel.Text = "SỐ LƯỢNG TỒN:";
          // 
          // dataSet
@@ -176,8 +177,8 @@
          this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(873, 294);
-         this.gcVT.TabIndex = 6;
+         this.gcVT.Size = new System.Drawing.Size(873, 301);
+         this.gcVT.TabIndex = 0;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMaterial});
          // 
@@ -240,35 +241,24 @@
          // txtMaterialId
          // 
          this.txtMaterialId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "MAVT", true));
-         this.txtMaterialId.Location = new System.Drawing.Point(244, 27);
+         this.txtMaterialId.Location = new System.Drawing.Point(209, 23);
          this.txtMaterialId.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialId.Name = "txtMaterialId";
-         this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMaterialId.Properties.Appearance.Options.UseFont = true;
          this.txtMaterialId.Size = new System.Drawing.Size(223, 20);
-         this.txtMaterialId.TabIndex = 11;
+         this.txtMaterialId.TabIndex = 2;
          // 
          // txtMaterialName
          // 
          this.txtMaterialName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "TENVT", true));
-         this.txtMaterialName.Location = new System.Drawing.Point(244, 62);
+         this.txtMaterialName.Location = new System.Drawing.Point(209, 47);
          this.txtMaterialName.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialName.Name = "txtMaterialName";
-         this.txtMaterialName.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtMaterialName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMaterialName.Properties.Appearance.Options.UseFont = true;
          this.txtMaterialName.Size = new System.Drawing.Size(223, 20);
-         this.txtMaterialName.TabIndex = 12;
-         // 
-         // txtDVT
-         // 
-         this.txtDVT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "DVT", true));
-         this.txtDVT.Location = new System.Drawing.Point(244, 96);
-         this.txtDVT.Margin = new System.Windows.Forms.Padding(2);
-         this.txtDVT.Name = "txtDVT";
-         this.txtDVT.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtDVT.Properties.Appearance.Options.UseFont = true;
-         this.txtDVT.Size = new System.Drawing.Size(223, 20);
-         this.txtDVT.TabIndex = 17;
+         this.txtMaterialName.TabIndex = 4;
          // 
          // spiSLT
          // 
@@ -278,17 +268,17 @@
             0,
             0,
             0});
-         this.spiSLT.Location = new System.Drawing.Point(244, 132);
+         this.spiSLT.Location = new System.Drawing.Point(209, 98);
          this.spiSLT.Margin = new System.Windows.Forms.Padding(2);
          this.spiSLT.Name = "spiSLT";
-         this.spiSLT.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.spiSLT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.spiSLT.Properties.Appearance.Options.UseFont = true;
          this.spiSLT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.spiSLT.Properties.IsFloatValue = false;
          this.spiSLT.Properties.Mask.EditMask = "N00";
          this.spiSLT.Size = new System.Drawing.Size(223, 20);
-         this.spiSLT.TabIndex = 18;
+         this.spiSLT.TabIndex = 8;
          // 
          // bmVT
          // 
@@ -409,7 +399,7 @@
          // 
          this.barDockControl2.CausesValidation = false;
          this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControl2.Location = new System.Drawing.Point(0, 487);
+         this.barDockControl2.Location = new System.Drawing.Point(0, 458);
          this.barDockControl2.Manager = this.bmVT;
          this.barDockControl2.Margin = new System.Windows.Forms.Padding(2);
          this.barDockControl2.Size = new System.Drawing.Size(873, 0);
@@ -421,7 +411,7 @@
          this.barDockControl3.Location = new System.Drawing.Point(0, 24);
          this.barDockControl3.Manager = this.bmVT;
          this.barDockControl3.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl3.Size = new System.Drawing.Size(0, 463);
+         this.barDockControl3.Size = new System.Drawing.Size(0, 434);
          // 
          // barDockControl4
          // 
@@ -430,7 +420,7 @@
          this.barDockControl4.Location = new System.Drawing.Point(873, 24);
          this.barDockControl4.Manager = this.bmVT;
          this.barDockControl4.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl4.Size = new System.Drawing.Size(0, 463);
+         this.barDockControl4.Size = new System.Drawing.Size(0, 434);
          // 
          // bar2
          // 
@@ -449,30 +439,54 @@
          // 
          // gbVT
          // 
-         this.gbVT.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbVT.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbVT.AppearanceCaption.Options.UseFont = true;
+         this.gbVT.Controls.Add(this.pictureEdit1);
+         this.gbVT.Controls.Add(this.cboDVT);
          this.gbVT.Controls.Add(this.txtMaterialName);
          this.gbVT.Controls.Add(mAVTLabel);
          this.gbVT.Controls.Add(sOLUONGTONLabel);
-         this.gbVT.Controls.Add(this.txtDVT);
          this.gbVT.Controls.Add(this.txtMaterialId);
          this.gbVT.Controls.Add(tENVTLabel);
          this.gbVT.Controls.Add(this.spiSLT);
          this.gbVT.Controls.Add(dVTLabel);
          this.gbVT.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.gbVT.Location = new System.Drawing.Point(0, 323);
+         this.gbVT.Location = new System.Drawing.Point(0, 330);
          this.gbVT.Name = "gbVT";
-         this.gbVT.Size = new System.Drawing.Size(873, 164);
-         this.gbVT.TabIndex = 19;
+         this.gbVT.Size = new System.Drawing.Size(873, 128);
+         this.gbVT.TabIndex = 2;
          this.gbVT.Text = "Thông tin Vật Tư";
+         // 
+         // pictureEdit1
+         // 
+         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources.manager_clipart_material_management_3;
+         this.pictureEdit1.Location = new System.Drawing.Point(12, 26);
+         this.pictureEdit1.Name = "pictureEdit1";
+         this.pictureEdit1.Properties.AllowFocused = false;
+         this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+         this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+         this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+         this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+         this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+         this.pictureEdit1.Size = new System.Drawing.Size(101, 97);
+         this.pictureEdit1.TabIndex = 0;
+         // 
+         // cboDVT
+         // 
+         this.cboDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVT, "DVT", true));
+         this.cboDVT.FormattingEnabled = true;
+         this.cboDVT.Location = new System.Drawing.Point(209, 72);
+         this.cboDVT.Name = "cboDVT";
+         this.cboDVT.Size = new System.Drawing.Size(223, 21);
+         this.cboDVT.TabIndex = 6;
          // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 318);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 325);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(873, 5);
-         this.splitterControl1.TabIndex = 24;
+         this.splitterControl1.TabIndex = 1;
          this.splitterControl1.TabStop = false;
          // 
          // bdsCTPX
@@ -510,7 +524,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(873, 487);
+         this.ClientSize = new System.Drawing.Size(873, 458);
          this.Controls.Add(this.gcVT);
          this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gbVT);
@@ -528,12 +542,12 @@
          ((System.ComponentModel.ISupportInitialize)(this.gvMaterial)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDVT.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).EndInit();
          this.gbVT.ResumeLayout(false);
          this.gbVT.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
@@ -556,7 +570,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSOLUONGTON;
         private DevExpress.XtraEditors.TextEdit txtMaterialId;
         private DevExpress.XtraEditors.TextEdit txtMaterialName;
-        private DevExpress.XtraEditors.TextEdit txtDVT;
         private DevExpress.XtraEditors.SpinEdit spiSLT;
         private DevExpress.XtraBars.BarManager bmVT;
         private DevExpress.XtraBars.Bar bar3;
@@ -583,5 +596,7 @@
       private System.Windows.Forms.BindingSource bdsCTDDH;
       private DataSetTableAdapters.CTDDHTableAdapter taCTDDH;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
-    }
+      private System.Windows.Forms.ComboBox cboDVT;
+      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+   }
 }

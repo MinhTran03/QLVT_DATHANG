@@ -179,10 +179,12 @@ namespace QLVT_DATHANG.Forms
             }
 
             bdsDDH.EndEdit();
+            this.taDDH.Update(this.dataSet.DatHang);
             gbOrder.Enabled = false;
             //bdsNV.ResetCurrentItem();
-            this.taDDH.Update(this.dataSet.DatHang);
             _buttonAction = ButtonActionType.None;
+            bdsDDH.Position = _currentPosition;
+            DisableEditMode();
          }
          catch (Exception ex)
          {
@@ -194,8 +196,6 @@ namespace QLVT_DATHANG.Forms
             UtilDB.ShowError(ex);
             return false;
          }
-         bdsDDH.Position = _currentPosition;
-         DisableEditMode();
          return true;
       }
 
