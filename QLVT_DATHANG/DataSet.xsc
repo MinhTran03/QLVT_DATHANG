@@ -27,6 +27,13 @@
               <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v19.1" />
             </ControlSetting></ControlSettings>
         </ColumnUISetting>
+        <ColumnUISetting Name="DIACHI">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v19.1" />
+            </ControlSetting>
+          </ControlSettings>
+        </ColumnUISetting>
         <ColumnUISetting Name="MACN">
           <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v19.1" />
@@ -56,6 +63,13 @@
           <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v19.1" />
             </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="HOTEN">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+              <BindableControlInfo Name="TextEdit" Type="DevExpress.XtraEditors.TextEdit" AssemblyName="DevExpress.XtraEditors.v19.1" />
+            </ControlSetting>
+          </ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
