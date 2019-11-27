@@ -6,9 +6,11 @@ namespace QLVT_DATHANG
     {
         public static string RootServerName = Environment.MachineName;
 
-        public const string ViewDSPMName = "V_DS_PHANMANH";
-        public const string DisplayMemberDSPM = "TENCN";
-        public const string ValueMemberDSPM = "TENSERVER";
+      public const string ViewDSPMName = "V_DS_PHANMANH";
+      public const string DisplayMemberDSPM = "TENCN";
+      public const string ValueMemberDSPM = "TENSERVER";
+      public const string FilterClauseDSPM = "FILTERCLAUSE";
+      public const string PatternGetDepartId = @"(?<departId>[\w\d\s]{10})";
 
         public const string DatabaseName = "QLVT_DATHANG";
         public const string RemoteLogin = "HTKN";
@@ -28,9 +30,12 @@ namespace QLVT_DATHANG
         public const string ExecSPXoaLogin = "EXEC sp_removelogin '{0}'";
         public const string ExecSPTimPhieuNhap = "EXEC sp_timphieunhap '{0}'";
 
-        // Mã error khi exec sp raise error
-        public const int ErrorCodeDatabase = 18;
-        public const int ErrorMsgNumNotExistObject = 50001;
-        public const int ErrorMsgNumEmployeeHaveLogin = 50002;
-    }
+      public const string SpGetAllMaNV = "sp_getallmanv";
+      public const string SpChuyenChiNhanh = "sp_chuyenchinhanh";
+
+      // Mã error khi exec sp raise error
+      public const int ErrorCodeDatabase = 18;
+      public const int ErrorMsgNumNotExistObject = 50001;
+      public const int ErrorMsgNumEmployeeHaveLogin = 50002;
+   }
 }

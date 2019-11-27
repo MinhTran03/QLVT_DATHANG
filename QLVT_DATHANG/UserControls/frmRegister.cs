@@ -74,7 +74,7 @@ namespace QLVT_DATHANG.UserControls
          e.Cancel = false;
       }
 
-      private void btnRegister_Click(object sender, System.EventArgs e)
+      private void btnRegister_Click(object sender, EventArgs e)
       {
          if (ValidateInput())
          {
@@ -163,6 +163,7 @@ namespace QLVT_DATHANG.UserControls
             XtraMessageBox.Show(Cons.ErrorConfirmPW, Cons.CaptionError,
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             txtConfirmPassword.EditValue = string.Empty;
+            txtPassword.EditValue = string.Empty;
             txtPassword.Select();
             isValid = false;
          }
