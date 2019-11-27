@@ -138,8 +138,7 @@ namespace QLVT_DATHANG.Forms
          UtilDB.CurrentLogin = txtTK.Text;
          UtilDB.CurrentPassword = txtMK.Text;
 
-         if (UtilDB.Connect() == 0) return false;
-         return true;
+         return UtilDB.Connect();
       }
 
       /// <summary>

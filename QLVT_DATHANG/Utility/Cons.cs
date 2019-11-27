@@ -19,6 +19,7 @@ namespace QLVT_DATHANG.Utility
       public static string ErrorSalary = "Lương phải lớn hơn " + string.Format(CiVNI, "{0:c0}", Convert.ToDecimal(MinSalary));
 
       public const string ErrorName = "Tên không hợp lệ";
+      public const string ErrorDeleteSwitchedEmployee = "Không thể xóa nhân viên đã chuyển chi nhánh";
       public const string ErrorEmployeeId = "Mã nhân viên không hợp lệ";
       public const string ErrorNotNull = "Vui lòng nhập dữ liệu";
       public const string ErrorNotNullUserName = "Vui lòng nhập Tên đăng nhập";
@@ -29,6 +30,9 @@ namespace QLVT_DATHANG.Utility
       public const string ErrorBelowThenZero = "Giá trị không được nhỏ hơn 0";
       public const string ErrorLoginNameOrPW = "Tên đăng nhập hoặc mật khẩu không chính xác\nVui lòng kiểm tra lại.";
       public const string ErrorCannotConnectServer = "Không thể connect tới server, Vui lòng kiểm tra lại.";
+      public const string ErrorSwitchDepartToCurrent = "Không thể chuyển nhân viên tới chi nhánh hiện tại.\nVui lòng chọn chi nhánh khác";
+      public const string ErrorSwitchDepart = "Chuyển chi nhánh thất bại";
+      public const string ErrorSwitchEmployeeAlready = "Nhân viên đã chuyển chi nhánh";
 
       public const string ErrorEmployeeHaveLogin = "Nhân viên đã tạo tài khoản";
       public const string ErrorDuplicateLoginName = "Login name đã tồn tại, vui lòng chọn login name khác";
@@ -40,6 +44,7 @@ namespace QLVT_DATHANG.Utility
       public const string WarningUserCreateTK = "User không có quyền tạo tài khoản";
 
       public const string SuccessRegis = "Đăng ký thành công";
+      public const string SuccessSwitchDepart = "Chuyển chi nhánh thành công";
 
       public const string AskDeleteEmployee = "Bạn có chắc muốn xóa nhân viên {0} {1}";
       public const string AskDeleteMaterials = "Bạn có chắc muốn xóa vật tư {0}";

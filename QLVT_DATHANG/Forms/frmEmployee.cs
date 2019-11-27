@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
@@ -56,22 +57,24 @@ namespace QLVT_DATHANG.Forms
             this.btnAdd.Enabled = false;
             this.btnEdit.Enabled = false;
             this.btnDel.Enabled = false;
+            this.btnSwitchDepartment.Enabled = false;
          }
          else if (grName.Equals(MyConfig.UserGroupName))
          {
-            btnCreateLogin.Enabled = false;
+            btnCreateLogin.Visible = false;
          }
       }
 
       private void SetupControls()
       {
-         string nameRegex = "[\u0000-\u001F\007F-\u009F]+(\\s{1}[\u0000-\u001F\007F-\u009F]+)*"; // regex with one space between 2 character
+         string nameRegex = "[\\p{L}]+(\\s{1}[\\p{L}]+)*"; // regex with one space between 2 character
 
          txtEmpId.Properties.Mask.MaskType = MaskType.RegEx;
          txtEmpId.Properties.Mask.EditMask = "\\d+";
          txtEmpId.Properties.Mask.BeepOnError = true;
          txtEmpId.Properties.AllowNullInput = DefaultBoolean.True;
-         ////txtEmpId.Properties.NullValuePrompt = "Id here";
+         txtEmpId.Properties.NullText = "Ma nhan vien la tu dong";
+         txtEmpId.ReadOnly = true;
 
          txtEmpFirstName.Properties.Mask.MaskType = MaskType.None;
          txtEmpFirstName.Properties.Mask.EditMask = nameRegex;
@@ -97,7 +100,7 @@ namespace QLVT_DATHANG.Forms
          //spiEmpSalary.Properties.NullValuePrompt = $"Min {CommonCons.MinSalary}";
 
          dtpEmpBirth.Properties.Mask.MaskType = MaskType.DateTime;
-         dtpEmpBirth.Properties.Mask.EditMask = "dd//MM//yyyy";
+         dtpEmpBirth.Properties.Mask.EditMask = "dd/MM/yyyy";
          dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-1);
          dtpEmpBirth.Properties.Mask.BeepOnError = true;
          dtpEmpBirth.Properties.AllowNullInput = DefaultBoolean.True;
@@ -164,6 +167,7 @@ namespace QLVT_DATHANG.Forms
          btnExit.Enabled = false;
          btnRefresh.Enabled = false;
          btnUndo.Enabled = false;
+         btnSwitchDepartment.Enabled = false;
 
          btnCancelEdit.Enabled = true;
          btnCancelEdit.Visibility = BarItemVisibility.Always;
@@ -187,6 +191,7 @@ namespace QLVT_DATHANG.Forms
          btnExit.Enabled = true;
          btnRefresh.Enabled = true;
          btnUndo.Enabled = (_userDo.Count == 0) ? false : true;
+         btnSwitchDepartment.Enabled = true;
 
          btnCancelEdit.Enabled = false;
          btnCancelEdit.Visibility = BarItemVisibility.Never;
@@ -230,6 +235,14 @@ namespace QLVT_DATHANG.Forms
 
       private bool SaveEmployee()
       {
+         // sinh ma nv tu dong
+         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
+
+         if (!IsValidEmptyValue())
+         {
+            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
+            return false;
+         }
          try
          {
             if (_buttonAction == ButtonActionType.Add)
@@ -237,20 +250,16 @@ namespace QLVT_DATHANG.Forms
                if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
                {
                   XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
-                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                          MessageBoxButtons.OK, MessageBoxIcon.Warning);
                   txtEmpId.SelectAll();
                   return false;
                }
 
-               // Lưu vô stack trạng thái nút nhấn và data bị thay đổi
+               // Lưu vô stack trạng thái nút nhấn và data bị mới
                _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray));
             }
 
-            bdsNV.EndEdit();
-            gbEmployee.Enabled = false;
-            //bdsNV.ResetCurrentItem();
-            this.taNV.Update(this.dataSet.NhanVien);
-            _buttonAction = ButtonActionType.None;
+            EndEdit();
          }
          catch (Exception ex)
          {
@@ -262,9 +271,25 @@ namespace QLVT_DATHANG.Forms
             UtilDB.ShowError(ex);
             return false;
          }
-         bdsNV.Position = _currentPosition;
-         DisableEditMode();
          return true;
+      }
+
+      private void EndEdit()
+      {
+         try
+         {
+            bdsNV.EndEdit();
+            gbEmployee.Enabled = false;
+            //bdsNV.ResetCurrentItem();
+            this.taNV.Update(this.dataSet.NhanVien);
+            _buttonAction = ButtonActionType.None;
+            bdsNV.Position = _currentPosition;
+            DisableEditMode();
+         }
+         catch (Exception e)
+         {
+            throw e;
+         }
       }
 
       private void EditEmployee()
@@ -289,11 +314,15 @@ namespace QLVT_DATHANG.Forms
             XtraMessageBox.Show(text, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
          }
+         else if (txtEmpDelStatus.Text.Equals("1"))
+         {
+            XtraMessageBox.Show(Cons.ErrorDeleteSwitchedEmployee, Cons.CaptionError,
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+         }
 
-         _currentPosition = position;
-
-         string ho = ((DataRowView)bdsNV[_currentPosition])["HO"].ToString();
-         string ten = ((DataRowView)bdsNV[_currentPosition])["TEN"].ToString();
+         string ho = txtEmpFirstName.Text;
+         string ten = txtEmpLastName.Text;
          var result = XtraMessageBox.Show(string.Format(Cons.AskDeleteEmployee, ho, ten), Cons.CaptionWarning,
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -302,7 +331,7 @@ namespace QLVT_DATHANG.Forms
             try
             {
                // lưu lại data trước khi xóa
-               _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[_currentPosition]).Row.ItemArray));
+               _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[position]).Row.ItemArray));
 
                bdsNV.RemoveCurrent();
                this.taNV.Update(this.dataSet.NhanVien);
@@ -377,9 +406,9 @@ namespace QLVT_DATHANG.Forms
                }
                catch (Exception ex)
                {
-                  if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumEmployeeHaveLogin)
+                  if (ex is SqlException exAsSqlEx && exAsSqlEx.Number == MyConfig.ErrorMsgNumEmployeeHaveLogin)
                   {
-                     XtraMessageBox.Show((ex as SqlException).Message, Cons.CaptionError,
+                     XtraMessageBox.Show(exAsSqlEx.Message, Cons.CaptionError,
                                           MessageBoxButtons.OK, MessageBoxIcon.Error);
                   }
                   else
@@ -402,7 +431,7 @@ namespace QLVT_DATHANG.Forms
          spiEmpSalary.EditValue = Cons.MinSalary;
 
          EnableEditMode();
-         txtEmpId.Focus();
+         txtEmpFirstName.Focus();
       }
 
       private void btnEdit_ItemClick(object sender, ItemClickEventArgs e)
@@ -568,7 +597,7 @@ namespace QLVT_DATHANG.Forms
                }
                catch (Exception ex)
                {
-                  if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumNotExistObject)
+                  if (ex is SqlException exAsSqlEx && exAsSqlEx.Number == MyConfig.ErrorMsgNumNotExistObject)
                      exist = false;
                   else
                      UtilDB.ShowError(ex);
@@ -596,39 +625,39 @@ namespace QLVT_DATHANG.Forms
          return message;
       }
 
-      //private bool ValidateFormEmp()
-      //{
-      //   List<bool> valids = new List<bool>();
-      //   valids.Add(ValidateLength(txtEmpId));
-      //   valids.Add(ValidateLength(txtEmpFirstName));
-      //   valids.Add(ValidateLength(txtEmpLastName));
-      //   valids.Add(ValidateLength(txtEmpAddr));
-      //   valids.Add(ValidateLength(spiEmpSalary));
-      //   valids.Add(ValidateLength(dtpEmpBirth));
-      //   if (!(valids.Contains(false)))
-      //   {
-      //      XtraMessageBox.Show("Đúng");
-      //   }
-      //   else
-      //   {
-      //      XtraMessageBox.Show("Sai");
-      //      return false;
-      //   }
-      //   return true;
-      //}
+      private bool IsValidEmptyValue()
+      {
+         var controlsNotValid = gbEmployee.Controls.OfType<BaseEdit>()
+                                       .Where(control => string.IsNullOrEmpty(control.EditValue.ToString()))
+                                       .OrderBy(control => control.TabIndex);
 
-      //private bool ValidateLength(BaseEdit baseEdit)
-      //{
-      //   bool valid = true;
-      //   if (baseEdit.EditValue == null || baseEdit.EditValue.Equals(""))
-      //   {
-      //      dxErrorProvider.SetError(baseEdit, CommonCons.ErrorNotNull);
-      //      valid = false;
-      //   }
-      //   return valid;
-      //}
+         controlsNotValid.ToList().ForEach(c =>
+         {
+            dxErrorProvider.SetError(c, Cons.ErrorNotNull);
+         });
+
+         return !dxErrorProvider.HasErrors;
+      }
 
       #endregion
 
+      private void btnSwitchDepartment_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         object[] switchEmployeeData = ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray;
+         if (int.Parse(switchEmployeeData[7].ToString()) == 1)
+         {
+            XtraMessageBox.Show(Cons.ErrorSwitchEmployeeAlready, Cons.CaptionError,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+         }
+         FlyoutAction flyoutAction = new FlyoutAction()
+         {
+            Caption = "Chuyển chi nhánh",
+         };
+         int id = int.Parse(switchEmployeeData[0].ToString());
+         string fullName = $"{switchEmployeeData[1].ToString()} {switchEmployeeData[2].ToString()}";
+         frmSwitchDepartment frmSwitch = new frmSwitchDepartment(int.Parse(switchEmployeeData[0].ToString()), fullName);
+         CustomFlyoutDialog.ShowForm(this, flyoutAction, frmSwitch);
+      }
    }
 }

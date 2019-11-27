@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -46,7 +47,7 @@ namespace QLVT_DATHANG.Utility
       /// Kiểm tra kết nối dùng username và password người dùng nhập
       /// </summary>
       /// <returns></returns>
-      public static int Connect()
+      public static bool Connect()
       {
          try
          {
@@ -58,15 +59,14 @@ namespace QLVT_DATHANG.Utility
             {
                connection.Open();
             }
-            return 1;
+            return true;
          }
 
          catch (Exception ex)
          {
-            if (ex is SqlException)
+            if (ex is SqlException exAsSqlEx)
             {
-               var msgNum = (ex as SqlException).Number;
-               switch (msgNum)
+               switch (exAsSqlEx.Number)
                {
                   case Cons.ErrorLoginNameCannotConnectCode:
                      //sai login name
@@ -80,7 +80,7 @@ namespace QLVT_DATHANG.Utility
                }
             }
 
-            return 0;
+            return false;
          }
       }
 
@@ -114,7 +114,7 @@ namespace QLVT_DATHANG.Utility
             }
 
             //
-            if (UtilDB.Connect() == 0)
+            if (UtilDB.Connect() == false)
             {
                XtraMessageBox.Show(Cons.ErrorConnectDepartment, Cons.CaptionError, MessageBoxButtons.OK);
             }
@@ -143,10 +143,43 @@ namespace QLVT_DATHANG.Utility
       {
          foreach (var control in groupControl.Controls)
          {
-            TextEdit textEdit = null;
-            if (control is TextEdit && (textEdit = (control as TextEdit)).ReadOnly == false)
+            if (control is TextEdit textEdit && textEdit.ReadOnly == false)
             {
                textEdit.EditValue = textEdit.EditValue.ToString().Trim();
+            }
+         }
+      }
+
+      public static int GenerateEmployeeId()
+      {
+         var listEmployeeId = GetListEmployeeId();
+         var count = listEmployeeId.Count;
+
+         for (int index = 0; index < count; index++)
+         {
+            int expectValue = index + 1;
+            if (expectValue != listEmployeeId[index]) return expectValue;
+         }
+         return listEmployeeId[count - 1] + 1;
+      }
+
+      private static List<int> GetListEmployeeId()
+      {
+         using (SqlConnection connection = new SqlConnection(Utility.UtilDB.ConnectionString))
+         {
+            connection.Open();
+            using (SqlCommand command = new SqlCommand(MyConfig.SpGetAllMaNV, connection))
+            {
+               command.CommandType = CommandType.StoredProcedure;
+               using (SqlDataReader reader = command.ExecuteReader())
+               {
+                  List<int> list = new List<int>();
+                  while (reader.Read())
+                  {
+                     list.Add(reader.GetInt32(0));
+                  }
+                  return list;
+               }
             }
          }
       }

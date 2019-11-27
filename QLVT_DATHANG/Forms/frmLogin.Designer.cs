@@ -1,4 +1,5 @@
-﻿namespace QLVT_DATHANG.Forms
+﻿
+namespace QLVT_DATHANG.Forms
 {
    partial class frmLogin
    {

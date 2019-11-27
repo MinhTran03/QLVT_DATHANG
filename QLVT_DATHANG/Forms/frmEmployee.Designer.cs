@@ -43,6 +43,7 @@
          this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
          this.btnDel = new DevExpress.XtraBars.BarButtonItem();
          this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
+         this.btnSwitchDepartment = new DevExpress.XtraBars.BarButtonItem();
          this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
          this.btnSave = new DevExpress.XtraBars.BarButtonItem();
          this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -212,9 +213,10 @@
             this.btnUndo,
             this.btnRefresh,
             this.btnExit,
-            this.btnCancelEdit});
+            this.btnCancelEdit,
+            this.btnSwitchDepartment});
          this.bmNV.MainMenu = this.barNV;
-         this.bmNV.MaxItemId = 28;
+         this.bmNV.MaxItemId = 29;
          // 
          // barNV
          // 
@@ -227,6 +229,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnEdit),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDel),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnUndo),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSwitchDepartment),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSave),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelEdit),
@@ -271,6 +274,15 @@
          this.btnUndo.Name = "btnUndo";
          this.btnUndo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
+         // 
+         // btnSwitchDepartment
+         // 
+         this.btnSwitchDepartment.Caption = "CHUYỂN CHI NHÁNH";
+         this.btnSwitchDepartment.Id = 28;
+         this.btnSwitchDepartment.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_switch_16;
+         this.btnSwitchDepartment.Name = "btnSwitchDepartment";
+         this.btnSwitchDepartment.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnSwitchDepartment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSwitchDepartment_ItemClick);
          // 
          // btnRefresh
          // 
@@ -394,6 +406,7 @@
             0,
             0,
             0});
+         this.dxErrorProvider.SetIconAlignment(this.spiEmpSalary, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.spiEmpSalary.Location = new System.Drawing.Point(557, 72);
          this.spiEmpSalary.Margin = new System.Windows.Forms.Padding(4);
          this.spiEmpSalary.MenuManager = this.bmNV;
@@ -402,14 +415,15 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.spiEmpSalary.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
          this.spiEmpSalary.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-         this.spiEmpSalary.Size = new System.Drawing.Size(155, 20);
+         this.spiEmpSalary.Size = new System.Drawing.Size(163, 20);
          this.spiEmpSalary.TabIndex = 9;
          this.spiEmpSalary.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiEmpSalary_CustomDisplayText);
          // 
          // dtpEmpBirth
          // 
          this.dtpEmpBirth.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "NGAYSINH", true));
-         this.dtpEmpBirth.EditValue = new System.DateTime(2019, 10, 27, 0, 0, 0, 0);
+         this.dtpEmpBirth.EditValue = new System.DateTime(2019, 11, 23, 16, 47, 55, 0);
+         this.dxErrorProvider.SetIconAlignment(this.dtpEmpBirth, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.dtpEmpBirth.Location = new System.Drawing.Point(311, 72);
          this.dtpEmpBirth.Margin = new System.Windows.Forms.Padding(4);
          this.dtpEmpBirth.MenuManager = this.bmNV;
@@ -434,31 +448,35 @@
          // 
          this.txtEmpAddr.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "DIACHI", true));
          this.txtEmpAddr.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpAddr, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.txtEmpAddr.Location = new System.Drawing.Point(311, 117);
          this.txtEmpAddr.Margin = new System.Windows.Forms.Padding(4);
          this.txtEmpAddr.MenuManager = this.bmNV;
          this.txtEmpAddr.Name = "txtEmpAddr";
          this.txtEmpAddr.Properties.Mask.IgnoreMaskBlank = false;
-         this.txtEmpAddr.Size = new System.Drawing.Size(401, 20);
+         this.txtEmpAddr.Size = new System.Drawing.Size(409, 20);
          this.txtEmpAddr.TabIndex = 11;
          // 
          // txtEmpLastName
          // 
          this.txtEmpLastName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "TEN", true));
          this.txtEmpLastName.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpLastName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.txtEmpLastName.Location = new System.Drawing.Point(633, 31);
          this.txtEmpLastName.Margin = new System.Windows.Forms.Padding(4);
          this.txtEmpLastName.MenuManager = this.bmNV;
          this.txtEmpLastName.Name = "txtEmpLastName";
          this.txtEmpLastName.Properties.Mask.IgnoreMaskBlank = false;
          this.txtEmpLastName.Properties.Mask.ShowPlaceHolders = false;
-         this.txtEmpLastName.Size = new System.Drawing.Size(79, 20);
+         this.txtEmpLastName.Size = new System.Drawing.Size(87, 20);
          this.txtEmpLastName.TabIndex = 5;
          this.txtEmpLastName.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.txtEmpLastName_CustomDisplayText);
          // 
          // txtEmpFirstName
          // 
          this.txtEmpFirstName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "HO", true));
+         this.txtEmpFirstName.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpFirstName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.txtEmpFirstName.Location = new System.Drawing.Point(476, 31);
          this.txtEmpFirstName.Margin = new System.Windows.Forms.Padding(4);
          this.txtEmpFirstName.MenuManager = this.bmNV;
@@ -474,13 +492,14 @@
          // txtEmpId
          // 
          this.txtEmpId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "MANV", true));
+         this.txtEmpId.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpId, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.txtEmpId.Location = new System.Drawing.Point(311, 31);
          this.txtEmpId.Margin = new System.Windows.Forms.Padding(4);
          this.txtEmpId.MenuManager = this.bmNV;
          this.txtEmpId.Name = "txtEmpId";
          this.txtEmpId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
          this.txtEmpId.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
-         this.txtEmpId.Properties.Mask.IgnoreMaskBlank = false;
          this.txtEmpId.Properties.Mask.ShowPlaceHolders = false;
          this.txtEmpId.Size = new System.Drawing.Size(123, 20);
          this.txtEmpId.TabIndex = 1;
@@ -599,6 +618,7 @@
          // 
          // btnCreateLogin
          // 
+         this.btnCreateLogin.Image = global::QLVT_DATHANG.Properties.Resources.icons8_add_user_male_16;
          this.btnCreateLogin.Name = "btnCreateLogin";
          this.btnCreateLogin.Size = new System.Drawing.Size(145, 22);
          this.btnCreateLogin.Text = "Tạo tài khoản";
@@ -621,7 +641,7 @@
          this.txtEmpDelStatus.Location = new System.Drawing.Point(584, 162);
          this.txtEmpDelStatus.MenuManager = this.bmNV;
          this.txtEmpDelStatus.Name = "txtEmpDelStatus";
-         this.txtEmpDelStatus.Size = new System.Drawing.Size(128, 20);
+         this.txtEmpDelStatus.Size = new System.Drawing.Size(136, 20);
          this.txtEmpDelStatus.TabIndex = 15;
          // 
          // lblTTX
@@ -847,5 +867,6 @@
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ContextMenuStrip cmsEmployee;
       private System.Windows.Forms.ToolStripMenuItem btnCreateLogin;
+      private DevExpress.XtraBars.BarButtonItem btnSwitchDepartment;
    }
 }

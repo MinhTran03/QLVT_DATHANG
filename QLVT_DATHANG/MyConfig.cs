@@ -9,6 +9,8 @@ namespace QLVT_DATHANG
       public const string ViewDSPMName = "V_DS_PHANMANH";
       public const string DisplayMemberDSPM = "TENCN";
       public const string ValueMemberDSPM = "TENSERVER";
+      public const string FilterClauseDSPM = "FILTERCLAUSE";
+      public const string PatternGetDepartId = @"(?<departId>[\w\d\s]{10})";
 
       public const string DatabaseName = "QLVT_DATHANG";
       public const string RemoteLogin = "HTKN";
@@ -26,6 +28,9 @@ namespace QLVT_DATHANG
       public const string ExecSPTimKho = "EXEC sp_timkho '{0}'";
       public const string ExecSPTimDDH = "EXEC sp_timddh '{0}'";
       public const string ExecSPXoaLogin = "EXEC sp_removelogin '{0}'";
+
+      public const string SpGetAllMaNV = "sp_getallmanv";
+      public const string SpChuyenChiNhanh = "sp_chuyenchinhanh";
 
       // Mã error khi exec sp raise error
       public const int ErrorCodeDatabase = 18;
