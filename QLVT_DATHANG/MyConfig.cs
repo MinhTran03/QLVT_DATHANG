@@ -4,7 +4,7 @@ namespace QLVT_DATHANG
 {
     public class MyConfig
     {
-        public static string RootServerName = Environment.MachineName;
+        public static string RootServerName = Environment.MachineName + "\\KAI";
 
       public const string ViewDSPMName = "V_DS_PHANMANH";
       public const string DisplayMemberDSPM = "TENCN";
@@ -29,8 +29,8 @@ namespace QLVT_DATHANG
         public const string ExecSPTimDDH = "EXEC sp_timddh '{0}'";
         public const string ExecSPXoaLogin = "EXEC sp_removelogin '{0}'";
         public const string ExecSPTimPhieuNhap = "EXEC sp_timphieunhap '{0}'";
-
-      public const string SpGetAllMaNV = "sp_getallmanv";
+        public const string ExecSPTimPhieuXuat = "EXEC sp_timphieuxuat '{0}'";
+        public const string SpGetAllMaNV = "sp_getallmanv";
       public const string SpChuyenChiNhanh = "sp_chuyenchinhanh";
 
       // Mã error khi exec sp raise error

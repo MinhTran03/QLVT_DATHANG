@@ -24,9 +24,6 @@ namespace QLVT_DATHANG.Forms
 
       private void GoodsReceivedNote_Load(object sender, EventArgs e)
       {
-            // TODO: This line of code loads data into the 'dataSet.DatHang' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'dataSet.DatHang' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'dataSet.CTPN' table. You can move, or remove it, as needed.
             _buttonAction = ButtonActionType.None;
          _userDo = new MyStack();
          _userDo.StackPushed += userDo_StackPushed;
@@ -83,6 +80,7 @@ namespace QLVT_DATHANG.Forms
          this.taPN.Connection.ConnectionString =
                 this.taCTPN.Connection.ConnectionString =
                 this.taDDH.Connection.ConnectionString =
+                this.taDSNV.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
@@ -92,6 +90,8 @@ namespace QLVT_DATHANG.Forms
             this.taPN.Fill(this.dataSet.PhieuNhap);
 
                 this.taDDH.Fill(this.dataSet.DatHang);
+
+                this.taDSNV.Fill(this.dataSet.DSNV);
 
                 this.taCTPN.Fill(this.dataSet.CTPN);
 
@@ -153,7 +153,7 @@ namespace QLVT_DATHANG.Forms
             bdsPN.AddNew();
 
             txtDate.EditValue = DateTime.Now;
-            txtMaNV.EditValue = UtilDB.UserName;
+            lkeEmployee.EditValue = UtilDB.UserName;
 
             EnableEditMode();
             txtMaPN.Focus();
@@ -172,11 +172,6 @@ namespace QLVT_DATHANG.Forms
         private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
         {
             SaveReceivedNote();
-        }
-
-        private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
         }
 
         private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
@@ -233,7 +228,7 @@ namespace QLVT_DATHANG.Forms
                 // #load lại từ database
                 dataSet.EnforceConstraints = false;
                 this.taPN.Fill(this.dataSet.PhieuNhap);
-                dataSet.EnforceConstraints = true;
+                //dataSet.EnforceConstraints = true;
 
                 UtilDB.ShowError(ex);
                 return false;
@@ -268,6 +263,11 @@ namespace QLVT_DATHANG.Forms
                 }
             }
             return exist;
+        }
+
+        private void btnAddCTPN_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

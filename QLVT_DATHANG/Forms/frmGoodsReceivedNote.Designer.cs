@@ -37,9 +37,6 @@
             this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
-            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDel = new DevExpress.XtraBars.BarButtonItem();
-            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.btnCancelEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -49,6 +46,9 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnDel = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cboDeployment = new System.Windows.Forms.ComboBox();
@@ -65,15 +65,16 @@
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gbReceivedNote = new DevExpress.XtraEditors.GroupControl();
-            this.searchLookUpEdit1 = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.lkeEmployee = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
+            this.searchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.lkeMaDDH = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.bdsDDH = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.masoDDHComboBox = new System.Windows.Forms.ComboBox();
             this.txtMaPN = new DevExpress.XtraEditors.TextEdit();
             this.txtDate = new DevExpress.XtraEditors.DateEdit();
-            this.txtMaNV = new DevExpress.XtraEditors.SpinEdit();
             this.gbCTPN = new DevExpress.XtraEditors.GroupControl();
-            this.cTPNDataGridView = new System.Windows.Forms.DataGridView();
+            this.dgvCTPN = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +83,9 @@
             this.taCTPN = new QLVT_DATHANG.DataSetTableAdapters.CTPNTableAdapter();
             this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.taDDH = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
+            this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
+            this.cmsCTPN = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnAddCTPN = new System.Windows.Forms.ToolStripMenuItem();
             mAPNLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -97,18 +101,21 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceivedNote)).BeginInit();
             this.gbReceivedNote.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkeMaDDH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbCTPN)).BeginInit();
             this.gbCTPN.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cTPNDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
+            this.cmsCTPN.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAPNLabel
@@ -178,9 +185,6 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnAdd),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnEdit),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSave),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelEdit),
@@ -197,32 +201,6 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAdd_ItemClick);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Caption = "SỬA";
-            this.btnEdit.Id = 2;
-            this.btnEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEdit.ImageOptions.SvgImage")));
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Caption = "XÓA";
-            this.btnDel.Id = 1;
-            this.btnDel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDel.ImageOptions.SvgImage")));
-            this.btnDel.Name = "btnDel";
-            this.btnDel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Caption = "PHỤC HỒI";
-            this.btnUndo.Id = 4;
-            this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUndo.ImageOptions.SvgImage")));
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
             // 
             // btnRefresh
             // 
@@ -279,16 +257,16 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.bmPN;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(850, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(871, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 684);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1043);
             this.barDockControlBottom.Manager = this.bmPN;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(850, 24);
+            this.barDockControlBottom.Size = new System.Drawing.Size(871, 24);
             // 
             // barDockControlLeft
             // 
@@ -297,16 +275,41 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.bmPN;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 654);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1013);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(850, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(871, 30);
             this.barDockControlRight.Manager = this.bmPN;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 654);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 1013);
+            // 
+            // btnDel
+            // 
+            this.btnDel.Caption = "XÓA";
+            this.btnDel.Id = 1;
+            this.btnDel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDel.ImageOptions.SvgImage")));
+            this.btnDel.Name = "btnDel";
+            this.btnDel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Caption = "SỬA";
+            this.btnEdit.Id = 2;
+            this.btnEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEdit.ImageOptions.SvgImage")));
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdit_ItemClick);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Caption = "PHỤC HỒI";
+            this.btnUndo.Id = 4;
+            this.btnUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUndo.ImageOptions.SvgImage")));
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // pnPickDepartment
             // 
@@ -316,7 +319,7 @@
             this.pnPickDepartment.Location = new System.Drawing.Point(0, 30);
             this.pnPickDepartment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnPickDepartment.Name = "pnPickDepartment";
-            this.pnPickDepartment.Size = new System.Drawing.Size(850, 37);
+            this.pnPickDepartment.Size = new System.Drawing.Size(871, 37);
             this.pnPickDepartment.TabIndex = 25;
             this.pnPickDepartment.Visible = false;
             // 
@@ -380,7 +383,7 @@
             this.gcReceivedNote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gcReceivedNote.MenuManager = this.bmPN;
             this.gcReceivedNote.Name = "gcReceivedNote";
-            this.gcReceivedNote.Size = new System.Drawing.Size(850, 436);
+            this.gcReceivedNote.Size = new System.Drawing.Size(871, 795);
             this.gcReceivedNote.TabIndex = 26;
             this.gcReceivedNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -439,38 +442,37 @@
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 503);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 862);
             this.splitterControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(850, 6);
+            this.splitterControl1.Size = new System.Drawing.Size(871, 6);
             this.splitterControl1.TabIndex = 27;
             this.splitterControl1.TabStop = false;
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 509);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 868);
             this.splitContainerControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.gbReceivedNote);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gbCTPN);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(850, 175);
+            this.splitContainerControl1.Size = new System.Drawing.Size(871, 175);
             this.splitContainerControl1.SplitterPosition = 394;
             this.splitContainerControl1.TabIndex = 28;
             // 
             // gbReceivedNote
             // 
-            this.gbReceivedNote.Controls.Add(this.searchLookUpEdit1);
-            this.gbReceivedNote.Controls.Add(this.masoDDHComboBox);
+            this.gbReceivedNote.Controls.Add(this.lkeEmployee);
+            this.gbReceivedNote.Controls.Add(this.lkeMaDDH);
             this.gbReceivedNote.Controls.Add(mAPNLabel);
             this.gbReceivedNote.Controls.Add(this.txtMaPN);
             this.gbReceivedNote.Controls.Add(nGAYLabel);
             this.gbReceivedNote.Controls.Add(this.txtDate);
             this.gbReceivedNote.Controls.Add(masoDDHLabel);
             this.gbReceivedNote.Controls.Add(mANVLabel);
-            this.gbReceivedNote.Controls.Add(this.txtMaNV);
             this.gbReceivedNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbReceivedNote.Location = new System.Drawing.Point(0, 0);
             this.gbReceivedNote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -479,19 +481,48 @@
             this.gbReceivedNote.TabIndex = 0;
             this.gbReceivedNote.Text = "Thông tin Phiếu Nhập";
             // 
-            // searchLookUpEdit1
+            // lkeEmployee
             // 
-            this.searchLookUpEdit1.Location = new System.Drawing.Point(256, 42);
-            this.searchLookUpEdit1.MenuManager = this.bmPN;
-            this.searchLookUpEdit1.Name = "searchLookUpEdit1";
-            this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "MANV", true));
+            this.lkeEmployee.Enabled = false;
+            this.lkeEmployee.Location = new System.Drawing.Point(124, 133);
+            this.lkeEmployee.MenuManager = this.bmPN;
+            this.lkeEmployee.Name = "lkeEmployee";
+            this.lkeEmployee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEdit1.Properties.DataSource = this.bdsDDH;
-            this.searchLookUpEdit1.Properties.DisplayMember = "MasoDDH";
-            this.searchLookUpEdit1.Properties.PopupView = this.searchLookUpEdit1View;
-            this.searchLookUpEdit1.Properties.ValueMember = "MasoDDH";
-            this.searchLookUpEdit1.Size = new System.Drawing.Size(125, 22);
-            this.searchLookUpEdit1.TabIndex = 10;
+            this.lkeEmployee.Properties.DataSource = this.bdsDSNV;
+            this.lkeEmployee.Properties.DisplayMember = "HOTEN";
+            this.lkeEmployee.Properties.PopupView = this.searchLookUpEdit2View;
+            this.lkeEmployee.Properties.ValueMember = "MANV";
+            this.lkeEmployee.Size = new System.Drawing.Size(125, 22);
+            this.lkeEmployee.TabIndex = 11;
+            // 
+            // bdsDSNV
+            // 
+            this.bdsDSNV.DataMember = "DSNV";
+            this.bdsDSNV.DataSource = this.dataSet;
+            // 
+            // searchLookUpEdit2View
+            // 
+            this.searchLookUpEdit2View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit2View.Name = "searchLookUpEdit2View";
+            this.searchLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
+            // 
+            // lkeMaDDH
+            // 
+            this.lkeMaDDH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "MasoDDH", true));
+            this.lkeMaDDH.Location = new System.Drawing.Point(124, 104);
+            this.lkeMaDDH.MenuManager = this.bmPN;
+            this.lkeMaDDH.Name = "lkeMaDDH";
+            this.lkeMaDDH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkeMaDDH.Properties.DataSource = this.bdsDDH;
+            this.lkeMaDDH.Properties.DisplayMember = "MasoDDH";
+            this.lkeMaDDH.Properties.PopupView = this.searchLookUpEdit1View;
+            this.lkeMaDDH.Properties.ValueMember = "MasoDDH";
+            this.lkeMaDDH.Size = new System.Drawing.Size(125, 22);
+            this.lkeMaDDH.TabIndex = 10;
             // 
             // bdsDDH
             // 
@@ -504,19 +535,6 @@
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // masoDDHComboBox
-            // 
-            this.masoDDHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDDH, "MasoDDH", true));
-            this.masoDDHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsPN, "MANV", true));
-            this.masoDDHComboBox.DataSource = this.bdsDDH;
-            this.masoDDHComboBox.DisplayMember = "MasoDDH";
-            this.masoDDHComboBox.FormattingEnabled = true;
-            this.masoDDHComboBox.Location = new System.Drawing.Point(124, 104);
-            this.masoDDHComboBox.Name = "masoDDHComboBox";
-            this.masoDDHComboBox.Size = new System.Drawing.Size(125, 24);
-            this.masoDDHComboBox.TabIndex = 9;
-            this.masoDDHComboBox.ValueMember = "MasoDDH";
             // 
             // txtMaPN
             // 
@@ -531,6 +549,7 @@
             // 
             this.txtDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "NGAY", true));
             this.txtDate.EditValue = null;
+            this.txtDate.Enabled = false;
             this.txtDate.Location = new System.Drawing.Point(124, 76);
             this.txtDate.MenuManager = this.bmPN;
             this.txtDate.Name = "txtDate";
@@ -541,48 +560,33 @@
             this.txtDate.Size = new System.Drawing.Size(125, 22);
             this.txtDate.TabIndex = 3;
             // 
-            // txtMaNV
-            // 
-            this.txtMaNV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "MANV", true));
-            this.txtMaNV.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtMaNV.Location = new System.Drawing.Point(124, 132);
-            this.txtMaNV.MenuManager = this.bmPN;
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMaNV.Size = new System.Drawing.Size(125, 22);
-            this.txtMaNV.TabIndex = 7;
-            // 
             // gbCTPN
             // 
-            this.gbCTPN.Controls.Add(this.cTPNDataGridView);
+            this.gbCTPN.Controls.Add(this.dgvCTPN);
             this.gbCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCTPN.Location = new System.Drawing.Point(0, 0);
             this.gbCTPN.Name = "gbCTPN";
-            this.gbCTPN.Size = new System.Drawing.Size(450, 175);
+            this.gbCTPN.Size = new System.Drawing.Size(471, 175);
             this.gbCTPN.TabIndex = 1;
             this.gbCTPN.Text = " Chi tiết Phiếu Nhập";
             // 
-            // cTPNDataGridView
+            // dgvCTPN
             // 
-            this.cTPNDataGridView.AutoGenerateColumns = false;
-            this.cTPNDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cTPNDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCTPN.AutoGenerateColumns = false;
+            this.dgvCTPN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCTPN.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.cTPNDataGridView.DataSource = this.bdsCTPN;
-            this.cTPNDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cTPNDataGridView.Location = new System.Drawing.Point(2, 25);
-            this.cTPNDataGridView.Name = "cTPNDataGridView";
-            this.cTPNDataGridView.RowTemplate.Height = 24;
-            this.cTPNDataGridView.Size = new System.Drawing.Size(446, 148);
-            this.cTPNDataGridView.TabIndex = 1;
+            this.dgvCTPN.ContextMenuStrip = this.cmsCTPN;
+            this.dgvCTPN.DataSource = this.bdsCTPN;
+            this.dgvCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCTPN.Location = new System.Drawing.Point(2, 25);
+            this.dgvCTPN.Name = "dgvCTPN";
+            this.dgvCTPN.RowTemplate.Height = 24;
+            this.dgvCTPN.Size = new System.Drawing.Size(467, 148);
+            this.dgvCTPN.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -625,11 +629,31 @@
             // 
             this.taDDH.ClearBeforeFill = true;
             // 
+            // taDSNV
+            // 
+            this.taDSNV.ClearBeforeFill = true;
+            // 
+            // cmsCTPN
+            // 
+            this.cmsCTPN.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsCTPN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAddCTPN});
+            this.cmsCTPN.Name = "cmsCTPN";
+            this.cmsCTPN.Size = new System.Drawing.Size(235, 56);
+            // 
+            // btnAddCTPN
+            // 
+            this.btnAddCTPN.Name = "btnAddCTPN";
+            this.btnAddCTPN.Size = new System.Drawing.Size(234, 24);
+            this.btnAddCTPN.Text = "Tạo Chi tiết Phiếu Nhập";
+            this.btnAddCTPN.Click += new System.EventHandler(this.btnAddCTPN_Click);
+            // 
             // frmGoodsReceivedNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 708);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(871, 1067);
             this.Controls.Add(this.gcReceivedNote);
             this.Controls.Add(this.pnPickDepartment);
             this.Controls.Add(this.splitterControl1);
@@ -655,18 +679,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbReceivedNote)).EndInit();
             this.gbReceivedNote.ResumeLayout(false);
             this.gbReceivedNote.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkeMaDDH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaNV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbCTPN)).EndInit();
             this.gbCTPN.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cTPNDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
+            this.cmsCTPN.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -707,20 +734,24 @@
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
         private DevExpress.XtraEditors.TextEdit txtMaPN;
         private DevExpress.XtraEditors.DateEdit txtDate;
-        private DevExpress.XtraEditors.SpinEdit txtMaNV;
         private System.Windows.Forms.BindingSource bdsCTPN;
         private DataSetTableAdapters.CTPNTableAdapter taCTPN;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
         private DevExpress.XtraEditors.GroupControl gbCTPN;
-        private System.Windows.Forms.DataGridView cTPNDataGridView;
+        private System.Windows.Forms.BindingSource bdsDDH;
+        private DataSetTableAdapters.DatHangTableAdapter taDDH;
+        private DevExpress.XtraEditors.SearchLookUpEdit lkeMaDDH;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraEditors.SearchLookUpEdit lkeEmployee;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit2View;
+        private System.Windows.Forms.DataGridView dgvCTPN;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.BindingSource bdsDDH;
-        private DataSetTableAdapters.DatHangTableAdapter taDDH;
-        private System.Windows.Forms.ComboBox masoDDHComboBox;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEdit1;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private System.Windows.Forms.BindingSource bdsDSNV;
+        private DataSetTableAdapters.DSNVTableAdepter taDSNV;
+        private System.Windows.Forms.ContextMenuStrip cmsCTPN;
+        private System.Windows.Forms.ToolStripMenuItem btnAddCTPN;
     }
 }
