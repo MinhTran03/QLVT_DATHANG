@@ -18,13 +18,13 @@ namespace QLVT_DATHANG.Forms
          string gr = null;
          switch (UtilDB.CurrentGroup)
          {
-            case Cons.UserGroupName:
+            case MyConfig.UserGroupName:
                gr = "User";
                break;
-            case Cons.ChiNhanhGroupName:
+            case MyConfig.ChiNhanhGroupName:
                gr = "Chi Nhánh";
                break;
-            case Cons.CongTyGroupName:
+            case MyConfig.CongTyGroupName:
                gr = "Công Ty";
                break;
             default:
@@ -137,7 +137,7 @@ namespace QLVT_DATHANG.Forms
 
       private void btnRegister_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
-         if (!UtilDB.CurrentGroup.Equals(Cons.UserGroupName))
+         if (!UtilDB.CurrentGroup.Equals(MyConfig.UserGroupName))
          {
             FlyoutAction flyoutAction = new FlyoutAction()
             {
@@ -154,7 +154,7 @@ namespace QLVT_DATHANG.Forms
 
       private void frmMain_Load(object sender, EventArgs e)
       {
-         if (UtilDB.CurrentGroup.Equals(Cons.UserGroupName))
+         if (UtilDB.CurrentGroup.Equals(MyConfig.UserGroupName))
          {
             btnRegister.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
          }

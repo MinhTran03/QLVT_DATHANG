@@ -47,7 +47,7 @@ namespace QLVT_DATHANG.Forms
       {
          if (grName.Equals("congty"))
          {
-            UtilDB.SetupDSCN(cboDeployment);
+            UtilDB.SetupDSCN(cboDeployment, LoadTable);
             cboDeployment.Visible = true;
 
             btnAdd.Enabled = false;
@@ -58,43 +58,7 @@ namespace QLVT_DATHANG.Forms
 
       private void SetupControls()
       {
-         //string nameRegex = "[\u0000-\u001F\007F-\u009F]+(\\s{1}[\u0000-\u001F\007F-\u009F]+)*"; // regex with one space between 2 character
-
-         //txtEmpId.Properties.Mask.MaskType = MaskType.RegEx;
-         //txtEmpId.Properties.Mask.EditMask = "\\d+";
-         //txtEmpId.Properties.Mask.BeepOnError = true;
-         //txtEmpId.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpId.Properties.NullValuePrompt = "Id here";
-
-         //txtEmpFirstName.Properties.Mask.MaskType = MaskType.None;
-         //txtEmpFirstName.Properties.Mask.EditMask = nameRegex;
-         //txtEmpFirstName.Properties.Mask.BeepOnError = true;
-         //txtEmpFirstName.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpFirstName.Properties.NullValuePrompt = "First name here";
-
-         //txtEmpLastName.Properties.Mask.MaskType = MaskType.None;
-         //txtEmpLastName.Properties.Mask.EditMask = nameRegex;
-         //txtEmpLastName.Properties.Mask.BeepOnError = true;
-         //txtEmpLastName.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpLastName.Properties.NullValuePrompt = "Last name here";
-
-         //txtEmpAddr.Properties.Mask.BeepOnError = true;
-         //txtEmpAddr.Properties.AllowNullInput = DefaultBoolean.True;
-         //////txtEmpAddr.Properties.NullValuePrompt = "Address here";
-
-         //spiEmpSalary.Properties.Mask.MaskType = MaskType.Numeric;
-         ////spiEmpSalary.Properties.MinValue = CommonCons.MinSalary;
-         //spiEmpSalary.Properties.Increment = 100000;
-         //spiEmpSalary.Properties.Mask.BeepOnError = true;
-         //spiEmpSalary.Properties.AllowNullInput = DefaultBoolean.True;
-         ////spiEmpSalary.Properties.NullValuePrompt = $"Min {CommonCons.MinSalary}";
-
-         //dtpEmpBirth.Properties.Mask.MaskType = MaskType.DateTime;
-         //dtpEmpBirth.Properties.Mask.EditMask = "dd//MM//yyyy";
-         //dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-1);
-         //dtpEmpBirth.Properties.Mask.BeepOnError = true;
-         //dtpEmpBirth.Properties.AllowNullInput = DefaultBoolean.True;
-         ////dtpEmpBirth.Properties.NullValuePrompt = "Pick a day";
+         
       }
 
       private void userDo_StackPopped(object sender, StackEventAgrs e)

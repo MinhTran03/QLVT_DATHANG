@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraEditors;
-   using System.Data;
    using Utility;
 
    public partial class frmLogin : XtraForm
@@ -19,15 +19,22 @@ namespace QLVT_DATHANG.Forms
 
       private void frmLogin_Load(object sender, EventArgs e)
       {
-         string cnnStr = $"Data Source={MyConfig.MachineName};" +
+         string cnnStr = $"Data Source={MyConfig.RootServerName};" +
                         $"Initial Catalog={MyConfig.DatabaseName};" +
                         $"Integrated Security=True";
 
          try
          {
-            UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable("SELECT * FROM V_DS_PHANMANH", cnnStr);
+            UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable($"SELECT * FROM {MyConfig.ViewDSPMName}", cnnStr);
+            if (UtilDB.BdsDSPM.DataSource == null)
+            {
+               Close();
+               return;
+            }
 
-            UtilDB.SetupDSCN(cboChiNhanh);
+            cboChiNhanh.DataSource = UtilDB.BdsDSPM;
+            cboChiNhanh.DisplayMember = MyConfig.DisplayMemberDSPM;
+            cboChiNhanh.ValueMember = MyConfig.ValueMemberDSPM;
 
             cboChiNhanh.SelectedIndex = -1;
             cboChiNhanh.SelectedIndex = 0;
@@ -170,9 +177,9 @@ namespace QLVT_DATHANG.Forms
                      UtilDB.CurrentGroup = reader.GetString(2);
                   }
                }
-               catch (SqlException ex)
+               catch (Exception ex)
                {
-                  XtraMessageBox.Show(ex.Message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  UtilDB.ShowError(ex);
                   flag = false;
                }
             }

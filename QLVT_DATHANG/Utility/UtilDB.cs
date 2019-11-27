@@ -27,9 +27,17 @@ namespace QLVT_DATHANG.Utility
          DataTable dt = new DataTable();
          using (SqlConnection connection = new SqlConnection(connectionString))
          {
-            connection.Open();
-            SqlDataAdapter da = new SqlDataAdapter(cmdText, connection);
-            da.Fill(dt);
+            try
+            {
+               connection.Open();
+               SqlDataAdapter da = new SqlDataAdapter(cmdText, connection);
+               da.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+               ShowError(ex);
+               dt = null;
+            }
          }
          return dt;
       }
@@ -53,35 +61,93 @@ namespace QLVT_DATHANG.Utility
             return 1;
          }
 
-         catch (Exception)
+         catch (Exception ex)
          {
-            XtraMessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại Tên đăng nhập và Mật khẩu.\n", 
-                                 Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (ex is SqlException)
+            {
+               var msgNum = (ex as SqlException).Number;
+               switch (msgNum)
+               {
+                  case Cons.ErrorLoginNameCannotConnectCode:
+                     //sai login name
+                     XtraMessageBox.Show(Cons.ErrorLoginNameOrPW, Cons.CaptionError,
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     break;
+                  default:
+                     XtraMessageBox.Show(Cons.ErrorCannotConnectServer, Cons.CaptionError,
+                                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     break;
+               }
+            }
+
             return 0;
          }
       }
 
       /// <summary>
-      /// Setup combobox hiển thị các chi nhánh hiện có
+      /// Setup combobox hiển thị các chi nhánh hiện có và
+      /// callback load lại Table khi chuyển chi nhánh
       /// </summary>
-      /// <param name="comboBox"></param>
-      public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox)
+      /// <param name="comboBox">Control ComboBox</param>
+      /// <param name="loadTable">Action load các bindingSource khi chuyển chi nhánh</param>
+      public static void SetupDSCN(System.Windows.Forms.ComboBox comboBox, Action loadTable)
       {
          comboBox.DataSource = BdsDSPM;
          comboBox.DisplayMember = MyConfig.DisplayMemberDSPM;
          comboBox.ValueMember = MyConfig.ValueMemberDSPM;
+
+         comboBox.SelectedIndexChanged += (o, e) =>
+         {
+            // đổi server
+            UtilDB.ServerName = comboBox.SelectedValue.ToString();
+
+            // đổi login
+            if (comboBox.SelectedIndex != UtilDB.CurrentDeployment)
+            {
+               UtilDB.CurrentLogin = MyConfig.RemoteLogin;
+               UtilDB.CurrentPassword = MyConfig.RemotePassword;
+            }
+            else
+            {
+               UtilDB.CurrentLogin = UtilDB.BackupLogin;
+               UtilDB.CurrentPassword = UtilDB.BackupPassword;
+            }
+
+            //
+            if (UtilDB.Connect() == 0)
+            {
+               XtraMessageBox.Show(Cons.ErrorConnectDepartment, Cons.CaptionError, MessageBoxButtons.OK);
+            }
+            else
+            {
+               loadTable();
+            }
+         };
       }
 
       public static void ShowError(Exception e)
       {
+         if (e is SqlException)
+         {
+            Console.WriteLine("MsgNumber: {0}", ((SqlException)e).Number.ToString());
+            Console.WriteLine((e as SqlException).Message);
+         }
          string message = e.Message + "\n";
          string source = "Source: " + e.Source + "\n";
          string targetSite = "Method: " + e.TargetSite + "\n";
          XtraMessageBox.Show(source + targetSite + message, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
          Console.WriteLine(e.StackTrace);
-         if (e.GetType() == typeof(SqlException))
+      }
+
+      public static void TrimDataInControl(GroupControl groupControl)
+      {
+         foreach (var control in groupControl.Controls)
          {
-            Console.WriteLine("===>" + ((SqlException)e).Number.ToString());
+            TextEdit textEdit = null;
+            if (control is TextEdit && (textEdit = (control as TextEdit)).ReadOnly == false)
+            {
+               textEdit.EditValue = textEdit.EditValue.ToString().Trim();
+            }
          }
       }
    }

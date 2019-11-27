@@ -49,8 +49,10 @@
          this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
          this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
          this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+         this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
          this.SuspendLayout();
          // 
          // ribbonControl1
@@ -73,11 +75,13 @@
             this.barStaticItem2});
          this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
          this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-         this.ribbonControl1.MaxItemId = 14;
+         this.ribbonControl1.MaxItemId = 16;
          this.ribbonControl1.Name = "ribbonControl1";
          this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
+         this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1});
          this.ribbonControl1.Size = new System.Drawing.Size(722, 143);
          this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
          // 
@@ -232,6 +236,14 @@
          // 
          this.xtraTabbedMdiManager1.MdiParent = this;
          // 
+         // repositoryItemLookUpEdit1
+         // 
+         this.repositoryItemLookUpEdit1.AutoHeight = false;
+         this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.repositoryItemLookUpEdit1.DropDownRows = 2;
+         this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+         // 
          // frmMain
          // 
          this.Appearance.Options.UseFont = true;
@@ -253,6 +265,7 @@
          this.Load += new System.EventHandler(this.frmMain_Load);
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -279,6 +292,7 @@
       private DevExpress.XtraBars.BarButtonItem btnRegister;
       private DevExpress.XtraBars.BarStaticItem barStaticItem1;
       private DevExpress.XtraBars.BarStaticItem barStaticItem2;
+      private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
    }
 }
 
