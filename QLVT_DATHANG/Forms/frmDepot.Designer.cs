@@ -59,6 +59,7 @@
          this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
          this.gbDepot = new DevExpress.XtraEditors.GroupControl();
+         this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
          this.txtDepotId = new DevExpress.XtraEditors.TextEdit();
          this.txtDepotName = new DevExpress.XtraEditors.TextEdit();
          this.txtDepotAddress = new DevExpress.XtraEditors.TextEdit();
@@ -81,6 +82,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDepot)).BeginInit();
          this.gbDepot.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDepotId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDepotName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDepotAddress.Properties)).BeginInit();
@@ -95,7 +97,7 @@
          // 
          mAKHOLabel.AutoSize = true;
          mAKHOLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mAKHOLabel.Location = new System.Drawing.Point(115, 49);
+         mAKHOLabel.Location = new System.Drawing.Point(173, 45);
          mAKHOLabel.Name = "mAKHOLabel";
          mAKHOLabel.Size = new System.Drawing.Size(53, 13);
          mAKHOLabel.TabIndex = 0;
@@ -105,7 +107,7 @@
          // 
          tENKHOLabel.AutoSize = true;
          tENKHOLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         tENKHOLabel.Location = new System.Drawing.Point(110, 75);
+         tENKHOLabel.Location = new System.Drawing.Point(173, 71);
          tENKHOLabel.Name = "tENKHOLabel";
          tENKHOLabel.Size = new System.Drawing.Size(58, 13);
          tENKHOLabel.TabIndex = 2;
@@ -115,7 +117,7 @@
          // 
          dIACHILabel.AutoSize = true;
          dIACHILabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dIACHILabel.Location = new System.Drawing.Point(117, 101);
+         dIACHILabel.Location = new System.Drawing.Point(173, 97);
          dIACHILabel.Name = "dIACHILabel";
          dIACHILabel.Size = new System.Drawing.Size(51, 13);
          dIACHILabel.TabIndex = 4;
@@ -125,7 +127,7 @@
          // 
          mACNLabel.AutoSize = true;
          mACNLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mACNLabel.Location = new System.Drawing.Point(81, 127);
+         mACNLabel.Location = new System.Drawing.Point(173, 123);
          mACNLabel.Name = "mACNLabel";
          mACNLabel.Size = new System.Drawing.Size(87, 13);
          mACNLabel.TabIndex = 6;
@@ -365,6 +367,7 @@
          // 
          this.gbDepot.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbDepot.AppearanceCaption.Options.UseFont = true;
+         this.gbDepot.Controls.Add(this.pictureEdit1);
          this.gbDepot.Controls.Add(mAKHOLabel);
          this.gbDepot.Controls.Add(this.txtDepotId);
          this.gbDepot.Controls.Add(tENKHOLabel);
@@ -380,10 +383,24 @@
          this.gbDepot.TabIndex = 6;
          this.gbDepot.Text = "Thông Tin Kho";
          // 
+         // pictureEdit1
+         // 
+         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources.Download_Warehouse_PNG_Image;
+         this.pictureEdit1.Location = new System.Drawing.Point(5, 23);
+         this.pictureEdit1.Name = "pictureEdit1";
+         this.pictureEdit1.Properties.AllowFocused = false;
+         this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+         this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+         this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+         this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+         this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+         this.pictureEdit1.Size = new System.Drawing.Size(162, 143);
+         this.pictureEdit1.TabIndex = 8;
+         // 
          // txtDepotId
          // 
          this.txtDepotId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "MAKHO", true));
-         this.txtDepotId.Location = new System.Drawing.Point(174, 46);
+         this.txtDepotId.Location = new System.Drawing.Point(266, 42);
          this.txtDepotId.MenuManager = this.bmOrder;
          this.txtDepotId.Name = "txtDepotId";
          this.txtDepotId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -395,7 +412,7 @@
          // txtDepotName
          // 
          this.txtDepotName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "TENKHO", true));
-         this.txtDepotName.Location = new System.Drawing.Point(174, 72);
+         this.txtDepotName.Location = new System.Drawing.Point(266, 68);
          this.txtDepotName.MenuManager = this.bmOrder;
          this.txtDepotName.Name = "txtDepotName";
          this.txtDepotName.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -407,7 +424,7 @@
          // txtDepotAddress
          // 
          this.txtDepotAddress.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "DIACHI", true));
-         this.txtDepotAddress.Location = new System.Drawing.Point(174, 98);
+         this.txtDepotAddress.Location = new System.Drawing.Point(266, 94);
          this.txtDepotAddress.MenuManager = this.bmOrder;
          this.txtDepotAddress.Name = "txtDepotAddress";
          this.txtDepotAddress.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -418,7 +435,7 @@
          // txtEmpDepartment
          // 
          this.txtEmpDepartment.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "MACN", true));
-         this.txtEmpDepartment.Location = new System.Drawing.Point(174, 124);
+         this.txtEmpDepartment.Location = new System.Drawing.Point(266, 120);
          this.txtEmpDepartment.MenuManager = this.bmOrder;
          this.txtEmpDepartment.Name = "txtEmpDepartment";
          this.txtEmpDepartment.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -502,6 +519,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbDepot)).EndInit();
          this.gbDepot.ResumeLayout(false);
          this.gbDepot.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDepotId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDepotName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtDepotAddress.Properties)).EndInit();
@@ -554,5 +572,6 @@
       private System.Windows.Forms.BindingSource bdsCN;
       private DataSetTableAdapters.ChiNhanhTableAdapter taCN;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
-    }
+      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+   }
 }

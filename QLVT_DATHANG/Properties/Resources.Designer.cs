@@ -63,9 +63,29 @@ namespace QLVT_DATHANG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _162_512 {
+            get {
+                object obj = ResourceManager.GetObject("162-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _164_9_register_icon_iconbunny_removebg {
             get {
                 object obj = ResourceManager.GetObject("164.9-register-icon-iconbunny-removebg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Download_Warehouse_PNG_Image {
+            get {
+                object obj = ResourceManager.GetObject("Download-Warehouse-PNG-Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +176,16 @@ namespace QLVT_DATHANG.Properties {
         internal static System.Drawing.Bitmap id_card_96px {
             get {
                 object obj = ResourceManager.GetObject("id_card_96px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap manager_clipart_material_management_3 {
+            get {
+                object obj = ResourceManager.GetObject("manager-clipart-material-management-3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -7,6 +7,7 @@ namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
+   using System.Collections.Generic;
    using Utility;
 
    public partial class frmMaterials : XtraForm
@@ -30,6 +31,8 @@ namespace QLVT_DATHANG.Forms
 
          LoadTable();
          DisableEditMode();
+
+         cboDVT.DataSource = GetDanhSachDVT();
       }
 
       #region METHOD
@@ -163,22 +166,23 @@ namespace QLVT_DATHANG.Forms
             }
 
             bdsVT.EndEdit();
+            this.taVT.Update(this.dataSet.Vattu);
             gbVT.Enabled = false;
             //bdsVT.ResetCurrentItem();
-            this.taVT.Update(this.dataSet.Vattu);
             _buttonAction = ButtonActionType.None;
+            bdsVT.Position = _currentPosition;
+            DisableEditMode();
          }
          catch (Exception ex)
          {
             // #load lại từ database
-            dataSet.EnforceConstraints = false;
-            this.taVT.Fill(this.dataSet.Vattu);
+            //dataSet.EnforceConstraints = false;
+            //this.taVT.Fill(this.dataSet.Vattu);
             //dataSet.EnforceConstraints = true;
+            if (_buttonAction == ButtonActionType.Add) _userDo.Pop();
             UtilDB.ShowError(ex);
             return false;
          }
-         bdsVT.Position = _currentPosition;
-         DisableEditMode();
          return true;
       }
 
@@ -215,6 +219,28 @@ namespace QLVT_DATHANG.Forms
          this.taVT.Update(this.dataSet.Vattu);
       }
 
+      private List<string> GetDanhSachDVT()
+      {
+         using (var connection = new SqlConnection(UtilDB.ConnectionString))
+         {
+            connection.Open();
+            using (var command = new SqlCommand(MyConfig.SpGetDanhSachDVT, connection))
+            {
+               command.CommandType = CommandType.StoredProcedure;
+
+               using (SqlDataReader reader = command.ExecuteReader())
+               {
+                  List<string> dsDVT = new List<string>();
+                  while (reader.Read())
+                  {
+                     dsDVT.Add(reader.GetString(0));
+                  }
+                  return dsDVT;
+               }
+            }
+         }
+      }
+
       #endregion
 
       #region EVENTS
@@ -243,11 +269,13 @@ namespace QLVT_DATHANG.Forms
       private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
       {
          SaveMaterials();
+         cboDVT.DataSource = GetDanhSachDVT();
       }
 
       private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
       {
          Undo();
+         cboDVT.DataSource = GetDanhSachDVT();
       }
 
       private void btnExit_ItemClick(object sender, ItemClickEventArgs e)
@@ -312,6 +340,8 @@ namespace QLVT_DATHANG.Forms
                UtilDB.ShowError(ex);
             }
          }
+
+         cboDVT.DataSource = GetDanhSachDVT();
       }
 
       private string CheckConstraint()

@@ -267,7 +267,7 @@ namespace QLVT_DATHANG.Forms
             dataSet.EnforceConstraints = false;
             this.taNV.Fill(this.dataSet.NhanVien);
             dataSet.EnforceConstraints = true;
-
+            if (_buttonAction == ButtonActionType.Add) _userDo.Pop();
             UtilDB.ShowError(ex);
             return false;
          }
@@ -279,9 +279,9 @@ namespace QLVT_DATHANG.Forms
          try
          {
             bdsNV.EndEdit();
+            this.taNV.Update(this.dataSet.NhanVien);
             gbEmployee.Enabled = false;
             //bdsNV.ResetCurrentItem();
-            this.taNV.Update(this.dataSet.NhanVien);
             _buttonAction = ButtonActionType.None;
             bdsNV.Position = _currentPosition;
             DisableEditMode();
@@ -386,15 +386,22 @@ namespace QLVT_DATHANG.Forms
 
       private void btnCreateLogin_Click(object sender, EventArgs e)
       {
+         if(int.Parse(txtEmpDelStatus.Text) == 1)
+         {
+            XtraMessageBox.Show(Cons.ErrorSwitchEmployeeAlready, Cons.CaptionError,
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+         }
+
          int employeeId = int.Parse(txtEmpId.EditValue.ToString());
 
-         string strLenh = string.Format(MyConfig.ExecSPKiemTraNVCoTaiKhoan, employeeId);
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
             connection.Open();
-            using (SqlCommand command = new SqlCommand(strLenh, connection))
+            using (SqlCommand command = new SqlCommand(MyConfig.SpKiemTraNVCoTaiKhoan, connection))
             {
-               command.CommandType = CommandType.Text;
+               command.CommandType = CommandType.StoredProcedure;
+               command.Parameters.AddWithValue("@manv", employeeId);
                try
                {
                   command.ExecuteNonQuery();

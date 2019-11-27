@@ -322,6 +322,15 @@
   <ItemGroup>
     <None Include="icon\icons8_add_user_16.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\manager-clipart-material-management-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\162-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\Download-Warehouse-PNG-Image.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
