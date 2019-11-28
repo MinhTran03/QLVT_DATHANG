@@ -53,7 +53,7 @@
          this.taDepot = new QLVT_DATHANG.DataSetTableAdapters.KhoTableAdapter();
          this.taDepotManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.gcDepot = new DevExpress.XtraGrid.GridControl();
-         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+         this.gvDepot = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colTENKHO = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,7 +79,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDepot)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcDepot)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvDepot)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDepot)).BeginInit();
          this.gbDepot.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -309,27 +309,27 @@
          this.gcDepot.DataSource = this.bdsDepot;
          this.gcDepot.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcDepot.Location = new System.Drawing.Point(0, 54);
-         this.gcDepot.MainView = this.gridView1;
+         this.gcDepot.MainView = this.gvDepot;
          this.gcDepot.MenuManager = this.bmOrder;
          this.gcDepot.Name = "gcDepot";
          this.gcDepot.Size = new System.Drawing.Size(800, 220);
          this.gcDepot.TabIndex = 5;
          this.gcDepot.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvDepot});
          // 
-         // gridView1
+         // gvDepot
          // 
-         this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+         this.gvDepot.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAKHO,
             this.colTENKHO,
             this.colDIACHI,
             this.colMACN});
-         this.gridView1.GridControl = this.gcDepot;
-         this.gridView1.Name = "gridView1";
-         this.gridView1.OptionsBehavior.Editable = false;
-         this.gridView1.OptionsView.ShowGroupPanel = false;
-         this.gridView1.OptionsView.ShowViewCaption = true;
-         this.gridView1.ViewCaption = "Danh sách Kho";
+         this.gvDepot.GridControl = this.gcDepot;
+         this.gvDepot.Name = "gvDepot";
+         this.gvDepot.OptionsBehavior.Editable = false;
+         this.gvDepot.OptionsView.ShowGroupPanel = false;
+         this.gvDepot.OptionsView.ShowViewCaption = true;
+         this.gvDepot.ViewCaption = "Danh sách Kho";
          // 
          // colMAKHO
          // 
@@ -406,6 +406,7 @@
          this.txtDepotId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtDepotId.Properties.Appearance.Options.UseFont = true;
          this.txtDepotId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+         this.txtDepotId.Properties.MaxLength = 4;
          this.txtDepotId.Size = new System.Drawing.Size(214, 20);
          this.txtDepotId.TabIndex = 1;
          // 
@@ -515,7 +516,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDepot)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcDepot)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvDepot)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDepot)).EndInit();
          this.gbDepot.ResumeLayout(false);
          this.gbDepot.PerformLayout();
@@ -555,7 +556,7 @@
       private DataSetTableAdapters.KhoTableAdapter taDepot;
       private DataSetTableAdapters.TableAdapterManager taDepotManager;
       private DevExpress.XtraGrid.GridControl gcDepot;
-      private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+      private DevExpress.XtraGrid.Views.Grid.GridView gvDepot;
       private DevExpress.XtraEditors.GroupControl gbDepot;
       private DevExpress.XtraEditors.TextEdit txtDepotId;
       private DevExpress.XtraEditors.TextEdit txtDepotName;

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace QLVT_DATHANG.Forms
 {
@@ -137,12 +138,14 @@ namespace QLVT_DATHANG.Forms
             {
                SqlDataReader myreader = sqlcmd.ExecuteReader();
             }
+            catch (SqlException ex)
+            {
+               if (ex.Number == MyConfig.ErrorMsgNumNotExistObject)
+                  exist = false;
+            }
             catch (Exception ex)
             {
-               if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumNotExistObject)
-                  exist = false;
-               else
-                  UtilDB.ShowError(ex);
+               UtilDB.ShowError(ex);
             }
          }
          return exist;
@@ -152,34 +155,30 @@ namespace QLVT_DATHANG.Forms
       {
          try
          {
-            if (_buttonAction == ButtonActionType.Add)
+            if (_buttonAction == ButtonActionType.Add &&
+               IsExistMaterial(txtMaterialId.EditValue.ToString()))
             {
-               if (IsExistMaterial(txtMaterialId.EditValue.ToString()))
-               {
-                  XtraMessageBox.Show(Cons.ErrorDuplicateMaterialId, Cons.CaptionWarning,
-                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                  txtMaterialId.Focus();
-                  return false;
-               }
-               // Lưu vô stack trạng thái nút nhấn và data bị thay đổi
-               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsVT[bdsVT.Position]).Row.ItemArray));
+               XtraMessageBox.Show(Cons.ErrorDuplicateMaterialId, Cons.CaptionWarning,
+                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               txtMaterialId.Focus();
+               return false;
             }
 
             bdsVT.EndEdit();
             this.taVT.Update(this.dataSet.Vattu);
             gbVT.Enabled = false;
-            //bdsVT.ResetCurrentItem();
+            bdsVT.ResetCurrentItem();
+            DisableEditMode();
+            if (_buttonAction == ButtonActionType.Add)
+            {
+               // Lưu vô stack trạng thái nút nhấn và data bị thay đổi
+               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsVT[bdsVT.Position]).Row.ItemArray));
+            }
             _buttonAction = ButtonActionType.None;
             bdsVT.Position = _currentPosition;
-            DisableEditMode();
          }
          catch (Exception ex)
          {
-            // #load lại từ database
-            //dataSet.EnforceConstraints = false;
-            //this.taVT.Fill(this.dataSet.Vattu);
-            //dataSet.EnforceConstraints = true;
-            if (_buttonAction == ButtonActionType.Add) _userDo.Pop();
             UtilDB.ShowError(ex);
             return false;
          }
@@ -191,32 +190,44 @@ namespace QLVT_DATHANG.Forms
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
 
-         switch (action.ActionType)
+         try
          {
-            case ButtonActionType.Add:
-               // xóa dữ liệu mới
-               position = bdsVT.Find("MAVT", action.SaveItems[0]);
-               bdsVT.Remove((DataRowView)bdsVT[position]);
-               break;
-            case ButtonActionType.Edit:
-               // sửa lại dữ liệu cũ
-               position = bdsVT.Find("MAVT", action.SaveItems[0]);
-               ((DataRowView)bdsVT[position]).Row.ItemArray = action.SaveItems;
-               bdsVT.EndEdit();
-               //bdsNV.ResetCurrentItem();
-               break;
-            case ButtonActionType.Delete:
-               // Thêm dữ liệu cũ vào
-               position = bdsVT.Count;
-               bdsVT.AddNew();
-               ((DataRowView)bdsVT[position]).Row.ItemArray = action.SaveItems;
-               bdsVT.EndEdit();
-               break;
-            case ButtonActionType.None:
-            default:
-               break;
+            switch (action.ActionType)
+            {
+               case ButtonActionType.Add:
+                  // xóa dữ liệu mới
+                  //position = bdsVT.Find("MAVT", action.SaveItems[0]);
+                  //bdsVT.Remove((DataRowView)bdsVT[position]);
+                  if (UtilDB.DeleteInDB("Vattu", "MAVT", txtMaterialId.EditValue))
+                  {
+                     this.dataSet.EnforceConstraints = false;
+                     this.taVT.Fill(this.dataSet.Vattu);
+                  }
+                  break;
+               case ButtonActionType.Edit:
+                  // sửa lại dữ liệu cũ
+                  position = bdsVT.Find("MAVT", action.SaveItems[0]);
+                  ((DataRowView)bdsVT[position]).Row.ItemArray = action.SaveItems;
+                  bdsVT.EndEdit();
+                  //bdsNV.ResetCurrentItem();
+                  break;
+               case ButtonActionType.Delete:
+                  // Thêm dữ liệu cũ vào
+                  position = bdsVT.Count;
+                  bdsVT.AddNew();
+                  ((DataRowView)bdsVT[position]).Row.ItemArray = action.SaveItems;
+                  bdsVT.EndEdit();
+                  break;
+               case ButtonActionType.None:
+               default:
+                  break;
+            }
+            this.taVT.Update(this.dataSet.Vattu);
          }
-         this.taVT.Update(this.dataSet.Vattu);
+         catch (Exception ex)
+         {
+            UtilDB.ShowError(ex);
+         }
       }
 
       private List<string> GetDanhSachDVT()
@@ -332,8 +343,13 @@ namespace QLVT_DATHANG.Forms
                // lưu lại data trước khi xóa
                _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsVT[_currentPosition]).Row.ItemArray));
 
-               bdsVT.RemoveCurrent();
-               this.taVT.Update(this.dataSet.Vattu);
+               //bdsVT.RemoveCurrent();
+               //this.taVT.Update(this.dataSet.Vattu);
+               if (UtilDB.DeleteInDB("Vattu", "MAVT", txtMaterialId.EditValue))
+               {
+                  this.dataSet.EnforceConstraints = false;
+                  this.taVT.Fill(this.dataSet.Vattu);
+               }
             }
             catch (Exception ex)
             {

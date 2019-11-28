@@ -16,21 +16,17 @@ namespace QLVT_DATHANG.Forms
    {
       private string _currentDeploymentId;
       private int _currentPosition;
-      private ButtonActionType _buttonAction;
       private int _backupWidth = 0;
 
       public frmOrders()
       {
          InitializeComponent();
          SetupControls();
-
          //gridView1.Columns[0].OptionsColumn.AllowEdit = false;
       }
 
       private void frmOrders_Load(object sender, EventArgs e)
       {
-         _buttonAction = ButtonActionType.None;
-
          LoadTable();
          DisableEditMode();
 
@@ -69,7 +65,7 @@ namespace QLVT_DATHANG.Forms
          gcOrderDetail.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
          gcOrderDetail.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(246, 246, 247);
          gcOrderDetail.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-         gcOrderDetail.ColumnHeadersDefaultCellStyle.Font = new Font("Verdana", 10);
+         gcOrderDetail.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
       }
 
       private void LoadTable()
@@ -150,12 +146,14 @@ namespace QLVT_DATHANG.Forms
                {
                   sqlcmd.ExecuteNonQuery();
                }
+               catch (SqlException ex)
+               {
+                  if (ex.Number == MyConfig.ErrorMsgNumNotExistObject)
+                     exist = false;
+               }
                catch (Exception ex)
                {
-                  if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumNotExistObject)
-                     exist = false;
-                  else
-                     UtilDB.ShowError(ex);
+                  UtilDB.ShowError(ex);
                }
             }
          }
@@ -166,33 +164,24 @@ namespace QLVT_DATHANG.Forms
       {
          try
          {
-            if (_buttonAction == ButtonActionType.Add)
+            if (IsExistOrder(txtOrderId.EditValue.ToString()))
             {
-               if (IsExistOrder(txtOrderId.EditValue.ToString()))
-               {
-                  XtraMessageBox.Show(Cons.ErrorDuplicateOrderId, Cons.CaptionWarning,
-                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                  txtOrderId.Focus();
-                  txtOrderId.SelectAll();
-                  return false;
-               }
+               XtraMessageBox.Show(Cons.ErrorDuplicateOrderId, Cons.CaptionWarning,
+                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               txtOrderId.Focus();
+               txtOrderId.SelectAll();
+               return false;
             }
 
             bdsDDH.EndEdit();
             this.taDDH.Update(this.dataSet.DatHang);
             gbOrder.Enabled = false;
-            //bdsNV.ResetCurrentItem();
-            _buttonAction = ButtonActionType.None;
+            bdsDDH.ResetCurrentItem();
             bdsDDH.Position = _currentPosition;
             DisableEditMode();
          }
          catch (Exception ex)
          {
-            // #load lại từ database
-            dataSet.EnforceConstraints = false;
-            this.taDDH.Fill(this.dataSet.DatHang);
-            dataSet.EnforceConstraints = true;
-
             UtilDB.ShowError(ex);
             return false;
          }
@@ -216,7 +205,6 @@ namespace QLVT_DATHANG.Forms
       private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
       {
          _currentPosition = bdsDDH.Position;
-         _buttonAction = ButtonActionType.Add;
 
          bdsDDH.AddNew();
          dtpOrderDate.EditValue = DateTime.Now;
@@ -245,7 +233,6 @@ namespace QLVT_DATHANG.Forms
             bdsDDH.CancelEdit();
             bdsDDH.ResetCurrentItem();
             bdsDDH.Position = _currentPosition;
-            _buttonAction = ButtonActionType.None;
          }
          catch (Exception ex)
          {

@@ -211,8 +211,13 @@ namespace QLVT_DATHANG.Forms
                // lưu lại data trước khi xóa
                _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsDepot[_currentPosition]).Row.ItemArray));
 
-               bdsDepot.RemoveCurrent();
-               this.taDepot.Update(this.dataSet.Kho);
+               //bdsDepot.RemoveCurrent();
+               //this.taDepot.Update(this.dataSet.Kho);
+               if (UtilDB.DeleteInDB("Kho", "MAKHO", txtDepotId.EditValue))
+               {
+                  this.dataSet.EnforceConstraints = false;
+                  this.taDepot.Fill(this.dataSet.Kho);
+               }
             }
             catch (Exception ex)
             {
@@ -225,72 +230,79 @@ namespace QLVT_DATHANG.Forms
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
-
-         switch (action.ActionType)
+         try
          {
-            case ButtonActionType.Add:
-               // xóa dữ liệu mới
-               position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
-               bdsDepot.Remove((DataRowView)bdsDepot[position]);
-               break;
-            case ButtonActionType.Edit:
-               // sửa lại dữ liệu cũ
-               position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
-               ((DataRowView)bdsDepot[position]).Row.ItemArray = action.SaveItems;
-               bdsDepot.EndEdit();
-               //bdsNV.ResetCurrentItem();
-               break;
-            case ButtonActionType.Delete:
-               // Thêm dữ liệu cũ vào
-               position = bdsDepot.Count;
-               bdsDepot.AddNew();
-               ((DataRowView)bdsDepot[position]).Row.ItemArray = action.SaveItems;
-               bdsDepot.EndEdit();
-               break;
-            case ButtonActionType.None:
-            default:
-               break;
+            switch (action.ActionType)
+            {
+               case ButtonActionType.Add:
+                  // xóa dữ liệu mới
+                  //position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
+                  //bdsDepot.Remove((DataRowView)bdsDepot[position]);
+                  if (UtilDB.DeleteInDB("Kho", "MAKHO", txtDepotId.EditValue))
+                  {
+                     this.dataSet.EnforceConstraints = false;
+                     this.taDepot.Fill(this.dataSet.Kho);
+                  }
+                  break;
+               case ButtonActionType.Edit:
+                  // sửa lại dữ liệu cũ
+                  position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
+                  ((DataRowView)bdsDepot[position]).Row.ItemArray = action.SaveItems;
+                  bdsDepot.EndEdit();
+                  //bdsNV.ResetCurrentItem();
+                  break;
+               case ButtonActionType.Delete:
+                  // Thêm dữ liệu cũ vào
+                  position = bdsDepot.Count;
+                  bdsDepot.AddNew();
+                  ((DataRowView)bdsDepot[position]).Row.ItemArray = action.SaveItems;
+                  bdsDepot.EndEdit();
+                  break;
+               case ButtonActionType.None:
+               default:
+                  break;
+            }
+            this.taDepot.Update(this.dataSet.Kho);
          }
-         this.taDepot.Update(this.dataSet.Kho);
+         catch (Exception ex)
+         {
+            UtilDB.ShowError(ex);
+         }
       }
 
       private bool SaveDepot()
       {
          try
          {
-            if (_buttonAction == ButtonActionType.Add)
+            if (_buttonAction == ButtonActionType.Add &&
+               IsExistDepot(txtDepotId.EditValue.ToString()))
             {
-               if (IsExistDepot(txtDepotId.EditValue.ToString()))
-               {
-                  XtraMessageBox.Show(Cons.ErrorDuplicateDeportId, Cons.CaptionWarning,
-                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                  txtDepotId.Focus();
-                  txtDepotId.SelectAll();
-                  return false;
-               }
-
-               // Lưu vô stack trạng thái nút nhấn và data bị thay đổi
-               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsDepot[bdsDepot.Position]).Row.ItemArray));
+               XtraMessageBox.Show(Cons.ErrorDuplicateDeportId, Cons.CaptionWarning,
+                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               txtDepotId.Focus();
+               txtDepotId.SelectAll();
+               return false;
             }
 
             bdsDepot.EndEdit();
-            gbDepot.Enabled = false;
-            //bdsNV.ResetCurrentItem();
             this.taDepot.Update(this.dataSet.Kho);
+            gbDepot.Enabled = false;
+            bdsDepot.ResetCurrentItem();
+            DisableEditMode();
+            if (_buttonAction == ButtonActionType.Add)
+            {
+               // Lưu vô stack trạng thái nút nhấn và data bị thay đổi
+               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsDepot[bdsDepot.Position]).Row.ItemArray));
+            }
             _buttonAction = ButtonActionType.None;
+            bdsDepot.Position = _currentPosition;
          }
          catch (Exception ex)
          {
-            // #load lại từ database
-            dataSet.EnforceConstraints = false;
-            this.taDepot.Fill(this.dataSet.Kho);
-            dataSet.EnforceConstraints = true;
-            if (_buttonAction == ButtonActionType.Add) _userDo.Pop();
             UtilDB.ShowError(ex);
             return false;
          }
-         bdsDepot.Position = _currentPosition;
-         DisableEditMode();
+
          return true;
       }
 
@@ -308,12 +320,14 @@ namespace QLVT_DATHANG.Forms
                {
                   sqlcmd.ExecuteNonQuery();
                }
+               catch (SqlException ex)
+               {
+                  if (ex.Number == MyConfig.ErrorMsgNumNotExistObject)
+                     exist = false;
+               }
                catch (Exception ex)
                {
-                  if (ex is SqlException && (ex as SqlException).Number == MyConfig.ErrorMsgNumNotExistObject)
-                     exist = false;
-                  else
-                     UtilDB.ShowError(ex);
+                  UtilDB.ShowError(ex);
                }
             }
          }

@@ -83,6 +83,16 @@ namespace QLVT_DATHANG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _28_512 {
+            get {
+                object obj = ResourceManager.GetObject("28-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Download_Warehouse_PNG_Image {
             get {
                 object obj = ResourceManager.GetObject("Download-Warehouse-PNG-Image", resourceCulture);

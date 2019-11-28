@@ -29,13 +29,14 @@ namespace QLVT_DATHANG
       public const string ExecSPXoaLogin = "EXEC sp_removelogin '{0}'";
       public const string ExecSPTimPhieuNhap = "EXEC sp_timphieunhap '{0}'";
       public const string ExecSPTimPhieuXuat = "EXEC sp_timphieuxuat '{0}'";
+
       public const string SpKiemTraNVCoTaiKhoan = "sp_timtaikhoannhanvien";
       public const string SpGetAllMaNV = "sp_getallmanv";
       public const string SpChuyenChiNhanh = "sp_chuyenchinhanh";
       public const string SpGetDanhSachDVT = "sp_getdsdvt";
+      public const string SpDeleteByKey = "sp_deletebykey";
 
       // Mã error khi exec sp raise error
-      public const int ErrorCodeDatabase = 18;
       public const int ErrorMsgNumNotExistObject = 50001;
       public const int ErrorMsgNumEmployeeHaveLogin = 50002;
    }

@@ -204,33 +204,45 @@ namespace QLVT_DATHANG.Forms
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
-
-         switch (action.ActionType)
+         try
          {
-            case ButtonActionType.Add:
-               // xóa dữ liệu mới
-               position = bdsNV.Find("MANV", action.SaveItems[0]);
-               bdsNV.Remove((DataRowView)bdsNV[position]);
-               break;
-            case ButtonActionType.Edit:
-               // sửa lại dữ liệu cũ
-               position = bdsNV.Find("MANV", action.SaveItems[0]);
-               ((DataRowView)bdsNV[position]).Row.ItemArray = action.SaveItems;
-               bdsNV.EndEdit();
-               //bdsNV.ResetCurrentItem();
-               break;
-            case ButtonActionType.Delete:
-               // Thêm dữ liệu cũ vào
-               position = bdsNV.Count;
-               bdsNV.AddNew();
-               ((DataRowView)bdsNV[position]).Row.ItemArray = action.SaveItems;
-               bdsNV.EndEdit();
-               break;
-            case ButtonActionType.None:
-            default:
-               break;
+            switch (action.ActionType)
+            {
+               case ButtonActionType.Add:
+                  // xóa dữ liệu mới
+                  //position = bdsNV.Find("MANV", action.SaveItems[0]);
+                  //bdsNV.Remove((DataRowView)bdsNV[position]);
+                  if (UtilDB.DeleteInDB("NhanVien", "MANV", action.SaveItems[0]))
+                  {
+                     this.dataSet.EnforceConstraints = false;
+                     this.taNV.Fill(this.dataSet.NhanVien);
+                     this.dataSet.EnforceConstraints = true;
+                  }
+                  break;
+               case ButtonActionType.Edit:
+                  // sửa lại dữ liệu cũ
+                  position = bdsNV.Find("MANV", action.SaveItems[0]);
+                  ((DataRowView)bdsNV[position]).Row.ItemArray = action.SaveItems;
+                  bdsNV.EndEdit();
+                  //bdsNV.ResetCurrentItem();
+                  break;
+               case ButtonActionType.Delete:
+                  // Thêm dữ liệu cũ vào
+                  position = bdsNV.Count;
+                  bdsNV.AddNew();
+                  ((DataRowView)bdsNV[position]).Row.ItemArray = action.SaveItems;
+                  bdsNV.EndEdit();
+                  break;
+               case ButtonActionType.None:
+               default:
+                  break;
+            }
+            this.taNV.Update(this.dataSet.NhanVien);
          }
-         this.taNV.Update(this.dataSet.NhanVien);
+         catch (Exception ex)
+         {
+            UtilDB.ShowError(ex);
+         }
       }
 
       private bool SaveEmployee()
@@ -245,29 +257,26 @@ namespace QLVT_DATHANG.Forms
          }
          try
          {
-            if (_buttonAction == ButtonActionType.Add)
+            if (_buttonAction == ButtonActionType.Add &&
+               IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
             {
-               if (IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
-               {
                   XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
                                           MessageBoxButtons.OK, MessageBoxIcon.Warning);
                   txtEmpId.SelectAll();
                   return false;
-               }
-
-               // Lưu vô stack trạng thái nút nhấn và data bị mới
-               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray));
             }
 
             EndEdit();
+            if(_buttonAction == ButtonActionType.Add)
+            {
+               // Lưu vô stack trạng thái nút nhấn và data bị mới
+               _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray));
+            }
+            _buttonAction = ButtonActionType.None;
+            bdsNV.Position = _currentPosition;
          }
          catch (Exception ex)
          {
-            // #load lại từ database
-            dataSet.EnforceConstraints = false;
-            this.taNV.Fill(this.dataSet.NhanVien);
-            dataSet.EnforceConstraints = true;
-            if (_buttonAction == ButtonActionType.Add) _userDo.Pop();
             UtilDB.ShowError(ex);
             return false;
          }
@@ -281,9 +290,7 @@ namespace QLVT_DATHANG.Forms
             bdsNV.EndEdit();
             this.taNV.Update(this.dataSet.NhanVien);
             gbEmployee.Enabled = false;
-            //bdsNV.ResetCurrentItem();
-            _buttonAction = ButtonActionType.None;
-            bdsNV.Position = _currentPosition;
+            bdsNV.ResetCurrentItem();
             DisableEditMode();
          }
          catch (Exception e)
@@ -333,12 +340,19 @@ namespace QLVT_DATHANG.Forms
                // lưu lại data trước khi xóa
                _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[position]).Row.ItemArray));
 
-               bdsNV.RemoveCurrent();
-               this.taNV.Update(this.dataSet.NhanVien);
+               //bdsNV.RemoveCurrent();
+               //this.taNV.Update(this.dataSet.NhanVien);
+               if (UtilDB.DeleteInDB("NhanVien", "MANV", txtEmpId.EditValue))
+               {
+                  this.dataSet.EnforceConstraints = false;
+                  this.taNV.Fill(this.dataSet.NhanVien);
+                  this.dataSet.EnforceConstraints = true;
+               }
             }
             catch (Exception ex)
             {
                UtilDB.ShowError(ex);
+               _userDo.Pop();
             }
          }
       }
@@ -371,7 +385,12 @@ namespace QLVT_DATHANG.Forms
                   sqlcmd.ExecuteNonQuery();
                   isSuccess = true;
                }
-               catch (Exception ex)
+               catch (SqlException ex)
+               {
+                  if (ex.Number == MyConfig.ErrorMsgNumNotExistObject)
+                     isSuccess = true;
+               }
+               catch(Exception ex)
                {
                   UtilDB.ShowError(ex);
                }
@@ -386,7 +405,7 @@ namespace QLVT_DATHANG.Forms
 
       private void btnCreateLogin_Click(object sender, EventArgs e)
       {
-         if(int.Parse(txtEmpDelStatus.Text) == 1)
+         if (int.Parse(txtEmpDelStatus.Text) == 1)
          {
             XtraMessageBox.Show(Cons.ErrorSwitchEmployeeAlready, Cons.CaptionError,
                                           MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -448,19 +467,6 @@ namespace QLVT_DATHANG.Forms
 
       private void btnDel_ItemClick(object sender, ItemClickEventArgs e)
       {
-         //var selectedPosition = gvNV.GetSelectedRows();
-         //int length = selectedPosition.Length;
-         //if (length > 0)
-         //{
-         //   var result = XtraMessageBox.Show(string.Format("Bạn chắc chắn muốn xóa {0} nhân viên", length), Cons.CaptionQuestion, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-         //   if (result == DialogResult.OK)
-         //   {
-         //      for (int index = 0; index < selectedPosition.Length; index++)
-         //      {
-         //         DeleteEmployee(selectedPosition[index]);
-         //      }
-         //   }
-         //}
          DeleteEmployee(bdsNV.Position);
       }
 
@@ -602,12 +608,14 @@ namespace QLVT_DATHANG.Forms
                {
                   sqlcmd.ExecuteNonQuery();
                }
+               catch (SqlException ex)
+               {
+                  if (ex.Number == MyConfig.ErrorMsgNumNotExistObject)
+                     exist = false;
+               }
                catch (Exception ex)
                {
-                  if (ex is SqlException exAsSqlEx && exAsSqlEx.Number == MyConfig.ErrorMsgNumNotExistObject)
-                     exist = false;
-                  else
-                     UtilDB.ShowError(ex);
+                  UtilDB.ShowError(ex);
                }
             }
          }

@@ -35,9 +35,12 @@
          System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -56,7 +59,7 @@
          this.gcOrder = new DevExpress.XtraGrid.GridControl();
          this.cmsOrderDetail = new System.Windows.Forms.ContextMenuStrip(this.components);
          this.btnAddOrderDetail = new System.Windows.Forms.ToolStripMenuItem();
-         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+         this.gvOrder = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -84,8 +87,8 @@
          this.cboDeployment = new System.Windows.Forms.ComboBox();
          this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
-         this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+         this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
          masoDDHLabel = new System.Windows.Forms.Label();
          nGAYLabel = new System.Windows.Forms.Label();
          nhaCCLabel = new System.Windows.Forms.Label();
@@ -95,7 +98,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).BeginInit();
          this.cmsOrderDetail.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.sccOrder)).BeginInit();
          this.sccOrder.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
@@ -251,7 +254,7 @@
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 485);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 429);
          this.barDockControlBottom.Manager = this.bmPN;
          this.barDockControlBottom.Size = new System.Drawing.Size(987, 0);
          // 
@@ -261,7 +264,7 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 461);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 405);
          // 
          // barDockControlRight
          // 
@@ -269,7 +272,7 @@
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControlRight.Location = new System.Drawing.Point(987, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 461);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 405);
          // 
          // dataSet
          // 
@@ -309,13 +312,13 @@
          this.gcOrder.Location = new System.Drawing.Point(0, 54);
          this.gcOrder.LookAndFeel.SkinName = "DevExpress Dark Style";
          this.gcOrder.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
-         this.gcOrder.MainView = this.gridView1;
+         this.gcOrder.MainView = this.gvOrder;
          this.gcOrder.MenuManager = this.bmPN;
          this.gcOrder.Name = "gcOrder";
-         this.gcOrder.Size = new System.Drawing.Size(987, 230);
+         this.gcOrder.Size = new System.Drawing.Size(987, 174);
          this.gcOrder.TabIndex = 1;
          this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvOrder});
          // 
          // cmsOrderDetail
          // 
@@ -332,19 +335,19 @@
          this.btnAddOrderDetail.Text = "Thêm chi tiết DDH";
          this.btnAddOrderDetail.Click += new System.EventHandler(this.btnAddOrderDetail_Click);
          // 
-         // gridView1
+         // gvOrder
          // 
-         this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+         this.gvOrder.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMasoDDH,
             this.colNGAY,
             this.colNhaCC,
             this.colMANV});
-         this.gridView1.GridControl = this.gcOrder;
-         this.gridView1.Name = "gridView1";
-         this.gridView1.OptionsBehavior.Editable = false;
-         this.gridView1.OptionsView.ShowGroupPanel = false;
-         this.gridView1.OptionsView.ShowViewCaption = true;
-         this.gridView1.ViewCaption = "Danh sách Đơn Đặt Hàng";
+         this.gvOrder.GridControl = this.gcOrder;
+         this.gvOrder.Name = "gvOrder";
+         this.gvOrder.OptionsBehavior.Editable = false;
+         this.gvOrder.OptionsView.ShowGroupPanel = false;
+         this.gvOrder.OptionsView.ShowViewCaption = true;
+         this.gvOrder.ViewCaption = "Danh sách Đơn Đặt Hàng";
          // 
          // colMasoDDH
          // 
@@ -383,7 +386,7 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 284);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 228);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(987, 5);
          this.splitterControl1.TabIndex = 2;
@@ -392,7 +395,7 @@
          // sccOrder
          // 
          this.sccOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.sccOrder.Location = new System.Drawing.Point(0, 289);
+         this.sccOrder.Location = new System.Drawing.Point(0, 233);
          this.sccOrder.Name = "sccOrder";
          this.sccOrder.Panel1.Controls.Add(this.gbOrder);
          this.sccOrder.Panel1.Text = "Panel1";
@@ -479,6 +482,8 @@
          this.txtOrderId.Name = "txtOrderId";
          this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtOrderId.Properties.Appearance.Options.UseFont = true;
+         this.txtOrderId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+         this.txtOrderId.Properties.MaxLength = 8;
          this.txtOrderId.Size = new System.Drawing.Size(157, 20);
          this.txtOrderId.TabIndex = 1;
          // 
@@ -554,14 +559,14 @@
             this.dataGridViewTextBoxColumn4});
          this.gcOrderDetail.ContextMenuStrip = this.cmsOrderDetail;
          this.gcOrderDetail.DataSource = this.bdsCTDDH;
-         dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-         dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 8.25F);
-         dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
-         dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle11;
+         dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+         dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
+         dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle6;
          this.gcOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcOrderDetail.EnableHeadersVisualStyles = false;
          this.gcOrderDetail.GridColor = System.Drawing.Color.Silver;
@@ -569,14 +574,14 @@
          this.gcOrderDetail.Name = "gcOrderDetail";
          this.gcOrderDetail.ReadOnly = true;
          this.gcOrderDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-         dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 8.25F);
-         dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+         dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+         dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+         dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+         dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
          this.gcOrderDetail.RowHeadersVisible = false;
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -586,6 +591,8 @@
          // dataGridViewTextBoxColumn1
          // 
          this.dataGridViewTextBoxColumn1.DataPropertyName = "MasoDDH";
+         dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
          this.dataGridViewTextBoxColumn1.FillWeight = 121.8274F;
          this.dataGridViewTextBoxColumn1.HeaderText = "MÃ SỐ ĐƠN ĐẶT HÀNG";
          this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -595,6 +602,8 @@
          // 
          this.TENVT.DataPropertyName = "MAVT";
          this.TENVT.DataSource = this.bdsVT;
+         dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.TENVT.DefaultCellStyle = dataGridViewCellStyle3;
          this.TENVT.DisplayMember = "TENVT";
          this.TENVT.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
          this.TENVT.HeaderText = "TÊN VẬT TƯ";
@@ -612,6 +621,8 @@
          // dataGridViewTextBoxColumn3
          // 
          this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
+         dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
          this.dataGridViewTextBoxColumn3.FillWeight = 92.72421F;
          this.dataGridViewTextBoxColumn3.HeaderText = "SỐ LƯỢNG";
          this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -620,9 +631,10 @@
          // dataGridViewTextBoxColumn4
          // 
          this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
-         dataGridViewCellStyle9.Format = "C0";
-         dataGridViewCellStyle9.NullValue = null;
-         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle9;
+         dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         dataGridViewCellStyle5.Format = "C0";
+         dataGridViewCellStyle5.NullValue = null;
+         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle5;
          this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
          this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
          this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -674,20 +686,20 @@
          // 
          this.taDSNV.ClearBeforeFill = true;
          // 
-         // taVT
-         // 
-         this.taVT.ClearBeforeFill = true;
-         // 
          // dxErrorProvider
          // 
          this.dxErrorProvider.ContainerControl = this;
+         // 
+         // taVT
+         // 
+         this.taVT.ClearBeforeFill = true;
          // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(987, 485);
+         this.ClientSize = new System.Drawing.Size(987, 429);
          this.Controls.Add(this.gcOrder);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
@@ -705,7 +717,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).EndInit();
          this.cmsOrderDetail.ResumeLayout(false);
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.sccOrder)).EndInit();
          this.sccOrder.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
@@ -751,7 +763,7 @@
       private DataSetTableAdapters.DatHangTableAdapter taDDH;
       private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
       private DevExpress.XtraGrid.GridControl gcOrder;
-      private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+      private DevExpress.XtraGrid.Views.Grid.GridView gvOrder;
       private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
       private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
       private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
@@ -770,18 +782,18 @@
       private System.Windows.Forms.BindingSource bdsDSNV;
       private DataSetTableAdapters.DSNVTableAdepter taDSNV;
       private DevExpress.XtraEditors.GroupControl gbOrderDetail;
-      private System.Windows.Forms.BindingSource bdsVT;
-      private DataSetTableAdapters.VattuTableAdapter taVT;
       private DevExpress.XtraEditors.SearchLookUpEdit lkeEmployee;
       private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private System.Windows.Forms.ContextMenuStrip cmsOrderDetail;
       private System.Windows.Forms.ToolStripMenuItem btnAddOrderDetail;
       private System.Windows.Forms.BindingSource bdsCTDDH;
+      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+      private System.Windows.Forms.BindingSource bdsVT;
+      private DataSetTableAdapters.VattuTableAdapter taVT;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
       private System.Windows.Forms.DataGridViewComboBoxColumn TENVT;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
    }
 }

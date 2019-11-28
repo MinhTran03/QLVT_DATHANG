@@ -1,8 +1,10 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Utility
@@ -127,11 +129,11 @@ namespace QLVT_DATHANG.Utility
 
       public static void ShowError(Exception e)
       {
-         if (e is SqlException)
-         {
-            Console.WriteLine("MsgNumber: {0}", ((SqlException)e).Number.ToString());
-            Console.WriteLine((e as SqlException).Message);
-         }
+         //if (e is SqlException)
+         //{
+         //   Console.WriteLine("MsgNumber: {0}", ((SqlException)e).Number.ToString());
+         //   Console.WriteLine((e as SqlException).Message);
+         //}
          string message = e.Message + "\n";
          string source = "Source: " + e.Source + "\n";
          string targetSite = "Method: " + e.TargetSite + "\n";
@@ -179,6 +181,55 @@ namespace QLVT_DATHANG.Utility
                      list.Add(reader.GetInt32(0));
                   }
                   return list;
+               }
+            }
+         }
+      }
+
+      public static void SetFont(GridView gridView, GroupControl groupControl)
+      {
+         gridView.Appearance.ViewCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         gridView.Appearance.SelectedRow.Font =
+            gridView.Appearance.HeaderPanel.Font =
+            gridView.Appearance.Row.Font =
+            new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+         groupControl.AppearanceCaption.Font =
+            new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+         //foreach (var item in groupControl.Controls)
+         //{
+         //   (item as BaseEdit).Font =
+         //      new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         //}
+         groupControl.Controls.OfType<BaseEdit>().ToList().ForEach(c => c.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+         groupControl.Controls.OfType<Label>().ToList().ForEach(c => c.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
+      }
+
+      public static bool DeleteInDB(string table, string keyColumn, object key)
+      {
+         using (var connection = new SqlConnection(UtilDB.ConnectionString))
+         {
+            connection.Open();
+            using (var command = new SqlCommand()
+            {
+               //CommandText = MyConfig.SpDeleteByKey,
+               //CommandType = CommandType.StoredProcedure,
+               CommandText = string.Format("delete from {0} where {1} = @key", table, keyColumn),
+               CommandType = CommandType.Text,
+               Connection = connection
+            })
+            {
+               command.Parameters.AddWithValue("@key", key);
+
+               try
+               {
+                  command.ExecuteNonQuery();
+                  return true;
+               }
+               catch (Exception ex)
+               {
+                  throw ex;
                }
             }
          }
