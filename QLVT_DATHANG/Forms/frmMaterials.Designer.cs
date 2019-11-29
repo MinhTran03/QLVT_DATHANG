@@ -33,7 +33,6 @@
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.bdsVT = new System.Windows.Forms.BindingSource(this.components);
          this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
-         this.taVTManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.gcVT = new DevExpress.XtraGrid.GridControl();
          this.gvMaterial = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -112,32 +111,17 @@
          // 
          this.taVT.ClearBeforeFill = true;
          // 
-         // taVTManager
-         // 
-         this.taVTManager.BackupDataSetBeforeUpdate = false;
-         this.taVTManager.ChiNhanhTableAdapter = null;
-         this.taVTManager.CTDDHTableAdapter = null;
-         this.taVTManager.CTPNTableAdapter = null;
-         this.taVTManager.CTPXTableAdapter = null;
-         this.taVTManager.DatHangTableAdapter = null;
-         this.taVTManager.KhoTableAdapter = null;
-         this.taVTManager.NhanVienTableAdapter = null;
-         this.taVTManager.PhieuNhapTableAdapter = null;
-         this.taVTManager.PhieuXuatTableAdapter = null;
-         this.taVTManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-         this.taVTManager.VattuTableAdapter = this.taVT;
-         // 
          // gcVT
          // 
          this.gcVT.DataSource = this.bdsVT;
          this.gcVT.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcVT.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcVT.Location = new System.Drawing.Point(0, 128);
+         this.gcVT.Location = new System.Drawing.Point(0, 127);
          this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(873, 330);
+         this.gcVT.Size = new System.Drawing.Size(873, 331);
          this.gcVT.TabIndex = 0;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMaterial});
@@ -146,11 +130,11 @@
          // 
          this.gvMaterial.Appearance.HeaderPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gvMaterial.Appearance.HeaderPanel.Options.UseFont = true;
-         this.gvMaterial.Appearance.Row.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvMaterial.Appearance.Row.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gvMaterial.Appearance.Row.Options.UseFont = true;
-         this.gvMaterial.Appearance.SelectedRow.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvMaterial.Appearance.SelectedRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gvMaterial.Appearance.SelectedRow.Options.UseFont = true;
-         this.gvMaterial.Appearance.ViewCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvMaterial.Appearance.ViewCaption.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gvMaterial.Appearance.ViewCaption.Options.UseFont = true;
          this.gvMaterial.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAVT,
@@ -212,7 +196,7 @@
          this.txtMaterialId.Location = new System.Drawing.Point(86, 12);
          this.txtMaterialId.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialId.Name = "txtMaterialId";
-         this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMaterialId.Properties.Appearance.Options.UseFont = true;
          this.txtMaterialId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
          this.txtMaterialId.Properties.MaxLength = 4;
@@ -227,10 +211,10 @@
          this.layoutControl1.Controls.Add(this.txtMaterialName);
          this.layoutControl1.Controls.Add(this.txtMaterialId);
          this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Left;
-         this.layoutControl1.Location = new System.Drawing.Point(2, 24);
+         this.layoutControl1.Location = new System.Drawing.Point(2, 22);
          this.layoutControl1.Name = "layoutControl1";
          this.layoutControl1.Root = this.Root;
-         this.layoutControl1.Size = new System.Drawing.Size(596, 73);
+         this.layoutControl1.Size = new System.Drawing.Size(596, 74);
          this.layoutControl1.TabIndex = 9;
          this.layoutControl1.Text = "layoutControl1";
          // 
@@ -245,7 +229,7 @@
          this.spiSLT.Location = new System.Drawing.Point(373, 38);
          this.spiSLT.Margin = new System.Windows.Forms.Padding(2);
          this.spiSLT.Name = "spiSLT";
-         this.spiSLT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.spiSLT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.spiSLT.Properties.Appearance.Options.UseFont = true;
          this.spiSLT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -258,7 +242,7 @@
          // cboDVT
          // 
          this.cboDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVT, "DVT", true));
-         this.cboDVT.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.cboDVT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.cboDVT.FormattingEnabled = true;
          this.cboDVT.Location = new System.Drawing.Point(86, 38);
          this.cboDVT.Name = "cboDVT";
@@ -271,7 +255,7 @@
          this.txtMaterialName.Location = new System.Drawing.Point(373, 12);
          this.txtMaterialName.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialName.Name = "txtMaterialName";
-         this.txtMaterialName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtMaterialName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMaterialName.Properties.Appearance.Options.UseFont = true;
          this.txtMaterialName.Size = new System.Drawing.Size(211, 22);
          this.txtMaterialName.StyleController = this.layoutControl1;
@@ -287,7 +271,7 @@
             this.layoutControlItem3,
             this.layoutControlItem4});
          this.Root.Name = "Root";
-         this.Root.Size = new System.Drawing.Size(596, 73);
+         this.Root.Size = new System.Drawing.Size(596, 74);
          this.Root.TextVisible = false;
          // 
          // layoutControlItem2
@@ -313,7 +297,7 @@
          this.layoutControlItem3.Control = this.cboDVT;
          this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
          this.layoutControlItem3.Name = "layoutControlItem3";
-         this.layoutControlItem3.Size = new System.Drawing.Size(287, 27);
+         this.layoutControlItem3.Size = new System.Drawing.Size(287, 28);
          this.layoutControlItem3.Text = "Đơn vị tính:";
          this.layoutControlItem3.TextSize = new System.Drawing.Size(71, 13);
          // 
@@ -322,7 +306,7 @@
          this.layoutControlItem4.Control = this.spiSLT;
          this.layoutControlItem4.Location = new System.Drawing.Point(287, 26);
          this.layoutControlItem4.Name = "layoutControlItem4";
-         this.layoutControlItem4.Size = new System.Drawing.Size(289, 27);
+         this.layoutControlItem4.Size = new System.Drawing.Size(289, 28);
          this.layoutControlItem4.Text = "Số lượng tồn:";
          this.layoutControlItem4.TextSize = new System.Drawing.Size(71, 13);
          // 
@@ -485,20 +469,20 @@
          // 
          // gbVT
          // 
-         this.gbVT.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbVT.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbVT.AppearanceCaption.Options.UseFont = true;
          this.gbVT.Controls.Add(this.layoutControl1);
          this.gbVT.Dock = System.Windows.Forms.DockStyle.Top;
          this.gbVT.Location = new System.Drawing.Point(0, 24);
          this.gbVT.Name = "gbVT";
-         this.gbVT.Size = new System.Drawing.Size(873, 99);
+         this.gbVT.Size = new System.Drawing.Size(873, 98);
          this.gbVT.TabIndex = 2;
          this.gbVT.Text = "Thông tin Vật Tư";
          // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 123);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 122);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(873, 5);
          this.splitterControl1.TabIndex = 1;
@@ -583,7 +567,6 @@
       private System.Windows.Forms.BindingSource bdsVT;
       private DataSet dataSet;
       private DataSetTableAdapters.VattuTableAdapter taVT;
-      private DataSetTableAdapters.TableAdapterManager taVTManager;
       private DevExpress.XtraGrid.GridControl gcVT;
       private DevExpress.XtraGrid.Views.Grid.GridView gvMaterial;
       private DevExpress.XtraGrid.Columns.GridColumn colMAVT;

@@ -47,12 +47,12 @@
          this.rbpCategory = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
          this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
          this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+         this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
          this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
          this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-         this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
          this.SuspendLayout();
          // 
          // ribbonControl1
@@ -100,10 +100,10 @@
          // 
          this.bsiMaNV.Caption = "MANV";
          this.bsiMaNV.Id = 2;
-         this.bsiMaNV.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiMaNV.ItemAppearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
          this.bsiMaNV.ItemAppearance.Hovered.FontStyleDelta = System.Drawing.FontStyle.Bold;
          this.bsiMaNV.ItemAppearance.Hovered.Options.UseFont = true;
-         this.bsiMaNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiMaNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
          this.bsiMaNV.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
          this.bsiMaNV.ItemAppearance.Normal.Options.UseFont = true;
          this.bsiMaNV.Name = "bsiMaNV";
@@ -112,7 +112,7 @@
          // 
          this.bsiHoTenNV.Caption = "HOTENNV";
          this.bsiHoTenNV.Id = 3;
-         this.bsiHoTenNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiHoTenNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
          this.bsiHoTenNV.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
          this.bsiHoTenNV.ItemAppearance.Normal.Options.UseFont = true;
          this.bsiHoTenNV.Name = "bsiHoTenNV";
@@ -121,7 +121,7 @@
          // 
          this.bsiNhom.Caption = "NHOM";
          this.bsiNhom.Id = 4;
-         this.bsiNhom.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.bsiNhom.ItemAppearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
          this.bsiNhom.ItemAppearance.Normal.Options.UseFont = true;
          this.bsiNhom.Name = "bsiNhom";
          // 
@@ -219,6 +219,14 @@
          this.ribbonPageGroup1.Name = "ribbonPageGroup1";
          this.ribbonPageGroup1.Text = "LẬP PHIẾU";
          // 
+         // repositoryItemLookUpEdit1
+         // 
+         this.repositoryItemLookUpEdit1.AutoHeight = false;
+         this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.repositoryItemLookUpEdit1.DropDownRows = 2;
+         this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+         // 
          // ribbonStatusBar1
          // 
          this.ribbonStatusBar1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -235,14 +243,6 @@
          // xtraTabbedMdiManager1
          // 
          this.xtraTabbedMdiManager1.MdiParent = this;
-         // 
-         // repositoryItemLookUpEdit1
-         // 
-         this.repositoryItemLookUpEdit1.AutoHeight = false;
-         this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.repositoryItemLookUpEdit1.DropDownRows = 2;
-         this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
          // 
          // frmMain
          // 
@@ -264,8 +264,8 @@
          this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
          this.Load += new System.EventHandler(this.frmMain_Load);
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 

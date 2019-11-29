@@ -25,7 +25,7 @@ namespace QLVT_DATHANG.Forms
 
          try
          {
-            UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable($"SELECT * FROM {MyConfig.ViewDSPMName}", cnnStr);
+            UtilDB.BdsDSPM.DataSource = UtilDB.ExecSqlDataTable($"SELECT * FROM {MyConfig.ViewDSPMName}  ORDER BY {MyConfig.DisplayMemberDSPM}", cnnStr);
             if (UtilDB.BdsDSPM.DataSource == null)
             {
                Close();

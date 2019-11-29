@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DevExpress.XtraEditors;
+using QLVT_DATHANG.Utility;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Linq;
-using DevExpress.XtraEditors;
-using QLVT_DATHANG.Utility;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace QLVT_DATHANG.UserControls
 {
@@ -36,7 +35,7 @@ namespace QLVT_DATHANG.UserControls
 
       private void btnSwitch_Click(object sender, EventArgs e)
       {
-         if(UtilDB.CurrentDeployment == cboDepartment.SelectedIndex)
+         if (UtilDB.CurrentDeployment == cboDepartment.SelectedIndex)
          {
             XtraMessageBox.Show(Cons.ErrorSwitchDepartToCurrent, Cons.CaptionError,
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -47,7 +46,7 @@ namespace QLVT_DATHANG.UserControls
          int newEmployeeId = UtilDB.GenerateEmployeeId();
          string newDepartId = GetDepartIdInFilterClause(cboDepartment.SelectedValue.ToString());
 
-         if(SwitchDepartment(oldEmployeeId, newEmployeeId, newDepartId) == false)
+         if (SwitchDepartment(oldEmployeeId, newEmployeeId, newDepartId) == false)
          {
             XtraMessageBox.Show(Cons.ErrorSwitchDepart, Cons.CaptionError,
                               MessageBoxButtons.OK, MessageBoxIcon.Error);

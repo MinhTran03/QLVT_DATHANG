@@ -35,6 +35,7 @@
          System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoodsReceivedNote));
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.Label mAKHOLabel;
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -52,13 +53,8 @@
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.bdsPN = new System.Windows.Forms.BindingSource(this.components);
          this.taPN = new QLVT_DATHANG.DataSetTableAdapters.PhieuNhapTableAdapter();
-         this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.gcReceivedNote = new DevExpress.XtraGrid.GridControl();
          this.gvReceivedNote = new DevExpress.XtraGrid.Views.Grid.GridView();
-         this.colMAPN = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.sccReceived = new DevExpress.XtraEditors.SplitContainerControl();
          this.gbReceivedNote = new DevExpress.XtraEditors.GroupControl();
@@ -85,10 +81,18 @@
          this.taDDH = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
+         this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
+         this.colMAPN = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.mAKHOTextEdit = new DevExpress.XtraEditors.TextEdit();
          mAPNLabel = new System.Windows.Forms.Label();
          nGAYLabel = new System.Windows.Forms.Label();
          masoDDHLabel = new System.Windows.Forms.Label();
          mANVLabel = new System.Windows.Forms.Label();
+         mAKHOLabel = new System.Windows.Forms.Label();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
@@ -116,6 +120,7 @@
          this.cmsCTPN.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.mAKHOTextEdit.Properties)).BeginInit();
          this.SuspendLayout();
          // 
          // mAPNLabel
@@ -249,7 +254,7 @@
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 426);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 452);
          this.barDockControlBottom.Manager = this.bmPN;
          this.barDockControlBottom.Size = new System.Drawing.Size(946, 0);
          // 
@@ -259,7 +264,7 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 402);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 428);
          // 
          // barDockControlRight
          // 
@@ -267,7 +272,7 @@
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControlRight.Location = new System.Drawing.Point(946, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 402);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
          // 
          // pnPickDepartment
          // 
@@ -294,7 +299,7 @@
          this.cboDeployment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cboDeployment.FlatStyle = System.Windows.Forms.FlatStyle.System;
          this.cboDeployment.FormattingEnabled = true;
-         this.cboDeployment.Location = new System.Drawing.Point(99, 5);
+         this.cboDeployment.Location = new System.Drawing.Point(107, 5);
          this.cboDeployment.Name = "cboDeployment";
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
@@ -313,21 +318,6 @@
          // 
          this.taPN.ClearBeforeFill = true;
          // 
-         // tableAdapterManager
-         // 
-         this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-         this.tableAdapterManager.ChiNhanhTableAdapter = null;
-         this.tableAdapterManager.CTDDHTableAdapter = null;
-         this.tableAdapterManager.CTPNTableAdapter = null;
-         this.tableAdapterManager.CTPXTableAdapter = null;
-         this.tableAdapterManager.DatHangTableAdapter = null;
-         this.tableAdapterManager.KhoTableAdapter = null;
-         this.tableAdapterManager.NhanVienTableAdapter = null;
-         this.tableAdapterManager.PhieuNhapTableAdapter = this.taPN;
-         this.tableAdapterManager.PhieuXuatTableAdapter = null;
-         this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-         this.tableAdapterManager.VattuTableAdapter = null;
-         // 
          // gcReceivedNote
          // 
          this.gcReceivedNote.DataSource = this.bdsPN;
@@ -336,7 +326,7 @@
          this.gcReceivedNote.MainView = this.gvReceivedNote;
          this.gcReceivedNote.MenuManager = this.bmPN;
          this.gcReceivedNote.Name = "gcReceivedNote";
-         this.gcReceivedNote.Size = new System.Drawing.Size(946, 223);
+         this.gcReceivedNote.Size = new System.Drawing.Size(946, 173);
          this.gcReceivedNote.TabIndex = 1;
          this.gcReceivedNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvReceivedNote});
@@ -347,7 +337,8 @@
             this.colMAPN,
             this.colNGAY,
             this.colMasoDDH,
-            this.colMANV});
+            this.colMANV,
+            this.colMAKHO});
          this.gvReceivedNote.GridControl = this.gcReceivedNote;
          this.gvReceivedNote.Name = "gvReceivedNote";
          this.gvReceivedNote.OptionsBehavior.Editable = false;
@@ -355,41 +346,10 @@
          this.gvReceivedNote.OptionsView.ShowViewCaption = true;
          this.gvReceivedNote.ViewCaption = "Danh sách Phiếu Nhập";
          // 
-         // colMAPN
-         // 
-         this.colMAPN.FieldName = "MAPN";
-         this.colMAPN.Name = "colMAPN";
-         this.colMAPN.Visible = true;
-         this.colMAPN.VisibleIndex = 0;
-         this.colMAPN.Width = 90;
-         // 
-         // colNGAY
-         // 
-         this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
-         this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-         this.colNGAY.FieldName = "NGAY";
-         this.colNGAY.Name = "colNGAY";
-         this.colNGAY.Visible = true;
-         this.colNGAY.VisibleIndex = 1;
-         // 
-         // colMasoDDH
-         // 
-         this.colMasoDDH.FieldName = "MasoDDH";
-         this.colMasoDDH.Name = "colMasoDDH";
-         this.colMasoDDH.Visible = true;
-         this.colMasoDDH.VisibleIndex = 2;
-         // 
-         // colMANV
-         // 
-         this.colMANV.FieldName = "MANV";
-         this.colMANV.Name = "colMANV";
-         this.colMANV.Visible = true;
-         this.colMANV.VisibleIndex = 3;
-         // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 277);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 227);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(946, 5);
          this.splitterControl1.TabIndex = 2;
@@ -398,13 +358,13 @@
          // sccReceived
          // 
          this.sccReceived.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.sccReceived.Location = new System.Drawing.Point(0, 282);
+         this.sccReceived.Location = new System.Drawing.Point(0, 232);
          this.sccReceived.Name = "sccReceived";
          this.sccReceived.Panel1.Controls.Add(this.gbReceivedNote);
          this.sccReceived.Panel1.Text = "Panel1";
          this.sccReceived.Panel2.Controls.Add(this.gbCTPN);
          this.sccReceived.Panel2.Text = "Panel2";
-         this.sccReceived.Size = new System.Drawing.Size(946, 144);
+         this.sccReceived.Size = new System.Drawing.Size(946, 220);
          this.sccReceived.SplitterPosition = 472;
          this.sccReceived.TabIndex = 28;
          // 
@@ -412,6 +372,8 @@
          // 
          this.gbReceivedNote.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbReceivedNote.AppearanceCaption.Options.UseFont = true;
+         this.gbReceivedNote.Controls.Add(mAKHOLabel);
+         this.gbReceivedNote.Controls.Add(this.mAKHOTextEdit);
          this.gbReceivedNote.Controls.Add(this.lkeEmployee);
          this.gbReceivedNote.Controls.Add(this.lkeMaDDH);
          this.gbReceivedNote.Controls.Add(mAPNLabel);
@@ -423,7 +385,7 @@
          this.gbReceivedNote.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbReceivedNote.Location = new System.Drawing.Point(0, 0);
          this.gbReceivedNote.Name = "gbReceivedNote";
-         this.gbReceivedNote.Size = new System.Drawing.Size(472, 144);
+         this.gbReceivedNote.Size = new System.Drawing.Size(472, 220);
          this.gbReceivedNote.TabIndex = 0;
          this.gbReceivedNote.Text = "Thông tin Phiếu Nhập";
          // 
@@ -540,7 +502,7 @@
          this.gbCTPN.Location = new System.Drawing.Point(0, 0);
          this.gbCTPN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.gbCTPN.Name = "gbCTPN";
-         this.gbCTPN.Size = new System.Drawing.Size(469, 144);
+         this.gbCTPN.Size = new System.Drawing.Size(469, 220);
          this.gbCTPN.TabIndex = 0;
          this.gbCTPN.Text = " Chi tiết Phiếu Nhập";
          // 
@@ -566,7 +528,7 @@
          this.gcCTPN.ReadOnly = true;
          this.gcCTPN.RowHeadersVisible = false;
          this.gcCTPN.RowTemplate.Height = 24;
-         this.gcCTPN.Size = new System.Drawing.Size(465, 120);
+         this.gcCTPN.Size = new System.Drawing.Size(465, 196);
          this.gcCTPN.TabIndex = 0;
          // 
          // dataGridViewTextBoxColumn1
@@ -650,12 +612,80 @@
          // 
          this.taDSVT.ClearBeforeFill = true;
          // 
+         // tableAdapterManager
+         // 
+         this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+         this.tableAdapterManager.ChiNhanhTableAdapter = null;
+         this.tableAdapterManager.CTDDHTableAdapter = null;
+         this.tableAdapterManager.CTPNTableAdapter = null;
+         this.tableAdapterManager.CTPXTableAdapter = null;
+         this.tableAdapterManager.DatHangTableAdapter = null;
+         this.tableAdapterManager.KhoTableAdapter = null;
+         this.tableAdapterManager.NhanVienTableAdapter = null;
+         this.tableAdapterManager.PhieuNhapTableAdapter = this.taPN;
+         this.tableAdapterManager.PhieuXuatTableAdapter = null;
+         this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+         this.tableAdapterManager.VattuTableAdapter = null;
+         // 
+         // colMAPN
+         // 
+         this.colMAPN.FieldName = "MAPN";
+         this.colMAPN.Name = "colMAPN";
+         this.colMAPN.Visible = true;
+         this.colMAPN.VisibleIndex = 0;
+         // 
+         // colNGAY
+         // 
+         this.colNGAY.FieldName = "NGAY";
+         this.colNGAY.Name = "colNGAY";
+         this.colNGAY.Visible = true;
+         this.colNGAY.VisibleIndex = 1;
+         // 
+         // colMasoDDH
+         // 
+         this.colMasoDDH.FieldName = "MasoDDH";
+         this.colMasoDDH.Name = "colMasoDDH";
+         this.colMasoDDH.Visible = true;
+         this.colMasoDDH.VisibleIndex = 2;
+         // 
+         // colMANV
+         // 
+         this.colMANV.FieldName = "MANV";
+         this.colMANV.Name = "colMANV";
+         this.colMANV.Visible = true;
+         this.colMANV.VisibleIndex = 3;
+         // 
+         // colMAKHO
+         // 
+         this.colMAKHO.FieldName = "MAKHO";
+         this.colMAKHO.Name = "colMAKHO";
+         this.colMAKHO.Visible = true;
+         this.colMAKHO.VisibleIndex = 4;
+         // 
+         // mAKHOLabel
+         // 
+         mAKHOLabel.AutoSize = true;
+         mAKHOLabel.Location = new System.Drawing.Point(33, 142);
+         mAKHOLabel.Name = "mAKHOLabel";
+         mAKHOLabel.Size = new System.Drawing.Size(50, 13);
+         mAKHOLabel.TabIndex = 8;
+         mAKHOLabel.Text = "MAKHO:";
+         // 
+         // mAKHOTextEdit
+         // 
+         this.mAKHOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "MAKHO", true));
+         this.mAKHOTextEdit.Location = new System.Drawing.Point(155, 139);
+         this.mAKHOTextEdit.MenuManager = this.bmPN;
+         this.mAKHOTextEdit.Name = "mAKHOTextEdit";
+         this.mAKHOTextEdit.Size = new System.Drawing.Size(172, 20);
+         this.mAKHOTextEdit.TabIndex = 9;
+         // 
          // frmGoodsReceivedNote
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(946, 426);
+         this.ClientSize = new System.Drawing.Size(946, 452);
          this.Controls.Add(this.gcReceivedNote);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
@@ -698,6 +728,7 @@
          this.cmsCTPN.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.mAKHOTextEdit.Properties)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -722,13 +753,8 @@
       private System.Windows.Forms.BindingSource bdsPN;
       private DataSet dataSet;
       private DataSetTableAdapters.PhieuNhapTableAdapter taPN;
-      private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
       private DevExpress.XtraGrid.GridControl gcReceivedNote;
       private DevExpress.XtraGrid.Views.Grid.GridView gvReceivedNote;
-      private DevExpress.XtraGrid.Columns.GridColumn colMAPN;
-      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
-      private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
-      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
       private DevExpress.XtraEditors.SplitContainerControl sccReceived;
       private DevExpress.XtraEditors.GroupControl gbReceivedNote;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
@@ -755,5 +781,12 @@
       private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn2;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+      private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
+      private DevExpress.XtraGrid.Columns.GridColumn colMAPN;
+      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
+      private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
+      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
+      private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
+      private DevExpress.XtraEditors.TextEdit mAKHOTextEdit;
    }
 }

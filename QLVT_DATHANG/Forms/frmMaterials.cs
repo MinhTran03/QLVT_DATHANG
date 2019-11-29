@@ -8,6 +8,7 @@ namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
+   using QLVT_DATHANG.DataSetTableAdapters;
    using System.Collections.Generic;
    using Utility;
 

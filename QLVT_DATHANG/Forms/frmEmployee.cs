@@ -124,7 +124,6 @@ namespace QLVT_DATHANG.Forms
       {
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
          this.taNV.Connection.ConnectionString =
-            this.taCN.Connection.ConnectionString =
             this.taDH.Connection.ConnectionString =
             this.taPN.Connection.ConnectionString =
             this.taPX.Connection.ConnectionString =
@@ -133,8 +132,6 @@ namespace QLVT_DATHANG.Forms
          {
             this.dataSet.EnforceConstraints = false;
 
-            // TODO: This line of code loads data into the 'dataSet.ChiNhanh' table. You can move, or remove it, as needed.
-            this.taCN.Fill(this.dataSet.ChiNhanh);
 
             // TODO: This line of code loads data into the 'dataSet.NhanVien' table. You can move, or remove it, as needed.
             this.taNV.Fill(this.dataSet.NhanVien);
@@ -148,7 +145,7 @@ namespace QLVT_DATHANG.Forms
             // TODO: This line of code loads data into the 'dataSet.PhieuNhap' table. You can move, or remove it, as needed.
             this.taPN.Fill(this.dataSet.PhieuNhap);
 
-            this.dataSet.EnforceConstraints = true;
+            //this.dataSet.EnforceConstraints = true;
          }
          catch (Exception ex)
          {

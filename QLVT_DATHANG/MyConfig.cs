@@ -32,9 +32,8 @@ namespace QLVT_DATHANG
       public const string ExecSPTimPhieuXuat = "EXEC sp_timphieuxuat '{0}'";
       public const string SpKiemTraNVCoTaiKhoan = "sp_timtaikhoannhanvien";
       public const string SpGetAllMaNV = "sp_getallmanv";
-      public const string SpChuyenChiNhanh = "sp_chuyenchinhanh";
       public const string SpGetDanhSachDVT = "sp_getdsdvt";
-      public const string SpDeleteByKey = "sp_deletebykey";
+      public const string SpChuyenChiNhanh = "sp_chuyenchinhanh";
 
       // Mã error khi exec sp raise error
       public const int ErrorMsgNumNotExistObject = 50001;

@@ -65,46 +65,46 @@
          // masoDDHLabel
          // 
          masoDDHLabel.AutoSize = true;
-         masoDDHLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         masoDDHLabel.Location = new System.Drawing.Point(25, 75);
+         masoDDHLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         masoDDHLabel.Location = new System.Drawing.Point(33, 70);
          masoDDHLabel.Name = "masoDDHLabel";
-         masoDDHLabel.Size = new System.Drawing.Size(124, 13);
+         masoDDHLabel.Size = new System.Drawing.Size(116, 15);
          masoDDHLabel.TabIndex = 0;
          masoDDHLabel.Text = "Mã số đơn đặt hàng:";
          // 
          // mAVTLabel
          // 
          mAVTLabel.AutoSize = true;
-         mAVTLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mAVTLabel.Location = new System.Drawing.Point(84, 101);
+         mAVTLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         mAVTLabel.Location = new System.Drawing.Point(88, 98);
          mAVTLabel.Name = "mAVTLabel";
-         mAVTLabel.Size = new System.Drawing.Size(70, 13);
+         mAVTLabel.Size = new System.Drawing.Size(61, 15);
          mAVTLabel.TabIndex = 2;
          mAVTLabel.Text = "Tên vật tư:";
          // 
          // sOLUONGLabel
          // 
          sOLUONGLabel.AutoSize = true;
-         sOLUONGLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         sOLUONGLabel.Location = new System.Drawing.Point(87, 127);
+         sOLUONGLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         sOLUONGLabel.Location = new System.Drawing.Point(92, 126);
          sOLUONGLabel.Name = "sOLUONGLabel";
-         sOLUONGLabel.Size = new System.Drawing.Size(62, 13);
+         sOLUONGLabel.Size = new System.Drawing.Size(57, 15);
          sOLUONGLabel.TabIndex = 4;
          sOLUONGLabel.Text = "Số lượng:";
          // 
          // dONGIALabel
          // 
          dONGIALabel.AutoSize = true;
-         dONGIALabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dONGIALabel.Location = new System.Drawing.Point(93, 153);
+         dONGIALabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         dONGIALabel.Location = new System.Drawing.Point(98, 154);
          dONGIALabel.Name = "dONGIALabel";
-         dONGIALabel.Size = new System.Drawing.Size(56, 13);
+         dONGIALabel.Size = new System.Drawing.Size(51, 15);
          dONGIALabel.TabIndex = 6;
          dONGIALabel.Text = "Đơn giá:";
          // 
          // gbOrderDetail
          // 
-         this.gbOrderDetail.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbOrderDetail.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbOrderDetail.AppearanceCaption.Options.UseFont = true;
          this.gbOrderDetail.Controls.Add(this.btnSave);
          this.gbOrderDetail.Controls.Add(this.btnExit);
@@ -143,24 +143,23 @@
          // 
          // txtOrderId
          // 
-         this.txtOrderId.Location = new System.Drawing.Point(155, 72);
+         this.txtOrderId.Location = new System.Drawing.Point(155, 67);
          this.txtOrderId.Name = "txtOrderId";
-         this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtOrderId.Properties.Appearance.Options.UseFont = true;
          this.txtOrderId.Properties.ReadOnly = true;
-         this.txtOrderId.Size = new System.Drawing.Size(166, 20);
+         this.txtOrderId.Size = new System.Drawing.Size(166, 22);
          this.txtOrderId.TabIndex = 1;
          // 
          // txtMaterialId
          // 
-         this.txtMaterialId.Location = new System.Drawing.Point(155, 98);
+         this.txtMaterialId.Location = new System.Drawing.Point(155, 95);
          this.txtMaterialId.Name = "txtMaterialId";
-         this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMaterialId.Properties.Appearance.Options.UseFont = true;
          this.txtMaterialId.Properties.ReadOnly = true;
-         this.txtMaterialId.Size = new System.Drawing.Size(166, 20);
+         this.txtMaterialId.Size = new System.Drawing.Size(166, 22);
          this.txtMaterialId.TabIndex = 3;
-         this.txtMaterialId.EditValueChanged += new System.EventHandler(this.txtMaterialId_EditValueChanged);
          // 
          // spiQuantity
          // 
@@ -170,15 +169,15 @@
             0,
             0});
          this.dxErrorProvider.SetIconAlignment(this.spiQuantity, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.spiQuantity.Location = new System.Drawing.Point(155, 124);
+         this.spiQuantity.Location = new System.Drawing.Point(155, 123);
          this.spiQuantity.Name = "spiQuantity";
-         this.spiQuantity.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.spiQuantity.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.spiQuantity.Properties.Appearance.Options.UseFont = true;
          this.spiQuantity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.spiQuantity.Properties.IsFloatValue = false;
          this.spiQuantity.Properties.Mask.EditMask = "N00";
-         this.spiQuantity.Size = new System.Drawing.Size(166, 20);
+         this.spiQuantity.Size = new System.Drawing.Size(166, 22);
          this.spiQuantity.TabIndex = 5;
          this.spiQuantity.Validating += new System.ComponentModel.CancelEventHandler(this.spiQuantity_Validating);
          // 
@@ -189,13 +188,13 @@
             0,
             0,
             0});
-         this.spiCost.Location = new System.Drawing.Point(155, 150);
+         this.spiCost.Location = new System.Drawing.Point(155, 151);
          this.spiCost.Name = "spiCost";
-         this.spiCost.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.spiCost.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.spiCost.Properties.Appearance.Options.UseFont = true;
          this.spiCost.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.spiCost.Size = new System.Drawing.Size(166, 20);
+         this.spiCost.Size = new System.Drawing.Size(166, 22);
          this.spiCost.TabIndex = 7;
          this.spiCost.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiCost_CustomDisplayText);
          this.spiCost.Validating += new System.ComponentModel.CancelEventHandler(this.spiCost_Validating);

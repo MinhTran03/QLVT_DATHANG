@@ -27,6 +27,8 @@ namespace QLVT_DATHANG.Forms
 
       private void frmOrders_Load(object sender, EventArgs e)
       {
+         // TODO: This line of code loads data into the 'dataSet.DSKHO' table. You can move, or remove it, as needed.
+         this.taKho.Fill(this.dataSet.DSKHO);
          LoadTable();
          DisableEditMode();
 
@@ -98,7 +100,7 @@ namespace QLVT_DATHANG.Forms
 
       private void EnableEditMode()
       {
-         gbOrderDetail.Enabled = false;
+         gbOrderDetail.ContextMenuStrip = cmsOrderDetail;
 
          gcOrder.Enabled = false;
          gbOrder.Enabled = true;
@@ -116,7 +118,7 @@ namespace QLVT_DATHANG.Forms
 
       private void DisableEditMode()
       {
-         gbOrderDetail.Enabled = true;
+         gbOrderDetail.ContextMenuStrip = null;
 
          gcOrder.Enabled = true;
          gbOrder.Enabled = false;
@@ -256,21 +258,21 @@ namespace QLVT_DATHANG.Forms
          };
 
          string orderId = txtOrderId.EditValue.ToString();
-         using (frmInputOrderDetail inputOrderDetail = new frmInputOrderDetail(orderId, bdsCTDDH, bdsVT))
+         using (frmInputOrderDetail inputOrderDetail = new frmInputOrderDetail(orderId, bdsCTDDH, bdsVT, taCTDDH, dataSet))
          {
             CustomFlyoutDialog.ShowForm(this, flyoutAction, inputOrderDetail);
-            inputOrderDetail.Disposed += (o, arg) =>
-            {
-               try
-               {
-                  this.taCTDDH.Update(this.dataSet.CTDDH);
-                  this.taVT.Update(this.dataSet.Vattu);
-               }
-               catch (Exception ex)
-               {
-                  UtilDB.ShowError(ex);
-               }
-            };
+            //inputOrderDetail.Disposed += (o, arg) =>
+            //{
+            //   try
+            //   {
+            //      this.taCTDDH.Update(this.dataSet.CTDDH);
+            //      this.taVT.Update(this.dataSet.Vattu);
+            //   }
+            //   catch (Exception ex)
+            //   {
+            //      UtilDB.ShowError(ex);
+            //   }
+            //};
          }
       }
 

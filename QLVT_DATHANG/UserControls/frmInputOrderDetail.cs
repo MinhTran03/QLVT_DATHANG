@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using QLVT_DATHANG.DataSetTableAdapters;
 using QLVT_DATHANG.Utility;
 using System;
 using System.Data;
@@ -8,18 +9,23 @@ namespace QLVT_DATHANG.UserControls
 {
    public partial class frmInputOrderDetail : XtraUserControl
    {
-      private int _maxQuantity;
       private BindingSource _bdsCTDDH;
       private BindingSource _bdsVT;
+      private CTDDHTableAdapter _taCTDDH;
+      private DataSet _dataSet;
 
-      public frmInputOrderDetail(string orderId, BindingSource bdsCTDDH, BindingSource bdsVT)
+      public frmInputOrderDetail(string orderId, BindingSource bdsCTDDH, BindingSource bdsVT,
+                                    CTDDHTableAdapter taCTDDH, DataSet dataSet)
       {
          InitializeComponent();
 
          spiCost.Properties.Increment = 100000;
          txtOrderId.EditValue = orderId;
+
          _bdsCTDDH = bdsCTDDH;
          _bdsVT = bdsVT;
+         _taCTDDH = taCTDDH;
+         _dataSet = dataSet;
       }
 
       private void frmInputOrderDetail_Load(object sender, EventArgs e)
@@ -29,25 +35,12 @@ namespace QLVT_DATHANG.UserControls
          txtMaterialId.DataBindings.Add(new Binding("Tag", _bdsVT, "MAVT", true));
       }
 
-      private void txtMaterialId_EditValueChanged(object sender, EventArgs e)
-      {
-         if (_bdsVT.Position >= 0)
-         {
-            _maxQuantity = int.Parse(((DataRowView)_bdsVT[_bdsVT.Position])["SOLUONGTON"].ToString());
-         }
-      }
-
       private void spiQuantity_Validating(object sender, System.ComponentModel.CancelEventArgs e)
       {
          var editVal = spiQuantity.EditValue;
          if (!(editVal is null))
          {
-            if (int.Parse(editVal.ToString()) > _maxQuantity)
-            {
-               dxErrorProvider.SetError((sender as BaseEdit), Cons.ErrorOutOfQuantity);
-               e.Cancel = true;
-            }
-            else if (int.Parse(editVal.ToString()) < 0)
+            if (int.Parse(editVal.ToString()) < 0)
             {
                dxErrorProvider.SetError((sender as BaseEdit), Cons.ErrorBelowThenZero);
                e.Cancel = true;
@@ -102,16 +95,11 @@ namespace QLVT_DATHANG.UserControls
          orderDetailData[2] = orderDetailQuantity;
          orderDetailData[3] = float.Parse(spiCost.EditValue.ToString());
 
-         // Ghi tạm dữ liệu vào bdsCTDDH, close form => update vô database
          _bdsCTDDH.AddNew();
          // Count - 1 vì AddNew() xong Count + 1
          ((DataRowView)_bdsCTDDH[_bdsCTDDH.Count - 1]).Row.ItemArray = orderDetailData;
          _bdsCTDDH.EndEdit();
-
-         // Giảm số lượng tồn xuống
-         int total = int.Parse(((DataRowView)_bdsVT[_bdsVT.Position])["SOLUONGTON"].ToString());
-         total -= orderDetailQuantity;
-         ((DataRowView)_bdsVT[_bdsVT.Position])["SOLUONGTON"] = total;
+         _taCTDDH.Update(_dataSet.CTDDH);
 
          // Xóa data trên form
          spiQuantity.EditValue = null;

@@ -34,6 +34,7 @@
          System.Windows.Forms.Label hOTENKHLabel;
          System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoodsDeliveryNote));
+         System.Windows.Forms.Label mAKHOLabel;
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -71,10 +72,6 @@
          this.taPX = new QLVT_DATHANG.DataSetTableAdapters.PhieuXuatTableAdapter();
          this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.gvDeliveryNote = new DevExpress.XtraGrid.Views.Grid.GridView();
-         this.colMAPX = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colHOTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
          this.gcDeliveryNote = new DevExpress.XtraGrid.GridControl();
          this.bar3 = new DevExpress.XtraBars.Bar();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
@@ -83,10 +80,17 @@
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          this.taCTPX = new QLVT_DATHANG.DataSetTableAdapters.CTPXTableAdapter();
+         this.colMAPX = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colHOTENKH = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.mAKHOTextEdit = new DevExpress.XtraEditors.TextEdit();
          mAPXLabel = new System.Windows.Forms.Label();
          nGAYLabel = new System.Windows.Forms.Label();
          hOTENKHLabel = new System.Windows.Forms.Label();
          mANVLabel = new System.Windows.Forms.Label();
+         mAKHOLabel = new System.Windows.Forms.Label();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
          this.splitContainerControl1.SuspendLayout();
@@ -111,6 +115,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.mAKHOTextEdit.Properties)).BeginInit();
          this.SuspendLayout();
          // 
          // mAPXLabel
@@ -157,7 +162,7 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 305);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 295);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(821, 5);
          this.splitterControl1.TabIndex = 6;
@@ -166,7 +171,7 @@
          // splitContainerControl1
          // 
          this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitContainerControl1.Location = new System.Drawing.Point(0, 310);
+         this.splitContainerControl1.Location = new System.Drawing.Point(0, 300);
          this.splitContainerControl1.Name = "splitContainerControl1";
          this.splitContainerControl1.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
          this.splitContainerControl1.Panel1.Controls.Add(this.gbDeliveryNote);
@@ -180,6 +185,8 @@
          // 
          // gbDeliveryNote
          // 
+         this.gbDeliveryNote.Controls.Add(mAKHOLabel);
+         this.gbDeliveryNote.Controls.Add(this.mAKHOTextEdit);
          this.gbDeliveryNote.Controls.Add(this.lkeEmployee);
          this.gbDeliveryNote.Controls.Add(mAPXLabel);
          this.gbDeliveryNote.Controls.Add(this.txtPX);
@@ -311,7 +318,7 @@
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 476);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 466);
          this.barDockControlBottom.Manager = this.bmPN;
          this.barDockControlBottom.Size = new System.Drawing.Size(821, 0);
          // 
@@ -321,7 +328,7 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 452);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 442);
          // 
          // barDockControlRight
          // 
@@ -329,7 +336,7 @@
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControlRight.Location = new System.Drawing.Point(821, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 452);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 442);
          // 
          // btnDel
          // 
@@ -504,41 +511,14 @@
             this.colMAPX,
             this.colNGAY,
             this.colHOTENKH,
-            this.colMANV});
+            this.colMANV,
+            this.colMAKHO});
          this.gvDeliveryNote.GridControl = this.gcDeliveryNote;
          this.gvDeliveryNote.Name = "gvDeliveryNote";
          this.gvDeliveryNote.OptionsBehavior.Editable = false;
          this.gvDeliveryNote.OptionsView.ShowGroupPanel = false;
          this.gvDeliveryNote.OptionsView.ShowViewCaption = true;
          this.gvDeliveryNote.ViewCaption = "Danh sách Phiếu Xuất";
-         // 
-         // colMAPX
-         // 
-         this.colMAPX.FieldName = "MAPX";
-         this.colMAPX.Name = "colMAPX";
-         this.colMAPX.Visible = true;
-         this.colMAPX.VisibleIndex = 0;
-         // 
-         // colNGAY
-         // 
-         this.colNGAY.FieldName = "NGAY";
-         this.colNGAY.Name = "colNGAY";
-         this.colNGAY.Visible = true;
-         this.colNGAY.VisibleIndex = 1;
-         // 
-         // colHOTENKH
-         // 
-         this.colHOTENKH.FieldName = "HOTENKH";
-         this.colHOTENKH.Name = "colHOTENKH";
-         this.colHOTENKH.Visible = true;
-         this.colHOTENKH.VisibleIndex = 2;
-         // 
-         // colMANV
-         // 
-         this.colMANV.FieldName = "MANV";
-         this.colMANV.Name = "colMANV";
-         this.colMANV.Visible = true;
-         this.colMANV.VisibleIndex = 3;
          // 
          // gcDeliveryNote
          // 
@@ -548,7 +528,7 @@
          this.gcDeliveryNote.MainView = this.gvDeliveryNote;
          this.gcDeliveryNote.MenuManager = this.bmPN;
          this.gcDeliveryNote.Name = "gcDeliveryNote";
-         this.gcDeliveryNote.Size = new System.Drawing.Size(821, 251);
+         this.gcDeliveryNote.Size = new System.Drawing.Size(821, 241);
          this.gcDeliveryNote.TabIndex = 0;
          this.gcDeliveryNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDeliveryNote});
@@ -607,12 +587,65 @@
          // 
          this.taCTPX.ClearBeforeFill = true;
          // 
+         // colMAPX
+         // 
+         this.colMAPX.FieldName = "MAPX";
+         this.colMAPX.Name = "colMAPX";
+         this.colMAPX.Visible = true;
+         this.colMAPX.VisibleIndex = 0;
+         // 
+         // colNGAY
+         // 
+         this.colNGAY.FieldName = "NGAY";
+         this.colNGAY.Name = "colNGAY";
+         this.colNGAY.Visible = true;
+         this.colNGAY.VisibleIndex = 1;
+         // 
+         // colHOTENKH
+         // 
+         this.colHOTENKH.FieldName = "HOTENKH";
+         this.colHOTENKH.Name = "colHOTENKH";
+         this.colHOTENKH.Visible = true;
+         this.colHOTENKH.VisibleIndex = 2;
+         // 
+         // colMANV
+         // 
+         this.colMANV.FieldName = "MANV";
+         this.colMANV.Name = "colMANV";
+         this.colMANV.Visible = true;
+         this.colMANV.VisibleIndex = 3;
+         // 
+         // colMAKHO
+         // 
+         this.colMAKHO.FieldName = "MAKHO";
+         this.colMAKHO.Name = "colMAKHO";
+         this.colMAKHO.Visible = true;
+         this.colMAKHO.VisibleIndex = 4;
+         // 
+         // mAKHOLabel
+         // 
+         mAKHOLabel.AutoSize = true;
+         mAKHOLabel.Location = new System.Drawing.Point(83, 131);
+         mAKHOLabel.Name = "mAKHOLabel";
+         mAKHOLabel.Size = new System.Drawing.Size(50, 13);
+         mAKHOLabel.TabIndex = 8;
+         mAKHOLabel.Text = "MAKHO:";
+         // 
+         // mAKHOTextEdit
+         // 
+         this.mAKHOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "MAKHO", true));
+         this.mAKHOTextEdit.Location = new System.Drawing.Point(152, 128);
+         this.mAKHOTextEdit.MenuManager = this.bmPN;
+         this.mAKHOTextEdit.Name = "mAKHOTextEdit";
+         this.mAKHOTextEdit.Size = new System.Drawing.Size(107, 20);
+         this.mAKHOTextEdit.TabIndex = 9;
+         // 
          // frmGoodsDeliveryNote
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(821, 476);
+         this.ClientSize = new System.Drawing.Size(821, 466);
          this.Controls.Add(this.gcDeliveryNote);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
@@ -651,6 +684,7 @@
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.mAKHOTextEdit.Properties)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -680,10 +714,6 @@
       private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
       private DevExpress.XtraGrid.GridControl gcDeliveryNote;
       private DevExpress.XtraGrid.Views.Grid.GridView gvDeliveryNote;
-      private DevExpress.XtraGrid.Columns.GridColumn colMAPX;
-      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
-      private DevExpress.XtraGrid.Columns.GridColumn colHOTENKH;
-      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDeployment;
@@ -706,5 +736,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.ContextMenuStrip cmsCTPX;
         private System.Windows.Forms.ToolStripMenuItem btnAddCTPX;
-    }
+      private DevExpress.XtraEditors.TextEdit mAKHOTextEdit;
+      private DevExpress.XtraGrid.Columns.GridColumn colMAPX;
+      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
+      private DevExpress.XtraGrid.Columns.GridColumn colHOTENKH;
+      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
+      private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
+   }
 }

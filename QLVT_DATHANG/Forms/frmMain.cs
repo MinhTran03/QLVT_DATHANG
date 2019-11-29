@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
    using DevExpress.XtraEditors;
-   using Utility;
    using UserControls;
+   using Utility;
 
    public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
    {

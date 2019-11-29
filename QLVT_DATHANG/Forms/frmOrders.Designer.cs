@@ -29,10 +29,6 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
-         System.Windows.Forms.Label masoDDHLabel;
-         System.Windows.Forms.Label nGAYLabel;
-         System.Windows.Forms.Label nhaCCLabel;
-         System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -64,16 +60,24 @@
          this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.sccOrder = new DevExpress.XtraEditors.SplitContainerControl();
          this.gbOrder = new DevExpress.XtraEditors.GroupControl();
+         this.label5 = new System.Windows.Forms.Label();
+         this.label4 = new System.Windows.Forms.Label();
+         this.label3 = new System.Windows.Forms.Label();
+         this.label2 = new System.Windows.Forms.Label();
+         this.label1 = new System.Windows.Forms.Label();
+         this.lkeDepot = new DevExpress.XtraEditors.LookUpEdit();
+         this.bdsKho = new System.Windows.Forms.BindingSource(this.components);
          this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+         this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
+         this.txtProvider = new DevExpress.XtraEditors.TextEdit();
          this.lkeEmployee = new DevExpress.XtraEditors.SearchLookUpEdit();
          this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
          this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-         this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
          this.dtpOrderDate = new DevExpress.XtraEditors.DateEdit();
-         this.txtProvider = new DevExpress.XtraEditors.TextEdit();
          this.gbOrderDetail = new DevExpress.XtraEditors.GroupControl();
          this.gcOrderDetail = new System.Windows.Forms.DataGridView();
          this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,10 +93,7 @@
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          this.taVT = new QLVT_DATHANG.DataSetTableAdapters.VattuTableAdapter();
-         masoDDHLabel = new System.Windows.Forms.Label();
-         nGAYLabel = new System.Windows.Forms.Label();
-         nhaCCLabel = new System.Windows.Forms.Label();
-         mANVLabel = new System.Windows.Forms.Label();
+         this.taKho = new QLVT_DATHANG.DataSetTableAdapters.DSKHOTableAdapter();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
@@ -103,14 +104,16 @@
          this.sccOrder.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          this.gbOrder.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeDepot.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsKho)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtProvider.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtProvider.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).BeginInit();
          this.gbOrderDetail.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).BeginInit();
@@ -120,46 +123,6 @@
          this.pnPickDepartment.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
          this.SuspendLayout();
-         // 
-         // masoDDHLabel
-         // 
-         masoDDHLabel.AutoSize = true;
-         masoDDHLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         masoDDHLabel.Location = new System.Drawing.Point(174, 59);
-         masoDDHLabel.Name = "masoDDHLabel";
-         masoDDHLabel.Size = new System.Drawing.Size(124, 13);
-         masoDDHLabel.TabIndex = 0;
-         masoDDHLabel.Text = "Mã số đơn đặt hàng:";
-         // 
-         // nGAYLabel
-         // 
-         nGAYLabel.AutoSize = true;
-         nGAYLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nGAYLabel.Location = new System.Drawing.Point(174, 111);
-         nGAYLabel.Name = "nGAYLabel";
-         nGAYLabel.Size = new System.Drawing.Size(63, 13);
-         nGAYLabel.TabIndex = 4;
-         nGAYLabel.Text = "Ngày đặt:";
-         // 
-         // nhaCCLabel
-         // 
-         nhaCCLabel.AutoSize = true;
-         nhaCCLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nhaCCLabel.Location = new System.Drawing.Point(174, 85);
-         nhaCCLabel.Name = "nhaCCLabel";
-         nhaCCLabel.Size = new System.Drawing.Size(89, 13);
-         nhaCCLabel.TabIndex = 2;
-         nhaCCLabel.Text = "Nhà cung cấp:";
-         // 
-         // mANVLabel
-         // 
-         mANVLabel.AutoSize = true;
-         mANVLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mANVLabel.Location = new System.Drawing.Point(174, 137);
-         mANVLabel.Name = "mANVLabel";
-         mANVLabel.Size = new System.Drawing.Size(69, 13);
-         mANVLabel.TabIndex = 6;
-         mANVLabel.Text = "Nhân viên:";
          // 
          // bmPN
          // 
@@ -254,7 +217,7 @@
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 429);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 456);
          this.barDockControlBottom.Manager = this.bmPN;
          this.barDockControlBottom.Size = new System.Drawing.Size(987, 0);
          // 
@@ -264,7 +227,7 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 405);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 432);
          // 
          // barDockControlRight
          // 
@@ -272,7 +235,7 @@
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControlRight.Location = new System.Drawing.Point(987, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 405);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 432);
          // 
          // dataSet
          // 
@@ -315,7 +278,7 @@
          this.gcOrder.MainView = this.gvOrder;
          this.gcOrder.MenuManager = this.bmPN;
          this.gcOrder.Name = "gcOrder";
-         this.gcOrder.Size = new System.Drawing.Size(987, 174);
+         this.gcOrder.Size = new System.Drawing.Size(987, 233);
          this.gcOrder.TabIndex = 1;
          this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvOrder});
@@ -337,11 +300,20 @@
          // 
          // gvOrder
          // 
+         this.gvOrder.Appearance.HeaderPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvOrder.Appearance.HeaderPanel.Options.UseFont = true;
+         this.gvOrder.Appearance.Row.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvOrder.Appearance.Row.Options.UseFont = true;
+         this.gvOrder.Appearance.SelectedRow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvOrder.Appearance.SelectedRow.Options.UseFont = true;
+         this.gvOrder.Appearance.ViewCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvOrder.Appearance.ViewCaption.Options.UseFont = true;
          this.gvOrder.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMasoDDH,
             this.colNGAY,
             this.colNhaCC,
-            this.colMANV});
+            this.colMANV,
+            this.colMAKHO});
          this.gvOrder.GridControl = this.gcOrder;
          this.gvOrder.Name = "gvOrder";
          this.gvOrder.OptionsBehavior.Editable = false;
@@ -360,8 +332,6 @@
          // colNGAY
          // 
          this.colNGAY.Caption = "NGÀY ĐẶT";
-         this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
-         this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.colNGAY.FieldName = "NGAY";
          this.colNGAY.Name = "colNGAY";
          this.colNGAY.Visible = true;
@@ -383,10 +353,18 @@
          this.colMANV.Visible = true;
          this.colMANV.VisibleIndex = 3;
          // 
+         // colMAKHO
+         // 
+         this.colMAKHO.Caption = "MÃ KHO";
+         this.colMAKHO.FieldName = "MAKHO";
+         this.colMAKHO.Name = "colMAKHO";
+         this.colMAKHO.Visible = true;
+         this.colMAKHO.VisibleIndex = 4;
+         // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 228);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 287);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(987, 5);
          this.splitterControl1.TabIndex = 2;
@@ -395,40 +373,115 @@
          // sccOrder
          // 
          this.sccOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.sccOrder.Location = new System.Drawing.Point(0, 233);
+         this.sccOrder.Location = new System.Drawing.Point(0, 292);
          this.sccOrder.Name = "sccOrder";
          this.sccOrder.Panel1.Controls.Add(this.gbOrder);
          this.sccOrder.Panel1.Text = "Panel1";
          this.sccOrder.Panel2.Controls.Add(this.gbOrderDetail);
          this.sccOrder.Panel2.Text = "Panel2";
-         this.sccOrder.Size = new System.Drawing.Size(987, 196);
+         this.sccOrder.Size = new System.Drawing.Size(987, 164);
          this.sccOrder.SplitterPosition = 494;
          this.sccOrder.TabIndex = 7;
          // 
          // gbOrder
          // 
-         this.gbOrder.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbOrder.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbOrder.AppearanceCaption.Options.UseFont = true;
+         this.gbOrder.Controls.Add(this.label5);
+         this.gbOrder.Controls.Add(this.label4);
+         this.gbOrder.Controls.Add(this.label3);
+         this.gbOrder.Controls.Add(this.label2);
+         this.gbOrder.Controls.Add(this.label1);
+         this.gbOrder.Controls.Add(this.lkeDepot);
          this.gbOrder.Controls.Add(this.pictureEdit1);
-         this.gbOrder.Controls.Add(this.lkeEmployee);
-         this.gbOrder.Controls.Add(masoDDHLabel);
          this.gbOrder.Controls.Add(this.txtOrderId);
-         this.gbOrder.Controls.Add(nGAYLabel);
-         this.gbOrder.Controls.Add(this.dtpOrderDate);
-         this.gbOrder.Controls.Add(nhaCCLabel);
          this.gbOrder.Controls.Add(this.txtProvider);
-         this.gbOrder.Controls.Add(mANVLabel);
+         this.gbOrder.Controls.Add(this.lkeEmployee);
+         this.gbOrder.Controls.Add(this.dtpOrderDate);
          this.gbOrder.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrder.Location = new System.Drawing.Point(0, 0);
          this.gbOrder.Name = "gbOrder";
-         this.gbOrder.Size = new System.Drawing.Size(494, 196);
+         this.gbOrder.Size = new System.Drawing.Size(494, 164);
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin Đơn Đặt Hàng";
          // 
+         // label5
+         // 
+         this.label5.AutoSize = true;
+         this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label5.Location = new System.Drawing.Point(166, 141);
+         this.label5.Name = "label5";
+         this.label5.Size = new System.Drawing.Size(31, 15);
+         this.label5.TabIndex = 15;
+         this.label5.Text = "Kho:";
+         // 
+         // label4
+         // 
+         this.label4.AutoSize = true;
+         this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label4.Location = new System.Drawing.Point(166, 113);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(84, 15);
+         this.label4.TabIndex = 14;
+         this.label4.Text = "Nhân viên đặt:";
+         // 
+         // label3
+         // 
+         this.label3.AutoSize = true;
+         this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label3.Location = new System.Drawing.Point(166, 85);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(58, 15);
+         this.label3.TabIndex = 13;
+         this.label3.Text = "Ngày đặt:";
+         // 
+         // label2
+         // 
+         this.label2.AutoSize = true;
+         this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label2.Location = new System.Drawing.Point(166, 57);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(84, 15);
+         this.label2.TabIndex = 12;
+         this.label2.Text = "Nhà cung cấp:";
+         // 
+         // label1
+         // 
+         this.label1.AutoSize = true;
+         this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label1.Location = new System.Drawing.Point(166, 29);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(116, 15);
+         this.label1.TabIndex = 11;
+         this.label1.Text = "Mã số đơn đặt hàng:";
+         // 
+         // lkeDepot
+         // 
+         this.lkeDepot.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MAKHO", true));
+         this.lkeDepot.Location = new System.Drawing.Point(287, 136);
+         this.lkeDepot.MenuManager = this.bmPN;
+         this.lkeDepot.Name = "lkeDepot";
+         this.lkeDepot.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lkeDepot.Properties.Appearance.Options.UseFont = true;
+         this.lkeDepot.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.lkeDepot.Properties.DataSource = this.bdsKho;
+         this.lkeDepot.Properties.DisplayMember = "TENKHO";
+         this.lkeDepot.Properties.NullText = "";
+         this.lkeDepot.Properties.ValueMember = "MAKHO";
+         this.lkeDepot.Size = new System.Drawing.Size(202, 22);
+         this.lkeDepot.TabIndex = 10;
+         // 
+         // bdsKho
+         // 
+         this.bdsKho.DataMember = "DSKHO";
+         this.bdsKho.DataSource = this.dataSet;
+         // 
          // pictureEdit1
          // 
+         this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Left;
          this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources._162_512;
-         this.pictureEdit1.Location = new System.Drawing.Point(5, 23);
+         this.pictureEdit1.Location = new System.Drawing.Point(2, 22);
          this.pictureEdit1.Name = "pictureEdit1";
          this.pictureEdit1.Properties.AllowFocused = false;
          this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
@@ -436,19 +489,43 @@
          this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
          this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
          this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-         this.pictureEdit1.Size = new System.Drawing.Size(163, 168);
+         this.pictureEdit1.Size = new System.Drawing.Size(158, 140);
          this.pictureEdit1.TabIndex = 8;
+         // 
+         // txtOrderId
+         // 
+         this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
+         this.txtOrderId.Location = new System.Drawing.Point(287, 24);
+         this.txtOrderId.MenuManager = this.bmPN;
+         this.txtOrderId.Name = "txtOrderId";
+         this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtOrderId.Properties.Appearance.Options.UseFont = true;
+         this.txtOrderId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+         this.txtOrderId.Properties.MaxLength = 8;
+         this.txtOrderId.Size = new System.Drawing.Size(202, 22);
+         this.txtOrderId.TabIndex = 1;
+         // 
+         // txtProvider
+         // 
+         this.txtProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
+         this.txtProvider.Location = new System.Drawing.Point(287, 52);
+         this.txtProvider.MenuManager = this.bmPN;
+         this.txtProvider.Name = "txtProvider";
+         this.txtProvider.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtProvider.Properties.Appearance.Options.UseFont = true;
+         this.txtProvider.Size = new System.Drawing.Size(202, 22);
+         this.txtProvider.TabIndex = 3;
          // 
          // lkeEmployee
          // 
          this.lkeEmployee.CausesValidation = false;
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
-         this.lkeEmployee.Location = new System.Drawing.Point(304, 134);
+         this.lkeEmployee.Location = new System.Drawing.Point(287, 108);
          this.lkeEmployee.MenuManager = this.bmPN;
          this.lkeEmployee.Name = "lkeEmployee";
          this.lkeEmployee.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-         this.lkeEmployee.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lkeEmployee.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.lkeEmployee.Properties.Appearance.Options.UseFont = true;
          this.lkeEmployee.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
          this.lkeEmployee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -459,7 +536,7 @@
          this.lkeEmployee.Properties.PopupView = this.searchLookUpEdit1View;
          this.lkeEmployee.Properties.ReadOnly = true;
          this.lkeEmployee.Properties.ValueMember = "MANV";
-         this.lkeEmployee.Size = new System.Drawing.Size(157, 20);
+         this.lkeEmployee.Size = new System.Drawing.Size(202, 22);
          this.lkeEmployee.TabIndex = 7;
          // 
          // bdsDSNV
@@ -474,27 +551,14 @@
          this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
          this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
          // 
-         // txtOrderId
-         // 
-         this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
-         this.txtOrderId.Location = new System.Drawing.Point(304, 56);
-         this.txtOrderId.MenuManager = this.bmPN;
-         this.txtOrderId.Name = "txtOrderId";
-         this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtOrderId.Properties.Appearance.Options.UseFont = true;
-         this.txtOrderId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-         this.txtOrderId.Properties.MaxLength = 8;
-         this.txtOrderId.Size = new System.Drawing.Size(157, 20);
-         this.txtOrderId.TabIndex = 1;
-         // 
          // dtpOrderDate
          // 
          this.dtpOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NGAY", true));
          this.dtpOrderDate.EditValue = null;
-         this.dtpOrderDate.Location = new System.Drawing.Point(304, 108);
+         this.dtpOrderDate.Location = new System.Drawing.Point(287, 80);
          this.dtpOrderDate.MenuManager = this.bmPN;
          this.dtpOrderDate.Name = "dtpOrderDate";
-         this.dtpOrderDate.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.dtpOrderDate.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.dtpOrderDate.Properties.Appearance.Options.UseFont = true;
          this.dtpOrderDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -506,23 +570,12 @@
          this.dtpOrderDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.dtpOrderDate.Properties.Mask.EditMask = "dd/MM/yyyy";
          this.dtpOrderDate.Properties.ReadOnly = true;
-         this.dtpOrderDate.Size = new System.Drawing.Size(157, 20);
+         this.dtpOrderDate.Size = new System.Drawing.Size(202, 22);
          this.dtpOrderDate.TabIndex = 5;
-         // 
-         // txtProvider
-         // 
-         this.txtProvider.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NhaCC", true));
-         this.txtProvider.Location = new System.Drawing.Point(304, 82);
-         this.txtProvider.MenuManager = this.bmPN;
-         this.txtProvider.Name = "txtProvider";
-         this.txtProvider.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtProvider.Properties.Appearance.Options.UseFont = true;
-         this.txtProvider.Size = new System.Drawing.Size(157, 20);
-         this.txtProvider.TabIndex = 3;
          // 
          // gbOrderDetail
          // 
-         this.gbOrderDetail.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbOrderDetail.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbOrderDetail.AppearanceCaption.Options.UseFont = true;
          this.gbOrderDetail.CaptionImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_edit_property_16;
          this.gbOrderDetail.CaptionLocation = DevExpress.Utils.Locations.Top;
@@ -530,7 +583,7 @@
          this.gbOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbOrderDetail.Location = new System.Drawing.Point(0, 0);
          this.gbOrderDetail.Name = "gbOrderDetail";
-         this.gbOrderDetail.Size = new System.Drawing.Size(488, 196);
+         this.gbOrderDetail.Size = new System.Drawing.Size(488, 164);
          this.gbOrderDetail.TabIndex = 0;
          this.gbOrderDetail.Text = "Chi tiết Đơn Đặt Hàng";
          // 
@@ -557,7 +610,6 @@
             this.TENVT,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-         this.gcOrderDetail.ContextMenuStrip = this.cmsOrderDetail;
          this.gcOrderDetail.DataSource = this.bdsCTDDH;
          dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
          dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -585,7 +637,7 @@
          this.gcOrderDetail.RowHeadersVisible = false;
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcOrderDetail.Size = new System.Drawing.Size(484, 171);
+         this.gcOrderDetail.Size = new System.Drawing.Size(484, 139);
          this.gcOrderDetail.TabIndex = 0;
          // 
          // dataGridViewTextBoxColumn1
@@ -658,11 +710,11 @@
          // 
          // labelControl1
          // 
-         this.labelControl1.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.labelControl1.Appearance.Options.UseFont = true;
          this.labelControl1.Location = new System.Drawing.Point(12, 8);
          this.labelControl1.Name = "labelControl1";
-         this.labelControl1.Size = new System.Drawing.Size(98, 13);
+         this.labelControl1.Size = new System.Drawing.Size(92, 15);
          this.labelControl1.TabIndex = 0;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
@@ -671,11 +723,11 @@
          this.cboDeployment.BackColor = System.Drawing.SystemColors.Window;
          this.cboDeployment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cboDeployment.FlatStyle = System.Windows.Forms.FlatStyle.System;
-         this.cboDeployment.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.cboDeployment.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.cboDeployment.FormattingEnabled = true;
-         this.cboDeployment.Location = new System.Drawing.Point(116, 5);
+         this.cboDeployment.Location = new System.Drawing.Point(110, 4);
          this.cboDeployment.Name = "cboDeployment";
-         this.cboDeployment.Size = new System.Drawing.Size(193, 21);
+         this.cboDeployment.Size = new System.Drawing.Size(193, 23);
          this.cboDeployment.TabIndex = 1;
          // 
          // taCTDDH
@@ -694,12 +746,16 @@
          // 
          this.taVT.ClearBeforeFill = true;
          // 
+         // taKho
+         // 
+         this.taKho.ClearBeforeFill = true;
+         // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(987, 429);
+         this.ClientSize = new System.Drawing.Size(987, 456);
          this.Controls.Add(this.gcOrder);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
@@ -724,14 +780,16 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
          this.gbOrder.ResumeLayout(false);
          this.gbOrder.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeDepot.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsKho)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtProvider.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtProvider.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).EndInit();
          this.gbOrderDetail.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).EndInit();
@@ -765,10 +823,6 @@
       private DataSetTableAdapters.TableAdapterManager tableAdapterManager;
       private DevExpress.XtraGrid.GridControl gcOrder;
       private DevExpress.XtraGrid.Views.Grid.GridView gvOrder;
-      private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
-      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
-      private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
-      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
       private DevExpress.XtraEditors.SplitContainerControl sccOrder;
       private DevExpress.XtraEditors.GroupControl gbOrder;
@@ -796,5 +850,18 @@
       private System.Windows.Forms.DataGridViewComboBoxColumn TENVT;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+      private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
+      private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
+      private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
+      private DevExpress.XtraGrid.Columns.GridColumn colMANV;
+      private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
+      private System.Windows.Forms.BindingSource bdsKho;
+      private DataSetTableAdapters.DSKHOTableAdapter taKho;
+      private DevExpress.XtraEditors.LookUpEdit lkeDepot;
+      private System.Windows.Forms.Label label5;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.Label label2;
+      private System.Windows.Forms.Label label1;
    }
 }

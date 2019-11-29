@@ -54,5 +54,16 @@ namespace QLVT_DATHANG.Properties {
                 return ((string)(this["QLVT_DATHANGConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MINHTRAN\\SERVER_1;Initial Catalog=QLVT_DATHANG;User ID=trang;Password" +
+            "=123456")]
+        public string QLVT_ConnectionString {
+            get {
+                return ((string)(this["QLVT_ConnectionString"]));
+            }
+        }
     }
 }
