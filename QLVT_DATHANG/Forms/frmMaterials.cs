@@ -198,7 +198,7 @@ namespace QLVT_DATHANG.Forms
                   // xóa dữ liệu mới
                   //position = bdsVT.Find("MAVT", action.SaveItems[0]);
                   //bdsVT.Remove((DataRowView)bdsVT[position]);
-                  if (UtilDB.DeleteInDB("Vattu", "MAVT", txtMaterialId.EditValue))
+                  if (UtilDB.DeleteInDB("Vattu", "MAVT", action.SaveItems[0]))
                   {
                      this.dataSet.EnforceConstraints = false;
                      this.taVT.Fill(this.dataSet.Vattu);

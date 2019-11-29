@@ -29,13 +29,6 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
-         System.Windows.Forms.Label mANVLabel;
-         System.Windows.Forms.Label hOLabel;
-         System.Windows.Forms.Label dIACHILabel;
-         System.Windows.Forms.Label nGAYSINHLabel;
-         System.Windows.Forms.Label lUONGLabel;
-         System.Windows.Forms.Label mACNLabel;
-         System.Windows.Forms.Label label1;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmployee));
          this.bmNV = new DevExpress.XtraBars.BarManager(this.components);
          this.barNV = new DevExpress.XtraBars.Bar();
@@ -57,12 +50,22 @@
          this.taNV = new QLVT_DATHANG.DataSetTableAdapters.NhanVienTableAdapter();
          this.taNVManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
          this.txtEmpDepartment = new DevExpress.XtraEditors.TextEdit();
-         this.spiEmpSalary = new DevExpress.XtraEditors.SpinEdit();
-         this.dtpEmpBirth = new DevExpress.XtraEditors.DateEdit();
+         this.lcEmplyee = new DevExpress.XtraLayout.LayoutControl();
          this.txtEmpAddr = new DevExpress.XtraEditors.TextEdit();
-         this.txtEmpLastName = new DevExpress.XtraEditors.TextEdit();
-         this.txtEmpFirstName = new DevExpress.XtraEditors.TextEdit();
+         this.txtEmpDelStatus = new DevExpress.XtraEditors.TextEdit();
          this.txtEmpId = new DevExpress.XtraEditors.TextEdit();
+         this.txtEmpFirstName = new DevExpress.XtraEditors.TextEdit();
+         this.txtEmpLastName = new DevExpress.XtraEditors.TextEdit();
+         this.dtpEmpBirth = new DevExpress.XtraEditors.DateEdit();
+         this.spiEmpSalary = new DevExpress.XtraEditors.SpinEdit();
+         this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+         this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
          this.gvNV = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -76,8 +79,6 @@
          this.cmsEmployee = new System.Windows.Forms.ContextMenuStrip(this.components);
          this.btnCreateLogin = new System.Windows.Forms.ToolStripMenuItem();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
-         this.txtEmpDelStatus = new DevExpress.XtraEditors.TextEdit();
-         this.lblTTX = new System.Windows.Forms.Label();
          this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
          this.taPX = new QLVT_DATHANG.DataSetTableAdapters.PhieuXuatTableAdapter();
          this.bdsPN = new System.Windows.Forms.BindingSource(this.components);
@@ -86,122 +87,48 @@
          this.taCN = new QLVT_DATHANG.DataSetTableAdapters.ChiNhanhTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          this.gbEmployee = new DevExpress.XtraEditors.GroupControl();
-         this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.bdsDH = new System.Windows.Forms.BindingSource(this.components);
          this.taDH = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
-         mANVLabel = new System.Windows.Forms.Label();
-         hOLabel = new System.Windows.Forms.Label();
-         dIACHILabel = new System.Windows.Forms.Label();
-         nGAYSINHLabel = new System.Windows.Forms.Label();
-         lUONGLabel = new System.Windows.Forms.Label();
-         mACNLabel = new System.Windows.Forms.Label();
-         label1 = new System.Windows.Forms.Label();
+         this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
          ((System.ComponentModel.ISupportInitialize)(this.bmNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.spiEmpSalary.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lcEmplyee)).BeginInit();
+         this.lcEmplyee.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpAddr.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpFirstName.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpLastName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpEmpBirth.Properties.CalendarTimeProperties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpEmpBirth.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpAddr.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpLastName.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpFirstName.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.spiEmpSalary.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvNV)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcEmployee)).BeginInit();
          this.cmsEmployee.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbEmployee)).BeginInit();
          this.gbEmployee.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
          this.SuspendLayout();
-         // 
-         // mANVLabel
-         // 
-         mANVLabel.AutoSize = true;
-         mANVLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mANVLabel.Location = new System.Drawing.Point(215, 28);
-         mANVLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-         mANVLabel.Name = "mANVLabel";
-         mANVLabel.Size = new System.Drawing.Size(85, 15);
-         mANVLabel.TabIndex = 0;
-         mANVLabel.Text = "Mã Nhân Viên:";
-         // 
-         // hOLabel
-         // 
-         hOLabel.AutoSize = true;
-         hOLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         hOLabel.Location = new System.Drawing.Point(445, 28);
-         hOLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-         hOLabel.Name = "hOLabel";
-         hOLabel.Size = new System.Drawing.Size(26, 15);
-         hOLabel.TabIndex = 2;
-         hOLabel.Text = "Họ:";
-         // 
-         // dIACHILabel
-         // 
-         dIACHILabel.AutoSize = true;
-         dIACHILabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dIACHILabel.Location = new System.Drawing.Point(215, 109);
-         dIACHILabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-         dIACHILabel.Name = "dIACHILabel";
-         dIACHILabel.Size = new System.Drawing.Size(48, 15);
-         dIACHILabel.TabIndex = 10;
-         dIACHILabel.Text = "Địa Chỉ:";
-         // 
-         // nGAYSINHLabel
-         // 
-         nGAYSINHLabel.AutoSize = true;
-         nGAYSINHLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nGAYSINHLabel.Location = new System.Drawing.Point(215, 69);
-         nGAYSINHLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-         nGAYSINHLabel.Name = "nGAYSINHLabel";
-         nGAYSINHLabel.Size = new System.Drawing.Size(64, 15);
-         nGAYSINHLabel.TabIndex = 6;
-         nGAYSINHLabel.Text = "Ngày Sinh:";
-         // 
-         // lUONGLabel
-         // 
-         lUONGLabel.AutoSize = true;
-         lUONGLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         lUONGLabel.Location = new System.Drawing.Point(504, 69);
-         lUONGLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-         lUONGLabel.Name = "lUONGLabel";
-         lUONGLabel.Size = new System.Drawing.Size(44, 15);
-         lUONGLabel.TabIndex = 8;
-         lUONGLabel.Text = "Lương:";
-         // 
-         // mACNLabel
-         // 
-         mACNLabel.AutoSize = true;
-         mACNLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mACNLabel.Location = new System.Drawing.Point(215, 153);
-         mACNLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-         mACNLabel.Name = "mACNLabel";
-         mACNLabel.Size = new System.Drawing.Size(87, 15);
-         mACNLabel.TabIndex = 12;
-         mACNLabel.Text = "Mã Chi Nhánh:";
-         // 
-         // label1
-         // 
-         label1.AutoSize = true;
-         label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         label1.Location = new System.Drawing.Point(597, 28);
-         label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-         label1.Name = "label1";
-         label1.Size = new System.Drawing.Size(28, 15);
-         label1.TabIndex = 4;
-         label1.Text = "Tên:";
          // 
          // bmNV
          // 
@@ -399,43 +326,123 @@
          // 
          this.txtEmpDepartment.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "MACN", true));
          this.txtEmpDepartment.EditValue = "";
-         this.txtEmpDepartment.Location = new System.Drawing.Point(306, 149);
+         this.txtEmpDepartment.Location = new System.Drawing.Point(91, 90);
          this.txtEmpDepartment.MenuManager = this.bmNV;
          this.txtEmpDepartment.Name = "txtEmpDepartment";
          this.txtEmpDepartment.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtEmpDepartment.Properties.Appearance.Options.UseFont = true;
-         this.txtEmpDepartment.Size = new System.Drawing.Size(170, 22);
+         this.txtEmpDepartment.Size = new System.Drawing.Size(266, 22);
+         this.txtEmpDepartment.StyleController = this.lcEmplyee;
          this.txtEmpDepartment.TabIndex = 13;
          // 
-         // spiEmpSalary
+         // lcEmplyee
          // 
-         this.spiEmpSalary.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "LUONG", true));
-         this.spiEmpSalary.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-         this.dxErrorProvider.SetIconAlignment(this.spiEmpSalary, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.spiEmpSalary.Location = new System.Drawing.Point(557, 65);
-         this.spiEmpSalary.Margin = new System.Windows.Forms.Padding(4);
-         this.spiEmpSalary.MenuManager = this.bmNV;
-         this.spiEmpSalary.Name = "spiEmpSalary";
-         this.spiEmpSalary.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.spiEmpSalary.Properties.Appearance.Options.UseFont = true;
-         this.spiEmpSalary.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.spiEmpSalary.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-         this.spiEmpSalary.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-         this.spiEmpSalary.Size = new System.Drawing.Size(163, 22);
-         this.spiEmpSalary.TabIndex = 9;
-         this.spiEmpSalary.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiEmpSalary_CustomDisplayText);
+         this.lcEmplyee.Controls.Add(this.txtEmpAddr);
+         this.lcEmplyee.Controls.Add(this.txtEmpDelStatus);
+         this.lcEmplyee.Controls.Add(this.txtEmpDepartment);
+         this.lcEmplyee.Controls.Add(this.txtEmpId);
+         this.lcEmplyee.Controls.Add(this.txtEmpFirstName);
+         this.lcEmplyee.Controls.Add(this.txtEmpLastName);
+         this.lcEmplyee.Controls.Add(this.dtpEmpBirth);
+         this.lcEmplyee.Controls.Add(this.spiEmpSalary);
+         this.lcEmplyee.Dock = System.Windows.Forms.DockStyle.Left;
+         this.lcEmplyee.Location = new System.Drawing.Point(2, 20);
+         this.lcEmplyee.Name = "lcEmplyee";
+         this.lcEmplyee.Root = this.Root;
+         this.lcEmplyee.Size = new System.Drawing.Size(720, 125);
+         this.lcEmplyee.TabIndex = 17;
+         this.lcEmplyee.Text = "layoutControl1";
+         // 
+         // txtEmpAddr
+         // 
+         this.txtEmpAddr.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "DIACHI", true));
+         this.txtEmpAddr.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpAddr, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+         this.txtEmpAddr.Location = new System.Drawing.Point(91, 64);
+         this.txtEmpAddr.Margin = new System.Windows.Forms.Padding(4);
+         this.txtEmpAddr.MenuManager = this.bmNV;
+         this.txtEmpAddr.Name = "txtEmpAddr";
+         this.txtEmpAddr.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtEmpAddr.Properties.Appearance.Options.UseFont = true;
+         this.txtEmpAddr.Properties.Mask.IgnoreMaskBlank = false;
+         this.txtEmpAddr.Size = new System.Drawing.Size(617, 22);
+         this.txtEmpAddr.StyleController = this.lcEmplyee;
+         this.txtEmpAddr.TabIndex = 11;
+         // 
+         // txtEmpDelStatus
+         // 
+         this.txtEmpDelStatus.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "TrangThaiXoa", true));
+         this.txtEmpDelStatus.Location = new System.Drawing.Point(440, 90);
+         this.txtEmpDelStatus.MenuManager = this.bmNV;
+         this.txtEmpDelStatus.Name = "txtEmpDelStatus";
+         this.txtEmpDelStatus.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtEmpDelStatus.Properties.Appearance.Options.UseFont = true;
+         this.txtEmpDelStatus.Size = new System.Drawing.Size(268, 22);
+         this.txtEmpDelStatus.StyleController = this.lcEmplyee;
+         this.txtEmpDelStatus.TabIndex = 15;
+         // 
+         // txtEmpId
+         // 
+         this.txtEmpId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "MANV", true));
+         this.txtEmpId.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpId, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+         this.txtEmpId.Location = new System.Drawing.Point(91, 12);
+         this.txtEmpId.Margin = new System.Windows.Forms.Padding(4);
+         this.txtEmpId.MenuManager = this.bmNV;
+         this.txtEmpId.Name = "txtEmpId";
+         this.txtEmpId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+         this.txtEmpId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtEmpId.Properties.Appearance.Options.UseFont = true;
+         this.txtEmpId.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
+         this.txtEmpId.Properties.Mask.ShowPlaceHolders = false;
+         this.txtEmpId.Size = new System.Drawing.Size(151, 22);
+         this.txtEmpId.StyleController = this.lcEmplyee;
+         this.txtEmpId.TabIndex = 1;
+         // 
+         // txtEmpFirstName
+         // 
+         this.txtEmpFirstName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "HO", true));
+         this.txtEmpFirstName.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpFirstName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+         this.txtEmpFirstName.Location = new System.Drawing.Point(325, 12);
+         this.txtEmpFirstName.Margin = new System.Windows.Forms.Padding(4);
+         this.txtEmpFirstName.MenuManager = this.bmNV;
+         this.txtEmpFirstName.Name = "txtEmpFirstName";
+         this.txtEmpFirstName.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+         this.txtEmpFirstName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtEmpFirstName.Properties.Appearance.Options.UseFont = true;
+         this.txtEmpFirstName.Properties.Mask.EditMask = "[\\u0000-\\u001F\\007F-\\u009F]+(\\\\s{1}[\\u0000-\\u001F\\007F-\\u009F]+)*";
+         this.txtEmpFirstName.Properties.Mask.IgnoreMaskBlank = false;
+         this.txtEmpFirstName.Properties.Mask.ShowPlaceHolders = false;
+         this.txtEmpFirstName.Size = new System.Drawing.Size(150, 22);
+         this.txtEmpFirstName.StyleController = this.lcEmplyee;
+         this.txtEmpFirstName.TabIndex = 3;
+         this.txtEmpFirstName.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.txtEmpFirstName_CustomDisplayText);
+         // 
+         // txtEmpLastName
+         // 
+         this.txtEmpLastName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "TEN", true));
+         this.txtEmpLastName.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.txtEmpLastName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+         this.txtEmpLastName.Location = new System.Drawing.Point(558, 12);
+         this.txtEmpLastName.Margin = new System.Windows.Forms.Padding(4);
+         this.txtEmpLastName.MenuManager = this.bmNV;
+         this.txtEmpLastName.Name = "txtEmpLastName";
+         this.txtEmpLastName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtEmpLastName.Properties.Appearance.Options.UseFont = true;
+         this.txtEmpLastName.Properties.Mask.IgnoreMaskBlank = false;
+         this.txtEmpLastName.Properties.Mask.ShowPlaceHolders = false;
+         this.txtEmpLastName.Size = new System.Drawing.Size(150, 22);
+         this.txtEmpLastName.StyleController = this.lcEmplyee;
+         this.txtEmpLastName.TabIndex = 5;
+         this.txtEmpLastName.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.txtEmpLastName_CustomDisplayText);
          // 
          // dtpEmpBirth
          // 
          this.dtpEmpBirth.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "NGAYSINH", true));
          this.dtpEmpBirth.EditValue = new System.DateTime(2019, 11, 23, 16, 47, 55, 0);
          this.dxErrorProvider.SetIconAlignment(this.dtpEmpBirth, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.dtpEmpBirth.Location = new System.Drawing.Point(308, 65);
+         this.dtpEmpBirth.Location = new System.Drawing.Point(91, 38);
          this.dtpEmpBirth.Margin = new System.Windows.Forms.Padding(4);
          this.dtpEmpBirth.MenuManager = this.bmNV;
          this.dtpEmpBirth.Name = "dtpEmpBirth";
@@ -454,76 +461,113 @@
          this.dtpEmpBirth.Properties.Mask.IgnoreMaskBlank = false;
          this.dtpEmpBirth.Properties.Mask.ShowPlaceHolders = false;
          this.dtpEmpBirth.Properties.MaxValue = new System.DateTime(2019, 10, 28, 0, 0, 0, 0);
-         this.dtpEmpBirth.Size = new System.Drawing.Size(188, 22);
+         this.dtpEmpBirth.Size = new System.Drawing.Size(266, 22);
+         this.dtpEmpBirth.StyleController = this.lcEmplyee;
          this.dtpEmpBirth.TabIndex = 7;
          // 
-         // txtEmpAddr
+         // spiEmpSalary
          // 
-         this.txtEmpAddr.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "DIACHI", true));
-         this.txtEmpAddr.EditValue = "";
-         this.dxErrorProvider.SetIconAlignment(this.txtEmpAddr, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpAddr.Location = new System.Drawing.Point(308, 106);
-         this.txtEmpAddr.Margin = new System.Windows.Forms.Padding(4);
-         this.txtEmpAddr.MenuManager = this.bmNV;
-         this.txtEmpAddr.Name = "txtEmpAddr";
-         this.txtEmpAddr.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtEmpAddr.Properties.Appearance.Options.UseFont = true;
-         this.txtEmpAddr.Properties.Mask.IgnoreMaskBlank = false;
-         this.txtEmpAddr.Size = new System.Drawing.Size(412, 22);
-         this.txtEmpAddr.TabIndex = 11;
+         this.spiEmpSalary.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "LUONG", true));
+         this.spiEmpSalary.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+         this.dxErrorProvider.SetIconAlignment(this.spiEmpSalary, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+         this.spiEmpSalary.Location = new System.Drawing.Point(440, 38);
+         this.spiEmpSalary.Margin = new System.Windows.Forms.Padding(4);
+         this.spiEmpSalary.MenuManager = this.bmNV;
+         this.spiEmpSalary.Name = "spiEmpSalary";
+         this.spiEmpSalary.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.spiEmpSalary.Properties.Appearance.Options.UseFont = true;
+         this.spiEmpSalary.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.spiEmpSalary.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+         this.spiEmpSalary.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+         this.spiEmpSalary.Size = new System.Drawing.Size(268, 22);
+         this.spiEmpSalary.StyleController = this.lcEmplyee;
+         this.spiEmpSalary.TabIndex = 9;
+         this.spiEmpSalary.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.spiEmpSalary_CustomDisplayText);
          // 
-         // txtEmpLastName
+         // Root
          // 
-         this.txtEmpLastName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "TEN", true));
-         this.txtEmpLastName.EditValue = "";
-         this.dxErrorProvider.SetIconAlignment(this.txtEmpLastName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpLastName.Location = new System.Drawing.Point(633, 24);
-         this.txtEmpLastName.Margin = new System.Windows.Forms.Padding(4);
-         this.txtEmpLastName.MenuManager = this.bmNV;
-         this.txtEmpLastName.Name = "txtEmpLastName";
-         this.txtEmpLastName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtEmpLastName.Properties.Appearance.Options.UseFont = true;
-         this.txtEmpLastName.Properties.Mask.IgnoreMaskBlank = false;
-         this.txtEmpLastName.Properties.Mask.ShowPlaceHolders = false;
-         this.txtEmpLastName.Size = new System.Drawing.Size(87, 22);
-         this.txtEmpLastName.TabIndex = 5;
-         this.txtEmpLastName.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.txtEmpLastName_CustomDisplayText);
+         this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+         this.Root.GroupBordersVisible = false;
+         this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem5,
+            this.layoutControlItem4,
+            this.layoutControlItem6,
+            this.layoutControlItem7,
+            this.layoutControlItem8});
+         this.Root.Name = "Root";
+         this.Root.Size = new System.Drawing.Size(720, 125);
+         this.Root.TextVisible = false;
          // 
-         // txtEmpFirstName
+         // layoutControlItem1
          // 
-         this.txtEmpFirstName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "HO", true));
-         this.txtEmpFirstName.EditValue = "";
-         this.dxErrorProvider.SetIconAlignment(this.txtEmpFirstName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpFirstName.Location = new System.Drawing.Point(479, 24);
-         this.txtEmpFirstName.Margin = new System.Windows.Forms.Padding(4);
-         this.txtEmpFirstName.MenuManager = this.bmNV;
-         this.txtEmpFirstName.Name = "txtEmpFirstName";
-         this.txtEmpFirstName.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-         this.txtEmpFirstName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtEmpFirstName.Properties.Appearance.Options.UseFont = true;
-         this.txtEmpFirstName.Properties.Mask.EditMask = "[\\u0000-\\u001F\\007F-\\u009F]+(\\\\s{1}[\\u0000-\\u001F\\007F-\\u009F]+)*";
-         this.txtEmpFirstName.Properties.Mask.IgnoreMaskBlank = false;
-         this.txtEmpFirstName.Properties.Mask.ShowPlaceHolders = false;
-         this.txtEmpFirstName.Size = new System.Drawing.Size(110, 22);
-         this.txtEmpFirstName.TabIndex = 3;
-         this.txtEmpFirstName.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.txtEmpFirstName_CustomDisplayText);
+         this.layoutControlItem1.Control = this.txtEmpId;
+         this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+         this.layoutControlItem1.Name = "layoutControlItem1";
+         this.layoutControlItem1.Size = new System.Drawing.Size(234, 26);
+         this.layoutControlItem1.Text = "Mã nhân viên:";
+         this.layoutControlItem1.TextSize = new System.Drawing.Size(76, 13);
          // 
-         // txtEmpId
+         // layoutControlItem2
          // 
-         this.txtEmpId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "MANV", true));
-         this.txtEmpId.EditValue = "";
-         this.dxErrorProvider.SetIconAlignment(this.txtEmpId, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpId.Location = new System.Drawing.Point(308, 25);
-         this.txtEmpId.Margin = new System.Windows.Forms.Padding(4);
-         this.txtEmpId.MenuManager = this.bmNV;
-         this.txtEmpId.Name = "txtEmpId";
-         this.txtEmpId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-         this.txtEmpId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtEmpId.Properties.Appearance.Options.UseFont = true;
-         this.txtEmpId.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
-         this.txtEmpId.Properties.Mask.ShowPlaceHolders = false;
-         this.txtEmpId.Size = new System.Drawing.Size(129, 22);
-         this.txtEmpId.TabIndex = 1;
+         this.layoutControlItem2.Control = this.txtEmpFirstName;
+         this.layoutControlItem2.Location = new System.Drawing.Point(234, 0);
+         this.layoutControlItem2.Name = "layoutControlItem2";
+         this.layoutControlItem2.Size = new System.Drawing.Size(233, 26);
+         this.layoutControlItem2.Text = "Họ:";
+         this.layoutControlItem2.TextSize = new System.Drawing.Size(76, 13);
+         // 
+         // layoutControlItem3
+         // 
+         this.layoutControlItem3.Control = this.txtEmpLastName;
+         this.layoutControlItem3.Location = new System.Drawing.Point(467, 0);
+         this.layoutControlItem3.Name = "layoutControlItem3";
+         this.layoutControlItem3.Size = new System.Drawing.Size(233, 26);
+         this.layoutControlItem3.Text = "Tên:";
+         this.layoutControlItem3.TextSize = new System.Drawing.Size(76, 13);
+         // 
+         // layoutControlItem5
+         // 
+         this.layoutControlItem5.Control = this.spiEmpSalary;
+         this.layoutControlItem5.Location = new System.Drawing.Point(349, 26);
+         this.layoutControlItem5.Name = "layoutControlItem5";
+         this.layoutControlItem5.Size = new System.Drawing.Size(351, 26);
+         this.layoutControlItem5.Text = "Lương:";
+         this.layoutControlItem5.TextSize = new System.Drawing.Size(76, 13);
+         // 
+         // layoutControlItem4
+         // 
+         this.layoutControlItem4.Control = this.dtpEmpBirth;
+         this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
+         this.layoutControlItem4.Name = "layoutControlItem4";
+         this.layoutControlItem4.Size = new System.Drawing.Size(349, 26);
+         this.layoutControlItem4.Text = "Ngày sinh:";
+         this.layoutControlItem4.TextSize = new System.Drawing.Size(76, 13);
+         // 
+         // layoutControlItem6
+         // 
+         this.layoutControlItem6.Control = this.txtEmpDepartment;
+         this.layoutControlItem6.Location = new System.Drawing.Point(0, 78);
+         this.layoutControlItem6.Name = "layoutControlItem6";
+         this.layoutControlItem6.Size = new System.Drawing.Size(349, 27);
+         this.layoutControlItem6.Text = "Mã chi nhánh:";
+         this.layoutControlItem6.TextSize = new System.Drawing.Size(76, 13);
+         // 
+         // layoutControlItem7
+         // 
+         this.layoutControlItem7.Control = this.txtEmpDelStatus;
+         this.layoutControlItem7.Location = new System.Drawing.Point(349, 78);
+         this.layoutControlItem7.Name = "layoutControlItem7";
+         this.layoutControlItem7.Size = new System.Drawing.Size(351, 27);
+         this.layoutControlItem7.Text = "Trạng thái xóa:";
+         this.layoutControlItem7.TextSize = new System.Drawing.Size(76, 13);
          // 
          // gvNV
          // 
@@ -619,12 +663,12 @@
          this.gcEmployee.ContextMenuStrip = this.cmsEmployee;
          this.gcEmployee.DataSource = this.bdsNV;
          this.gcEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gcEmployee.Location = new System.Drawing.Point(0, 54);
+         this.gcEmployee.Location = new System.Drawing.Point(0, 206);
          this.gcEmployee.MainView = this.gvNV;
          this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
          this.gcEmployee.MenuManager = this.bmNV;
          this.gcEmployee.Name = "gcEmployee";
-         this.gcEmployee.Size = new System.Drawing.Size(1004, 231);
+         this.gcEmployee.Size = new System.Drawing.Size(1004, 261);
          this.gcEmployee.TabIndex = 0;
          this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvNV});
@@ -651,31 +695,10 @@
          this.cboDeployment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cboDeployment.FlatStyle = System.Windows.Forms.FlatStyle.System;
          this.cboDeployment.FormattingEnabled = true;
-         this.cboDeployment.Location = new System.Drawing.Point(99, 5);
+         this.cboDeployment.Location = new System.Drawing.Point(107, 5);
          this.cboDeployment.Name = "cboDeployment";
          this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
-         // 
-         // txtEmpDelStatus
-         // 
-         this.txtEmpDelStatus.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "TrangThaiXoa", true));
-         this.txtEmpDelStatus.Location = new System.Drawing.Point(575, 147);
-         this.txtEmpDelStatus.MenuManager = this.bmNV;
-         this.txtEmpDelStatus.Name = "txtEmpDelStatus";
-         this.txtEmpDelStatus.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtEmpDelStatus.Properties.Appearance.Options.UseFont = true;
-         this.txtEmpDelStatus.Size = new System.Drawing.Size(143, 22);
-         this.txtEmpDelStatus.TabIndex = 15;
-         // 
-         // lblTTX
-         // 
-         this.lblTTX.AutoSize = true;
-         this.lblTTX.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.lblTTX.Location = new System.Drawing.Point(482, 153);
-         this.lblTTX.Name = "lblTTX";
-         this.lblTTX.Size = new System.Drawing.Size(87, 15);
-         this.lblTTX.TabIndex = 14;
-         this.lblTTX.Text = "Trạng Thái Xóa:";
          // 
          // bdsPX
          // 
@@ -710,53 +733,24 @@
          // 
          // gbEmployee
          // 
-         this.gbEmployee.Controls.Add(this.pictureEdit1);
-         this.gbEmployee.Controls.Add(this.txtEmpId);
-         this.gbEmployee.Controls.Add(this.txtEmpDelStatus);
-         this.gbEmployee.Controls.Add(mANVLabel);
-         this.gbEmployee.Controls.Add(this.lblTTX);
-         this.gbEmployee.Controls.Add(this.txtEmpFirstName);
-         this.gbEmployee.Controls.Add(this.txtEmpDepartment);
-         this.gbEmployee.Controls.Add(hOLabel);
-         this.gbEmployee.Controls.Add(mACNLabel);
-         this.gbEmployee.Controls.Add(label1);
-         this.gbEmployee.Controls.Add(lUONGLabel);
-         this.gbEmployee.Controls.Add(this.txtEmpLastName);
-         this.gbEmployee.Controls.Add(this.spiEmpSalary);
-         this.gbEmployee.Controls.Add(this.txtEmpAddr);
-         this.gbEmployee.Controls.Add(nGAYSINHLabel);
-         this.gbEmployee.Controls.Add(dIACHILabel);
-         this.gbEmployee.Controls.Add(this.dtpEmpBirth);
-         this.gbEmployee.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.gbEmployee.Location = new System.Drawing.Point(0, 290);
+         this.gbEmployee.Controls.Add(this.lcEmplyee);
+         this.gbEmployee.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gbEmployee.Location = new System.Drawing.Point(0, 54);
          this.gbEmployee.MinimumSize = new System.Drawing.Size(0, 10);
          this.gbEmployee.Name = "gbEmployee";
-         this.gbEmployee.Size = new System.Drawing.Size(1004, 177);
+         this.gbEmployee.Size = new System.Drawing.Size(1004, 147);
          this.gbEmployee.TabIndex = 16;
          this.gbEmployee.Text = "Thông tin Nhân Viên";
          // 
-         // pictureEdit1
-         // 
-         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources._28_512;
-         this.pictureEdit1.Location = new System.Drawing.Point(5, 23);
-         this.pictureEdit1.MenuManager = this.bmNV;
-         this.pictureEdit1.Name = "pictureEdit1";
-         this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-         this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-         this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-         this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-         this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-         this.pictureEdit1.Size = new System.Drawing.Size(203, 149);
-         this.pictureEdit1.TabIndex = 16;
-         // 
          // splitterControl1
          // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 285);
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
+         this.splitterControl1.Location = new System.Drawing.Point(0, 201);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(1004, 5);
          this.splitterControl1.TabIndex = 17;
          this.splitterControl1.TabStop = false;
+         this.splitterControl1.Visible = false;
          // 
          // pnPickDepartment
          // 
@@ -773,7 +767,7 @@
          // 
          this.labelControl1.Location = new System.Drawing.Point(12, 9);
          this.labelControl1.Name = "labelControl1";
-         this.labelControl1.Size = new System.Drawing.Size(81, 13);
+         this.labelControl1.Size = new System.Drawing.Size(89, 13);
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
@@ -786,6 +780,15 @@
          // 
          this.taDH.ClearBeforeFill = true;
          // 
+         // layoutControlItem8
+         // 
+         this.layoutControlItem8.Control = this.txtEmpAddr;
+         this.layoutControlItem8.Location = new System.Drawing.Point(0, 52);
+         this.layoutControlItem8.Name = "layoutControlItem8";
+         this.layoutControlItem8.Size = new System.Drawing.Size(700, 26);
+         this.layoutControlItem8.Text = "Địa chỉ:";
+         this.layoutControlItem8.TextSize = new System.Drawing.Size(76, 13);
+         // 
          // frmEmployee
          // 
          this.Appearance.Options.UseFont = true;
@@ -793,9 +796,9 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(1004, 467);
          this.Controls.Add(this.gcEmployee);
-         this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gbEmployee);
+         this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);
@@ -811,29 +814,38 @@
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsNV)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.spiEmpSalary.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lcEmplyee)).EndInit();
+         this.lcEmplyee.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpAddr.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpFirstName.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpLastName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpEmpBirth.Properties.CalendarTimeProperties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpEmpBirth.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpAddr.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpLastName.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpFirstName.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.spiEmpSalary.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvNV)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcEmployee)).EndInit();
          this.cmsEmployee.ResumeLayout(false);
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDelStatus.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPX)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbEmployee)).EndInit();
          this.gbEmployee.ResumeLayout(false);
-         this.gbEmployee.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDH)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -883,12 +895,10 @@
       private DataSetTableAdapters.PhieuNhapTableAdapter taPN;
       private System.Windows.Forms.BindingSource bdsCN;
       private DataSetTableAdapters.ChiNhanhTableAdapter taCN;
-      private System.Windows.Forms.Label lblTTX;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private DevExpress.XtraEditors.TextEdit txtEmpDelStatus;
       private DevExpress.XtraEditors.GroupControl gbEmployee;
       private DevExpress.XtraEditors.SplitterControl splitterControl1;
-      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
       private DevExpress.XtraEditors.PanelControl pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ContextMenuStrip cmsEmployee;
@@ -896,5 +906,15 @@
       private DevExpress.XtraBars.BarButtonItem btnSwitchDepartment;
       private System.Windows.Forms.BindingSource bdsDH;
       private DataSetTableAdapters.DatHangTableAdapter taDH;
+      private DevExpress.XtraLayout.LayoutControl lcEmplyee;
+      private DevExpress.XtraLayout.LayoutControlGroup Root;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
    }
 }

@@ -186,9 +186,9 @@ namespace QLVT_DATHANG.Forms
          {
             if (IsExistGoodsReceivedNote(txtMaPN.EditValue.ToString()))
             {
-               XtraMessageBox.Show(Cons.ErrorDuplicateOrderId, Cons.CaptionWarning,
+               XtraMessageBox.Show(Cons.ErrorDuplicatePNId, Cons.CaptionWarning,
                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               txtMaPN.Focus();
+               txtMaPN.SelectAll();
                return false;
             }
 

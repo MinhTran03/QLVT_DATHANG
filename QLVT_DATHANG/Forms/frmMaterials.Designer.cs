@@ -29,10 +29,6 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
-         System.Windows.Forms.Label mAVTLabel;
-         System.Windows.Forms.Label tENVTLabel;
-         System.Windows.Forms.Label dVTLabel;
-         System.Windows.Forms.Label sOLUONGTONLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterials));
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.bdsVT = new System.Windows.Forms.BindingSource(this.components);
@@ -45,8 +41,11 @@
          this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colSOLUONGTON = new DevExpress.XtraGrid.Columns.GridColumn();
          this.txtMaterialId = new DevExpress.XtraEditors.TextEdit();
+         this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+         this.cboDVT = new System.Windows.Forms.ComboBox();
          this.txtMaterialName = new DevExpress.XtraEditors.TextEdit();
          this.spiSLT = new DevExpress.XtraEditors.SpinEdit();
+         this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
          this.bmVT = new DevExpress.XtraBars.BarManager(this.components);
          this.bar3 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -64,8 +63,6 @@
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
          this.gbVT = new DevExpress.XtraEditors.GroupControl();
-         this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-         this.cboDVT = new System.Windows.Forms.ComboBox();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.bdsCTPX = new System.Windows.Forms.BindingSource(this.components);
          this.taCTPX = new QLVT_DATHANG.DataSetTableAdapters.CTPXTableAdapter();
@@ -74,70 +71,32 @@
          this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
          this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-         mAVTLabel = new System.Windows.Forms.Label();
-         tENVTLabel = new System.Windows.Forms.Label();
-         dVTLabel = new System.Windows.Forms.Label();
-         sOLUONGTONLabel = new System.Windows.Forms.Label();
+         this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvMaterial)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+         this.layoutControl1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).BeginInit();
          this.gbVT.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
          this.SuspendLayout();
-         // 
-         // mAVTLabel
-         // 
-         mAVTLabel.AutoSize = true;
-         mAVTLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mAVTLabel.Location = new System.Drawing.Point(145, 31);
-         mAVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         mAVTLabel.Name = "mAVTLabel";
-         mAVTLabel.Size = new System.Drawing.Size(74, 15);
-         mAVTLabel.TabIndex = 1;
-         mAVTLabel.Text = "MÃ VẬT TƯ:";
-         // 
-         // tENVTLabel
-         // 
-         tENVTLabel.AutoSize = true;
-         tENVTLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         tENVTLabel.Location = new System.Drawing.Point(145, 60);
-         tENVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         tENVTLabel.Name = "tENVTLabel";
-         tENVTLabel.Size = new System.Drawing.Size(77, 15);
-         tENVTLabel.TabIndex = 3;
-         tENVTLabel.Text = "TÊN VẬT TƯ:";
-         // 
-         // dVTLabel
-         // 
-         dVTLabel.AutoSize = true;
-         dVTLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dVTLabel.Location = new System.Drawing.Point(145, 89);
-         dVTLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         dVTLabel.Name = "dVTLabel";
-         dVTLabel.Size = new System.Drawing.Size(84, 15);
-         dVTLabel.TabIndex = 5;
-         dVTLabel.Text = "ĐƠN VỊ TÍNH:";
-         // 
-         // sOLUONGTONLabel
-         // 
-         sOLUONGTONLabel.AutoSize = true;
-         sOLUONGTONLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         sOLUONGTONLabel.Location = new System.Drawing.Point(145, 120);
-         sOLUONGTONLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         sOLUONGTONLabel.Name = "sOLUONGTONLabel";
-         sOLUONGTONLabel.Size = new System.Drawing.Size(98, 15);
-         sOLUONGTONLabel.TabIndex = 7;
-         sOLUONGTONLabel.Text = "SỐ LƯỢNG TỒN:";
          // 
          // dataSet
          // 
@@ -174,11 +133,11 @@
          this.gcVT.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcVT.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcVT.Location = new System.Drawing.Point(0, 24);
+         this.gcVT.Location = new System.Drawing.Point(0, 128);
          this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(873, 285);
+         this.gcVT.Size = new System.Drawing.Size(873, 330);
          this.gcVT.TabIndex = 0;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMaterial});
@@ -250,25 +209,51 @@
          // txtMaterialId
          // 
          this.txtMaterialId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "MAVT", true));
-         this.txtMaterialId.Location = new System.Drawing.Point(247, 28);
+         this.txtMaterialId.Location = new System.Drawing.Point(86, 12);
          this.txtMaterialId.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialId.Name = "txtMaterialId";
          this.txtMaterialId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMaterialId.Properties.Appearance.Options.UseFont = true;
          this.txtMaterialId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
          this.txtMaterialId.Properties.MaxLength = 4;
-         this.txtMaterialId.Size = new System.Drawing.Size(223, 22);
+         this.txtMaterialId.Size = new System.Drawing.Size(209, 22);
+         this.txtMaterialId.StyleController = this.layoutControl1;
          this.txtMaterialId.TabIndex = 2;
+         // 
+         // layoutControl1
+         // 
+         this.layoutControl1.Controls.Add(this.spiSLT);
+         this.layoutControl1.Controls.Add(this.cboDVT);
+         this.layoutControl1.Controls.Add(this.txtMaterialName);
+         this.layoutControl1.Controls.Add(this.txtMaterialId);
+         this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Left;
+         this.layoutControl1.Location = new System.Drawing.Point(2, 24);
+         this.layoutControl1.Name = "layoutControl1";
+         this.layoutControl1.Root = this.Root;
+         this.layoutControl1.Size = new System.Drawing.Size(596, 73);
+         this.layoutControl1.TabIndex = 9;
+         this.layoutControl1.Text = "layoutControl1";
+         // 
+         // cboDVT
+         // 
+         this.cboDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVT, "DVT", true));
+         this.cboDVT.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.cboDVT.FormattingEnabled = true;
+         this.cboDVT.Location = new System.Drawing.Point(86, 38);
+         this.cboDVT.Name = "cboDVT";
+         this.cboDVT.Size = new System.Drawing.Size(209, 23);
+         this.cboDVT.TabIndex = 6;
          // 
          // txtMaterialName
          // 
          this.txtMaterialName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "TENVT", true));
-         this.txtMaterialName.Location = new System.Drawing.Point(247, 57);
+         this.txtMaterialName.Location = new System.Drawing.Point(373, 12);
          this.txtMaterialName.Margin = new System.Windows.Forms.Padding(2);
          this.txtMaterialName.Name = "txtMaterialName";
          this.txtMaterialName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtMaterialName.Properties.Appearance.Options.UseFont = true;
-         this.txtMaterialName.Size = new System.Drawing.Size(223, 22);
+         this.txtMaterialName.Size = new System.Drawing.Size(211, 22);
+         this.txtMaterialName.StyleController = this.layoutControl1;
          this.txtMaterialName.TabIndex = 4;
          // 
          // spiSLT
@@ -279,7 +264,7 @@
             0,
             0,
             0});
-         this.spiSLT.Location = new System.Drawing.Point(247, 116);
+         this.spiSLT.Location = new System.Drawing.Point(373, 38);
          this.spiSLT.Margin = new System.Windows.Forms.Padding(2);
          this.spiSLT.Name = "spiSLT";
          this.spiSLT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,8 +273,22 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.spiSLT.Properties.IsFloatValue = false;
          this.spiSLT.Properties.Mask.EditMask = "N00";
-         this.spiSLT.Size = new System.Drawing.Size(223, 22);
+         this.spiSLT.Size = new System.Drawing.Size(211, 22);
+         this.spiSLT.StyleController = this.layoutControl1;
          this.spiSLT.TabIndex = 8;
+         // 
+         // Root
+         // 
+         this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+         this.Root.GroupBordersVisible = false;
+         this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem2,
+            this.layoutControlItem1,
+            this.layoutControlItem3,
+            this.layoutControlItem4});
+         this.Root.Name = "Root";
+         this.Root.Size = new System.Drawing.Size(596, 73);
+         this.Root.TextVisible = false;
          // 
          // bmVT
          // 
@@ -452,54 +451,23 @@
          // 
          this.gbVT.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbVT.AppearanceCaption.Options.UseFont = true;
-         this.gbVT.Controls.Add(this.pictureEdit1);
-         this.gbVT.Controls.Add(this.cboDVT);
-         this.gbVT.Controls.Add(this.txtMaterialName);
-         this.gbVT.Controls.Add(mAVTLabel);
-         this.gbVT.Controls.Add(sOLUONGTONLabel);
-         this.gbVT.Controls.Add(this.txtMaterialId);
-         this.gbVT.Controls.Add(tENVTLabel);
-         this.gbVT.Controls.Add(this.spiSLT);
-         this.gbVT.Controls.Add(dVTLabel);
-         this.gbVT.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.gbVT.Location = new System.Drawing.Point(0, 314);
+         this.gbVT.Controls.Add(this.layoutControl1);
+         this.gbVT.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gbVT.Location = new System.Drawing.Point(0, 24);
          this.gbVT.Name = "gbVT";
-         this.gbVT.Size = new System.Drawing.Size(873, 144);
+         this.gbVT.Size = new System.Drawing.Size(873, 99);
          this.gbVT.TabIndex = 2;
          this.gbVT.Text = "Thông tin Vật Tư";
          // 
-         // pictureEdit1
-         // 
-         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources.manager_clipart_material_management_3;
-         this.pictureEdit1.Location = new System.Drawing.Point(5, 27);
-         this.pictureEdit1.Name = "pictureEdit1";
-         this.pictureEdit1.Properties.AllowFocused = false;
-         this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-         this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-         this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-         this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-         this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-         this.pictureEdit1.Size = new System.Drawing.Size(135, 112);
-         this.pictureEdit1.TabIndex = 0;
-         // 
-         // cboDVT
-         // 
-         this.cboDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVT, "DVT", true));
-         this.cboDVT.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.cboDVT.FormattingEnabled = true;
-         this.cboDVT.Location = new System.Drawing.Point(247, 86);
-         this.cboDVT.Name = "cboDVT";
-         this.cboDVT.Size = new System.Drawing.Size(223, 23);
-         this.cboDVT.TabIndex = 6;
-         // 
          // splitterControl1
          // 
-         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 309);
+         this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
+         this.splitterControl1.Location = new System.Drawing.Point(0, 123);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(873, 5);
          this.splitterControl1.TabIndex = 1;
          this.splitterControl1.TabStop = false;
+         this.splitterControl1.Visible = false;
          // 
          // bdsCTPX
          // 
@@ -532,6 +500,42 @@
          // 
          this.dxErrorProvider.ContainerControl = this;
          // 
+         // layoutControlItem2
+         // 
+         this.layoutControlItem2.Control = this.txtMaterialId;
+         this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+         this.layoutControlItem2.Name = "layoutControlItem2";
+         this.layoutControlItem2.Size = new System.Drawing.Size(287, 26);
+         this.layoutControlItem2.Text = "Mã vật tư:";
+         this.layoutControlItem2.TextSize = new System.Drawing.Size(71, 13);
+         // 
+         // layoutControlItem1
+         // 
+         this.layoutControlItem1.Control = this.txtMaterialName;
+         this.layoutControlItem1.Location = new System.Drawing.Point(287, 0);
+         this.layoutControlItem1.Name = "layoutControlItem1";
+         this.layoutControlItem1.Size = new System.Drawing.Size(289, 26);
+         this.layoutControlItem1.Text = "Tên vật tư:";
+         this.layoutControlItem1.TextSize = new System.Drawing.Size(71, 13);
+         // 
+         // layoutControlItem3
+         // 
+         this.layoutControlItem3.Control = this.cboDVT;
+         this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
+         this.layoutControlItem3.Name = "layoutControlItem3";
+         this.layoutControlItem3.Size = new System.Drawing.Size(287, 27);
+         this.layoutControlItem3.Text = "Đơn vị tính:";
+         this.layoutControlItem3.TextSize = new System.Drawing.Size(71, 13);
+         // 
+         // layoutControlItem4
+         // 
+         this.layoutControlItem4.Control = this.spiSLT;
+         this.layoutControlItem4.Location = new System.Drawing.Point(287, 26);
+         this.layoutControlItem4.Name = "layoutControlItem4";
+         this.layoutControlItem4.Size = new System.Drawing.Size(289, 27);
+         this.layoutControlItem4.Text = "Số lượng tồn:";
+         this.layoutControlItem4.TextSize = new System.Drawing.Size(71, 13);
+         // 
          // frmMaterials
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,17 +557,22 @@
          ((System.ComponentModel.ISupportInitialize)(this.gcVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvMaterial)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+         this.layoutControl1.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).EndInit();
          this.gbVT.ResumeLayout(false);
-         this.gbVT.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPX)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -609,6 +618,11 @@
       private DataSetTableAdapters.CTDDHTableAdapter taCTDDH;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private System.Windows.Forms.ComboBox cboDVT;
-      private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+      private DevExpress.XtraLayout.LayoutControl layoutControl1;
+      private DevExpress.XtraLayout.LayoutControlGroup Root;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
    }
 }

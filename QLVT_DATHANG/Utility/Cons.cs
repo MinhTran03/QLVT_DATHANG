@@ -20,6 +20,7 @@ namespace QLVT_DATHANG.Utility
 
       public const string ErrorName = "Tên không hợp lệ";
       public const string ErrorDeleteSwitchedEmployee = "Không thể xóa nhân viên đã chuyển chi nhánh";
+      public const string ErrorEditSwitchedEmployee = "Không thể sửa nhân viên đã chuyển chi nhánh";
       public const string ErrorEmployeeId = "Mã nhân viên không hợp lệ";
       public const string ErrorNotNull = "Vui lòng nhập dữ liệu";
       public const string ErrorNotNullUserName = "Vui lòng nhập Tên đăng nhập";
@@ -40,6 +41,8 @@ namespace QLVT_DATHANG.Utility
       public const string ErrorDuplicateMaterialId = "Mã vật tư đã tồn tại";
       public const string ErrorDuplicateDeportId = "Mã kho đã tồn tại";
       public const string ErrorDuplicateOrderId = "Mã đơn đặt hàng đã tồn tại";
+      public const string ErrorDuplicatePNId = "Mã phiếu nhập đã tồn tại";
+      public const string ErrorDuplicatePXId = "Mã phiếu xuất đã tồn tại";
 
       public const string WarningUserCreateTK = "User không có quyền tạo tài khoản";
 

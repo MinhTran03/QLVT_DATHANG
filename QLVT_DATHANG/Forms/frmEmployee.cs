@@ -159,7 +159,8 @@ namespace QLVT_DATHANG.Forms
       private void EnableEditMode()
       {
          gcEmployee.Enabled = false;
-         gbEmployee.Enabled = true;
+         //gbEmployee.Enabled = true;
+         lcEmplyee.Enabled = true;
 
          btnAdd.Enabled = false;
          btnDel.Enabled = false;
@@ -183,7 +184,8 @@ namespace QLVT_DATHANG.Forms
          txtEmpDepartment.ReadOnly = true;
 
          gcEmployee.Enabled = true;
-         gbEmployee.Enabled = false;
+         //gbEmployee.Enabled = false;
+         lcEmplyee.Enabled = false;
 
          btnAdd.Enabled = true;
          btnDel.Enabled = true;
@@ -247,27 +249,20 @@ namespace QLVT_DATHANG.Forms
 
       private bool SaveEmployee()
       {
-         // sinh ma nv tu dong
-         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
-
-         if (!IsValidEmptyValue())
-         {
-            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
-            return false;
-         }
+         
          try
          {
             if (_buttonAction == ButtonActionType.Add &&
                IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
             {
-                  XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
-                                          MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                  txtEmpId.SelectAll();
-                  return false;
+               XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
+                                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               txtEmpId.SelectAll();
+               return false;
             }
 
             EndEdit();
-            if(_buttonAction == ButtonActionType.Add)
+            if (_buttonAction == ButtonActionType.Add)
             {
                // Lưu vô stack trạng thái nút nhấn và data bị mới
                _userDo.Push(new ButtonAction(_buttonAction, ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray));
@@ -289,7 +284,6 @@ namespace QLVT_DATHANG.Forms
          {
             bdsNV.EndEdit();
             this.taNV.Update(this.dataSet.NhanVien);
-            gbEmployee.Enabled = false;
             bdsNV.ResetCurrentItem();
             DisableEditMode();
          }
@@ -312,22 +306,29 @@ namespace QLVT_DATHANG.Forms
          EnableEditMode();
       }
 
-      private void DeleteEmployee(int position)
+      private bool IsDeleteSelectedEmployee()
       {
+         bool result = true;
+
          string phieuLap = CheckPhieuDaLap();
          if (phieuLap != null)
          {
             string text = string.Format(Cons.ErrorDeleteEmployee, phieuLap);
             XtraMessageBox.Show(text, Cons.CaptionError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            result = false;
          }
          else if (txtEmpDelStatus.Text.Equals("1"))
          {
             XtraMessageBox.Show(Cons.ErrorDeleteSwitchedEmployee, Cons.CaptionError,
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            result = false;
          }
 
+         return result;
+      }
+
+      private void DeleteSelectedEmployee()
+      {
          string ho = txtEmpFirstName.Text;
          string ten = txtEmpLastName.Text;
          var result = XtraMessageBox.Show(string.Format(Cons.AskDeleteEmployee, ho, ten), Cons.CaptionWarning,
@@ -338,7 +339,7 @@ namespace QLVT_DATHANG.Forms
             try
             {
                // lưu lại data trước khi xóa
-               _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[position]).Row.ItemArray));
+               _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray));
 
                //bdsNV.RemoveCurrent();
                //this.taNV.Update(this.dataSet.NhanVien);
@@ -390,7 +391,7 @@ namespace QLVT_DATHANG.Forms
                   if (ex.Number == MyConfig.ErrorMsgNumNotExistObject)
                      isSuccess = true;
                }
-               catch(Exception ex)
+               catch (Exception ex)
                {
                   UtilDB.ShowError(ex);
                }
@@ -462,12 +463,19 @@ namespace QLVT_DATHANG.Forms
 
       private void btnEdit_ItemClick(object sender, ItemClickEventArgs e)
       {
+         if (txtEmpDelStatus.Text.Equals("1"))
+         {
+            XtraMessageBox.Show(Cons.ErrorEditSwitchedEmployee, Cons.CaptionError,
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+         }
          EditEmployee();
       }
 
       private void btnDel_ItemClick(object sender, ItemClickEventArgs e)
       {
-         DeleteEmployee(bdsNV.Position);
+         if(IsDeleteSelectedEmployee())
+            DeleteSelectedEmployee();
       }
 
       private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
@@ -483,6 +491,16 @@ namespace QLVT_DATHANG.Forms
       private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
       {
          UtilDB.TrimDataInControl(gbEmployee);
+
+         // sinh ma nv tu dong
+         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
+
+         if (!IsValidEmptyValue())
+         {
+            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
+            return;
+         }
+
          SaveEmployee();
       }
 
@@ -496,10 +514,7 @@ namespace QLVT_DATHANG.Forms
          dxErrorProvider.ClearErrors();
          try
          {
-            //txtEmpDep.Text = null;
-            gbEmployee.Enabled = false;
             bdsNV.CancelEdit();
-            //bdsNV.ResetCurrentItem();
             bdsNV.Position = _currentPosition;
             if (_buttonAction == ButtonActionType.Edit)
                _userDo.Pop();
@@ -519,7 +534,7 @@ namespace QLVT_DATHANG.Forms
 
       private void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
       {
-         if (gbEmployee.Enabled == true)
+         if (lcEmplyee.Enabled == true)
          {
             var result = XtraMessageBox.Show(Cons.AskExitWhileEditing, Cons.CaptionQuestion,
                                        MessageBoxButtons.YesNoCancel,
@@ -590,6 +605,25 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
+      private void btnSwitchDepartment_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         object[] switchEmployeeData = ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray;
+         if (int.Parse(switchEmployeeData[7].ToString()) == 1)
+         {
+            XtraMessageBox.Show(Cons.ErrorSwitchEmployeeAlready, Cons.CaptionError,
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+         }
+         FlyoutAction flyoutAction = new FlyoutAction()
+         {
+            Caption = "Chuyển chi nhánh",
+         };
+         int id = int.Parse(switchEmployeeData[0].ToString());
+         string fullName = $"{switchEmployeeData[1].ToString()} {switchEmployeeData[2].ToString()}";
+         frmSwitchDepartment frmSwitch = new frmSwitchDepartment(int.Parse(switchEmployeeData[0].ToString()), fullName);
+         CustomFlyoutDialog.ShowForm(this, flyoutAction, frmSwitch);
+      }
+
       #endregion
 
       #region VALIDATE
@@ -656,23 +690,5 @@ namespace QLVT_DATHANG.Forms
 
       #endregion
 
-      private void btnSwitchDepartment_ItemClick(object sender, ItemClickEventArgs e)
-      {
-         object[] switchEmployeeData = ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray;
-         if (int.Parse(switchEmployeeData[7].ToString()) == 1)
-         {
-            XtraMessageBox.Show(Cons.ErrorSwitchEmployeeAlready, Cons.CaptionError,
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
-         }
-         FlyoutAction flyoutAction = new FlyoutAction()
-         {
-            Caption = "Chuyển chi nhánh",
-         };
-         int id = int.Parse(switchEmployeeData[0].ToString());
-         string fullName = $"{switchEmployeeData[1].ToString()} {switchEmployeeData[2].ToString()}";
-         frmSwitchDepartment frmSwitch = new frmSwitchDepartment(int.Parse(switchEmployeeData[0].ToString()), fullName);
-         CustomFlyoutDialog.ShowForm(this, flyoutAction, frmSwitch);
-      }
    }
 }

@@ -238,7 +238,7 @@ namespace QLVT_DATHANG.Forms
                   // xóa dữ liệu mới
                   //position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
                   //bdsDepot.Remove((DataRowView)bdsDepot[position]);
-                  if (UtilDB.DeleteInDB("Kho", "MAKHO", txtDepotId.EditValue))
+                  if (UtilDB.DeleteInDB("Kho", "MAKHO", action.SaveItems[0]))
                   {
                      this.dataSet.EnforceConstraints = false;
                      this.taDepot.Fill(this.dataSet.Kho);
