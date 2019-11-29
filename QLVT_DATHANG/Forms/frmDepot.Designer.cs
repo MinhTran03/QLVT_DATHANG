@@ -55,10 +55,16 @@
          this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
          this.gbDepot = new DevExpress.XtraEditors.GroupControl();
+         this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+         this.txtEmpDepartment = new DevExpress.XtraEditors.TextEdit();
+         this.txtDepotAddress = new DevExpress.XtraEditors.TextEdit();
          this.txtDepotId = new DevExpress.XtraEditors.TextEdit();
          this.txtDepotName = new DevExpress.XtraEditors.TextEdit();
-         this.txtDepotAddress = new DevExpress.XtraEditors.TextEdit();
-         this.txtEmpDepartment = new DevExpress.XtraEditors.TextEdit();
+         this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+         this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
@@ -66,12 +72,6 @@
          this.bdsCN = new System.Windows.Forms.BindingSource(this.components);
          this.taCN = new QLVT_DATHANG.DataSetTableAdapters.ChiNhanhTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-         this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-         this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-         this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-         this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-         this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-         this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
          ((System.ComponentModel.ISupportInitialize)(this.bmOrder)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDepot)).BeginInit();
@@ -79,21 +79,21 @@
          ((System.ComponentModel.ISupportInitialize)(this.gvDepot)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDepot)).BeginInit();
          this.gbDepot.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDepotId.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDepotName.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDepotAddress.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
-         this.pnPickDepartment.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtDepotAddress.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtDepotId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtDepotName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
+         this.pnPickDepartment.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
          this.SuspendLayout();
          // 
          // bmOrder
@@ -338,56 +338,120 @@
          this.gbDepot.TabIndex = 6;
          this.gbDepot.Text = "Thông Tin Kho";
          // 
+         // layoutControl1
+         // 
+         this.layoutControl1.Controls.Add(this.txtEmpDepartment);
+         this.layoutControl1.Controls.Add(this.txtDepotAddress);
+         this.layoutControl1.Controls.Add(this.txtDepotId);
+         this.layoutControl1.Controls.Add(this.txtDepotName);
+         this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Left;
+         this.layoutControl1.Location = new System.Drawing.Point(2, 20);
+         this.layoutControl1.Name = "layoutControl1";
+         this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(672, 30, 650, 400);
+         this.layoutControl1.Root = this.Root;
+         this.layoutControl1.Size = new System.Drawing.Size(618, 68);
+         this.layoutControl1.TabIndex = 8;
+         this.layoutControl1.Text = "layoutControl1";
+         // 
+         // txtEmpDepartment
+         // 
+         this.txtEmpDepartment.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "MACN", true));
+         this.txtEmpDepartment.Location = new System.Drawing.Point(366, 36);
+         this.txtEmpDepartment.MenuManager = this.bmOrder;
+         this.txtEmpDepartment.Name = "txtEmpDepartment";
+         this.txtEmpDepartment.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtEmpDepartment.Properties.Appearance.Options.UseFont = true;
+         this.txtEmpDepartment.Size = new System.Drawing.Size(240, 20);
+         this.txtEmpDepartment.StyleController = this.layoutControl1;
+         this.txtEmpDepartment.TabIndex = 7;
+         // 
+         // txtDepotAddress
+         // 
+         this.txtDepotAddress.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "DIACHI", true));
+         this.txtDepotAddress.Location = new System.Drawing.Point(72, 36);
+         this.txtDepotAddress.MenuManager = this.bmOrder;
+         this.txtDepotAddress.Name = "txtDepotAddress";
+         this.txtDepotAddress.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtDepotAddress.Properties.Appearance.Options.UseFont = true;
+         this.txtDepotAddress.Size = new System.Drawing.Size(230, 20);
+         this.txtDepotAddress.StyleController = this.layoutControl1;
+         this.txtDepotAddress.TabIndex = 5;
+         // 
          // txtDepotId
          // 
          this.txtDepotId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "MAKHO", true));
-         this.txtDepotId.Location = new System.Drawing.Point(73, 12);
+         this.txtDepotId.Location = new System.Drawing.Point(72, 12);
          this.txtDepotId.MenuManager = this.bmOrder;
          this.txtDepotId.Name = "txtDepotId";
          this.txtDepotId.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtDepotId.Properties.Appearance.Options.UseFont = true;
          this.txtDepotId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
          this.txtDepotId.Properties.MaxLength = 4;
-         this.txtDepotId.Size = new System.Drawing.Size(229, 20);
+         this.txtDepotId.Size = new System.Drawing.Size(230, 20);
          this.txtDepotId.StyleController = this.layoutControl1;
          this.txtDepotId.TabIndex = 1;
          // 
          // txtDepotName
          // 
          this.txtDepotName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "TENKHO", true));
-         this.txtDepotName.Location = new System.Drawing.Point(367, 12);
+         this.txtDepotName.Location = new System.Drawing.Point(366, 12);
          this.txtDepotName.MenuManager = this.bmOrder;
          this.txtDepotName.Name = "txtDepotName";
          this.txtDepotName.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.txtDepotName.Properties.Appearance.Options.UseFont = true;
          this.txtDepotName.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-         this.txtDepotName.Size = new System.Drawing.Size(239, 20);
+         this.txtDepotName.Size = new System.Drawing.Size(240, 20);
          this.txtDepotName.StyleController = this.layoutControl1;
          this.txtDepotName.TabIndex = 3;
          // 
-         // txtDepotAddress
+         // Root
          // 
-         this.txtDepotAddress.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "DIACHI", true));
-         this.txtDepotAddress.Location = new System.Drawing.Point(73, 36);
-         this.txtDepotAddress.MenuManager = this.bmOrder;
-         this.txtDepotAddress.Name = "txtDepotAddress";
-         this.txtDepotAddress.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtDepotAddress.Properties.Appearance.Options.UseFont = true;
-         this.txtDepotAddress.Size = new System.Drawing.Size(229, 20);
-         this.txtDepotAddress.StyleController = this.layoutControl1;
-         this.txtDepotAddress.TabIndex = 5;
+         this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+         this.Root.GroupBordersVisible = false;
+         this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem4});
+         this.Root.Name = "Root";
+         this.Root.Size = new System.Drawing.Size(618, 68);
+         this.Root.TextVisible = false;
          // 
-         // txtEmpDepartment
+         // layoutControlItem1
          // 
-         this.txtEmpDepartment.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDepot, "MACN", true));
-         this.txtEmpDepartment.Location = new System.Drawing.Point(367, 36);
-         this.txtEmpDepartment.MenuManager = this.bmOrder;
-         this.txtEmpDepartment.Name = "txtEmpDepartment";
-         this.txtEmpDepartment.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.txtEmpDepartment.Properties.Appearance.Options.UseFont = true;
-         this.txtEmpDepartment.Size = new System.Drawing.Size(239, 20);
-         this.txtEmpDepartment.StyleController = this.layoutControl1;
-         this.txtEmpDepartment.TabIndex = 7;
+         this.layoutControlItem1.Control = this.txtDepotId;
+         this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+         this.layoutControlItem1.Name = "layoutControlItem1";
+         this.layoutControlItem1.Size = new System.Drawing.Size(294, 24);
+         this.layoutControlItem1.Text = "Mã kho:";
+         this.layoutControlItem1.TextSize = new System.Drawing.Size(57, 13);
+         // 
+         // layoutControlItem2
+         // 
+         this.layoutControlItem2.Control = this.txtDepotName;
+         this.layoutControlItem2.Location = new System.Drawing.Point(294, 0);
+         this.layoutControlItem2.Name = "layoutControlItem2";
+         this.layoutControlItem2.Size = new System.Drawing.Size(304, 24);
+         this.layoutControlItem2.Text = "Tên kho:";
+         this.layoutControlItem2.TextSize = new System.Drawing.Size(57, 13);
+         // 
+         // layoutControlItem3
+         // 
+         this.layoutControlItem3.Control = this.txtDepotAddress;
+         this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
+         this.layoutControlItem3.Name = "layoutControlItem3";
+         this.layoutControlItem3.Size = new System.Drawing.Size(294, 24);
+         this.layoutControlItem3.Text = "Địa chỉ:";
+         this.layoutControlItem3.TextSize = new System.Drawing.Size(57, 13);
+         // 
+         // layoutControlItem4
+         // 
+         this.layoutControlItem4.Control = this.txtEmpDepartment;
+         this.layoutControlItem4.Location = new System.Drawing.Point(294, 24);
+         this.layoutControlItem4.Name = "layoutControlItem4";
+         this.layoutControlItem4.Size = new System.Drawing.Size(304, 24);
+         this.layoutControlItem4.Text = "Chi nhánh:";
+         this.layoutControlItem4.TextSize = new System.Drawing.Size(57, 13);
          // 
          // pnPickDepartment
          // 
@@ -442,70 +506,6 @@
          // 
          this.dxErrorProvider.ContainerControl = this;
          // 
-         // layoutControl1
-         // 
-         this.layoutControl1.Controls.Add(this.txtEmpDepartment);
-         this.layoutControl1.Controls.Add(this.txtDepotAddress);
-         this.layoutControl1.Controls.Add(this.txtDepotId);
-         this.layoutControl1.Controls.Add(this.txtDepotName);
-         this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Left;
-         this.layoutControl1.Location = new System.Drawing.Point(2, 20);
-         this.layoutControl1.Name = "layoutControl1";
-         this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(672, 30, 650, 400);
-         this.layoutControl1.Root = this.Root;
-         this.layoutControl1.Size = new System.Drawing.Size(618, 68);
-         this.layoutControl1.TabIndex = 8;
-         this.layoutControl1.Text = "layoutControl1";
-         // 
-         // Root
-         // 
-         this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-         this.Root.GroupBordersVisible = false;
-         this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4});
-         this.Root.Name = "Root";
-         this.Root.Size = new System.Drawing.Size(618, 68);
-         this.Root.TextVisible = false;
-         // 
-         // layoutControlItem1
-         // 
-         this.layoutControlItem1.Control = this.txtDepotId;
-         this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-         this.layoutControlItem1.Name = "layoutControlItem1";
-         this.layoutControlItem1.Size = new System.Drawing.Size(294, 24);
-         this.layoutControlItem1.Text = "Mã kho:";
-         this.layoutControlItem1.TextSize = new System.Drawing.Size(57, 13);
-         // 
-         // layoutControlItem2
-         // 
-         this.layoutControlItem2.Control = this.txtDepotName;
-         this.layoutControlItem2.Location = new System.Drawing.Point(294, 0);
-         this.layoutControlItem2.Name = "layoutControlItem2";
-         this.layoutControlItem2.Size = new System.Drawing.Size(304, 24);
-         this.layoutControlItem2.Text = "Tên kho:";
-         this.layoutControlItem2.TextSize = new System.Drawing.Size(57, 13);
-         // 
-         // layoutControlItem3
-         // 
-         this.layoutControlItem3.Control = this.txtDepotAddress;
-         this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
-         this.layoutControlItem3.Name = "layoutControlItem3";
-         this.layoutControlItem3.Size = new System.Drawing.Size(294, 24);
-         this.layoutControlItem3.Text = "Địa chỉ:";
-         this.layoutControlItem3.TextSize = new System.Drawing.Size(57, 13);
-         // 
-         // layoutControlItem4
-         // 
-         this.layoutControlItem4.Control = this.txtEmpDepartment;
-         this.layoutControlItem4.Location = new System.Drawing.Point(294, 24);
-         this.layoutControlItem4.Name = "layoutControlItem4";
-         this.layoutControlItem4.Size = new System.Drawing.Size(304, 24);
-         this.layoutControlItem4.Text = "Chi nhánh:";
-         this.layoutControlItem4.TextSize = new System.Drawing.Size(57, 13);
-         // 
          // frmDepot
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,6 +521,7 @@
          this.Controls.Add(this.barDockControl1);
          this.Name = "frmDepot";
          this.Text = "QUẢN LÝ KHO";
+         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDepot_FormClosing);
          this.Load += new System.EventHandler(this.frmDepot_Load);
          ((System.ComponentModel.ISupportInitialize)(this.bmOrder)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
@@ -529,22 +530,22 @@
          ((System.ComponentModel.ISupportInitialize)(this.gvDepot)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDepot)).EndInit();
          this.gbDepot.ResumeLayout(false);
-         ((System.ComponentModel.ISupportInitialize)(this.txtDepotId.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDepotName.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDepotAddress.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
-         this.pnPickDepartment.ResumeLayout(false);
-         this.pnPickDepartment.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
          this.layoutControl1.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmpDepartment.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtDepotAddress.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtDepotId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtDepotName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
+         this.pnPickDepartment.ResumeLayout(false);
+         this.pnPickDepartment.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsCN)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 

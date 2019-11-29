@@ -249,7 +249,15 @@ namespace QLVT_DATHANG.Forms
 
       private bool SaveEmployee()
       {
-         
+         // sinh ma nv tu dong
+         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
+
+         if (!IsValidEmptyValue())
+         {
+            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
+            return false;
+         }
+
          try
          {
             if (_buttonAction == ButtonActionType.Add &&
@@ -491,15 +499,6 @@ namespace QLVT_DATHANG.Forms
       private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
       {
          UtilDB.TrimDataInControl(gbEmployee);
-
-         // sinh ma nv tu dong
-         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
-
-         if (!IsValidEmptyValue())
-         {
-            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
-            return;
-         }
 
          SaveEmployee();
       }

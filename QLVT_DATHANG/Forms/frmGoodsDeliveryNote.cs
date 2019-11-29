@@ -292,5 +292,32 @@ namespace QLVT_DATHANG.Forms
       {
 
       }
+
+      private void frmGoodsDeliveryNote_FormClosing(object sender, FormClosingEventArgs e)
+      {
+         if (gbDeliveryNote.Enabled == true)
+         {
+            var result = XtraMessageBox.Show(Cons.AskExitWhileEditing, Cons.CaptionQuestion,
+                                       MessageBoxButtons.YesNoCancel,
+                                       MessageBoxIcon.Question);
+            switch (result)
+            {
+               case DialogResult.Yes:
+                  // kiểm tra nút được nhấn [thêm, sửa] => [Lưu lại, update]
+                  e.Cancel = !(SaveDeliveryNote());
+                  break;
+               case DialogResult.No:
+                  // thoát bất chấp
+                  btnCancelEdit.PerformClick();
+                  break;
+               case DialogResult.Cancel:
+                  // hủy thoát
+                  e.Cancel = true;
+                  break;
+               default:
+                  break;
+            }
+         }
+      }
    }
 }

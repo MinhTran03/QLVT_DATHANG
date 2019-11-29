@@ -545,7 +545,7 @@
          this.gcOrderDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
          dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
          dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
-         dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
          dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
          dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSlateGray;
          dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -561,7 +561,7 @@
          this.gcOrderDetail.DataSource = this.bdsCTDDH;
          dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
          dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-         dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F);
          dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
          dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
          dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
@@ -576,7 +576,7 @@
          this.gcOrderDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
          dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
          dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-         dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F);
+         dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F);
          dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
          dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
          dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -710,6 +710,7 @@
          this.Controls.Add(this.barDockControlTop);
          this.Name = "frmOrders";
          this.Text = "QUẢN LÝ ĐƠN ĐẶT HÀNG";
+         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOrders_FormClosing);
          this.Load += new System.EventHandler(this.frmOrders_Load);
          this.Resize += new System.EventHandler(this.frmOrders_Resize);
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).EndInit();

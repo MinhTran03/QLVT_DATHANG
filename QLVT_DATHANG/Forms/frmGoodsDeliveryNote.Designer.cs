@@ -118,7 +118,7 @@
          mAPXLabel.AutoSize = true;
          mAPXLabel.Location = new System.Drawing.Point(83, 40);
          mAPXLabel.Name = "mAPXLabel";
-         mAPXLabel.Size = new System.Drawing.Size(38, 13);
+         mAPXLabel.Size = new System.Drawing.Size(39, 13);
          mAPXLabel.TabIndex = 0;
          mAPXLabel.Text = "MAPX:";
          // 
@@ -127,7 +127,7 @@
          nGAYLabel.AutoSize = true;
          nGAYLabel.Location = new System.Drawing.Point(83, 63);
          nGAYLabel.Name = "nGAYLabel";
-         nGAYLabel.Size = new System.Drawing.Size(38, 13);
+         nGAYLabel.Size = new System.Drawing.Size(37, 13);
          nGAYLabel.TabIndex = 2;
          nGAYLabel.Text = "NGAY:";
          // 
@@ -136,7 +136,7 @@
          hOTENKHLabel.AutoSize = true;
          hOTENKHLabel.Location = new System.Drawing.Point(83, 85);
          hOTENKHLabel.Name = "hOTENKHLabel";
-         hOTENKHLabel.Size = new System.Drawing.Size(58, 13);
+         hOTENKHLabel.Size = new System.Drawing.Size(61, 13);
          hOTENKHLabel.TabIndex = 4;
          hOTENKHLabel.Text = "HOTENKH:";
          // 
@@ -145,7 +145,7 @@
          mANVLabel.AutoSize = true;
          mANVLabel.Location = new System.Drawing.Point(83, 108);
          mANVLabel.Name = "mANVLabel";
-         mANVLabel.Size = new System.Drawing.Size(39, 13);
+         mANVLabel.Size = new System.Drawing.Size(42, 13);
          mANVLabel.TabIndex = 6;
          mANVLabel.Text = "MANV:";
          // 
@@ -580,7 +580,7 @@
          // 
          this.labelControl1.Location = new System.Drawing.Point(12, 9);
          this.labelControl1.Name = "labelControl1";
-         this.labelControl1.Size = new System.Drawing.Size(81, 13);
+         this.labelControl1.Size = new System.Drawing.Size(89, 13);
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
@@ -623,6 +623,7 @@
          this.Controls.Add(this.barDockControlTop);
          this.Name = "frmGoodsDeliveryNote";
          this.Text = "QUẢN LÝ PHIẾU XUẤT";
+         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGoodsDeliveryNote_FormClosing);
          this.Load += new System.EventHandler(this.frmGoodsDeliveryNote_Load);
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();

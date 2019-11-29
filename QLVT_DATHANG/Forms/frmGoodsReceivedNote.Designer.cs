@@ -34,7 +34,6 @@
          System.Windows.Forms.Label masoDDHLabel;
          System.Windows.Forms.Label mANVLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoodsReceivedNote));
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
@@ -123,7 +122,7 @@
          // 
          mAPNLabel.AutoSize = true;
          mAPNLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mAPNLabel.Location = new System.Drawing.Point(38, 31);
+         mAPNLabel.Location = new System.Drawing.Point(33, 27);
          mAPNLabel.Name = "mAPNLabel";
          mAPNLabel.Size = new System.Drawing.Size(90, 15);
          mAPNLabel.TabIndex = 0;
@@ -133,7 +132,7 @@
          // 
          nGAYLabel.AutoSize = true;
          nGAYLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         nGAYLabel.Location = new System.Drawing.Point(38, 98);
+         nGAYLabel.Location = new System.Drawing.Point(33, 85);
          nGAYLabel.Name = "nGAYLabel";
          nGAYLabel.Size = new System.Drawing.Size(58, 15);
          nGAYLabel.TabIndex = 4;
@@ -143,7 +142,7 @@
          // 
          masoDDHLabel.AutoSize = true;
          masoDDHLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         masoDDHLabel.Location = new System.Drawing.Point(38, 65);
+         masoDDHLabel.Location = new System.Drawing.Point(33, 56);
          masoDDHLabel.Name = "masoDDHLabel";
          masoDDHLabel.Size = new System.Drawing.Size(116, 15);
          masoDDHLabel.TabIndex = 2;
@@ -153,7 +152,7 @@
          // 
          mANVLabel.AutoSize = true;
          mANVLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         mANVLabel.Location = new System.Drawing.Point(38, 132);
+         mANVLabel.Location = new System.Drawing.Point(33, 114);
          mANVLabel.Name = "mANVLabel";
          mANVLabel.Size = new System.Drawing.Size(64, 15);
          mANVLabel.TabIndex = 6;
@@ -244,15 +243,15 @@
          this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.bmPN;
-         this.barDockControlTop.Size = new System.Drawing.Size(1104, 24);
+         this.barDockControlTop.Size = new System.Drawing.Size(946, 24);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 492);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 426);
          this.barDockControlBottom.Manager = this.bmPN;
-         this.barDockControlBottom.Size = new System.Drawing.Size(1104, 0);
+         this.barDockControlBottom.Size = new System.Drawing.Size(946, 0);
          // 
          // barDockControlLeft
          // 
@@ -260,15 +259,15 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 468);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 402);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(1104, 24);
+         this.barDockControlRight.Location = new System.Drawing.Point(946, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 468);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 402);
          // 
          // pnPickDepartment
          // 
@@ -277,15 +276,15 @@
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
          this.pnPickDepartment.Name = "pnPickDepartment";
-         this.pnPickDepartment.Size = new System.Drawing.Size(1104, 35);
+         this.pnPickDepartment.Size = new System.Drawing.Size(946, 30);
          this.pnPickDepartment.TabIndex = 0;
          this.pnPickDepartment.Visible = false;
          // 
          // labelControl1
          // 
-         this.labelControl1.Location = new System.Drawing.Point(14, 10);
+         this.labelControl1.Location = new System.Drawing.Point(12, 9);
          this.labelControl1.Name = "labelControl1";
-         this.labelControl1.Size = new System.Drawing.Size(92, 15);
+         this.labelControl1.Size = new System.Drawing.Size(89, 13);
          this.labelControl1.TabIndex = 0;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
          // 
@@ -295,9 +294,9 @@
          this.cboDeployment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cboDeployment.FlatStyle = System.Windows.Forms.FlatStyle.System;
          this.cboDeployment.FormattingEnabled = true;
-         this.cboDeployment.Location = new System.Drawing.Point(115, 6);
+         this.cboDeployment.Location = new System.Drawing.Point(99, 5);
          this.cboDeployment.Name = "cboDeployment";
-         this.cboDeployment.Size = new System.Drawing.Size(224, 23);
+         this.cboDeployment.Size = new System.Drawing.Size(193, 21);
          this.cboDeployment.TabIndex = 1;
          // 
          // dataSet
@@ -333,11 +332,11 @@
          // 
          this.gcReceivedNote.DataSource = this.bdsPN;
          this.gcReceivedNote.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gcReceivedNote.Location = new System.Drawing.Point(0, 59);
+         this.gcReceivedNote.Location = new System.Drawing.Point(0, 54);
          this.gcReceivedNote.MainView = this.gvReceivedNote;
          this.gcReceivedNote.MenuManager = this.bmPN;
          this.gcReceivedNote.Name = "gcReceivedNote";
-         this.gcReceivedNote.Size = new System.Drawing.Size(1104, 262);
+         this.gcReceivedNote.Size = new System.Drawing.Size(946, 223);
          this.gcReceivedNote.TabIndex = 1;
          this.gcReceivedNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvReceivedNote});
@@ -349,7 +348,6 @@
             this.colNGAY,
             this.colMasoDDH,
             this.colMANV});
-         this.gvReceivedNote.DetailHeight = 404;
          this.gvReceivedNote.GridControl = this.gcReceivedNote;
          this.gvReceivedNote.Name = "gvReceivedNote";
          this.gvReceivedNote.OptionsBehavior.Editable = false;
@@ -360,61 +358,54 @@
          // colMAPN
          // 
          this.colMAPN.FieldName = "MAPN";
-         this.colMAPN.MinWidth = 23;
          this.colMAPN.Name = "colMAPN";
          this.colMAPN.Visible = true;
          this.colMAPN.VisibleIndex = 0;
-         this.colMAPN.Width = 105;
+         this.colMAPN.Width = 90;
          // 
          // colNGAY
          // 
          this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
          this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.colNGAY.FieldName = "NGAY";
-         this.colNGAY.MinWidth = 23;
          this.colNGAY.Name = "colNGAY";
          this.colNGAY.Visible = true;
          this.colNGAY.VisibleIndex = 1;
-         this.colNGAY.Width = 87;
          // 
          // colMasoDDH
          // 
          this.colMasoDDH.FieldName = "MasoDDH";
-         this.colMasoDDH.MinWidth = 23;
          this.colMasoDDH.Name = "colMasoDDH";
          this.colMasoDDH.Visible = true;
          this.colMasoDDH.VisibleIndex = 2;
-         this.colMasoDDH.Width = 87;
          // 
          // colMANV
          // 
          this.colMANV.FieldName = "MANV";
-         this.colMANV.MinWidth = 23;
          this.colMANV.Name = "colMANV";
          this.colMANV.Visible = true;
          this.colMANV.VisibleIndex = 3;
-         this.colMANV.Width = 87;
          // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 321);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 277);
          this.splitterControl1.Name = "splitterControl1";
-         this.splitterControl1.Size = new System.Drawing.Size(1104, 5);
+         this.splitterControl1.Size = new System.Drawing.Size(946, 5);
          this.splitterControl1.TabIndex = 2;
          this.splitterControl1.TabStop = false;
          // 
          // sccReceived
          // 
          this.sccReceived.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.sccReceived.Location = new System.Drawing.Point(0, 326);
+         this.sccReceived.Location = new System.Drawing.Point(0, 282);
          this.sccReceived.Name = "sccReceived";
          this.sccReceived.Panel1.Controls.Add(this.gbReceivedNote);
          this.sccReceived.Panel1.Text = "Panel1";
          this.sccReceived.Panel2.Controls.Add(this.gbCTPN);
          this.sccReceived.Panel2.Text = "Panel2";
-         this.sccReceived.Size = new System.Drawing.Size(1104, 166);
-         this.sccReceived.SplitterPosition = 551;
+         this.sccReceived.Size = new System.Drawing.Size(946, 144);
+         this.sccReceived.SplitterPosition = 472;
          this.sccReceived.TabIndex = 28;
          // 
          // gbReceivedNote
@@ -432,7 +423,7 @@
          this.gbReceivedNote.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbReceivedNote.Location = new System.Drawing.Point(0, 0);
          this.gbReceivedNote.Name = "gbReceivedNote";
-         this.gbReceivedNote.Size = new System.Drawing.Size(551, 166);
+         this.gbReceivedNote.Size = new System.Drawing.Size(472, 144);
          this.gbReceivedNote.TabIndex = 0;
          this.gbReceivedNote.Text = "Thông tin Phiếu Nhập";
          // 
@@ -441,7 +432,7 @@
          this.lkeEmployee.CausesValidation = false;
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsDSNV, "MANV", true));
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "MANV", true));
-         this.lkeEmployee.Location = new System.Drawing.Point(181, 128);
+         this.lkeEmployee.Location = new System.Drawing.Point(155, 111);
          this.lkeEmployee.MenuManager = this.bmPN;
          this.lkeEmployee.Name = "lkeEmployee";
          this.lkeEmployee.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -456,7 +447,7 @@
          this.lkeEmployee.Properties.PopupView = this.gridView1;
          this.lkeEmployee.Properties.ReadOnly = true;
          this.lkeEmployee.Properties.ValueMember = "MANV";
-         this.lkeEmployee.Size = new System.Drawing.Size(201, 22);
+         this.lkeEmployee.Size = new System.Drawing.Size(172, 22);
          this.lkeEmployee.TabIndex = 7;
          // 
          // bdsDSNV
@@ -475,7 +466,7 @@
          // 
          this.lkeMaDDH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "MasoDDH", true));
          this.lkeMaDDH.EditValue = "";
-         this.lkeMaDDH.Location = new System.Drawing.Point(181, 61);
+         this.lkeMaDDH.Location = new System.Drawing.Point(155, 53);
          this.lkeMaDDH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.lkeMaDDH.MenuManager = this.bmPN;
          this.lkeMaDDH.Name = "lkeMaDDH";
@@ -488,7 +479,7 @@
          this.lkeMaDDH.Properties.NullText = "";
          this.lkeMaDDH.Properties.PopupView = this.searchLookUpEdit1View;
          this.lkeMaDDH.Properties.ValueMember = "MasoDDH";
-         this.lkeMaDDH.Size = new System.Drawing.Size(201, 22);
+         this.lkeMaDDH.Size = new System.Drawing.Size(172, 22);
          this.lkeMaDDH.TabIndex = 3;
          // 
          // bdsDDH
@@ -506,7 +497,7 @@
          // txtMaPN
          // 
          this.txtMaPN.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "MAPN", true));
-         this.txtMaPN.Location = new System.Drawing.Point(181, 28);
+         this.txtMaPN.Location = new System.Drawing.Point(155, 24);
          this.txtMaPN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.txtMaPN.MenuManager = this.bmPN;
          this.txtMaPN.Name = "txtMaPN";
@@ -514,14 +505,14 @@
          this.txtMaPN.Properties.Appearance.Options.UseFont = true;
          this.txtMaPN.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
          this.txtMaPN.Properties.MaxLength = 8;
-         this.txtMaPN.Size = new System.Drawing.Size(201, 22);
+         this.txtMaPN.Size = new System.Drawing.Size(172, 22);
          this.txtMaPN.TabIndex = 1;
          // 
          // txtDate
          // 
          this.txtDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "NGAY", true));
          this.txtDate.EditValue = null;
-         this.txtDate.Location = new System.Drawing.Point(181, 95);
+         this.txtDate.Location = new System.Drawing.Point(155, 82);
          this.txtDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.txtDate.MenuManager = this.bmPN;
          this.txtDate.Name = "txtDate";
@@ -537,7 +528,7 @@
          this.txtDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.txtDate.Properties.Mask.EditMask = "dd/MM/yyyy";
          this.txtDate.Properties.ReadOnly = true;
-         this.txtDate.Size = new System.Drawing.Size(201, 22);
+         this.txtDate.Size = new System.Drawing.Size(172, 22);
          this.txtDate.TabIndex = 5;
          // 
          // gbCTPN
@@ -549,7 +540,7 @@
          this.gbCTPN.Location = new System.Drawing.Point(0, 0);
          this.gbCTPN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.gbCTPN.Name = "gbCTPN";
-         this.gbCTPN.Size = new System.Drawing.Size(548, 166);
+         this.gbCTPN.Size = new System.Drawing.Size(469, 144);
          this.gbCTPN.TabIndex = 0;
          this.gbCTPN.Text = " Chi tiết Phiếu Nhập";
          // 
@@ -568,14 +559,6 @@
          this.gcCTPN.ContextMenuStrip = this.cmsCTPN;
          this.gcCTPN.Cursor = System.Windows.Forms.Cursors.Default;
          this.gcCTPN.DataSource = this.bdsCTPN;
-         dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-         dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-         dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(70)))), ((int)(((byte)(68)))));
-         dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-         this.gcCTPN.DefaultCellStyle = dataGridViewCellStyle2;
          this.gcCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcCTPN.Location = new System.Drawing.Point(2, 22);
          this.gcCTPN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -583,7 +566,7 @@
          this.gcCTPN.ReadOnly = true;
          this.gcCTPN.RowHeadersVisible = false;
          this.gcCTPN.RowTemplate.Height = 24;
-         this.gcCTPN.Size = new System.Drawing.Size(544, 142);
+         this.gcCTPN.Size = new System.Drawing.Size(465, 120);
          this.gcCTPN.TabIndex = 0;
          // 
          // dataGridViewTextBoxColumn1
@@ -669,10 +652,10 @@
          // 
          // frmGoodsReceivedNote
          // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(1104, 492);
+         this.ClientSize = new System.Drawing.Size(946, 426);
          this.Controls.Add(this.gcReceivedNote);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
@@ -683,6 +666,7 @@
          this.Controls.Add(this.barDockControlTop);
          this.Name = "frmGoodsReceivedNote";
          this.Text = "QUẢN LÝ PHIẾU NHẬP";
+         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGoodsReceivedNote_FormClosing);
          this.Load += new System.EventHandler(this.GoodsReceivedNote_Load);
          this.Resize += new System.EventHandler(this.frmGoodsReceivedNote_Resize);
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).EndInit();

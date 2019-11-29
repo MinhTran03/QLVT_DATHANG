@@ -42,10 +42,14 @@
          this.colSOLUONGTON = new DevExpress.XtraGrid.Columns.GridColumn();
          this.txtMaterialId = new DevExpress.XtraEditors.TextEdit();
          this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+         this.spiSLT = new DevExpress.XtraEditors.SpinEdit();
          this.cboDVT = new System.Windows.Forms.ComboBox();
          this.txtMaterialName = new DevExpress.XtraEditors.TextEdit();
-         this.spiSLT = new DevExpress.XtraEditors.SpinEdit();
          this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+         this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
          this.bmVT = new DevExpress.XtraBars.BarManager(this.components);
          this.bar3 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -71,10 +75,6 @@
          this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
          this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-         this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-         this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-         this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-         this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcVT)).BeginInit();
@@ -82,9 +82,13 @@
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).BeginInit();
          this.gbVT.SuspendLayout();
@@ -92,10 +96,6 @@
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
          this.SuspendLayout();
          // 
          // dataSet
@@ -234,6 +234,27 @@
          this.layoutControl1.TabIndex = 9;
          this.layoutControl1.Text = "layoutControl1";
          // 
+         // spiSLT
+         // 
+         this.spiSLT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "SOLUONGTON", true));
+         this.spiSLT.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+         this.spiSLT.Location = new System.Drawing.Point(373, 38);
+         this.spiSLT.Margin = new System.Windows.Forms.Padding(2);
+         this.spiSLT.Name = "spiSLT";
+         this.spiSLT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.spiSLT.Properties.Appearance.Options.UseFont = true;
+         this.spiSLT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.spiSLT.Properties.IsFloatValue = false;
+         this.spiSLT.Properties.Mask.EditMask = "N00";
+         this.spiSLT.Size = new System.Drawing.Size(211, 22);
+         this.spiSLT.StyleController = this.layoutControl1;
+         this.spiSLT.TabIndex = 8;
+         // 
          // cboDVT
          // 
          this.cboDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVT, "DVT", true));
@@ -256,27 +277,6 @@
          this.txtMaterialName.StyleController = this.layoutControl1;
          this.txtMaterialName.TabIndex = 4;
          // 
-         // spiSLT
-         // 
-         this.spiSLT.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsVT, "SOLUONGTON", true));
-         this.spiSLT.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-         this.spiSLT.Location = new System.Drawing.Point(373, 38);
-         this.spiSLT.Margin = new System.Windows.Forms.Padding(2);
-         this.spiSLT.Name = "spiSLT";
-         this.spiSLT.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.spiSLT.Properties.Appearance.Options.UseFont = true;
-         this.spiSLT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.spiSLT.Properties.IsFloatValue = false;
-         this.spiSLT.Properties.Mask.EditMask = "N00";
-         this.spiSLT.Size = new System.Drawing.Size(211, 22);
-         this.spiSLT.StyleController = this.layoutControl1;
-         this.spiSLT.TabIndex = 8;
-         // 
          // Root
          // 
          this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -289,6 +289,42 @@
          this.Root.Name = "Root";
          this.Root.Size = new System.Drawing.Size(596, 73);
          this.Root.TextVisible = false;
+         // 
+         // layoutControlItem2
+         // 
+         this.layoutControlItem2.Control = this.txtMaterialId;
+         this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+         this.layoutControlItem2.Name = "layoutControlItem2";
+         this.layoutControlItem2.Size = new System.Drawing.Size(287, 26);
+         this.layoutControlItem2.Text = "Mã vật tư:";
+         this.layoutControlItem2.TextSize = new System.Drawing.Size(71, 13);
+         // 
+         // layoutControlItem1
+         // 
+         this.layoutControlItem1.Control = this.txtMaterialName;
+         this.layoutControlItem1.Location = new System.Drawing.Point(287, 0);
+         this.layoutControlItem1.Name = "layoutControlItem1";
+         this.layoutControlItem1.Size = new System.Drawing.Size(289, 26);
+         this.layoutControlItem1.Text = "Tên vật tư:";
+         this.layoutControlItem1.TextSize = new System.Drawing.Size(71, 13);
+         // 
+         // layoutControlItem3
+         // 
+         this.layoutControlItem3.Control = this.cboDVT;
+         this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
+         this.layoutControlItem3.Name = "layoutControlItem3";
+         this.layoutControlItem3.Size = new System.Drawing.Size(287, 27);
+         this.layoutControlItem3.Text = "Đơn vị tính:";
+         this.layoutControlItem3.TextSize = new System.Drawing.Size(71, 13);
+         // 
+         // layoutControlItem4
+         // 
+         this.layoutControlItem4.Control = this.spiSLT;
+         this.layoutControlItem4.Location = new System.Drawing.Point(287, 26);
+         this.layoutControlItem4.Name = "layoutControlItem4";
+         this.layoutControlItem4.Size = new System.Drawing.Size(289, 27);
+         this.layoutControlItem4.Text = "Số lượng tồn:";
+         this.layoutControlItem4.TextSize = new System.Drawing.Size(71, 13);
          // 
          // bmVT
          // 
@@ -500,42 +536,6 @@
          // 
          this.dxErrorProvider.ContainerControl = this;
          // 
-         // layoutControlItem2
-         // 
-         this.layoutControlItem2.Control = this.txtMaterialId;
-         this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-         this.layoutControlItem2.Name = "layoutControlItem2";
-         this.layoutControlItem2.Size = new System.Drawing.Size(287, 26);
-         this.layoutControlItem2.Text = "Mã vật tư:";
-         this.layoutControlItem2.TextSize = new System.Drawing.Size(71, 13);
-         // 
-         // layoutControlItem1
-         // 
-         this.layoutControlItem1.Control = this.txtMaterialName;
-         this.layoutControlItem1.Location = new System.Drawing.Point(287, 0);
-         this.layoutControlItem1.Name = "layoutControlItem1";
-         this.layoutControlItem1.Size = new System.Drawing.Size(289, 26);
-         this.layoutControlItem1.Text = "Tên vật tư:";
-         this.layoutControlItem1.TextSize = new System.Drawing.Size(71, 13);
-         // 
-         // layoutControlItem3
-         // 
-         this.layoutControlItem3.Control = this.cboDVT;
-         this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
-         this.layoutControlItem3.Name = "layoutControlItem3";
-         this.layoutControlItem3.Size = new System.Drawing.Size(287, 27);
-         this.layoutControlItem3.Text = "Đơn vị tính:";
-         this.layoutControlItem3.TextSize = new System.Drawing.Size(71, 13);
-         // 
-         // layoutControlItem4
-         // 
-         this.layoutControlItem4.Control = this.spiSLT;
-         this.layoutControlItem4.Location = new System.Drawing.Point(287, 26);
-         this.layoutControlItem4.Name = "layoutControlItem4";
-         this.layoutControlItem4.Size = new System.Drawing.Size(289, 27);
-         this.layoutControlItem4.Text = "Số lượng tồn:";
-         this.layoutControlItem4.TextSize = new System.Drawing.Size(71, 13);
-         // 
          // frmMaterials
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -551,6 +551,7 @@
          this.Margin = new System.Windows.Forms.Padding(2);
          this.Name = "frmMaterials";
          this.Text = "QUẢN LÝ VẬT TƯ";
+         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMaterials_FormClosing);
          this.Load += new System.EventHandler(this.frmMaterials_Load);
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsVT)).EndInit();
@@ -559,9 +560,13 @@
          ((System.ComponentModel.ISupportInitialize)(this.txtMaterialId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
          this.layoutControl1.ResumeLayout(false);
-         ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.spiSLT.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtMaterialName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbVT)).EndInit();
          this.gbVT.ResumeLayout(false);
@@ -569,10 +574,6 @@
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
