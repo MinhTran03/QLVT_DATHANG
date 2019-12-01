@@ -15,8 +15,6 @@ namespace QLVT_DATHANG.Forms
    public partial class frmOrders : XtraForm
    {
       private string _currentDeploymentId;
-      private int _currentPosition;
-      private int _backupWidth = 0;
 
       public frmOrders()
       {
@@ -27,8 +25,6 @@ namespace QLVT_DATHANG.Forms
 
       private void frmOrders_Load(object sender, EventArgs e)
       {
-         // TODO: This line of code loads data into the 'dataSet.DSKHO' table. You can move, or remove it, as needed.
-         this.taKho.Fill(this.dataSet.DSKHO);
          LoadTable();
          DisableEditMode();
 
@@ -53,8 +49,8 @@ namespace QLVT_DATHANG.Forms
       private void SetupControls()
       {
          gcOrderDetail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-         gcOrderDetail.Columns[3].DefaultCellStyle.FormatProvider = Cons.CiVNI;
-         gcOrderDetail.Columns[3].DefaultCellStyle.Format = "c0";
+         gcOrderDetail.Columns[2].DefaultCellStyle.FormatProvider = Cons.CiVNI;
+         gcOrderDetail.Columns[2].DefaultCellStyle.Format = "c0";
 
          gcOrderDetail.BorderStyle = BorderStyle.None;
          gcOrderDetail.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
@@ -75,8 +71,7 @@ namespace QLVT_DATHANG.Forms
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
          this.taDDH.Connection.ConnectionString =
             this.taCTDDH.Connection.ConnectionString =
-            this.taDSNV.Connection.ConnectionString =
-            this.taVT.Connection.ConnectionString =
+            this.taDSVT.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
@@ -86,9 +81,7 @@ namespace QLVT_DATHANG.Forms
 
             this.taCTDDH.Fill(this.dataSet.CTDDH);
 
-            this.taDSNV.Fill(this.dataSet.DSNV);
-
-            this.taVT.Fill(this.dataSet.Vattu);
+            this.taDSVT.Fill(this.dataSet.DSVT);
 
             //this.dataSet.EnforceConstraints = true;
          }
@@ -100,10 +93,7 @@ namespace QLVT_DATHANG.Forms
 
       private void EnableEditMode()
       {
-         gbOrderDetail.ContextMenuStrip = cmsOrderDetail;
-
          gcOrder.Enabled = false;
-         gbOrder.Enabled = true;
 
          btnAdd.Enabled = false;
          btnExit.Enabled = false;
@@ -118,10 +108,7 @@ namespace QLVT_DATHANG.Forms
 
       private void DisableEditMode()
       {
-         gbOrderDetail.ContextMenuStrip = null;
-
          gcOrder.Enabled = true;
-         gbOrder.Enabled = false;
 
          btnAdd.Enabled = true;
          btnExit.Enabled = true;
@@ -166,21 +153,21 @@ namespace QLVT_DATHANG.Forms
       {
          try
          {
-            if (IsExistOrder(txtOrderId.EditValue.ToString()))
-            {
-               XtraMessageBox.Show(Cons.ErrorDuplicateOrderId, Cons.CaptionWarning,
-                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               txtOrderId.Focus();
-               txtOrderId.SelectAll();
-               return false;
-            }
+            //if (IsExistOrder(txtOrderId.EditValue.ToString()))
+            //{
+            //   XtraMessageBox.Show(Cons.ErrorDuplicateOrderId, Cons.CaptionWarning,
+            //      MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //   txtOrderId.Focus();
+            //   txtOrderId.SelectAll();
+            //   return false;
+            //}
 
-            bdsDDH.EndEdit();
-            this.taDDH.Update(this.dataSet.DatHang);
-            gbOrder.Enabled = false;
-            bdsDDH.ResetCurrentItem();
-            bdsDDH.Position = _currentPosition;
-            DisableEditMode();
+            //bdsDDH.EndEdit();
+            //this.taDDH.Update(this.dataSet.DatHang);
+            //gbOrder.Enabled = false;
+            //bdsDDH.ResetCurrentItem();
+            //bdsDDH.Position = _currentPosition;
+            //DisableEditMode();
          }
          catch (Exception ex)
          {
@@ -194,26 +181,19 @@ namespace QLVT_DATHANG.Forms
 
       #region EVENTS
 
-      private void frmOrders_Resize(object sender, EventArgs e)
-      {
-         int Width = (sender as XtraForm).Width;
-         if (Width != _backupWidth)
-         {
-            sccOrder.SplitterPosition = Width / 2;
-            _backupWidth = Width;
-         }
-      }
-
       private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
       {
-         _currentPosition = bdsDDH.Position;
+         //_currentPosition = bdsDDH.Position;
 
-         bdsDDH.AddNew();
-         dtpOrderDate.EditValue = DateTime.Now;
-         lkeEmployee.EditValue = UtilDB.UserName;
+         //bdsDDH.AddNew();
+         //dtpOrderDate.EditValue = DateTime.Now;
+         //lkeEmployee.EditValue = UtilDB.UserName;
 
-         EnableEditMode();
-         txtOrderId.Focus();
+         //EnableEditMode();
+         //txtOrderId.Focus();
+
+         frmAddOrder addOrder = new frmAddOrder(bdsDDH, taDDH, bdsCTDDH, taCTDDH, dataSet);
+         addOrder.Show(this);
       }
 
       private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
@@ -231,10 +211,9 @@ namespace QLVT_DATHANG.Forms
          dxErrorProvider.ClearErrors();
          try
          {
-            gbOrder.Enabled = false;
             bdsDDH.CancelEdit();
             bdsDDH.ResetCurrentItem();
-            bdsDDH.Position = _currentPosition;
+            //bdsDDH.Position = _currentPosition;
          }
          catch (Exception ex)
          {
@@ -257,50 +236,50 @@ namespace QLVT_DATHANG.Forms
             Caption = Cons.CaptionCreateOrderDetail,
          };
 
-         string orderId = txtOrderId.EditValue.ToString();
-         using (frmInputOrderDetail inputOrderDetail = new frmInputOrderDetail(orderId, bdsCTDDH, bdsVT, taCTDDH, dataSet))
-         {
-            CustomFlyoutDialog.ShowForm(this, flyoutAction, inputOrderDetail);
-            //inputOrderDetail.Disposed += (o, arg) =>
-            //{
-            //   try
-            //   {
-            //      this.taCTDDH.Update(this.dataSet.CTDDH);
-            //      this.taVT.Update(this.dataSet.Vattu);
-            //   }
-            //   catch (Exception ex)
-            //   {
-            //      UtilDB.ShowError(ex);
-            //   }
-            //};
-         }
+         //string orderId = txtOrderId.EditValue.ToString();
+         //using (frmInputOrderDetail inputOrderDetail = new frmInputOrderDetail(orderId, bdsCTDDH, bdsVT, taCTDDH, dataSet))
+         //{
+         //   CustomFlyoutDialog.ShowForm(this, flyoutAction, inputOrderDetail);
+         //   //inputOrderDetail.Disposed += (o, arg) =>
+         //   //{
+         //   //   try
+         //   //   {
+         //   //      this.taCTDDH.Update(this.dataSet.CTDDH);
+         //   //      this.taVT.Update(this.dataSet.Vattu);
+         //   //   }
+         //   //   catch (Exception ex)
+         //   //   {
+         //   //      UtilDB.ShowError(ex);
+         //   //   }
+         //   //};
+         //}
       }
 
       private void frmOrders_FormClosing(object sender, FormClosingEventArgs e)
       {
-         if (gbOrder.Enabled == true)
-         {
-            var result = XtraMessageBox.Show(Cons.AskExitWhileEditing, Cons.CaptionQuestion,
-                                       MessageBoxButtons.YesNoCancel,
-                                       MessageBoxIcon.Question);
-            switch (result)
-            {
-               case DialogResult.Yes:
-                  // kiểm tra nút được nhấn [thêm, sửa] => [Lưu lại, update]
-                  e.Cancel = !(SaveOrder());
-                  break;
-               case DialogResult.No:
-                  // thoát bất chấp
-                  btnCancelEdit.PerformClick();
-                  break;
-               case DialogResult.Cancel:
-                  // hủy thoát
-                  e.Cancel = true;
-                  break;
-               default:
-                  break;
-            }
-         }
+         //if (gbOrder.Enabled == true)
+         //{
+         //   var result = XtraMessageBox.Show(Cons.AskExitWhileEditing, Cons.CaptionQuestion,
+         //                              MessageBoxButtons.YesNoCancel,
+         //                              MessageBoxIcon.Question);
+         //   switch (result)
+         //   {
+         //      case DialogResult.Yes:
+         //         // kiểm tra nút được nhấn [thêm, sửa] => [Lưu lại, update]
+         //         e.Cancel = !(SaveOrder());
+         //         break;
+         //      case DialogResult.No:
+         //         // thoát bất chấp
+         //         btnCancelEdit.PerformClick();
+         //         break;
+         //      case DialogResult.Cancel:
+         //         // hủy thoát
+         //         e.Cancel = true;
+         //         break;
+         //      default:
+         //         break;
+         //   }
+         //}
       }
    }
 }

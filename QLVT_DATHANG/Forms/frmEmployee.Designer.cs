@@ -379,7 +379,7 @@
          this.txtEmpId.Properties.Appearance.Options.UseFont = true;
          this.txtEmpId.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.None;
          this.txtEmpId.Properties.Mask.ShowPlaceHolders = false;
-         this.txtEmpId.Size = new System.Drawing.Size(129, 22);
+         this.txtEmpId.Size = new System.Drawing.Size(168, 22);
          this.txtEmpId.StyleController = this.lcEmplyee;
          this.txtEmpId.TabIndex = 1;
          // 
@@ -388,7 +388,7 @@
          this.txtEmpFirstName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "HO", true));
          this.txtEmpFirstName.EditValue = "";
          this.dxErrorProvider.SetIconAlignment(this.txtEmpFirstName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpFirstName.Location = new System.Drawing.Point(303, 12);
+         this.txtEmpFirstName.Location = new System.Drawing.Point(342, 12);
          this.txtEmpFirstName.Margin = new System.Windows.Forms.Padding(4);
          this.txtEmpFirstName.MenuManager = this.bmNV;
          this.txtEmpFirstName.Name = "txtEmpFirstName";
@@ -398,7 +398,7 @@
          this.txtEmpFirstName.Properties.Mask.EditMask = "[\\u0000-\\u001F\\007F-\\u009F]+(\\\\s{1}[\\u0000-\\u001F\\007F-\\u009F]+)*";
          this.txtEmpFirstName.Properties.Mask.IgnoreMaskBlank = false;
          this.txtEmpFirstName.Properties.Mask.ShowPlaceHolders = false;
-         this.txtEmpFirstName.Size = new System.Drawing.Size(123, 22);
+         this.txtEmpFirstName.Size = new System.Drawing.Size(120, 22);
          this.txtEmpFirstName.StyleController = this.lcEmplyee;
          this.txtEmpFirstName.TabIndex = 3;
          this.txtEmpFirstName.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.txtEmpFirstName_CustomDisplayText);
@@ -408,7 +408,7 @@
          this.txtEmpLastName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsNV, "TEN", true));
          this.txtEmpLastName.EditValue = "";
          this.dxErrorProvider.SetIconAlignment(this.txtEmpLastName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpLastName.Location = new System.Drawing.Point(509, 12);
+         this.txtEmpLastName.Location = new System.Drawing.Point(545, 12);
          this.txtEmpLastName.Margin = new System.Windows.Forms.Padding(4);
          this.txtEmpLastName.MenuManager = this.bmNV;
          this.txtEmpLastName.Name = "txtEmpLastName";
@@ -416,7 +416,7 @@
          this.txtEmpLastName.Properties.Appearance.Options.UseFont = true;
          this.txtEmpLastName.Properties.Mask.IgnoreMaskBlank = false;
          this.txtEmpLastName.Properties.Mask.ShowPlaceHolders = false;
-         this.txtEmpLastName.Size = new System.Drawing.Size(167, 22);
+         this.txtEmpLastName.Size = new System.Drawing.Size(131, 22);
          this.txtEmpLastName.StyleController = this.lcEmplyee;
          this.txtEmpLastName.TabIndex = 5;
          this.txtEmpLastName.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.txtEmpLastName_CustomDisplayText);
@@ -495,25 +495,25 @@
          this.layoutControlItem1.Control = this.txtEmpId;
          this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
          this.layoutControlItem1.Name = "layoutControlItem1";
-         this.layoutControlItem1.Size = new System.Drawing.Size(212, 26);
+         this.layoutControlItem1.Size = new System.Drawing.Size(251, 26);
          this.layoutControlItem1.Text = "Mã nhân viên:";
          this.layoutControlItem1.TextSize = new System.Drawing.Size(76, 13);
          // 
          // layoutControlItem2
          // 
          this.layoutControlItem2.Control = this.txtEmpFirstName;
-         this.layoutControlItem2.Location = new System.Drawing.Point(212, 0);
+         this.layoutControlItem2.Location = new System.Drawing.Point(251, 0);
          this.layoutControlItem2.Name = "layoutControlItem2";
-         this.layoutControlItem2.Size = new System.Drawing.Size(206, 26);
+         this.layoutControlItem2.Size = new System.Drawing.Size(203, 26);
          this.layoutControlItem2.Text = "Họ:";
          this.layoutControlItem2.TextSize = new System.Drawing.Size(76, 13);
          // 
          // layoutControlItem3
          // 
          this.layoutControlItem3.Control = this.txtEmpLastName;
-         this.layoutControlItem3.Location = new System.Drawing.Point(418, 0);
+         this.layoutControlItem3.Location = new System.Drawing.Point(454, 0);
          this.layoutControlItem3.Name = "layoutControlItem3";
-         this.layoutControlItem3.Size = new System.Drawing.Size(250, 26);
+         this.layoutControlItem3.Size = new System.Drawing.Size(214, 26);
          this.layoutControlItem3.Text = "Tên:";
          this.layoutControlItem3.TextSize = new System.Drawing.Size(76, 13);
          // 

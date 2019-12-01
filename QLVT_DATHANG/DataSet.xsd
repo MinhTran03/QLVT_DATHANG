@@ -699,6 +699,22 @@ from NhanVien</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DSNCCTableAdapter" GeneratorDataComponentClassName="DSNCCTableAdapter" Name="DSNCC" UserDataComponentName="DSNCCTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLVT_ConnectionString (Settings)" DbObjectName="QLVT_DATHANG.dbo.DatHang" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT NhaCC FROM DatHang</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NhaCC" DataSetColumn="NhaCC" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -744,7 +760,7 @@ from NhanVien</CommandText>
         <xs:element name="CTDDH" msprop:Generator_TableClassName="CTDDHDataTable" msprop:Generator_TableVarName="tableCTDDH" msprop:Generator_TablePropName="CTDDH" msprop:Generator_RowDeletingName="CTDDHRowDeleting" msprop:Generator_RowChangingName="CTDDHRowChanging" msprop:Generator_RowEvHandlerName="CTDDHRowChangeEventHandler" msprop:Generator_RowDeletedName="CTDDHRowDeleted" msprop:Generator_UserTableName="CTDDH" msprop:Generator_RowChangedName="CTDDHRowChanged" msprop:Generator_RowEvArgName="CTDDHRowChangeEvent" msprop:Generator_RowClassName="CTDDHRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="MasoDDH" msprop:Generator_ColumnVarNameInTable="columnMasoDDH" msprop:Generator_ColumnPropNameInRow="MasoDDH" msprop:Generator_ColumnPropNameInTable="MasoDDHColumn" msprop:Generator_UserColumnName="MasoDDH">
+              <xs:element name="MasoDDH" msprop:nullValue="_throw" msprop:Generator_ColumnPropNameInRow="MasoDDH" msprop:Generator_ColumnVarNameInTable="columnMasoDDH" msprop:Generator_ColumnPropNameInTable="MasoDDHColumn" msprop:Generator_UserColumnName="MasoDDH" default="">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="8" />
@@ -1048,6 +1064,19 @@ from NhanVien</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="DSNCC" msprop:Generator_TableClassName="DSNCCDataTable" msprop:Generator_TableVarName="tableDSNCC" msprop:Generator_TablePropName="DSNCC" msprop:Generator_RowDeletingName="DSNCCRowDeleting" msprop:Generator_RowChangingName="DSNCCRowChanging" msprop:Generator_RowEvHandlerName="DSNCCRowChangeEventHandler" msprop:Generator_RowDeletedName="DSNCCRowDeleted" msprop:Generator_UserTableName="DSNCC" msprop:Generator_RowChangedName="DSNCCRowChanged" msprop:Generator_RowEvArgName="DSNCCRowChangeEvent" msprop:Generator_RowClassName="DSNCCRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NhaCC" msprop:Generator_ColumnVarNameInTable="columnNhaCC" msprop:Generator_ColumnPropNameInRow="NhaCC" msprop:Generator_ColumnPropNameInTable="NhaCCColumn" msprop:Generator_UserColumnName="NhaCC">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1088,6 +1117,10 @@ from NhanVien</CommandText>
     <xs:unique name="PhieuXuat_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:PhieuXuat" />
       <xs:field xpath="mstns:MAPX" />
+    </xs:unique>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//mstns:PhieuXuat" />
+      <xs:field xpath="mstns:MAKHO" />
     </xs:unique>
     <xs:unique name="Vattu_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Vattu" />

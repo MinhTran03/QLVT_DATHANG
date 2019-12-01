@@ -73,7 +73,7 @@ namespace QLVT_DATHANG.Forms
          txtEmpId.Properties.Mask.EditMask = "\\d+";
          txtEmpId.Properties.Mask.BeepOnError = true;
          txtEmpId.Properties.AllowNullInput = DefaultBoolean.True;
-         txtEmpId.Properties.NullText = "Ma nhan vien la tu dong";
+         txtEmpId.Properties.NullText = "Mã nhân viên tự sinh";
          txtEmpId.ReadOnly = true;
 
          txtEmpFirstName.Properties.Mask.MaskType = MaskType.None;
@@ -101,7 +101,7 @@ namespace QLVT_DATHANG.Forms
 
          dtpEmpBirth.Properties.Mask.MaskType = MaskType.DateTime;
          dtpEmpBirth.Properties.Mask.EditMask = "dd/MM/yyyy";
-         dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-1);
+         dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-(365*18));
          dtpEmpBirth.Properties.Mask.BeepOnError = true;
          dtpEmpBirth.Properties.AllowNullInput = DefaultBoolean.True;
          //dtpEmpBirth.Properties.NullValuePrompt = "Pick a day";

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
-   using QLVT_DATHANG.DataSetTableAdapters;
    using System.Collections.Generic;
    using Utility;
 

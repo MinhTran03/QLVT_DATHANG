@@ -116,6 +116,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmAddOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddOrder.Designer.cs">
+      <DependentUpon>frmAddOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDepot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     <Compile Include="Utility\UtilDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmAddOrder.resx">
+      <DependentUpon>frmAddOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDepot.resx">
       <DependentUpon>frmDepot.cs</DependentUpon>
     </EmbeddedResource>
