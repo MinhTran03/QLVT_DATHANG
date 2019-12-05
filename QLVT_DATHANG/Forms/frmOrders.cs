@@ -183,17 +183,12 @@ namespace QLVT_DATHANG.Forms
 
       private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
       {
-         //_currentPosition = bdsDDH.Position;
-
-         //bdsDDH.AddNew();
-         //dtpOrderDate.EditValue = DateTime.Now;
-         //lkeEmployee.EditValue = UtilDB.UserName;
-
-         //EnableEditMode();
-         //txtOrderId.Focus();
-
          frmAddOrder addOrder = new frmAddOrder(bdsDDH, taDDH, bdsCTDDH, taCTDDH, dataSet);
-         addOrder.Show(this);
+         FlyoutAction flyoutAction = new FlyoutAction()
+         {
+            Caption = "LẬP ĐƠN ĐẶT HÀNG",
+         };
+         CustomFlyoutDialog.ShowForm(this, flyoutAction, addOrder);
       }
 
       private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)

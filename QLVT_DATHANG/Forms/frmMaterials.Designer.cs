@@ -241,6 +241,8 @@
          // 
          // cboDVT
          // 
+         this.cboDVT.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+         this.cboDVT.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
          this.cboDVT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsVT, "DVT", true));
          this.cboDVT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.cboDVT.FormattingEnabled = true;

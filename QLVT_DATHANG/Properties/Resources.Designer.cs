@@ -103,6 +103,26 @@ namespace QLVT_DATHANG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_list_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_add_list_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_list_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_add_list_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_add_user_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8_add_user_16", resourceCulture);
@@ -126,6 +146,16 @@ namespace QLVT_DATHANG.Properties {
         internal static System.Drawing.Bitmap icons8_cancel_file_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8_cancel_file_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_sign_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_delete_sign_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

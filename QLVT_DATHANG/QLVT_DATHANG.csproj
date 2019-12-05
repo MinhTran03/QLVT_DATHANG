@@ -116,10 +116,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmAddOrder.cs">
-      <SubType>Form</SubType>
+    <Compile Include="UserControls\frmAddOrder.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\frmAddOrder.Designer.cs">
+    <Compile Include="UserControls\frmAddOrder.Designer.cs">
       <DependentUpon>frmAddOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmDepot.cs">
@@ -157,6 +157,12 @@
     </Compile>
     <Compile Include="Forms\frmMaterials.Designer.cs">
       <DependentUpon>frmMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSelectMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSelectMaterials.Designer.cs">
+      <DependentUpon>frmSelectMaterials.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -206,7 +212,7 @@
     <Compile Include="Utility\UtilDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\frmAddOrder.resx">
+    <EmbeddedResource Include="UserControls\frmAddOrder.resx">
       <DependentUpon>frmAddOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDepot.resx">
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmGoodsReceivedNote.resx">
       <DependentUpon>frmGoodsReceivedNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelectMaterials.resx">
+      <DependentUpon>frmSelectMaterials.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\frmInputOrderDetail.resx">
       <DependentUpon>frmInputOrderDetail.cs</DependentUpon>
@@ -327,6 +336,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\28-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\icons8_add_list_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\icons8_add_list_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\icons8_delete_sign_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

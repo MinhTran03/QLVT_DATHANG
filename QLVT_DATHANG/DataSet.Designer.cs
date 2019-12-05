@@ -2329,12 +2329,17 @@ namespace QLVT_DATHANG {
                                 this.columnMasoDDH}, true));
                 this.columnMasoDDH.AllowDBNull = false;
                 this.columnMasoDDH.Unique = true;
+                this.columnMasoDDH.Caption = "Mã số DDH";
                 this.columnMasoDDH.MaxLength = 8;
                 this.columnNGAY.AllowDBNull = false;
+                this.columnNGAY.Caption = "Ngày đặt";
                 this.columnNhaCC.AllowDBNull = false;
+                this.columnNhaCC.Caption = "Nhà cung cấp";
                 this.columnNhaCC.MaxLength = 100;
                 this.columnMANV.AllowDBNull = false;
+                this.columnMANV.Caption = "Mã nhân viên";
                 this.columnMAKHO.AllowDBNull = false;
+                this.columnMAKHO.Caption = "Mã kho";
                 this.columnMAKHO.MaxLength = 4;
             }
             
@@ -4239,7 +4244,9 @@ namespace QLVT_DATHANG {
                                 this.columnMANV}, true));
                 this.columnMANV.AllowDBNull = false;
                 this.columnMANV.Unique = true;
+                this.columnMANV.Caption = "Mã nhân viên";
                 this.columnHOTEN.ReadOnly = true;
+                this.columnHOTEN.Caption = "Họ và tên";
                 this.columnHOTEN.MaxLength = 51;
             }
             
@@ -4513,8 +4520,10 @@ namespace QLVT_DATHANG {
                                 this.columnMAVT}, true));
                 this.columnMAVT.AllowDBNull = false;
                 this.columnMAVT.Unique = true;
+                this.columnMAVT.Caption = "Mã vật tư";
                 this.columnMAVT.MaxLength = 4;
                 this.columnTENVT.AllowDBNull = false;
+                this.columnTENVT.Caption = "Tên vật tư";
                 this.columnTENVT.MaxLength = 30;
             }
             
@@ -4788,8 +4797,10 @@ namespace QLVT_DATHANG {
                                 this.columnMAKHO}, true));
                 this.columnMAKHO.AllowDBNull = false;
                 this.columnMAKHO.Unique = true;
+                this.columnMAKHO.Caption = "Mã kho";
                 this.columnMAKHO.MaxLength = 4;
                 this.columnTENKHO.AllowDBNull = false;
+                this.columnTENKHO.Caption = "Tên kho";
                 this.columnTENKHO.MaxLength = 30;
             }
             
@@ -5039,6 +5050,7 @@ namespace QLVT_DATHANG {
                 this.columnNhaCC = new global::System.Data.DataColumn("NhaCC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNhaCC);
                 this.columnNhaCC.AllowDBNull = false;
+                this.columnNhaCC.Caption = "Nhà cung cấp";
                 this.columnNhaCC.MaxLength = 100;
             }
             

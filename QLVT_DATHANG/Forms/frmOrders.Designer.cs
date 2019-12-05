@@ -30,12 +30,12 @@
       {
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -51,15 +51,18 @@
          this.bdsDDH = new System.Windows.Forms.BindingSource(this.components);
          this.taDDH = new QLVT_DATHANG.DataSetTableAdapters.DatHangTableAdapter();
          this.gcOrder = new DevExpress.XtraGrid.GridControl();
-         this.bdsDSVT = new System.Windows.Forms.BindingSource(this.components);
          this.gvOrder = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMasoDDH = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colNGAY = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colNhaCC = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.bdsDSVT = new System.Windows.Forms.BindingSource(this.components);
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.gcOrderDetail = new System.Windows.Forms.DataGridView();
+         this.TENVT = new System.Windows.Forms.DataGridViewComboBoxColumn();
+         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -68,15 +71,12 @@
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          this.gbOrderDetail = new DevExpress.XtraEditors.GroupControl();
          this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
-         this.TENVT = new System.Windows.Forms.DataGridViewComboBoxColumn();
-         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
@@ -229,11 +229,6 @@
          this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvOrder});
          // 
-         // bdsDSVT
-         // 
-         this.bdsDSVT.DataMember = "DSVT";
-         this.bdsDSVT.DataSource = this.dataSet;
-         // 
          // gvOrder
          // 
          this.gvOrder.Appearance.HeaderPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -268,6 +263,8 @@
          // colNGAY
          // 
          this.colNGAY.Caption = "NGÀY ĐẶT";
+         this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
+         this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.colNGAY.FieldName = "NGAY";
          this.colNGAY.Name = "colNGAY";
          this.colNGAY.Visible = true;
@@ -297,6 +294,11 @@
          this.colMAKHO.Visible = true;
          this.colMAKHO.VisibleIndex = 4;
          // 
+         // bdsDSVT
+         // 
+         this.bdsDSVT.DataMember = "DSVT";
+         this.bdsDSVT.DataSource = this.dataSet;
+         // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -315,28 +317,28 @@
          this.gcOrderDetail.BackgroundColor = System.Drawing.Color.White;
          this.gcOrderDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
          this.gcOrderDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
-         dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-         dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSlateGray;
-         dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+         dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle7.BackColor = System.Drawing.Color.Gray;
+         dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+         dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+         dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSlateGray;
+         dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+         this.gcOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
          this.gcOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.gcOrderDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TENVT,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
          this.gcOrderDetail.DataSource = this.bdsCTDDH;
-         dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-         dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-         dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
-         dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle5;
+         dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+         dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+         dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
+         dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+         dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle11;
          this.gcOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcOrderDetail.EnableHeadersVisualStyles = false;
          this.gcOrderDetail.GridColor = System.Drawing.Color.Silver;
@@ -344,19 +346,56 @@
          this.gcOrderDetail.Name = "gcOrderDetail";
          this.gcOrderDetail.ReadOnly = true;
          this.gcOrderDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-         dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-         dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+         dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+         dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+         dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+         dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+         dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
          this.gcOrderDetail.RowHeadersVisible = false;
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
          this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gcOrderDetail.Size = new System.Drawing.Size(983, 146);
          this.gcOrderDetail.TabIndex = 0;
+         // 
+         // TENVT
+         // 
+         this.TENVT.DataPropertyName = "MAVT";
+         this.TENVT.DataSource = this.bdsDSVT;
+         dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.TENVT.DefaultCellStyle = dataGridViewCellStyle8;
+         this.TENVT.DisplayMember = "TENVT";
+         this.TENVT.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+         this.TENVT.HeaderText = "TÊN VẬT TƯ";
+         this.TENVT.Name = "TENVT";
+         this.TENVT.ReadOnly = true;
+         this.TENVT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+         this.TENVT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+         this.TENVT.ValueMember = "MAVT";
+         // 
+         // dataGridViewTextBoxColumn3
+         // 
+         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
+         dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle9;
+         this.dataGridViewTextBoxColumn3.FillWeight = 92.72421F;
+         this.dataGridViewTextBoxColumn3.HeaderText = "SỐ LƯỢNG";
+         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+         this.dataGridViewTextBoxColumn3.ReadOnly = true;
+         // 
+         // dataGridViewTextBoxColumn4
+         // 
+         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
+         dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         dataGridViewCellStyle10.Format = "C0";
+         dataGridViewCellStyle10.NullValue = null;
+         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle10;
+         this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
+         this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
+         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+         this.dataGridViewTextBoxColumn4.ReadOnly = true;
          // 
          // bdsCTDDH
          // 
@@ -418,43 +457,6 @@
          // 
          this.taDSVT.ClearBeforeFill = true;
          // 
-         // TENVT
-         // 
-         this.TENVT.DataPropertyName = "MAVT";
-         this.TENVT.DataSource = this.bdsDSVT;
-         dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.TENVT.DefaultCellStyle = dataGridViewCellStyle2;
-         this.TENVT.DisplayMember = "TENVT";
-         this.TENVT.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-         this.TENVT.HeaderText = "TÊN VẬT TƯ";
-         this.TENVT.Name = "TENVT";
-         this.TENVT.ReadOnly = true;
-         this.TENVT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-         this.TENVT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-         this.TENVT.ValueMember = "MAVT";
-         // 
-         // dataGridViewTextBoxColumn3
-         // 
-         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
-         dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
-         this.dataGridViewTextBoxColumn3.FillWeight = 92.72421F;
-         this.dataGridViewTextBoxColumn3.HeaderText = "SỐ LƯỢNG";
-         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-         this.dataGridViewTextBoxColumn3.ReadOnly = true;
-         // 
-         // dataGridViewTextBoxColumn4
-         // 
-         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
-         dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dataGridViewCellStyle4.Format = "C0";
-         dataGridViewCellStyle4.NullValue = null;
-         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle4;
-         this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
-         this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
-         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-         this.dataGridViewTextBoxColumn4.ReadOnly = true;
-         // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,8 +479,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
@@ -529,5 +531,6 @@
       private System.Windows.Forms.DataGridViewComboBoxColumn TENVT;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+      private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
    }
 }
