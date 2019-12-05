@@ -531,6 +531,5 @@
       private System.Windows.Forms.DataGridViewComboBoxColumn TENVT;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
       private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-      private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
    }
 }
