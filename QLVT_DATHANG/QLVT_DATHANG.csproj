@@ -169,11 +169,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\frmDeliveryNote.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\frmDeliveryNote.Designer.cs">
+      <DependentUpon>frmDeliveryNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\frmInputOrderDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\frmInputOrderDetail.Designer.cs">
       <DependentUpon>frmInputOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\frmReceivedNote.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\frmReceivedNote.Designer.cs">
+      <DependentUpon>frmReceivedNote.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\frmSwitchDepartment.cs">
       <SubType>UserControl</SubType>
@@ -239,11 +251,17 @@
     <EmbeddedResource Include="Forms\frmGoodsReceivedNote.resx">
       <DependentUpon>frmGoodsReceivedNote.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\frmDeliveryNote.resx">
+      <DependentUpon>frmDeliveryNote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelectMaterials.resx">
       <DependentUpon>frmSelectMaterials.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\frmInputOrderDetail.resx">
       <DependentUpon>frmInputOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\frmReceivedNote.resx">
+      <DependentUpon>frmReceivedNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>

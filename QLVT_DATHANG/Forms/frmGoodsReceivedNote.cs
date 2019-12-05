@@ -4,13 +4,14 @@ using System.Data;
 namespace QLVT_DATHANG.Forms
 {
    using DevExpress.XtraBars;
-   using DevExpress.XtraEditors;
-   using System.Data.SqlClient;
-   using System.Drawing;
-   using System.Windows.Forms;
-   using Utility;
+    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
+    using DevExpress.XtraEditors;
+    using System.Data.SqlClient;
+    using System.Windows.Forms;
+    using Utility;
+    using UserControls;
 
-   public partial class frmGoodsReceivedNote : XtraForm
+    public partial class frmGoodsReceivedNote : XtraForm
    {
       private string _currentDeploymentId;
       private int _currentPosition;
