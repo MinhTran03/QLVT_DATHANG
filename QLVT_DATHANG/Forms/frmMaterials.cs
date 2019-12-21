@@ -184,7 +184,7 @@ namespace QLVT_DATHANG.Forms
          return true;
       }
 
-      private void Undo()
+      private async void Undo()
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
@@ -197,7 +197,7 @@ namespace QLVT_DATHANG.Forms
                   // xóa dữ liệu mới
                   //position = bdsVT.Find("MAVT", action.SaveItems[0]);
                   //bdsVT.Remove((DataRowView)bdsVT[position]);
-                  if (UtilDB.DeleteInDB("Vattu", "MAVT", action.SaveItems[0]))
+                  if (await UtilDB.DeleteInDB("Vattu", "MAVT", action.SaveItems[0]))
                   {
                      this.dataSet.EnforceConstraints = false;
                      this.taVT.Fill(this.dataSet.Vattu);
@@ -319,7 +319,7 @@ namespace QLVT_DATHANG.Forms
          DisableEditMode();
       }
 
-      private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
+      private async void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
       {
          string constraint = CheckConstraint();
          if (constraint != null)
@@ -344,7 +344,7 @@ namespace QLVT_DATHANG.Forms
 
                //bdsVT.RemoveCurrent();
                //this.taVT.Update(this.dataSet.Vattu);
-               if (UtilDB.DeleteInDB("Vattu", "MAVT", txtMaterialId.EditValue))
+               if (await UtilDB.DeleteInDB("Vattu", "MAVT", txtMaterialId.EditValue))
                {
                   this.dataSet.EnforceConstraints = false;
                   this.taVT.Fill(this.dataSet.Vattu);

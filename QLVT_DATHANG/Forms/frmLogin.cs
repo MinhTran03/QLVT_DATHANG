@@ -79,7 +79,10 @@ namespace QLVT_DATHANG.Forms
          // Copy tren stack overflow
          frmMain formMain = new frmMain();
          this.Hide();
-         formMain.Closed += (s, args) => this.Show();
+         formMain.Closed += (s, args) => 
+         {
+            this.Show();
+         };
          formMain.Show();
       }
 

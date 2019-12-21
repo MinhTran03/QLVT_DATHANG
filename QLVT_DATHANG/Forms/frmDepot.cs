@@ -196,7 +196,7 @@ namespace QLVT_DATHANG.Forms
          EnableEditMode();
       }
 
-      private void DeleteDepot()
+      private async void DeleteDepot()
       {
          _currentPosition = bdsDepot.Position;
 
@@ -213,7 +213,7 @@ namespace QLVT_DATHANG.Forms
 
                //bdsDepot.RemoveCurrent();
                //this.taDepot.Update(this.dataSet.Kho);
-               if (UtilDB.DeleteInDB("Kho", "MAKHO", txtDepotId.EditValue))
+               if (await UtilDB.DeleteInDB("Kho", "MAKHO", txtDepotId.EditValue))
                {
                   this.dataSet.EnforceConstraints = false;
                   this.taDepot.Fill(this.dataSet.Kho);
@@ -226,7 +226,7 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
-      private void Undo()
+      private async void Undo()
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
@@ -238,7 +238,7 @@ namespace QLVT_DATHANG.Forms
                   // xóa dữ liệu mới
                   //position = bdsDepot.Find("MAKHO", action.SaveItems[0]);
                   //bdsDepot.Remove((DataRowView)bdsDepot[position]);
-                  if (UtilDB.DeleteInDB("Kho", "MAKHO", action.SaveItems[0]))
+                  if (await UtilDB.DeleteInDB("Kho", "MAKHO", action.SaveItems[0]))
                   {
                      this.dataSet.EnforceConstraints = false;
                      this.taDepot.Fill(this.dataSet.Kho);

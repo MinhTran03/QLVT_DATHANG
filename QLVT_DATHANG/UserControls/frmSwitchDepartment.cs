@@ -5,12 +5,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLVT_DATHANG.UserControls
 {
    public partial class frmSwitchDepartment : XtraUserControl
    {
+      public bool isSuccess = false;
+
       public frmSwitchDepartment(int employeeId, string employeeName)
       {
          InitializeComponent();
@@ -33,7 +36,7 @@ namespace QLVT_DATHANG.UserControls
          //cboDepartment.DataBindings.Add(new Binding("Tag", UtilDB.BdsDSPM, MyConfig.FilterClauseDSPM, true));
       }
 
-      private void btnSwitch_Click(object sender, EventArgs e)
+      private async void btnSwitch_Click(object sender, EventArgs e)
       {
          if (UtilDB.CurrentDeployment == cboDepartment.SelectedIndex)
          {
@@ -43,10 +46,9 @@ namespace QLVT_DATHANG.UserControls
          }
 
          int oldEmployeeId = int.Parse(txtEmployeeId.Text);
-         int newEmployeeId = UtilDB.GenerateEmployeeId();
-         string newDepartId = GetDepartIdInFilterClause(cboDepartment.SelectedValue.ToString());
+         string newDepartId = UtilDB.GetDepartIdInFilterClause(cboDepartment.SelectedValue.ToString());
 
-         if (SwitchDepartment(oldEmployeeId, newEmployeeId, newDepartId) == false)
+         if (await SwitchDepartment(oldEmployeeId, newDepartId) == false)
          {
             XtraMessageBox.Show(Cons.ErrorSwitchDepart, Cons.CaptionError,
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,17 +57,11 @@ namespace QLVT_DATHANG.UserControls
          {
             XtraMessageBox.Show(Cons.SuccessSwitchDepart, Cons.CaptionSuccess,
                               MessageBoxButtons.OK, MessageBoxIcon.Information);
+            isSuccess = true;
          }
       }
 
-      private string GetDepartIdInFilterClause(string filterClause)
-      {
-         Regex pattern = new Regex(MyConfig.PatternGetDepartId);
-         Match match = pattern.Match(filterClause);
-         return match.Groups["departId"].Value;
-      }
-
-      private bool SwitchDepartment(int oldId, int newId, string newDepartment)
+      private async Task<bool> SwitchDepartment(int oldId, string newDepartment)
       {
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
@@ -74,12 +70,11 @@ namespace QLVT_DATHANG.UserControls
             {
                command.CommandType = CommandType.StoredProcedure;
                command.Parameters.AddWithValue("@manv", oldId);
-               command.Parameters.AddWithValue("@manvmoi", newId);
                command.Parameters.AddWithValue("@chinhanhmoi", newDepartment);
 
                try
                {
-                  command.ExecuteNonQuery();
+                  await command.ExecuteNonQueryAsync();
                   return true;
                }
                catch (Exception ex)

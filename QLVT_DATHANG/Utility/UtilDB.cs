@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Utility
@@ -127,6 +129,13 @@ namespace QLVT_DATHANG.Utility
          };
       }
 
+      public static string GetDepartIdInFilterClause(string filterClause)
+      {
+         Regex pattern = new Regex(MyConfig.PatternGetDepartId);
+         Match match = pattern.Match(filterClause);
+         return match.Groups["departId"].Value;
+      }
+
       public static void ShowError(Exception e)
       {
          //if (e is SqlException)
@@ -154,6 +163,7 @@ namespace QLVT_DATHANG.Utility
 
       public static int GenerateEmployeeId()
       {
+         // lay ds ma nv da co trong csdl
          var listEmployeeId = GetListEmployeeId();
          var count = listEmployeeId.Count;
 
@@ -167,7 +177,7 @@ namespace QLVT_DATHANG.Utility
 
       private static List<int> GetListEmployeeId()
       {
-         using (SqlConnection connection = new SqlConnection(Utility.UtilDB.ConnectionString))
+         using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
          {
             connection.Open();
             using (SqlCommand command = new SqlCommand(MyConfig.SpGetAllMaNV, connection))
@@ -206,16 +216,17 @@ namespace QLVT_DATHANG.Utility
          groupControl.Controls.OfType<Label>().ToList().ForEach(c => c.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
       }
 
-      public static bool DeleteInDB(string table, string keyColumn, object key)
+      public static async Task<bool> DeleteInDB(string table, string filterColumn, object key)
       {
+         bool isSuccess = false;
          using (var connection = new SqlConnection(UtilDB.ConnectionString))
          {
-            connection.Open();
+            await connection.OpenAsync();
             using (var command = new SqlCommand()
             {
                //CommandText = MyConfig.SpDeleteByKey,
                //CommandType = CommandType.StoredProcedure,
-               CommandText = string.Format("delete from {0} where {1} = @key", table, keyColumn),
+               CommandText = string.Format("delete from {0} where {1} = @key", table, filterColumn),
                CommandType = CommandType.Text,
                Connection = connection
             })
@@ -224,8 +235,8 @@ namespace QLVT_DATHANG.Utility
 
                try
                {
-                  command.ExecuteNonQuery();
-                  return true;
+                  await command.ExecuteNonQueryAsync();
+                  isSuccess = true;
                }
                catch (Exception ex)
                {
@@ -233,6 +244,7 @@ namespace QLVT_DATHANG.Utility
                }
             }
          }
+         return isSuccess;
       }
    }
 }

@@ -86,8 +86,8 @@ namespace QLVT_DATHANG.UserControls
 
       private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
-         SaveOrder();
-         DisableEditMode();
+         if(SaveOrder())
+            DisableEditMode();
       }
 
       private bool SaveOrder()
