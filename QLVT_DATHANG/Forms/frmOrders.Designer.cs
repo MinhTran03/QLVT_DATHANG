@@ -30,12 +30,6 @@
       {
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrders));
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
          this.bar2 = new DevExpress.XtraBars.Bar();
          this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -59,31 +53,74 @@
          this.colMAKHO = new DevExpress.XtraGrid.Columns.GridColumn();
          this.bdsDSVT = new System.Windows.Forms.BindingSource(this.components);
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
-         this.gcOrderDetail = new System.Windows.Forms.DataGridView();
-         this.TENVT = new System.Windows.Forms.DataGridViewComboBoxColumn();
-         this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-         this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.bdsCTDDH = new System.Windows.Forms.BindingSource(this.components);
          this.pnPickDepartment = new DevExpress.XtraEditors.PanelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.cboDeployment = new System.Windows.Forms.ComboBox();
          this.taCTDDH = new QLVT_DATHANG.DataSetTableAdapters.CTDDHTableAdapter();
          this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-         this.gbOrderDetail = new DevExpress.XtraEditors.GroupControl();
          this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
+         this.pnSubform = new System.Windows.Forms.Panel();
+         this.gbDetails = new DevExpress.XtraEditors.GroupControl();
+         this.gcOrderDetail = new DevExpress.XtraGrid.GridControl();
+         this.gvOrderDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
+         this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+         this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.pnBtnOrderDetail = new System.Windows.Forms.Panel();
+         this.btnRemoveLine = new DevExpress.XtraEditors.SimpleButton();
+         this.btnAddMaterials = new DevExpress.XtraEditors.SimpleButton();
+         this.gbOrder = new DevExpress.XtraEditors.GroupControl();
+         this.txtEmployeeId = new DevExpress.XtraEditors.TextEdit();
+         this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+         this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
+         this.cboNCC = new System.Windows.Forms.ComboBox();
+         this.bdsDSNCC = new System.Windows.Forms.BindingSource(this.components);
+         this.dtpOrderDate = new DevExpress.XtraEditors.DateEdit();
+         this.lkeDepot = new DevExpress.XtraEditors.LookUpEdit();
+         this.bdsDSKHO = new System.Windows.Forms.BindingSource(this.components);
+         this.lkeEmployee = new DevExpress.XtraEditors.LookUpEdit();
+         this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
+         this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+         this.taDSKHO = new QLVT_DATHANG.DataSetTableAdapters.DSKHOTableAdapter();
+         this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
+         this.taDSNCC = new QLVT_DATHANG.DataSetTableAdapters.DSNCCTableAdapter();
+         this.dsvtTableAdapter1 = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).BeginInit();
-         this.gbOrderDetail.SuspendLayout();
+         this.pnSubform.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.gbDetails)).BeginInit();
+         this.gbDetails.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvOrderDetail)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+         this.pnBtnOrderDetail.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
+         this.gbOrder.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNCC)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeDepot.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSKHO)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
          this.SuspendLayout();
          // 
          // bmPN
@@ -179,7 +216,7 @@
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 456);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 468);
          this.barDockControlBottom.Manager = this.bmPN;
          this.barDockControlBottom.Size = new System.Drawing.Size(987, 0);
          // 
@@ -189,7 +226,7 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 432);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 444);
          // 
          // barDockControlRight
          // 
@@ -197,7 +234,7 @@
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControlRight.Location = new System.Drawing.Point(987, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 432);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 444);
          // 
          // dataSet
          // 
@@ -224,7 +261,7 @@
          this.gcOrder.MainView = this.gvOrder;
          this.gcOrder.MenuManager = this.bmPN;
          this.gcOrder.Name = "gcOrder";
-         this.gcOrder.Size = new System.Drawing.Size(987, 229);
+         this.gcOrder.Size = new System.Drawing.Size(987, 204);
          this.gcOrder.TabIndex = 1;
          this.gcOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvOrder});
@@ -302,105 +339,17 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 283);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 258);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(987, 5);
          this.splitterControl1.TabIndex = 2;
          this.splitterControl1.TabStop = false;
          // 
-         // gcOrderDetail
-         // 
-         this.gcOrderDetail.AllowUserToAddRows = false;
-         this.gcOrderDetail.AllowUserToDeleteRows = false;
-         this.gcOrderDetail.AutoGenerateColumns = false;
-         this.gcOrderDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-         this.gcOrderDetail.BackgroundColor = System.Drawing.Color.White;
-         this.gcOrderDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-         this.gcOrderDetail.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle7.BackColor = System.Drawing.Color.Gray;
-         dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-         dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSlateGray;
-         dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-         this.gcOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-         this.gcOrderDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TENVT,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-         this.gcOrderDetail.DataSource = this.bdsCTDDH;
-         dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-         dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-         dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(234)))), ((int)(((byte)(253)))));
-         dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-         dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-         this.gcOrderDetail.DefaultCellStyle = dataGridViewCellStyle11;
-         this.gcOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gcOrderDetail.EnableHeadersVisualStyles = false;
-         this.gcOrderDetail.GridColor = System.Drawing.Color.Silver;
-         this.gcOrderDetail.Location = new System.Drawing.Point(2, 20);
-         this.gcOrderDetail.Name = "gcOrderDetail";
-         this.gcOrderDetail.ReadOnly = true;
-         this.gcOrderDetail.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-         dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-         dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-         dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-         dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-         this.gcOrderDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-         this.gcOrderDetail.RowHeadersVisible = false;
-         this.gcOrderDetail.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-         this.gcOrderDetail.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcOrderDetail.Size = new System.Drawing.Size(983, 146);
-         this.gcOrderDetail.TabIndex = 0;
-         // 
-         // TENVT
-         // 
-         this.TENVT.DataPropertyName = "MAVT";
-         this.TENVT.DataSource = this.bdsDSVT;
-         dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.TENVT.DefaultCellStyle = dataGridViewCellStyle8;
-         this.TENVT.DisplayMember = "TENVT";
-         this.TENVT.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-         this.TENVT.HeaderText = "TÊN VẬT TƯ";
-         this.TENVT.Name = "TENVT";
-         this.TENVT.ReadOnly = true;
-         this.TENVT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-         this.TENVT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-         this.TENVT.ValueMember = "MAVT";
-         // 
-         // dataGridViewTextBoxColumn3
-         // 
-         this.dataGridViewTextBoxColumn3.DataPropertyName = "SOLUONG";
-         dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle9;
-         this.dataGridViewTextBoxColumn3.FillWeight = 92.72421F;
-         this.dataGridViewTextBoxColumn3.HeaderText = "SỐ LƯỢNG";
-         this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-         this.dataGridViewTextBoxColumn3.ReadOnly = true;
-         // 
-         // dataGridViewTextBoxColumn4
-         // 
-         this.dataGridViewTextBoxColumn4.DataPropertyName = "DONGIA";
-         dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dataGridViewCellStyle10.Format = "C0";
-         dataGridViewCellStyle10.NullValue = null;
-         this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle10;
-         this.dataGridViewTextBoxColumn4.FillWeight = 92.72421F;
-         this.dataGridViewTextBoxColumn4.HeaderText = "ĐƠN GIÁ";
-         this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-         this.dataGridViewTextBoxColumn4.ReadOnly = true;
-         // 
          // bdsCTDDH
          // 
          this.bdsCTDDH.DataMember = "FK_CTDDH_DatHang";
          this.bdsCTDDH.DataSource = this.bdsDDH;
+         this.bdsCTDDH.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsCTDDH_ListChanged);
          // 
          // pnPickDepartment
          // 
@@ -443,30 +392,355 @@
          // 
          this.dxErrorProvider.ContainerControl = this;
          // 
-         // gbOrderDetail
-         // 
-         this.gbOrderDetail.Controls.Add(this.gcOrderDetail);
-         this.gbOrderDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.gbOrderDetail.Location = new System.Drawing.Point(0, 288);
-         this.gbOrderDetail.Name = "gbOrderDetail";
-         this.gbOrderDetail.Size = new System.Drawing.Size(987, 168);
-         this.gbOrderDetail.TabIndex = 12;
-         this.gbOrderDetail.Text = "Chi tiết";
-         // 
          // taDSVT
          // 
          this.taDSVT.ClearBeforeFill = true;
+         // 
+         // pnSubform
+         // 
+         this.pnSubform.Controls.Add(this.gbDetails);
+         this.pnSubform.Controls.Add(this.gbOrder);
+         this.pnSubform.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.pnSubform.Location = new System.Drawing.Point(0, 263);
+         this.pnSubform.Name = "pnSubform";
+         this.pnSubform.Size = new System.Drawing.Size(987, 205);
+         this.pnSubform.TabIndex = 17;
+         // 
+         // gbDetails
+         // 
+         this.gbDetails.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbDetails.AppearanceCaption.Options.UseFont = true;
+         this.gbDetails.Controls.Add(this.gcOrderDetail);
+         this.gbDetails.Controls.Add(this.pnBtnOrderDetail);
+         this.gbDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gbDetails.Location = new System.Drawing.Point(459, 0);
+         this.gbDetails.Name = "gbDetails";
+         this.gbDetails.Size = new System.Drawing.Size(528, 205);
+         this.gbDetails.TabIndex = 1;
+         this.gbDetails.Text = "Chi tiết đơn đặt hàng";
+         // 
+         // gcOrderDetail
+         // 
+         this.gcOrderDetail.DataSource = this.bdsCTDDH;
+         this.gcOrderDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.gcOrderDetail.Location = new System.Drawing.Point(2, 22);
+         this.gcOrderDetail.MainView = this.gvOrderDetail;
+         this.gcOrderDetail.Name = "gcOrderDetail";
+         this.gcOrderDetail.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1});
+         this.gcOrderDetail.Size = new System.Drawing.Size(524, 154);
+         this.gcOrderDetail.TabIndex = 0;
+         this.gcOrderDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvOrderDetail});
+         // 
+         // gvOrderDetail
+         // 
+         this.gvOrderDetail.Appearance.HeaderPanel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gvOrderDetail.Appearance.HeaderPanel.Options.UseFont = true;
+         this.gvOrderDetail.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+         this.gvOrderDetail.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.colMAVT,
+            this.colSOLUONG,
+            this.colDONGIA});
+         this.gvOrderDetail.GridControl = this.gcOrderDetail;
+         this.gvOrderDetail.Name = "gvOrderDetail";
+         this.gvOrderDetail.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+         this.gvOrderDetail.OptionsView.ShowGroupPanel = false;
+         this.gvOrderDetail.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gvOrderDetail_ValidateRow);
+         this.gvOrderDetail.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvOrderDetail_CustomColumnDisplayText);
+         this.gvOrderDetail.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gvOrderDetail_ValidatingEditor);
+         // 
+         // gridColumn1
+         // 
+         this.gridColumn1.FieldName = "MasoDDH";
+         this.gridColumn1.Name = "gridColumn1";
+         this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.String;
+         // 
+         // colMAVT
+         // 
+         this.colMAVT.Caption = "VẬT TƯ";
+         this.colMAVT.ColumnEdit = this.repositoryItemLookUpEdit1;
+         this.colMAVT.FieldName = "MAVT";
+         this.colMAVT.Name = "colMAVT";
+         this.colMAVT.Visible = true;
+         this.colMAVT.VisibleIndex = 0;
+         // 
+         // repositoryItemLookUpEdit1
+         // 
+         this.repositoryItemLookUpEdit1.AutoHeight = false;
+         this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.repositoryItemLookUpEdit1.DataSource = this.bdsDSVT;
+         this.repositoryItemLookUpEdit1.DisplayMember = "TENVT";
+         this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+         this.repositoryItemLookUpEdit1.NullText = "";
+         this.repositoryItemLookUpEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+         this.repositoryItemLookUpEdit1.ValueMember = "MAVT";
+         // 
+         // colSOLUONG
+         // 
+         this.colSOLUONG.Caption = "SỐ LƯỢNG";
+         this.colSOLUONG.FieldName = "SOLUONG";
+         this.colSOLUONG.Name = "colSOLUONG";
+         this.colSOLUONG.Visible = true;
+         this.colSOLUONG.VisibleIndex = 1;
+         // 
+         // colDONGIA
+         // 
+         this.colDONGIA.Caption = "ĐƠN GIÁ";
+         this.colDONGIA.FieldName = "DONGIA";
+         this.colDONGIA.Name = "colDONGIA";
+         this.colDONGIA.Visible = true;
+         this.colDONGIA.VisibleIndex = 2;
+         // 
+         // pnBtnOrderDetail
+         // 
+         this.pnBtnOrderDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+         this.pnBtnOrderDetail.Controls.Add(this.btnRemoveLine);
+         this.pnBtnOrderDetail.Controls.Add(this.btnAddMaterials);
+         this.pnBtnOrderDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.pnBtnOrderDetail.Location = new System.Drawing.Point(2, 176);
+         this.pnBtnOrderDetail.Name = "pnBtnOrderDetail";
+         this.pnBtnOrderDetail.Size = new System.Drawing.Size(524, 27);
+         this.pnBtnOrderDetail.TabIndex = 1;
+         // 
+         // btnRemoveLine
+         // 
+         this.btnRemoveLine.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.btnRemoveLine.Appearance.Options.UseFont = true;
+         this.btnRemoveLine.Enabled = false;
+         this.btnRemoveLine.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_delete_sign_16;
+         this.btnRemoveLine.Location = new System.Drawing.Point(109, 3);
+         this.btnRemoveLine.Name = "btnRemoveLine";
+         this.btnRemoveLine.Size = new System.Drawing.Size(100, 20);
+         this.btnRemoveLine.TabIndex = 1;
+         this.btnRemoveLine.Text = "Xóa dòng";
+         this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveLine_Click);
+         // 
+         // btnAddMaterials
+         // 
+         this.btnAddMaterials.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.btnAddMaterials.Appearance.Options.UseFont = true;
+         this.btnAddMaterials.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_add_list_16;
+         this.btnAddMaterials.Location = new System.Drawing.Point(3, 3);
+         this.btnAddMaterials.Name = "btnAddMaterials";
+         this.btnAddMaterials.Size = new System.Drawing.Size(100, 20);
+         this.btnAddMaterials.TabIndex = 0;
+         this.btnAddMaterials.Text = "Thêm nhiều";
+         this.btnAddMaterials.Click += new System.EventHandler(this.btnAddMaterials_Click);
+         // 
+         // gbOrder
+         // 
+         this.gbOrder.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbOrder.AppearanceCaption.Options.UseFont = true;
+         this.gbOrder.Controls.Add(this.txtEmployeeId);
+         this.gbOrder.Controls.Add(this.labelControl4);
+         this.gbOrder.Controls.Add(this.labelControl3);
+         this.gbOrder.Controls.Add(this.labelControl2);
+         this.gbOrder.Controls.Add(this.labelControl5);
+         this.gbOrder.Controls.Add(this.labelControl6);
+         this.gbOrder.Controls.Add(this.txtOrderId);
+         this.gbOrder.Controls.Add(this.cboNCC);
+         this.gbOrder.Controls.Add(this.dtpOrderDate);
+         this.gbOrder.Controls.Add(this.lkeDepot);
+         this.gbOrder.Controls.Add(this.lkeEmployee);
+         this.gbOrder.Dock = System.Windows.Forms.DockStyle.Left;
+         this.gbOrder.Location = new System.Drawing.Point(0, 0);
+         this.gbOrder.Name = "gbOrder";
+         this.gbOrder.Size = new System.Drawing.Size(459, 205);
+         this.gbOrder.TabIndex = 0;
+         this.gbOrder.Text = "Thông tin đơn đặt hàng";
+         // 
+         // txtEmployeeId
+         // 
+         this.txtEmployeeId.Location = new System.Drawing.Point(108, 87);
+         this.txtEmployeeId.Name = "txtEmployeeId";
+         this.txtEmployeeId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtEmployeeId.Properties.Appearance.Options.UseFont = true;
+         this.txtEmployeeId.Properties.ReadOnly = true;
+         this.txtEmployeeId.Size = new System.Drawing.Size(105, 22);
+         this.txtEmployeeId.TabIndex = 9;
+         // 
+         // labelControl4
+         // 
+         this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl4.Appearance.Options.UseFont = true;
+         this.labelControl4.Location = new System.Drawing.Point(287, 61);
+         this.labelControl4.Name = "labelControl4";
+         this.labelControl4.Size = new System.Drawing.Size(24, 15);
+         this.labelControl4.TabIndex = 6;
+         this.labelControl4.Text = "Kho:";
+         // 
+         // labelControl3
+         // 
+         this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl3.Appearance.Options.UseFont = true;
+         this.labelControl3.Location = new System.Drawing.Point(247, 35);
+         this.labelControl3.Name = "labelControl3";
+         this.labelControl3.Size = new System.Drawing.Size(51, 15);
+         this.labelControl3.TabIndex = 2;
+         this.labelControl3.Text = "Ngày đặt:";
+         // 
+         // labelControl2
+         // 
+         this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl2.Appearance.Options.UseFont = true;
+         this.labelControl2.Location = new System.Drawing.Point(12, 61);
+         this.labelControl2.Name = "labelControl2";
+         this.labelControl2.Size = new System.Drawing.Size(77, 15);
+         this.labelControl2.TabIndex = 4;
+         this.labelControl2.Text = "Nhà cung cấp:";
+         // 
+         // labelControl5
+         // 
+         this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl5.Appearance.Options.UseFont = true;
+         this.labelControl5.Location = new System.Drawing.Point(12, 90);
+         this.labelControl5.Name = "labelControl5";
+         this.labelControl5.Size = new System.Drawing.Size(77, 15);
+         this.labelControl5.TabIndex = 8;
+         this.labelControl5.Text = "Nhân viên đặt:";
+         // 
+         // labelControl6
+         // 
+         this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl6.Appearance.Options.UseFont = true;
+         this.labelControl6.Location = new System.Drawing.Point(12, 35);
+         this.labelControl6.Name = "labelControl6";
+         this.labelControl6.Size = new System.Drawing.Size(70, 15);
+         this.labelControl6.TabIndex = 0;
+         this.labelControl6.Text = "Số đơn hàng:";
+         // 
+         // txtOrderId
+         // 
+         this.txtOrderId.Location = new System.Drawing.Point(108, 32);
+         this.txtOrderId.Name = "txtOrderId";
+         this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.txtOrderId.Properties.Appearance.Options.UseFont = true;
+         this.txtOrderId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+         this.txtOrderId.Properties.MaxLength = 8;
+         this.txtOrderId.Size = new System.Drawing.Size(133, 22);
+         this.txtOrderId.TabIndex = 1;
+         this.txtOrderId.Tag = "0";
+         // 
+         // cboNCC
+         // 
+         this.cboNCC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+         this.cboNCC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+         this.cboNCC.DataSource = this.bdsDSNCC;
+         this.cboNCC.DisplayMember = "NhaCC";
+         this.cboNCC.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.cboNCC.FormattingEnabled = true;
+         this.cboNCC.Location = new System.Drawing.Point(108, 58);
+         this.cboNCC.Name = "cboNCC";
+         this.cboNCC.Size = new System.Drawing.Size(173, 23);
+         this.cboNCC.TabIndex = 5;
+         this.cboNCC.Tag = "2";
+         // 
+         // bdsDSNCC
+         // 
+         this.bdsDSNCC.DataMember = "DSNCC";
+         this.bdsDSNCC.DataSource = this.dataSet;
+         // 
+         // dtpOrderDate
+         // 
+         this.dtpOrderDate.EditValue = null;
+         this.dtpOrderDate.Location = new System.Drawing.Point(304, 32);
+         this.dtpOrderDate.Name = "dtpOrderDate";
+         this.dtpOrderDate.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.dtpOrderDate.Properties.Appearance.Options.UseFont = true;
+         this.dtpOrderDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpOrderDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpOrderDate.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+         this.dtpOrderDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+         this.dtpOrderDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+         this.dtpOrderDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+         this.dtpOrderDate.Properties.Mask.EditMask = "dd/MM/yyyy";
+         this.dtpOrderDate.Size = new System.Drawing.Size(144, 22);
+         this.dtpOrderDate.TabIndex = 3;
+         this.dtpOrderDate.Tag = "1";
+         // 
+         // lkeDepot
+         // 
+         this.lkeDepot.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDSKHO, "TENKHO", true));
+         this.lkeDepot.Location = new System.Drawing.Point(317, 58);
+         this.lkeDepot.Name = "lkeDepot";
+         this.lkeDepot.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lkeDepot.Properties.Appearance.Options.UseFont = true;
+         this.lkeDepot.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.lkeDepot.Properties.DataSource = this.bdsDSKHO;
+         this.lkeDepot.Properties.DisplayMember = "TENKHO";
+         this.lkeDepot.Properties.NullText = "";
+         this.lkeDepot.Properties.ValueMember = "MAKHO";
+         this.lkeDepot.Size = new System.Drawing.Size(131, 22);
+         this.lkeDepot.TabIndex = 7;
+         this.lkeDepot.Tag = "4";
+         // 
+         // bdsDSKHO
+         // 
+         this.bdsDSKHO.DataMember = "DSKHO";
+         this.bdsDSKHO.DataSource = this.dataSet;
+         // 
+         // lkeEmployee
+         // 
+         this.lkeEmployee.CausesValidation = false;
+         this.lkeEmployee.Location = new System.Drawing.Point(219, 87);
+         this.lkeEmployee.Name = "lkeEmployee";
+         this.lkeEmployee.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+         this.lkeEmployee.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lkeEmployee.Properties.Appearance.Options.UseFont = true;
+         this.lkeEmployee.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+         this.lkeEmployee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.DropDown)});
+         this.lkeEmployee.Properties.DataSource = this.bdsDSNV;
+         this.lkeEmployee.Properties.DisplayMember = "HOTEN";
+         this.lkeEmployee.Properties.NullText = "";
+         this.lkeEmployee.Properties.ValueMember = "MANV";
+         this.lkeEmployee.Size = new System.Drawing.Size(229, 22);
+         this.lkeEmployee.TabIndex = 10;
+         this.lkeEmployee.Tag = "3";
+         this.lkeEmployee.EditValueChanged += new System.EventHandler(this.lkeEmployee_EditValueChanged);
+         // 
+         // bdsDSNV
+         // 
+         this.bdsDSNV.DataMember = "DSNV";
+         this.bdsDSNV.DataSource = this.dataSet;
+         // 
+         // bindingSource1
+         // 
+         this.bindingSource1.DataMember = "DSVT";
+         this.bindingSource1.DataSource = this.dataSet;
+         // 
+         // taDSKHO
+         // 
+         this.taDSKHO.ClearBeforeFill = true;
+         // 
+         // taDSNV
+         // 
+         this.taDSNV.ClearBeforeFill = true;
+         // 
+         // taDSNCC
+         // 
+         this.taDSNCC.ClearBeforeFill = true;
+         // 
+         // dsvtTableAdapter1
+         // 
+         this.dsvtTableAdapter1.ClearBeforeFill = true;
          // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(987, 456);
+         this.ClientSize = new System.Drawing.Size(987, 468);
          this.Controls.Add(this.gcOrder);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.splitterControl1);
-         this.Controls.Add(this.gbOrderDetail);
+         this.Controls.Add(this.pnSubform);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);
@@ -481,14 +755,31 @@
          ((System.ComponentModel.ISupportInitialize)(this.gcOrder)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvOrder)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsCTDDH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gbOrderDetail)).EndInit();
-         this.gbOrderDetail.ResumeLayout(false);
+         this.pnSubform.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.gbDetails)).EndInit();
+         this.gbDetails.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gvOrderDetail)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+         this.pnBtnOrderDetail.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
+         this.gbOrder.ResumeLayout(false);
+         this.gbOrder.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNCC)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeDepot.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSKHO)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -517,7 +808,6 @@
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDeployment;
       private DataSetTableAdapters.CTDDHTableAdapter taCTDDH;
-      private System.Windows.Forms.DataGridView gcOrderDetail;
       private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
       private System.Windows.Forms.BindingSource bdsCTDDH;
       private DevExpress.XtraGrid.Columns.GridColumn colMasoDDH;
@@ -525,11 +815,39 @@
       private DevExpress.XtraGrid.Columns.GridColumn colNhaCC;
       private DevExpress.XtraGrid.Columns.GridColumn colMANV;
       private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
-      private DevExpress.XtraEditors.GroupControl gbOrderDetail;
       private System.Windows.Forms.BindingSource bdsDSVT;
       private DataSetTableAdapters.DSVTTableAdapter taDSVT;
-      private System.Windows.Forms.DataGridViewComboBoxColumn TENVT;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-      private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+      private System.Windows.Forms.Panel pnSubform;
+      private DevExpress.XtraEditors.GroupControl gbOrder;
+      private DevExpress.XtraEditors.GroupControl gbDetails;
+      private System.Windows.Forms.Panel pnBtnOrderDetail;
+      private DevExpress.XtraEditors.SimpleButton btnRemoveLine;
+      private DevExpress.XtraEditors.SimpleButton btnAddMaterials;
+      private DevExpress.XtraGrid.GridControl gcOrderDetail;
+      private DevExpress.XtraGrid.Views.Grid.GridView gvOrderDetail;
+      private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+      private DevExpress.XtraGrid.Columns.GridColumn colMAVT;
+      private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+      private DevExpress.XtraGrid.Columns.GridColumn colSOLUONG;
+      private DevExpress.XtraGrid.Columns.GridColumn colDONGIA;
+      private System.Windows.Forms.BindingSource bdsDSNCC;
+      private System.Windows.Forms.BindingSource bdsDSKHO;
+      private System.Windows.Forms.BindingSource bdsDSNV;
+      private System.Windows.Forms.BindingSource bindingSource1;
+      private DataSetTableAdapters.DSKHOTableAdapter taDSKHO;
+      private DataSetTableAdapters.DSNVTableAdepter taDSNV;
+      private DataSetTableAdapters.DSNCCTableAdapter taDSNCC;
+      private DataSetTableAdapters.DSVTTableAdapter dsvtTableAdapter1;
+      private DevExpress.XtraEditors.TextEdit txtEmployeeId;
+      private DevExpress.XtraEditors.LabelControl labelControl4;
+      private DevExpress.XtraEditors.LabelControl labelControl3;
+      private DevExpress.XtraEditors.LabelControl labelControl2;
+      private DevExpress.XtraEditors.LabelControl labelControl5;
+      private DevExpress.XtraEditors.LabelControl labelControl6;
+      private DevExpress.XtraEditors.TextEdit txtOrderId;
+      private System.Windows.Forms.ComboBox cboNCC;
+      private DevExpress.XtraEditors.DateEdit dtpOrderDate;
+      private DevExpress.XtraEditors.LookUpEdit lkeDepot;
+      private DevExpress.XtraEditors.LookUpEdit lkeEmployee;
    }
 }

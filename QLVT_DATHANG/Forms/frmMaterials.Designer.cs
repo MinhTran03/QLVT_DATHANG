@@ -117,11 +117,11 @@
          this.gcVT.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcVT.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.gcVT.Location = new System.Drawing.Point(0, 127);
+         this.gcVT.Location = new System.Drawing.Point(0, 135);
          this.gcVT.MainView = this.gvMaterial;
          this.gcVT.Margin = new System.Windows.Forms.Padding(2);
          this.gcVT.Name = "gcVT";
-         this.gcVT.Size = new System.Drawing.Size(873, 331);
+         this.gcVT.Size = new System.Drawing.Size(881, 323);
          this.gcVT.TabIndex = 0;
          this.gcVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMaterial});
@@ -211,10 +211,10 @@
          this.layoutControl1.Controls.Add(this.txtMaterialName);
          this.layoutControl1.Controls.Add(this.txtMaterialId);
          this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Left;
-         this.layoutControl1.Location = new System.Drawing.Point(2, 22);
+         this.layoutControl1.Location = new System.Drawing.Point(2, 23);
          this.layoutControl1.Name = "layoutControl1";
          this.layoutControl1.Root = this.Root;
-         this.layoutControl1.Size = new System.Drawing.Size(596, 74);
+         this.layoutControl1.Size = new System.Drawing.Size(596, 73);
          this.layoutControl1.TabIndex = 9;
          this.layoutControl1.Text = "layoutControl1";
          // 
@@ -273,7 +273,7 @@
             this.layoutControlItem3,
             this.layoutControlItem4});
          this.Root.Name = "Root";
-         this.Root.Size = new System.Drawing.Size(596, 74);
+         this.Root.Size = new System.Drawing.Size(596, 73);
          this.Root.TextVisible = false;
          // 
          // layoutControlItem2
@@ -299,7 +299,7 @@
          this.layoutControlItem3.Control = this.cboDVT;
          this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
          this.layoutControlItem3.Name = "layoutControlItem3";
-         this.layoutControlItem3.Size = new System.Drawing.Size(287, 28);
+         this.layoutControlItem3.Size = new System.Drawing.Size(287, 27);
          this.layoutControlItem3.Text = "Đơn vị tính:";
          this.layoutControlItem3.TextSize = new System.Drawing.Size(71, 13);
          // 
@@ -308,7 +308,7 @@
          this.layoutControlItem4.Control = this.spiSLT;
          this.layoutControlItem4.Location = new System.Drawing.Point(287, 26);
          this.layoutControlItem4.Name = "layoutControlItem4";
-         this.layoutControlItem4.Size = new System.Drawing.Size(289, 28);
+         this.layoutControlItem4.Size = new System.Drawing.Size(289, 27);
          this.layoutControlItem4.Text = "Số lượng tồn:";
          this.layoutControlItem4.TextSize = new System.Drawing.Size(71, 13);
          // 
@@ -425,7 +425,7 @@
          this.barDockControl1.Location = new System.Drawing.Point(0, 0);
          this.barDockControl1.Manager = this.bmVT;
          this.barDockControl1.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl1.Size = new System.Drawing.Size(873, 24);
+         this.barDockControl1.Size = new System.Drawing.Size(881, 27);
          // 
          // barDockControl2
          // 
@@ -434,25 +434,25 @@
          this.barDockControl2.Location = new System.Drawing.Point(0, 458);
          this.barDockControl2.Manager = this.bmVT;
          this.barDockControl2.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl2.Size = new System.Drawing.Size(873, 0);
+         this.barDockControl2.Size = new System.Drawing.Size(881, 0);
          // 
          // barDockControl3
          // 
          this.barDockControl3.CausesValidation = false;
          this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
-         this.barDockControl3.Location = new System.Drawing.Point(0, 24);
+         this.barDockControl3.Location = new System.Drawing.Point(0, 27);
          this.barDockControl3.Manager = this.bmVT;
          this.barDockControl3.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl3.Size = new System.Drawing.Size(0, 434);
+         this.barDockControl3.Size = new System.Drawing.Size(0, 431);
          // 
          // barDockControl4
          // 
          this.barDockControl4.CausesValidation = false;
          this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControl4.Location = new System.Drawing.Point(873, 24);
+         this.barDockControl4.Location = new System.Drawing.Point(881, 27);
          this.barDockControl4.Manager = this.bmVT;
          this.barDockControl4.Margin = new System.Windows.Forms.Padding(2);
-         this.barDockControl4.Size = new System.Drawing.Size(0, 434);
+         this.barDockControl4.Size = new System.Drawing.Size(0, 431);
          // 
          // bar2
          // 
@@ -475,18 +475,18 @@
          this.gbVT.AppearanceCaption.Options.UseFont = true;
          this.gbVT.Controls.Add(this.layoutControl1);
          this.gbVT.Dock = System.Windows.Forms.DockStyle.Top;
-         this.gbVT.Location = new System.Drawing.Point(0, 24);
+         this.gbVT.Location = new System.Drawing.Point(0, 27);
          this.gbVT.Name = "gbVT";
-         this.gbVT.Size = new System.Drawing.Size(873, 98);
+         this.gbVT.Size = new System.Drawing.Size(881, 98);
          this.gbVT.TabIndex = 2;
          this.gbVT.Text = "Thông tin Vật Tư";
          // 
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 122);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 125);
          this.splitterControl1.Name = "splitterControl1";
-         this.splitterControl1.Size = new System.Drawing.Size(873, 5);
+         this.splitterControl1.Size = new System.Drawing.Size(881, 10);
          this.splitterControl1.TabIndex = 1;
          this.splitterControl1.TabStop = false;
          this.splitterControl1.Visible = false;
@@ -526,7 +526,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(873, 458);
+         this.ClientSize = new System.Drawing.Size(881, 458);
          this.Controls.Add(this.gcVT);
          this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gbVT);

@@ -14,6 +14,9 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraEditors.Controls;
    using DevExpress.XtraEditors.Mask;
    using DevExpress.XtraGrid.Views.Base;
+   using QLVT_DATHANG.DAL;
+   using QLVT_DATHANG.Models;
+   using System.Threading.Tasks;
    using UserControls;
    using Utility;
 
@@ -23,6 +26,8 @@ namespace QLVT_DATHANG.Forms
       private int _currentPosition;
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
+
+      private EmployeeDal employeeDal = new EmployeeDal();
 
       public frmEmployee()
       {
@@ -101,7 +106,7 @@ namespace QLVT_DATHANG.Forms
 
          dtpEmpBirth.Properties.Mask.MaskType = MaskType.DateTime;
          dtpEmpBirth.Properties.Mask.EditMask = "dd/MM/yyyy";
-         dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-(365*18));
+         dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-(365 * 18));
          dtpEmpBirth.Properties.Mask.BeepOnError = true;
          dtpEmpBirth.Properties.AllowNullInput = DefaultBoolean.True;
          //dtpEmpBirth.Properties.NullValuePrompt = "Pick a day";
@@ -199,7 +204,7 @@ namespace QLVT_DATHANG.Forms
          btnSave.Visibility = BarItemVisibility.Never;
       }
 
-      private void Undo()
+      private async void Undo()
       {
          ButtonAction action = (ButtonAction)_userDo.Pop();
          int position = -1;
@@ -211,11 +216,11 @@ namespace QLVT_DATHANG.Forms
                   // xóa dữ liệu mới
                   //position = bdsNV.Find("MANV", action.SaveItems[0]);
                   //bdsNV.Remove((DataRowView)bdsNV[position]);
-                  if (UtilDB.DeleteInDB("NhanVien", "MANV", action.SaveItems[0]))
+                  if (await UtilDB.DeleteInDB("NhanVien", "MANV", action.SaveItems[0]))
                   {
-                     this.dataSet.EnforceConstraints = false;
+                     //this.dataSet.EnforceConstraints = false;
                      this.taNV.Fill(this.dataSet.NhanVien);
-                     this.dataSet.EnforceConstraints = true;
+                     //this.dataSet.EnforceConstraints = true;
                   }
                   break;
                case ButtonActionType.Edit:
@@ -244,10 +249,10 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
-      private bool SaveEmployee()
+      private async Task<bool> SaveEmployee()
       {
          // sinh ma nv tu dong
-         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
+         // txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
 
          if (!IsValidEmptyValue())
          {
@@ -257,16 +262,16 @@ namespace QLVT_DATHANG.Forms
 
          try
          {
-            if (_buttonAction == ButtonActionType.Add &&
-               IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
-            {
-               XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
-                                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               txtEmpId.SelectAll();
-               return false;
-            }
+            //if (_buttonAction == ButtonActionType.Add &&
+            //   IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
+            //{
+            //   XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
+            //                           MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //   txtEmpId.SelectAll();
+            //   return false;
+            //}
 
-            EndEdit();
+            await EndEdit();
             if (_buttonAction == ButtonActionType.Add)
             {
                // Lưu vô stack trạng thái nút nhấn và data bị mới
@@ -283,20 +288,45 @@ namespace QLVT_DATHANG.Forms
          return true;
       }
 
-      private void EndEdit()
+      private async Task<Employee> EndEdit()
       {
+         Employee employeeToAdd = new Employee();
          try
          {
-            bdsNV.EndEdit();
-            this.taNV.Update(this.dataSet.NhanVien);
-            bdsNV.ResetCurrentItem();
+            employeeToAdd.FirstName = txtEmpFirstName.EditValue.ToString();
+            employeeToAdd.LastName = txtEmpLastName.EditValue.ToString();
+            employeeToAdd.Address = txtEmpAddr.Text;
+            employeeToAdd.Birth = DateTime.Parse(dtpEmpBirth.EditValue.ToString());
+            employeeToAdd.Salary = float.Parse(spiEmpSalary.EditValue.ToString());
+            employeeToAdd.DepartmentId = _currentDeploymentId;
+            employeeToAdd.IsDelete = 0;
+            employeeToAdd.Id = await employeeDal.AddAsync(employeeToAdd);
+
+            bdsNV.CancelEdit();
             DisableEditMode();
+            taNV.Fill(this.dataSet.NhanVien);
          }
          catch (Exception e)
          {
             throw e;
          }
+         return employeeToAdd;
       }
+
+      //private void EndEdit()
+      //{
+      //   try
+      //   {
+      //      bdsNV.EndEdit();
+      //      this.taNV.Update(this.dataSet.NhanVien);
+      //      bdsNV.ResetCurrentItem();
+      //      DisableEditMode();
+      //   }
+      //   catch (Exception e)
+      //   {
+      //      throw e;
+      //   }
+      //}
 
       private void EditEmployee()
       {
@@ -332,7 +362,7 @@ namespace QLVT_DATHANG.Forms
          return result;
       }
 
-      private void DeleteSelectedEmployee()
+      private async void DeleteSelectedEmployee()
       {
          string ho = txtEmpFirstName.Text;
          string ten = txtEmpLastName.Text;
@@ -348,11 +378,10 @@ namespace QLVT_DATHANG.Forms
 
                //bdsNV.RemoveCurrent();
                //this.taNV.Update(this.dataSet.NhanVien);
-               if (UtilDB.DeleteInDB("NhanVien", "MANV", txtEmpId.EditValue))
+               if (await UtilDB.DeleteInDB("NhanVien", "MANV", txtEmpId.EditValue))
                {
                   this.dataSet.EnforceConstraints = false;
                   this.taNV.Fill(this.dataSet.NhanVien);
-                  this.dataSet.EnforceConstraints = true;
                }
             }
             catch (Exception ex)
@@ -479,7 +508,7 @@ namespace QLVT_DATHANG.Forms
 
       private void btnDel_ItemClick(object sender, ItemClickEventArgs e)
       {
-         if(IsDeleteSelectedEmployee())
+         if (IsDeleteSelectedEmployee())
             DeleteSelectedEmployee();
       }
 
@@ -493,11 +522,11 @@ namespace QLVT_DATHANG.Forms
          this.Close();
       }
 
-      private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+      private async void btnSave_ItemClick(object sender, ItemClickEventArgs e)
       {
          UtilDB.TrimDataInControl(gbEmployee);
 
-         SaveEmployee();
+         await SaveEmployee();
       }
 
       private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
@@ -528,7 +557,7 @@ namespace QLVT_DATHANG.Forms
          EditEmployee();
       }
 
-      private void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
+      private async void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
       {
          if (lcEmplyee.Enabled == true)
          {
@@ -539,7 +568,7 @@ namespace QLVT_DATHANG.Forms
             {
                case DialogResult.Yes:
                   // kiểm tra nút được nhấn [thêm, sửa] => [Lưu lại, update]
-                  e.Cancel = !(SaveEmployee());
+                  e.Cancel = !(await SaveEmployee());
                   break;
                case DialogResult.No:
                   // thoát bất chấp
@@ -618,6 +647,11 @@ namespace QLVT_DATHANG.Forms
          string fullName = $"{switchEmployeeData[1].ToString()} {switchEmployeeData[2].ToString()}";
          frmSwitchDepartment frmSwitch = new frmSwitchDepartment(int.Parse(switchEmployeeData[0].ToString()), fullName);
          CustomFlyoutDialog.ShowForm(this, flyoutAction, frmSwitch);
+         frmSwitch.Disposed += (o, eventArg) =>
+         {
+            if (frmSwitch.isSuccess)
+               taNV.Update(dataSet.NhanVien);
+         };
       }
 
       #endregion

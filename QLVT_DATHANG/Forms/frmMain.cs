@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
@@ -158,6 +157,36 @@ namespace QLVT_DATHANG.Forms
          if (UtilDB.CurrentGroup.Equals(MyConfig.UserGroupName))
          {
             btnRegister.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+         }
+      }
+
+      private void btnReportDSNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         Form nvForm = CheckExists(typeof(frmReportDSNV));
+         if (nvForm != null)
+         {
+            nvForm.Activate();
+         }
+         else
+         {
+            frmReportDSNV f = new frmReportDSNV();
+            f.MdiParent = this;
+            f.Show();
+         }
+      }
+
+      private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         Form nvForm = CheckExists(typeof(frmDSDDHChuaCoPhieuNhap));
+         if (nvForm != null)
+         {
+            nvForm.Activate();
+         }
+         else
+         {
+            frmDSDDHChuaCoPhieuNhap f = new frmDSDDHChuaCoPhieuNhap();
+            f.MdiParent = this;
+            f.Show();
          }
       }
    }
