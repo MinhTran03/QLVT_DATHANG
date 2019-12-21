@@ -3,7 +3,8 @@ using System.Data;
 
 namespace QLVT_DATHANG.Forms
 {
-   using DevExpress.XtraBars;
+    using DataSetTableAdapters;
+    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
    using System.Data.SqlClient;
    using System.Windows.Forms;
@@ -16,15 +17,37 @@ namespace QLVT_DATHANG.Forms
       private int _currentPosition;
       private int _backupWidth;
 
-      public frmGoodsReceivedNote()
+        private BindingSource _bdsPN;
+        private PhieuNhapTableAdapter _taPN;
+        private BindingSource _bdsCTPN;
+        private CTPNTableAdapter _taCTPN;
+        private DataSet _dataSet;
+
+        public frmGoodsReceivedNote()
       {
          InitializeComponent();
-         SetupControls();
+
+            _bdsPN = bdsPN;
+            _taPN = taPN;
+            _bdsCTPN = bdsCTPN;
+            _taCTPN = taCTPN;
+            _dataSet = dataSet;
+
+            this.gcCTPN.DataSource = _bdsCTPN;
+            _bdsCTPN.ListChanged += bdsCTPN_ListChanged;
+
+            SetupControls();
       }
 
-      private void GoodsReceivedNote_Load(object sender, EventArgs e)
+        private void bdsCTPN_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            if (gvCTPN.DataRowCount == 0) btnRemoveDataRow.Enabled = false;
+            else btnRemoveDataRow.Enabled = true;
+        }
+
+        private void GoodsReceivedNote_Load(object sender, EventArgs e)
       {
-         LoadTable();
+            LoadTable();
          DisableEditMode();
 
          _currentDeploymentId = ((DataRowView)bdsPN[0])["MAPN"].ToString().Trim();
@@ -47,23 +70,23 @@ namespace QLVT_DATHANG.Forms
 
       private void SetupControls()
       {
-         gcCTPN.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-         gcCTPN.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-         gcCTPN.Columns[3].DefaultCellStyle.FormatProvider = Cons.CiVNI;
-         gcCTPN.Columns[3].DefaultCellStyle.Format = "c0";
+         //gcCTPN.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+         //gcCTPN.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+         //gcCTPN.Columns[3].DefaultCellStyle.FormatProvider = Cons.CiVNI;
+         //gcCTPN.Columns[3].DefaultCellStyle.Format = "c0";
 
-         gcCTPN.BorderStyle = BorderStyle.None;
-         gcCTPN.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
-         gcCTPN.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-         gcCTPN.DefaultCellStyle.SelectionBackColor = Color.FromArgb(226, 234, 253);
-         gcCTPN.DefaultCellStyle.SelectionForeColor = Color.Black;
-         gcCTPN.BackgroundColor = Color.White;
+         //gcCTPN.BorderStyle = BorderStyle.None;
+         //gcCTPN.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+         //gcCTPN.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+         //gcCTPN.DefaultCellStyle.SelectionBackColor = Color.FromArgb(226, 234, 253);
+         //gcCTPN.DefaultCellStyle.SelectionForeColor = Color.Black;
+         //gcCTPN.BackgroundColor = Color.White;
 
-         gcCTPN.EnableHeadersVisualStyles = false;
-         gcCTPN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-         gcCTPN.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(246, 246, 247);
-         gcCTPN.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-         gcCTPN.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+         //gcCTPN.EnableHeadersVisualStyles = false;
+         //gcCTPN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+         //gcCTPN.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(246, 246, 247);
+         //gcCTPN.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+         //gcCTPN.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
       }
 
       private void LoadTable()
@@ -71,6 +94,7 @@ namespace QLVT_DATHANG.Forms
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
          this.taPN.Connection.ConnectionString =
                 this.taCTPN.Connection.ConnectionString =
+                this.taDSKHO.Connection.ConnectionString =
                 this.taDDH.Connection.ConnectionString =
                 this.taDSNV.Connection.ConnectionString =
                 this.taDSVT.Connection.ConnectionString =
@@ -79,14 +103,15 @@ namespace QLVT_DATHANG.Forms
          {
             this.dataSet.EnforceConstraints = false;
 
-            // TODO: This line of code loads data into the 'dataSet.PhieuNhap' table. You can move, or remove it, as needed.
             this.taPN.Fill(this.dataSet.PhieuNhap);
 
-            this.taDDH.Fill(this.dataSet.DatHang);
+                this.taCTPN.Fill(this.dataSet.CTPN);
 
-            this.taDSNV.Fill(this.dataSet.DSNV);
+            this.taDSKHO.Fill(this.dataSet.DSKHO);
 
-            this.taCTPN.Fill(this.dataSet.CTPN);
+                this.taDDH.Fill(this.dataSet.DatHang);
+
+                this.taDSNV.Fill(this.dataSet.DSNV);
 
             this.taDSVT.Fill(this.dataSet.DSVT);
 
@@ -106,7 +131,9 @@ namespace QLVT_DATHANG.Forms
          gcReceivedNote.Enabled = false;
          gbReceivedNote.Enabled = true;
 
-         btnAdd.Enabled = false;
+         gbCTPN.Enabled = true;
+
+            btnAdd.Enabled = false;
          btnExit.Enabled = false;
          btnRefresh.Enabled = false;
 
@@ -121,6 +148,8 @@ namespace QLVT_DATHANG.Forms
       {
          gcReceivedNote.Enabled = true;
          gbReceivedNote.Enabled = false;
+
+         gbCTPN.Enabled = false;
 
          btnAdd.Enabled = true;
          btnExit.Enabled = true;
@@ -167,7 +196,11 @@ namespace QLVT_DATHANG.Forms
             bdsPN.CancelEdit();
             bdsPN.ResetCurrentItem();
             bdsPN.Position = _currentPosition;
-            DisableEditMode();
+
+            bdsCTPN.CancelEdit();
+            bdsPN.ResetCurrentItem();
+
+                DisableEditMode();
          }
          catch (Exception ex)
          {
@@ -175,12 +208,25 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
-      private void btnExit_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnExit_ItemClick(object sender, ItemClickEventArgs e)
       {
          this.Close();
       }
 
-      private bool SaveReceivedNote()
+        private object[] GetDataOrder()
+        {
+            object[] data = new object[5];
+
+            data[0] = txtMaPN.Text;
+            data[1] = txtDate.EditValue;
+            data[2] = lkeMaDDH.EditValue;
+            data[3] = lkeEmployee.EditValue;
+            data[4] = lkeDepot.EditValue;
+
+            return data;
+        }
+
+        private bool SaveReceivedNote()
       {
          try
          {
@@ -192,12 +238,14 @@ namespace QLVT_DATHANG.Forms
                return false;
             }
 
-            bdsPN.EndEdit();
-            this.taPN.Update(this.dataSet.PhieuNhap);
-            gbReceivedNote.Enabled = false;
-            bdsPN.ResetCurrentItem();
-            bdsPN.Position = _currentPosition;
-            DisableEditMode();
+            SaveALlDataOrderDetailOnView();
+
+                ((DataRowView)_bdsPN[_bdsPN.Position]).Row.ItemArray = GetDataOrder();
+                _bdsPN.EndEdit();
+
+                this._taPN.Update(this._dataSet.PhieuNhap);
+                this._taCTPN.Update(this._dataSet.CTPN);
+                DisableEditMode();
          }
          catch (Exception ex)
          {
@@ -208,7 +256,19 @@ namespace QLVT_DATHANG.Forms
          return true;
       }
 
-      private bool IsExistGoodsReceivedNote(string id)
+        private void SaveALlDataOrderDetailOnView()
+        {
+            int orderDetailCount = gvCTPN.DataRowCount;
+            ((DataRowView)_bdsCTPN.Current).BeginEdit();
+            for (int i = 0; i < orderDetailCount; i++)
+            {
+                ((DataRowView)_bdsCTPN.Current).Row["MAPN"] = txtMaPN.Text;
+                _bdsCTPN.MovePrevious();
+            }
+            _bdsCTPN.EndEdit();
+        }
+
+        private bool IsExistGoodsReceivedNote(string id)
       {
          bool exist = true;
          using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
@@ -278,5 +338,44 @@ namespace QLVT_DATHANG.Forms
             }
          }
       }
-   }
+
+        private void btnAddDataRow_Click(object sender, EventArgs e)
+        {
+            frmSelectMaterials selectMaterials = new frmSelectMaterials();
+            selectMaterials.Show(this);
+            selectMaterials.FormClosing += (obj, args) =>
+            {
+                var dsMaterialsId = selectMaterials.selectedMaterialsId;
+                foreach (var id in dsMaterialsId)
+                {
+                    if (IsMaterialExistInView(id) == false)
+                    {
+                        _bdsCTPN.AddNew();
+                        int position = _bdsCTPN.Position;
+                        ((DataRowView)_bdsCTPN[position])["MAVT"] = id;
+                        ((DataRowView)_bdsCTPN[position])["SOLUONG"] = 0;
+                        ((DataRowView)_bdsCTPN[position])["DONGIA"] = 0;
+                    }
+                }
+                _bdsCTPN.EndEdit();
+            };
+        }
+
+        private bool IsMaterialExistInView(object materialId)
+        {
+            for (int index = 0; index < gvCTPN.RowCount; index++)
+            {
+                if (gvCTPN.GetRowCellValue(index, "MAVT").Equals(materialId))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void btnRemoveDataRow_Click(object sender, EventArgs e)
+        {
+            _bdsCTPN.RemoveCurrent();
+        }
+    }
 }

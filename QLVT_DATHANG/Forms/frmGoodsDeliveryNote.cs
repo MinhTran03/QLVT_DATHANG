@@ -3,7 +3,8 @@ using System.Data;
 
 namespace QLVT_DATHANG.Forms
 {
-   using DevExpress.XtraBars;
+    using DataSetTableAdapters;
+    using DevExpress.XtraBars;
     using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
     using DevExpress.XtraEditors;
     using System.Data.SqlClient;
@@ -18,15 +19,32 @@ namespace QLVT_DATHANG.Forms
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
 
-      public frmGoodsDeliveryNote()
+        private BindingSource _bdsPX;
+        private PhieuXuatTableAdapter _taPX;
+        private BindingSource _bdsCTPX;
+        private CTPXTableAdapter _taCTPX;
+        private DataSet _dataSet;
+
+        public frmGoodsDeliveryNote()
       {
          InitializeComponent();
-         SetupControls();
+
+            _bdsPX = bdsPX;
+            _taPX = taPX;
+            _bdsCTPX = bdsCTPX;
+            _taCTPX = taCTPX;
+            _dataSet = dataSet;
+
+            this.gcCTPX.DataSource = _bdsCTPX;
+            _bdsCTPX.ListChanged += _bdsCTPX_ListChanged;
+
+            SetupControls();
       }
 
       private void frmGoodsDeliveryNote_Load(object sender, EventArgs e)
       {
-         _buttonAction = ButtonActionType.None;
+
+            _buttonAction = ButtonActionType.None;
          _userDo = new MyStack();
          _userDo.StackPushed += userDo_StackPushed;
          _userDo.StackPopped += userDo_StackPopped;
@@ -40,9 +58,15 @@ namespace QLVT_DATHANG.Forms
          ShowControlsByGroup(UtilDB.CurrentGroup);
       }
 
-      #region METHOD
+        private void _bdsCTPX_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            if (gvCTPX.DataRowCount == 0) btnRemoveDataRow.Enabled = false;
+            else btnRemoveDataRow.Enabled = true;
+        }
 
-      private void ShowControlsByGroup(string grName)
+        #region METHOD
+
+        private void ShowControlsByGroup(string grName)
       {
          if (grName.Equals("congty"))
          {
@@ -118,6 +142,8 @@ namespace QLVT_DATHANG.Forms
          this.taPX.Connection.ConnectionString =
                 this.taDSNV.Connection.ConnectionString =
                 this.taCTPX.Connection.ConnectionString =
+                this.taDSKHO.Connection.ConnectionString =
+                this.taDSVT.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
@@ -129,8 +155,12 @@ namespace QLVT_DATHANG.Forms
 
             this.taDSNV.Fill(this.dataSet.DSNV);
 
-            //this.dataSet.EnforceConstraints = true;
-         }
+            this.taDSKHO.Fill(this.dataSet.DSKHO);
+
+            this.taDSVT.Fill(this.dataSet.DSVT);
+
+                //this.dataSet.EnforceConstraints = true;
+            }
          catch (Exception ex)
          {
             UtilDB.ShowError(ex);
@@ -143,6 +173,8 @@ namespace QLVT_DATHANG.Forms
 
          gcDeliveryNote.Enabled = false;
          gbDeliveryNote.Enabled = true;
+
+         gbCTPX.Enabled = true;
 
          btnAdd.Enabled = false;
          btnExit.Enabled = false;
@@ -161,6 +193,8 @@ namespace QLVT_DATHANG.Forms
 
          gcDeliveryNote.Enabled = true;
          gbDeliveryNote.Enabled = false;
+
+         gbCTPX.Enabled = false;
 
          btnAdd.Enabled = true;
          btnDel.Enabled = true;
@@ -212,13 +246,15 @@ namespace QLVT_DATHANG.Forms
                }
             }
 
-            bdsPX.EndEdit();
-            this.taPX.Update(this.dataSet.PhieuXuat);
-            gbDeliveryNote.Enabled = false;
-            //bdsNV.ResetCurrentItem();
-            _buttonAction = ButtonActionType.None;
-            bdsPX.Position = _currentPosition;
-            DisableEditMode();
+                SaveALlDataOrderDetailOnView();
+
+                ((DataRowView)_bdsPX[_bdsPX.Position]).Row.ItemArray = GetDataOrder();
+                _bdsPX.EndEdit();
+
+                this._taPX.Update(this._dataSet.PhieuXuat);
+                this._taCTPX.Update(this._dataSet.CTPX);
+
+                DisableEditMode();
          }
          catch (Exception ex)
          {
@@ -233,7 +269,33 @@ namespace QLVT_DATHANG.Forms
          return true;
       }
 
-      private bool IsExistGoodsDeliveryNote(string id)
+        private object[] GetDataOrder()
+        {
+            object[] data = new object[5];
+
+            data[0] = txtPX.Text;
+            data[1] = txtDate.EditValue;
+            data[2] = txtName.Text;
+            data[3] = lkeEmployee.EditValue;
+            data[4] = lkeMaKho.EditValue;
+
+            return data;
+        }
+
+        private void SaveALlDataOrderDetailOnView()
+        {
+            int orderDetailCount = gvCTPX.DataRowCount;
+            ((DataRowView)_bdsCTPX.Current).BeginEdit();
+            for (int i = 0; i < orderDetailCount; i++)
+            {
+                ((DataRowView)_bdsCTPX.Current).Row["MAPX"] = txtPX.Text;
+                _bdsCTPX.MovePrevious();
+            }
+            _bdsCTPX.EndEdit();
+        }
+
+
+        private bool IsExistGoodsDeliveryNote(string id)
       {
          bool exist = false;
          string strLenh = string.Format(MyConfig.ExecSPTimPhieuXuat, id);
@@ -273,11 +335,15 @@ namespace QLVT_DATHANG.Forms
          try
          {
             gbDeliveryNote.Enabled = false;
-            bdsCTPX.CancelEdit();
-            bdsPX.ResetCurrentItem();
-            bdsPX.Position = _currentPosition;
-            _buttonAction = ButtonActionType.None;
-         }
+                bdsPX.CancelEdit();
+                bdsPX.ResetCurrentItem();
+                bdsPX.Position = _currentPosition;
+
+                bdsCTPX.CancelEdit();
+                bdsPX.ResetCurrentItem();
+
+                DisableEditMode();
+            }
          catch (Exception ex)
          {
             UtilDB.ShowError(ex);
@@ -321,5 +387,44 @@ namespace QLVT_DATHANG.Forms
             }
          }
       }
-   }
+
+        private bool IsMaterialExistInView(object materialId)
+        {
+            for (int index = 0; index < gvCTPX.RowCount; index++)
+            {
+                if (gvCTPX.GetRowCellValue(index, "MAVT").Equals(materialId))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void btnRemoveDataRow_Click(object sender, EventArgs e)
+        {
+            _bdsCTPX.RemoveCurrent();
+        }
+
+        private void btnAddDateRow_Click(object sender, EventArgs e)
+        {
+            frmSelectMaterials selectMaterials = new frmSelectMaterials();
+            selectMaterials.Show(this);
+            selectMaterials.FormClosing += (obj, args) =>
+            {
+                var dsMaterialsId = selectMaterials.selectedMaterialsId;
+                foreach (var id in dsMaterialsId)
+                {
+                    if (IsMaterialExistInView(id) == false)
+                    {
+                        _bdsCTPX.AddNew();
+                        int position = _bdsCTPX.Position;
+                        ((DataRowView)_bdsCTPX[position])["MAVT"] = id;
+                        ((DataRowView)_bdsCTPX[position])["SOLUONG"] = 0;
+                        ((DataRowView)_bdsCTPX[position])["DONGIA"] = 0;
+                    }
+                }
+                _bdsCTPX.EndEdit();
+            };
+        }
+    }
 }
