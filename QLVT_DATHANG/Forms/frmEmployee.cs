@@ -14,6 +14,7 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraEditors.Controls;
    using DevExpress.XtraEditors.Mask;
    using DevExpress.XtraGrid.Views.Base;
+   using DevExpress.XtraSplashScreen;
    using System.Threading.Tasks;
    using UserControls;
    using Utility;
@@ -246,6 +247,8 @@ namespace QLVT_DATHANG.Forms
 
       private bool SaveEmployee()
       {
+         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
+
          if (!IsValidEmptyValue())
          {
             (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
@@ -254,15 +257,6 @@ namespace QLVT_DATHANG.Forms
 
          try
          {
-            //if (_buttonAction == ButtonActionType.Add &&
-            //   IsExistEmployee(int.Parse(txtEmpId.EditValue.ToString())))
-            //{
-            //   XtraMessageBox.Show(Cons.ErrorDuplicateEmpoyeeId, Cons.CaptionWarning,
-            //                           MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //   txtEmpId.SelectAll();
-            //   return false;
-            //}
-
             EndEdit();
             if (_buttonAction == ButtonActionType.Add)
             {
@@ -329,7 +323,7 @@ namespace QLVT_DATHANG.Forms
          return result;
       }
 
-      private async void DeleteSelectedEmployee()
+      private void DeleteSelectedEmployee()
       {
          string ho = txtEmpFirstName.Text;
          string ten = txtEmpLastName.Text;
@@ -343,13 +337,8 @@ namespace QLVT_DATHANG.Forms
                // lưu lại data trước khi xóa
                _userDo.Push(new ButtonAction(ButtonActionType.Delete, ((DataRowView)bdsNV[bdsNV.Position]).Row.ItemArray));
 
-               //bdsNV.RemoveCurrent();
-               //this.taNV.Update(this.dataSet.NhanVien);
-               if (await UtilDB.DeleteInDB("NhanVien", "MANV", txtEmpId.EditValue))
-               {
-                  this.dataSet.EnforceConstraints = false;
-                  this.taNV.Fill(this.dataSet.NhanVien);
-               }
+               bdsNV.RemoveCurrent();
+               taNV.Update(dataSet.NhanVien);
             }
             catch (Exception ex)
             {

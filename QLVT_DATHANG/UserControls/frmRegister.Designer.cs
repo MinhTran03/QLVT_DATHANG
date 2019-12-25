@@ -109,7 +109,7 @@
          // slkEmployee
          // 
          this.slkEmployee.EditValue = "...";
-         this.slkEmployee.Location = new System.Drawing.Point(185, 372);
+         this.slkEmployee.Location = new System.Drawing.Point(179, 298);
          this.slkEmployee.Name = "slkEmployee";
          this.slkEmployee.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -117,9 +117,9 @@
          this.slkEmployee.Properties.DisplayMember = "HOTEN";
          this.slkEmployee.Properties.PopupView = this.searchLookUpEdit1View;
          this.slkEmployee.Properties.ValueMember = "MANV";
-         this.slkEmployee.Size = new System.Drawing.Size(111, 20);
+         this.slkEmployee.Size = new System.Drawing.Size(115, 20);
          this.slkEmployee.StyleController = this.lcRegister;
-         this.slkEmployee.TabIndex = 13;
+         this.slkEmployee.TabIndex = 2;
          this.slkEmployee.EditValueChanged += new System.EventHandler(this.slkEmployee_EditValueChanged);
          // 
          // bdsDSNV
@@ -142,10 +142,10 @@
          // radCongTy
          // 
          this.radCongTy.Enabled = false;
-         this.radCongTy.Location = new System.Drawing.Point(10, 396);
+         this.radCongTy.Location = new System.Drawing.Point(12, 394);
          this.radCongTy.Name = "radCongTy";
-         this.radCongTy.Size = new System.Drawing.Size(90, 25);
-         this.radCongTy.TabIndex = 12;
+         this.radCongTy.Size = new System.Drawing.Size(89, 25);
+         this.radCongTy.TabIndex = 6;
          this.radCongTy.TabStop = true;
          this.radCongTy.Text = "Công Ty";
          this.radCongTy.UseVisualStyleBackColor = true;
@@ -153,10 +153,10 @@
          // radChiNhanh
          // 
          this.radChiNhanh.Enabled = false;
-         this.radChiNhanh.Location = new System.Drawing.Point(104, 396);
+         this.radChiNhanh.Location = new System.Drawing.Point(105, 394);
          this.radChiNhanh.Name = "radChiNhanh";
-         this.radChiNhanh.Size = new System.Drawing.Size(107, 25);
-         this.radChiNhanh.TabIndex = 11;
+         this.radChiNhanh.Size = new System.Drawing.Size(105, 25);
+         this.radChiNhanh.TabIndex = 7;
          this.radChiNhanh.TabStop = true;
          this.radChiNhanh.Text = "Chi Nhánh";
          this.radChiNhanh.UseVisualStyleBackColor = true;
@@ -164,31 +164,31 @@
          // radUser
          // 
          this.radUser.Enabled = false;
-         this.radUser.Location = new System.Drawing.Point(215, 396);
+         this.radUser.Location = new System.Drawing.Point(214, 394);
          this.radUser.Name = "radUser";
-         this.radUser.Size = new System.Drawing.Size(81, 25);
-         this.radUser.TabIndex = 10;
+         this.radUser.Size = new System.Drawing.Size(80, 25);
+         this.radUser.TabIndex = 8;
          this.radUser.TabStop = true;
          this.radUser.Text = "User";
          this.radUser.UseVisualStyleBackColor = true;
          // 
          // btnExit
          // 
-         this.btnExit.Location = new System.Drawing.Point(154, 425);
+         this.btnExit.Location = new System.Drawing.Point(154, 423);
          this.btnExit.Name = "btnExit";
-         this.btnExit.Size = new System.Drawing.Size(142, 22);
+         this.btnExit.Size = new System.Drawing.Size(140, 22);
          this.btnExit.StyleController = this.lcRegister;
-         this.btnExit.TabIndex = 9;
+         this.btnExit.TabIndex = 10;
          this.btnExit.Text = "Thoát";
          this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
          // 
          // btnRegister
          // 
-         this.btnRegister.Location = new System.Drawing.Point(10, 425);
+         this.btnRegister.Location = new System.Drawing.Point(12, 423);
          this.btnRegister.Name = "btnRegister";
-         this.btnRegister.Size = new System.Drawing.Size(140, 22);
+         this.btnRegister.Size = new System.Drawing.Size(138, 22);
          this.btnRegister.StyleController = this.lcRegister;
-         this.btnRegister.TabIndex = 8;
+         this.btnRegister.TabIndex = 9;
          this.btnRegister.Text = "Đăng Ký";
          this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
          // 
@@ -197,63 +197,63 @@
          this.txtEmpoyeeId.EditValue = "";
          this.txtEmpoyeeId.Enabled = false;
          this.errorProvider.SetIconAlignment(this.txtEmpoyeeId, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtEmpoyeeId.Location = new System.Drawing.Point(109, 372);
+         this.txtEmpoyeeId.Location = new System.Drawing.Point(112, 298);
          this.txtEmpoyeeId.Name = "txtEmpoyeeId";
          this.txtEmpoyeeId.Properties.Appearance.Options.UseBorderColor = true;
          this.txtEmpoyeeId.Properties.Mask.BeepOnError = true;
          this.txtEmpoyeeId.Properties.Mask.EditMask = "[0-9]+";
          this.txtEmpoyeeId.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-         this.txtEmpoyeeId.Size = new System.Drawing.Size(72, 20);
+         this.txtEmpoyeeId.Size = new System.Drawing.Size(63, 20);
          this.txtEmpoyeeId.StyleController = this.lcRegister;
-         this.txtEmpoyeeId.TabIndex = 4;
+         this.txtEmpoyeeId.TabIndex = 1;
          // 
          // txtConfirmPassword
          // 
          this.errorProvider.SetIconAlignment(this.txtConfirmPassword, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtConfirmPassword.Location = new System.Drawing.Point(109, 348);
+         this.txtConfirmPassword.Location = new System.Drawing.Point(112, 370);
          this.txtConfirmPassword.Name = "txtConfirmPassword";
          this.txtConfirmPassword.Properties.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
          this.txtConfirmPassword.Properties.Appearance.Options.UseBorderColor = true;
          this.txtConfirmPassword.Properties.ShowNullValuePromptWhenFocused = true;
-         this.txtConfirmPassword.Size = new System.Drawing.Size(187, 20);
+         this.txtConfirmPassword.Size = new System.Drawing.Size(182, 20);
          this.txtConfirmPassword.StyleController = this.lcRegister;
-         this.txtConfirmPassword.TabIndex = 3;
+         this.txtConfirmPassword.TabIndex = 5;
          this.txtConfirmPassword.Leave += new System.EventHandler(this.textbox_Leave);
          this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNotNull_Validating);
          // 
          // txtPassword
          // 
          this.errorProvider.SetIconAlignment(this.txtPassword, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtPassword.Location = new System.Drawing.Point(109, 324);
+         this.txtPassword.Location = new System.Drawing.Point(112, 346);
          this.txtPassword.Name = "txtPassword";
          this.txtPassword.Properties.Appearance.Options.UseBorderColor = true;
          this.txtPassword.Properties.ShowNullValuePromptWhenFocused = true;
-         this.txtPassword.Size = new System.Drawing.Size(187, 20);
+         this.txtPassword.Size = new System.Drawing.Size(182, 20);
          this.txtPassword.StyleController = this.lcRegister;
-         this.txtPassword.TabIndex = 2;
+         this.txtPassword.TabIndex = 4;
          this.txtPassword.Leave += new System.EventHandler(this.textbox_Leave);
          this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNotNull_Validating);
          // 
          // txtLoginName
          // 
          this.errorProvider.SetIconAlignment(this.txtLoginName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-         this.txtLoginName.Location = new System.Drawing.Point(109, 300);
+         this.txtLoginName.Location = new System.Drawing.Point(112, 322);
          this.txtLoginName.Name = "txtLoginName";
          this.txtLoginName.Properties.Appearance.BorderColor = System.Drawing.Color.White;
          this.txtLoginName.Properties.Appearance.Options.UseBorderColor = true;
          this.txtLoginName.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
          this.txtLoginName.Properties.AppearanceFocused.Options.UseBorderColor = true;
          this.txtLoginName.Properties.ShowNullValuePromptWhenFocused = true;
-         this.txtLoginName.Size = new System.Drawing.Size(187, 20);
+         this.txtLoginName.Size = new System.Drawing.Size(182, 20);
          this.txtLoginName.StyleController = this.lcRegister;
-         this.txtLoginName.TabIndex = 1;
+         this.txtLoginName.TabIndex = 3;
          this.txtLoginName.Leave += new System.EventHandler(this.textbox_Leave);
          this.txtLoginName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNotNull_Validating);
          // 
          // pictureEdit1
          // 
          this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources._164_9_register_icon_iconbunny_removebg;
-         this.pictureEdit1.Location = new System.Drawing.Point(10, 10);
+         this.pictureEdit1.Location = new System.Drawing.Point(12, 12);
          this.pictureEdit1.Name = "pictureEdit1";
          this.pictureEdit1.Properties.AllowFocused = false;
          this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
@@ -261,7 +261,7 @@
          this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
          this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
          this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-         this.pictureEdit1.Size = new System.Drawing.Size(286, 286);
+         this.pictureEdit1.Size = new System.Drawing.Size(282, 282);
          this.pictureEdit1.StyleController = this.lcRegister;
          this.pictureEdit1.TabIndex = 0;
          // 
@@ -274,12 +274,12 @@
             this.layoutControlItem2,
             this.layoutControlItem3,
             this.layoutControlItem4,
-            this.layoutControlItem5,
             this.layoutControlItem10,
             this.layoutControlItem9,
             this.layoutControlItem8,
             this.layoutControlItem7,
             this.layoutControlItem6,
+            this.layoutControlItem5,
             this.layoutControlItem11});
          this.Root.Name = "Root";
          this.Root.Size = new System.Drawing.Size(306, 457);
@@ -290,89 +290,89 @@
          this.layoutControlItem1.Control = this.pictureEdit1;
          this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
          this.layoutControlItem1.Name = "layoutControlItem1";
-         this.layoutControlItem1.Size = new System.Drawing.Size(290, 290);
+         this.layoutControlItem1.Size = new System.Drawing.Size(286, 286);
          this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem1.TextVisible = false;
          // 
          // layoutControlItem2
          // 
          this.layoutControlItem2.Control = this.txtLoginName;
-         this.layoutControlItem2.Location = new System.Drawing.Point(0, 290);
+         this.layoutControlItem2.Location = new System.Drawing.Point(0, 310);
          this.layoutControlItem2.Name = "layoutControlItem2";
-         this.layoutControlItem2.Size = new System.Drawing.Size(290, 24);
+         this.layoutControlItem2.Size = new System.Drawing.Size(286, 24);
          this.layoutControlItem2.Text = "Tên đăng nhập:";
          this.layoutControlItem2.TextSize = new System.Drawing.Size(97, 13);
          // 
          // layoutControlItem3
          // 
          this.layoutControlItem3.Control = this.txtPassword;
-         this.layoutControlItem3.Location = new System.Drawing.Point(0, 314);
+         this.layoutControlItem3.Location = new System.Drawing.Point(0, 334);
          this.layoutControlItem3.Name = "layoutControlItem3";
-         this.layoutControlItem3.Size = new System.Drawing.Size(290, 24);
+         this.layoutControlItem3.Size = new System.Drawing.Size(286, 24);
          this.layoutControlItem3.Text = "Mật khẩu:";
          this.layoutControlItem3.TextSize = new System.Drawing.Size(97, 13);
          // 
          // layoutControlItem4
          // 
          this.layoutControlItem4.Control = this.txtConfirmPassword;
-         this.layoutControlItem4.Location = new System.Drawing.Point(0, 338);
+         this.layoutControlItem4.Location = new System.Drawing.Point(0, 358);
          this.layoutControlItem4.Name = "layoutControlItem4";
-         this.layoutControlItem4.Size = new System.Drawing.Size(290, 24);
+         this.layoutControlItem4.Size = new System.Drawing.Size(286, 24);
          this.layoutControlItem4.Text = "Nhập lại mật khẩu:";
          this.layoutControlItem4.TextSize = new System.Drawing.Size(97, 13);
          // 
          // layoutControlItem5
          // 
          this.layoutControlItem5.Control = this.txtEmpoyeeId;
-         this.layoutControlItem5.Location = new System.Drawing.Point(0, 362);
+         this.layoutControlItem5.Location = new System.Drawing.Point(0, 286);
          this.layoutControlItem5.Name = "layoutControlItem5";
-         this.layoutControlItem5.Size = new System.Drawing.Size(175, 24);
+         this.layoutControlItem5.Size = new System.Drawing.Size(167, 24);
          this.layoutControlItem5.Text = "Mã nhân viên:";
          this.layoutControlItem5.TextSize = new System.Drawing.Size(97, 13);
          // 
          // layoutControlItem10
          // 
          this.layoutControlItem10.Control = this.btnRegister;
-         this.layoutControlItem10.Location = new System.Drawing.Point(0, 415);
+         this.layoutControlItem10.Location = new System.Drawing.Point(0, 411);
          this.layoutControlItem10.Name = "layoutControlItem10";
-         this.layoutControlItem10.Size = new System.Drawing.Size(144, 26);
+         this.layoutControlItem10.Size = new System.Drawing.Size(142, 26);
          this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem10.TextVisible = false;
          // 
          // layoutControlItem9
          // 
          this.layoutControlItem9.Control = this.btnExit;
-         this.layoutControlItem9.Location = new System.Drawing.Point(144, 415);
+         this.layoutControlItem9.Location = new System.Drawing.Point(142, 411);
          this.layoutControlItem9.Name = "layoutControlItem9";
-         this.layoutControlItem9.Size = new System.Drawing.Size(146, 26);
+         this.layoutControlItem9.Size = new System.Drawing.Size(144, 26);
          this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem9.TextVisible = false;
          // 
          // layoutControlItem8
          // 
          this.layoutControlItem8.Control = this.radChiNhanh;
-         this.layoutControlItem8.Location = new System.Drawing.Point(94, 386);
+         this.layoutControlItem8.Location = new System.Drawing.Point(93, 382);
          this.layoutControlItem8.Name = "layoutControlItem8";
-         this.layoutControlItem8.Size = new System.Drawing.Size(111, 29);
+         this.layoutControlItem8.Size = new System.Drawing.Size(109, 29);
          this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem8.TextVisible = false;
          // 
          // layoutControlItem7
          // 
          this.layoutControlItem7.Control = this.radUser;
-         this.layoutControlItem7.Location = new System.Drawing.Point(205, 386);
+         this.layoutControlItem7.Location = new System.Drawing.Point(202, 382);
          this.layoutControlItem7.Name = "layoutControlItem7";
-         this.layoutControlItem7.Size = new System.Drawing.Size(85, 29);
+         this.layoutControlItem7.Size = new System.Drawing.Size(84, 29);
          this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem7.TextVisible = false;
          // 
          // layoutControlItem6
          // 
          this.layoutControlItem6.Control = this.radCongTy;
-         this.layoutControlItem6.Location = new System.Drawing.Point(0, 386);
+         this.layoutControlItem6.Location = new System.Drawing.Point(0, 382);
          this.layoutControlItem6.MinSize = new System.Drawing.Size(24, 29);
          this.layoutControlItem6.Name = "layoutControlItem6";
-         this.layoutControlItem6.Size = new System.Drawing.Size(94, 29);
+         this.layoutControlItem6.Size = new System.Drawing.Size(93, 29);
          this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
          this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem6.TextVisible = false;
@@ -380,9 +380,9 @@
          // layoutControlItem11
          // 
          this.layoutControlItem11.Control = this.slkEmployee;
-         this.layoutControlItem11.Location = new System.Drawing.Point(175, 362);
+         this.layoutControlItem11.Location = new System.Drawing.Point(167, 286);
          this.layoutControlItem11.Name = "layoutControlItem11";
-         this.layoutControlItem11.Size = new System.Drawing.Size(115, 24);
+         this.layoutControlItem11.Size = new System.Drawing.Size(119, 24);
          this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem11.TextVisible = false;
          // 
