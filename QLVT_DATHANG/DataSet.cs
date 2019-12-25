@@ -2,7 +2,7 @@
 {
 
 
-    partial class DataSet
-    {
-    }
+   partial class DataSet
+   {
+   }
 }

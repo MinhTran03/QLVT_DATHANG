@@ -14,8 +14,6 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraEditors.Controls;
    using DevExpress.XtraEditors.Mask;
    using DevExpress.XtraGrid.Views.Base;
-   using QLVT_DATHANG.DAL;
-   using QLVT_DATHANG.Models;
    using System.Threading.Tasks;
    using UserControls;
    using Utility;
@@ -26,8 +24,6 @@ namespace QLVT_DATHANG.Forms
       private int _currentPosition;
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
-
-      private EmployeeDal employeeDal = new EmployeeDal();
 
       public frmEmployee()
       {
@@ -136,7 +132,6 @@ namespace QLVT_DATHANG.Forms
          try
          {
             this.dataSet.EnforceConstraints = false;
-
 
             // TODO: This line of code loads data into the 'dataSet.NhanVien' table. You can move, or remove it, as needed.
             this.taNV.Fill(this.dataSet.NhanVien);
@@ -249,11 +244,8 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
-      private async Task<bool> SaveEmployee()
+      private bool SaveEmployee()
       {
-         // sinh ma nv tu dong
-         // txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
-
          if (!IsValidEmptyValue())
          {
             (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
@@ -271,7 +263,7 @@ namespace QLVT_DATHANG.Forms
             //   return false;
             //}
 
-            await EndEdit();
+            EndEdit();
             if (_buttonAction == ButtonActionType.Add)
             {
                // Lưu vô stack trạng thái nút nhấn và data bị mới
@@ -288,45 +280,20 @@ namespace QLVT_DATHANG.Forms
          return true;
       }
 
-      private async Task<Employee> EndEdit()
+      private void EndEdit()
       {
-         Employee employeeToAdd = new Employee();
          try
          {
-            employeeToAdd.FirstName = txtEmpFirstName.EditValue.ToString();
-            employeeToAdd.LastName = txtEmpLastName.EditValue.ToString();
-            employeeToAdd.Address = txtEmpAddr.Text;
-            employeeToAdd.Birth = DateTime.Parse(dtpEmpBirth.EditValue.ToString());
-            employeeToAdd.Salary = float.Parse(spiEmpSalary.EditValue.ToString());
-            employeeToAdd.DepartmentId = _currentDeploymentId;
-            employeeToAdd.IsDelete = 0;
-            employeeToAdd.Id = await employeeDal.AddAsync(employeeToAdd);
-
-            bdsNV.CancelEdit();
+            bdsNV.EndEdit();
+            this.taNV.Update(this.dataSet.NhanVien);
+            bdsNV.ResetCurrentItem();
             DisableEditMode();
-            taNV.Fill(this.dataSet.NhanVien);
          }
          catch (Exception e)
          {
             throw e;
          }
-         return employeeToAdd;
       }
-
-      //private void EndEdit()
-      //{
-      //   try
-      //   {
-      //      bdsNV.EndEdit();
-      //      this.taNV.Update(this.dataSet.NhanVien);
-      //      bdsNV.ResetCurrentItem();
-      //      DisableEditMode();
-      //   }
-      //   catch (Exception e)
-      //   {
-      //      throw e;
-      //   }
-      //}
 
       private void EditEmployee()
       {
@@ -522,11 +489,11 @@ namespace QLVT_DATHANG.Forms
          this.Close();
       }
 
-      private async void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+      private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
       {
          UtilDB.TrimDataInControl(gbEmployee);
 
-         await SaveEmployee();
+         SaveEmployee();
       }
 
       private void btnUndo_ItemClick(object sender, ItemClickEventArgs e)
@@ -557,7 +524,7 @@ namespace QLVT_DATHANG.Forms
          EditEmployee();
       }
 
-      private async void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
+      private void frmEmployee_FormClosing(object sender, FormClosingEventArgs e)
       {
          if (lcEmplyee.Enabled == true)
          {
@@ -568,7 +535,7 @@ namespace QLVT_DATHANG.Forms
             {
                case DialogResult.Yes:
                   // kiểm tra nút được nhấn [thêm, sửa] => [Lưu lại, update]
-                  e.Cancel = !(await SaveEmployee());
+                  e.Cancel = !(SaveEmployee());
                   break;
                case DialogResult.No:
                   // thoát bất chấp
@@ -649,8 +616,7 @@ namespace QLVT_DATHANG.Forms
          CustomFlyoutDialog.ShowForm(this, flyoutAction, frmSwitch);
          frmSwitch.Disposed += (o, eventArg) =>
          {
-            if (frmSwitch.isSuccess)
-               taNV.Update(dataSet.NhanVien);
+            taNV.Fill(dataSet.NhanVien);
          };
       }
 

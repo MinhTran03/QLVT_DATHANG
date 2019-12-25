@@ -262,16 +262,16 @@
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.bmNV;
          this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-         this.barDockControlTop.Size = new System.Drawing.Size(1004, 24);
+         this.barDockControlTop.Size = new System.Drawing.Size(984, 24);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 467);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 444);
          this.barDockControlBottom.Manager = this.bmNV;
          this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-         this.barDockControlBottom.Size = new System.Drawing.Size(1004, 0);
+         this.barDockControlBottom.Size = new System.Drawing.Size(984, 0);
          // 
          // barDockControlLeft
          // 
@@ -280,16 +280,16 @@
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmNV;
          this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 443);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 420);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(1004, 24);
+         this.barDockControlRight.Location = new System.Drawing.Point(984, 24);
          this.barDockControlRight.Manager = this.bmNV;
          this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 443);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 420);
          // 
          // dataSet
          // 
@@ -661,7 +661,7 @@
          this.gcEmployee.Margin = new System.Windows.Forms.Padding(4);
          this.gcEmployee.MenuManager = this.bmNV;
          this.gcEmployee.Name = "gcEmployee";
-         this.gcEmployee.Size = new System.Drawing.Size(1004, 261);
+         this.gcEmployee.Size = new System.Drawing.Size(984, 238);
          this.gcEmployee.TabIndex = 0;
          this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvNV});
@@ -722,7 +722,7 @@
          this.gbEmployee.Location = new System.Drawing.Point(0, 54);
          this.gbEmployee.MinimumSize = new System.Drawing.Size(0, 10);
          this.gbEmployee.Name = "gbEmployee";
-         this.gbEmployee.Size = new System.Drawing.Size(1004, 147);
+         this.gbEmployee.Size = new System.Drawing.Size(984, 147);
          this.gbEmployee.TabIndex = 16;
          this.gbEmployee.Text = "Thông tin Nhân Viên";
          // 
@@ -731,7 +731,7 @@
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
          this.splitterControl1.Location = new System.Drawing.Point(0, 201);
          this.splitterControl1.Name = "splitterControl1";
-         this.splitterControl1.Size = new System.Drawing.Size(1004, 5);
+         this.splitterControl1.Size = new System.Drawing.Size(984, 5);
          this.splitterControl1.TabIndex = 17;
          this.splitterControl1.TabStop = false;
          this.splitterControl1.Visible = false;
@@ -743,7 +743,7 @@
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
          this.pnPickDepartment.Name = "pnPickDepartment";
-         this.pnPickDepartment.Size = new System.Drawing.Size(1004, 30);
+         this.pnPickDepartment.Size = new System.Drawing.Size(984, 30);
          this.pnPickDepartment.TabIndex = 22;
          this.pnPickDepartment.Visible = false;
          // 
@@ -786,7 +786,7 @@
          this.Appearance.Options.UseFont = true;
          this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(1004, 467);
+         this.ClientSize = new System.Drawing.Size(984, 444);
          this.Controls.Add(this.gcEmployee);
          this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.gbEmployee);

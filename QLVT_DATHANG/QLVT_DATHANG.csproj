@@ -115,7 +115,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\EmployeeDal.cs" />
     <Compile Include="DataSet.cs">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
@@ -141,7 +140,6 @@
     <Compile Include="Forms\frmReportDSNV.Designer.cs">
       <DependentUpon>frmReportDSNV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employee.cs" />
     <Compile Include="Report\Xrpt_DanhSachDDHChuaCoPhieuNhap.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -230,6 +228,12 @@
     </Compile>
     <Compile Include="UserControls\frmSwitchDepartment.Designer.cs">
       <DependentUpon>frmSwitchDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WaitFormCustom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\WaitFormCustom.Designer.cs">
+      <DependentUpon>WaitFormCustom.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\Cons.cs" />
     <Compile Include="Forms\frmOrders.cs">
@@ -324,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\frmSwitchDepartment.resx">
       <DependentUpon>frmSwitchDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WaitFormCustom.resx">
+      <DependentUpon>WaitFormCustom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DataSet.xsc">

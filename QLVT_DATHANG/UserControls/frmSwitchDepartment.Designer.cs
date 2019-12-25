@@ -40,6 +40,7 @@
          this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::QLVT_DATHANG.UserControls.WaitFormCustom), true, true, typeof(System.Windows.Forms.UserControl));
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeName.Properties)).BeginInit();
@@ -56,9 +57,9 @@
          // 
          this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cboDepartment.FormattingEnabled = true;
-         this.cboDepartment.Location = new System.Drawing.Point(101, 36);
+         this.cboDepartment.Location = new System.Drawing.Point(107, 36);
          this.cboDepartment.Name = "cboDepartment";
-         this.cboDepartment.Size = new System.Drawing.Size(312, 21);
+         this.cboDepartment.Size = new System.Drawing.Size(306, 21);
          this.cboDepartment.TabIndex = 1;
          // 
          // btnExit
@@ -98,17 +99,17 @@
          // 
          // txtEmployeeName
          // 
-         this.txtEmployeeName.Location = new System.Drawing.Point(251, 12);
+         this.txtEmployeeName.Location = new System.Drawing.Point(257, 12);
          this.txtEmployeeName.Name = "txtEmployeeName";
-         this.txtEmployeeName.Size = new System.Drawing.Size(162, 20);
+         this.txtEmployeeName.Size = new System.Drawing.Size(156, 20);
          this.txtEmployeeName.StyleController = this.layoutControl1;
          this.txtEmployeeName.TabIndex = 5;
          // 
          // txtEmployeeId
          // 
-         this.txtEmployeeId.Location = new System.Drawing.Point(101, 12);
+         this.txtEmployeeId.Location = new System.Drawing.Point(107, 12);
          this.txtEmployeeId.Name = "txtEmployeeId";
-         this.txtEmployeeId.Size = new System.Drawing.Size(57, 20);
+         this.txtEmployeeId.Size = new System.Drawing.Size(51, 20);
          this.txtEmployeeId.StyleController = this.layoutControl1;
          this.txtEmployeeId.TabIndex = 4;
          // 
@@ -133,7 +134,7 @@
          this.layoutControlItem1.Name = "layoutControlItem1";
          this.layoutControlItem1.Size = new System.Drawing.Size(150, 24);
          this.layoutControlItem1.Text = "Mã nhân viên:";
-         this.layoutControlItem1.TextSize = new System.Drawing.Size(86, 13);
+         this.layoutControlItem1.TextSize = new System.Drawing.Size(92, 13);
          // 
          // layoutControlItem3
          // 
@@ -142,7 +143,7 @@
          this.layoutControlItem3.Name = "layoutControlItem3";
          this.layoutControlItem3.Size = new System.Drawing.Size(405, 25);
          this.layoutControlItem3.Text = "Chi nhánh đích:";
-         this.layoutControlItem3.TextSize = new System.Drawing.Size(86, 13);
+         this.layoutControlItem3.TextSize = new System.Drawing.Size(92, 13);
          // 
          // layoutControlItem4
          // 
@@ -169,7 +170,11 @@
          this.layoutControlItem2.Name = "layoutControlItem2";
          this.layoutControlItem2.Size = new System.Drawing.Size(255, 24);
          this.layoutControlItem2.Text = "Họ tên nhân viên:";
-         this.layoutControlItem2.TextSize = new System.Drawing.Size(86, 13);
+         this.layoutControlItem2.TextSize = new System.Drawing.Size(92, 13);
+         // 
+         // splashScreenManager
+         // 
+         this.splashScreenManager.ClosingDelay = 500;
          // 
          // frmSwitchDepartment
          // 
@@ -206,5 +211,6 @@
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+      private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager;
    }
 }
