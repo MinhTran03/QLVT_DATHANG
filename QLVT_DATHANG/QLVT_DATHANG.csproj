@@ -155,7 +155,6 @@
     <Compile Include="Forms\frmReportDSVT.Designer.cs">
       <DependentUpon>frmReportDSVT.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employee.cs" />
     <Compile Include="Forms\frmReportTongHopNhapXuat.cs">
       <SubType>Form</SubType>
     </Compile>

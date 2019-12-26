@@ -3,48 +3,46 @@ using System.Data;
 
 namespace QLVT_DATHANG.Forms
 {
-    using DataSetTableAdapters;
-    using DevExpress.XtraBars;
-    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
-    using DevExpress.XtraEditors;
-    using System.Data.SqlClient;
-    using System.Windows.Forms;
-    using Utility;
-    using UserControls;
+   using DataSetTableAdapters;
+   using DevExpress.XtraBars;
+   using DevExpress.XtraEditors;
+   using System.Data.SqlClient;
+   using System.Windows.Forms;
+   using Utility;
 
-    public partial class frmGoodsDeliveryNote : XtraForm
+   public partial class frmGoodsDeliveryNote : XtraForm
    {
       private string _currentDeploymentId;
       private int _currentPosition;
       private ButtonActionType _buttonAction;
       private MyStack _userDo;
 
-        private BindingSource _bdsPX;
-        private PhieuXuatTableAdapter _taPX;
-        private BindingSource _bdsCTPX;
-        private CTPXTableAdapter _taCTPX;
-        private DataSet _dataSet;
+      private BindingSource _bdsPX;
+      private PhieuXuatTableAdapter _taPX;
+      private BindingSource _bdsCTPX;
+      private CTPXTableAdapter _taCTPX;
+      private DataSet _dataSet;
 
-        public frmGoodsDeliveryNote()
+      public frmGoodsDeliveryNote()
       {
          InitializeComponent();
 
-            _bdsPX = bdsPX;
-            _taPX = taPX;
-            _bdsCTPX = bdsCTPX;
-            _taCTPX = taCTPX;
-            _dataSet = dataSet;
+         _bdsPX = bdsPX;
+         _taPX = taPX;
+         _bdsCTPX = bdsCTPX;
+         _taCTPX = taCTPX;
+         _dataSet = dataSet;
 
-            this.gcCTPX.DataSource = _bdsCTPX;
-            _bdsCTPX.ListChanged += _bdsCTPX_ListChanged;
+         this.gcCTPX.DataSource = _bdsCTPX;
+         _bdsCTPX.ListChanged += _bdsCTPX_ListChanged;
 
-            SetupControls();
+         SetupControls();
       }
 
       private void frmGoodsDeliveryNote_Load(object sender, EventArgs e)
       {
 
-            _buttonAction = ButtonActionType.None;
+         _buttonAction = ButtonActionType.None;
          _userDo = new MyStack();
          _userDo.StackPushed += userDo_StackPushed;
          _userDo.StackPopped += userDo_StackPopped;
@@ -58,15 +56,15 @@ namespace QLVT_DATHANG.Forms
          ShowControlsByGroup(UtilDB.CurrentGroup);
       }
 
-        private void _bdsCTPX_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
-        {
-            if (gvCTPX.DataRowCount == 0) btnRemoveDataRow.Enabled = false;
-            else btnRemoveDataRow.Enabled = true;
-        }
+      private void _bdsCTPX_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+      {
+         if (gvCTPX.DataRowCount == 0) btnRemoveDataRow.Enabled = false;
+         else btnRemoveDataRow.Enabled = true;
+      }
 
-        #region METHOD
+      #region METHOD
 
-        private void ShowControlsByGroup(string grName)
+      private void ShowControlsByGroup(string grName)
       {
          if (grName.Equals("congty"))
          {
@@ -159,8 +157,8 @@ namespace QLVT_DATHANG.Forms
 
             this.taDSVT.Fill(this.dataSet.DSVT);
 
-                //this.dataSet.EnforceConstraints = true;
-            }
+            //this.dataSet.EnforceConstraints = true;
+         }
          catch (Exception ex)
          {
             UtilDB.ShowError(ex);
@@ -246,15 +244,15 @@ namespace QLVT_DATHANG.Forms
                }
             }
 
-                SaveALlDataOrderDetailOnView();
+            SaveALlDataOrderDetailOnView();
 
-                ((DataRowView)_bdsPX[_bdsPX.Position]).Row.ItemArray = GetDataOrder();
-                _bdsPX.EndEdit();
+            ((DataRowView)_bdsPX[_bdsPX.Position]).Row.ItemArray = GetDataOrder();
+            _bdsPX.EndEdit();
 
-                this._taPX.Update(this._dataSet.PhieuXuat);
-                this._taCTPX.Update(this._dataSet.CTPX);
+            this._taPX.Update(this._dataSet.PhieuXuat);
+            this._taCTPX.Update(this._dataSet.CTPX);
 
-                DisableEditMode();
+            DisableEditMode();
          }
          catch (Exception ex)
          {
@@ -269,33 +267,33 @@ namespace QLVT_DATHANG.Forms
          return true;
       }
 
-        private object[] GetDataOrder()
-        {
-            object[] data = new object[5];
+      private object[] GetDataOrder()
+      {
+         object[] data = new object[5];
 
-            data[0] = txtPX.Text;
-            data[1] = txtDate.EditValue;
-            data[2] = txtName.Text;
-            data[3] = lkeEmployee.EditValue;
-            data[4] = lkeMaKho.EditValue;
+         data[0] = txtPX.Text;
+         data[1] = txtDate.EditValue;
+         data[2] = txtName.Text;
+         data[3] = lkeEmployee.EditValue;
+         data[4] = lkeMaKho.EditValue;
 
-            return data;
-        }
+         return data;
+      }
 
-        private void SaveALlDataOrderDetailOnView()
-        {
-            int orderDetailCount = gvCTPX.DataRowCount;
-            ((DataRowView)_bdsCTPX.Current).BeginEdit();
-            for (int i = 0; i < orderDetailCount; i++)
-            {
-                ((DataRowView)_bdsCTPX.Current).Row["MAPX"] = txtPX.Text;
-                _bdsCTPX.MovePrevious();
-            }
-            _bdsCTPX.EndEdit();
-        }
+      private void SaveALlDataOrderDetailOnView()
+      {
+         int orderDetailCount = gvCTPX.DataRowCount;
+         ((DataRowView)_bdsCTPX.Current).BeginEdit();
+         for (int i = 0; i < orderDetailCount; i++)
+         {
+            ((DataRowView)_bdsCTPX.Current).Row["MAPX"] = txtPX.Text;
+            _bdsCTPX.MovePrevious();
+         }
+         _bdsCTPX.EndEdit();
+      }
 
 
-        private bool IsExistGoodsDeliveryNote(string id)
+      private bool IsExistGoodsDeliveryNote(string id)
       {
          bool exist = false;
          string strLenh = string.Format(MyConfig.ExecSPTimPhieuXuat, id);
@@ -335,15 +333,15 @@ namespace QLVT_DATHANG.Forms
          try
          {
             gbDeliveryNote.Enabled = false;
-                bdsPX.CancelEdit();
-                bdsPX.ResetCurrentItem();
-                bdsPX.Position = _currentPosition;
+            bdsPX.CancelEdit();
+            bdsPX.ResetCurrentItem();
+            bdsPX.Position = _currentPosition;
 
-                bdsCTPX.CancelEdit();
-                bdsPX.ResetCurrentItem();
+            bdsCTPX.CancelEdit();
+            bdsPX.ResetCurrentItem();
 
-                DisableEditMode();
-            }
+            DisableEditMode();
+         }
          catch (Exception ex)
          {
             UtilDB.ShowError(ex);
@@ -388,43 +386,43 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
-        private bool IsMaterialExistInView(object materialId)
-        {
-            for (int index = 0; index < gvCTPX.RowCount; index++)
+      private bool IsMaterialExistInView(object materialId)
+      {
+         for (int index = 0; index < gvCTPX.RowCount; index++)
+         {
+            if (gvCTPX.GetRowCellValue(index, "MAVT").Equals(materialId))
             {
-                if (gvCTPX.GetRowCellValue(index, "MAVT").Equals(materialId))
-                {
-                    return true;
-                }
+               return true;
             }
-            return false;
-        }
+         }
+         return false;
+      }
 
-        private void btnRemoveDataRow_Click(object sender, EventArgs e)
-        {
-            _bdsCTPX.RemoveCurrent();
-        }
+      private void btnRemoveDataRow_Click(object sender, EventArgs e)
+      {
+         _bdsCTPX.RemoveCurrent();
+      }
 
-        private void btnAddDateRow_Click(object sender, EventArgs e)
-        {
-            frmSelectMaterials selectMaterials = new frmSelectMaterials();
-            selectMaterials.Show(this);
-            selectMaterials.FormClosing += (obj, args) =>
+      private void btnAddDateRow_Click(object sender, EventArgs e)
+      {
+         frmSelectMaterials selectMaterials = new frmSelectMaterials();
+         selectMaterials.Show(this);
+         selectMaterials.FormClosing += (obj, args) =>
+         {
+            var dsMaterialsId = selectMaterials.selectedMaterialsId;
+            foreach (var id in dsMaterialsId)
             {
-                var dsMaterialsId = selectMaterials.selectedMaterialsId;
-                foreach (var id in dsMaterialsId)
-                {
-                    if (IsMaterialExistInView(id) == false)
-                    {
-                        _bdsCTPX.AddNew();
-                        int position = _bdsCTPX.Position;
-                        ((DataRowView)_bdsCTPX[position])["MAVT"] = id;
-                        ((DataRowView)_bdsCTPX[position])["SOLUONG"] = 0;
-                        ((DataRowView)_bdsCTPX[position])["DONGIA"] = 0;
-                    }
-                }
-                _bdsCTPX.EndEdit();
-            };
-        }
-    }
+               if (IsMaterialExistInView(id) == false)
+               {
+                  _bdsCTPX.AddNew();
+                  int position = _bdsCTPX.Position;
+                  ((DataRowView)_bdsCTPX[position])["MAVT"] = id;
+                  ((DataRowView)_bdsCTPX[position])["SOLUONG"] = 0;
+                  ((DataRowView)_bdsCTPX[position])["DONGIA"] = 0;
+               }
+            }
+            _bdsCTPX.EndEdit();
+         };
+      }
+   }
 }

@@ -12,20 +12,18 @@ using QLVT_DATHANG.Report;
 
 namespace QLVT_DATHANG.Forms
 {
-    public partial class frmReportDSVT : DevExpress.XtraEditors.XtraForm
-    {
-        private string _loaiPhieu;
+   public partial class frmReportDSVT : XtraForm
+   {
+      public frmReportDSVT()
+      {
+         InitializeComponent();
+      }
 
-        public frmReportDSVT()
-        {
-            InitializeComponent();
-        }
-
-        private void frmReportDSVT_Load(object sender, EventArgs e)
-        {
-            Xrpt_DanhSachvatTu danhSachvatTu = new Xrpt_DanhSachvatTu();
-            docDSVT.DocumentSource = danhSachvatTu;
-            danhSachvatTu.CreateDocument();
-        }
-    }
+      private void frmReportDSVT_Load(object sender, EventArgs e)
+      {
+         Xrpt_DanhSachvatTu danhSachvatTu = new Xrpt_DanhSachvatTu();
+         docDSVT.DocumentSource = danhSachvatTu;
+         danhSachvatTu.CreateDocument();
+      }
+   }
 }
