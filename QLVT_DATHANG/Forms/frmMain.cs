@@ -189,5 +189,20 @@ namespace QLVT_DATHANG.Forms
             f.Show();
          }
       }
+
+      private void btnTongHopNhapXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         Form nvForm = CheckExists(typeof(frmReportTongHopNhapXuat));
+         if (nvForm != null)
+         {
+            nvForm.Activate();
+         }
+         else
+         {
+            frmReportTongHopNhapXuat f = new frmReportTongHopNhapXuat();
+            f.MdiParent = this;
+            f.Show();
+         }
+      }
    }
 }

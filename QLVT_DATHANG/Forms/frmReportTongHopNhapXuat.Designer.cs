@@ -1,6 +1,6 @@
 ﻿namespace QLVT_DATHANG.Forms
 {
-   partial class frmDSDDHChuaCoPhieuNhap
+   partial class frmReportTongHopNhapXuat
    {
       /// <summary>
       /// Required designer variable.
@@ -29,7 +29,7 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDSDDHChuaCoPhieuNhap));
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportTongHopNhapXuat));
          this.documentViewer = new DevExpress.XtraPrinting.Preview.DocumentViewer();
          this.documentViewerBarManager1 = new DevExpress.XtraPrinting.Preview.DocumentViewerBarManager(this.components);
          this.previewBar1 = new DevExpress.XtraPrinting.Preview.PreviewBar();
@@ -39,6 +39,8 @@
          this.bbiFind = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
          this.bbiHighlightEditingFields = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
          this.bbiCustomize = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
+         this.bbiOpen = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
+         this.bbiSave = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
          this.bbiPrint = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
          this.bbiPrintDirect = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
          this.bbiPageSetup = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
@@ -99,19 +101,23 @@
          this.printPreviewBarCheckItem17 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
          this.printPreviewBarCheckItem18 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
          this.printPreviewBarCheckItem19 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
+         this.pnPickDepartment = new System.Windows.Forms.Panel();
+         this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+         this.cboDepartment = new System.Windows.Forms.ComboBox();
          ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
+         this.pnPickDepartment.SuspendLayout();
          this.SuspendLayout();
          // 
          // documentViewer
          // 
          this.documentViewer.Dock = System.Windows.Forms.DockStyle.Fill;
          this.documentViewer.IsMetric = false;
-         this.documentViewer.Location = new System.Drawing.Point(35, 22);
+         this.documentViewer.Location = new System.Drawing.Point(35, 55);
          this.documentViewer.Name = "documentViewer";
-         this.documentViewer.Size = new System.Drawing.Size(758, 367);
+         this.documentViewer.Size = new System.Drawing.Size(702, 348);
          this.documentViewer.TabIndex = 0;
          // 
          // documentViewerBarManager1
@@ -139,6 +145,8 @@
             this.bbiFind,
             this.bbiHighlightEditingFields,
             this.bbiCustomize,
+            this.bbiOpen,
+            this.bbiSave,
             this.bbiPrint,
             this.bbiPrintDirect,
             this.bbiPageSetup,
@@ -208,6 +216,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiFind),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiHighlightEditingFields),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCustomize, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiOpen, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSave),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiPrint, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiPrintDirect),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiPageSetup),
@@ -288,6 +298,24 @@
          this.bbiCustomize.Hint = "Customize";
          this.bbiCustomize.Id = 10;
          this.bbiCustomize.Name = "bbiCustomize";
+         // 
+         // bbiOpen
+         // 
+         this.bbiOpen.Caption = "Open";
+         this.bbiOpen.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Open;
+         this.bbiOpen.Enabled = false;
+         this.bbiOpen.Hint = "Open a document";
+         this.bbiOpen.Id = 11;
+         this.bbiOpen.Name = "bbiOpen";
+         // 
+         // bbiSave
+         // 
+         this.bbiSave.Caption = "Save";
+         this.bbiSave.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Save;
+         this.bbiSave.Enabled = false;
+         this.bbiSave.Hint = "Save the document";
+         this.bbiSave.Id = 12;
+         this.bbiSave.Name = "bbiSave";
          // 
          // bbiPrint
          // 
@@ -659,15 +687,15 @@
          this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.documentViewerBarManager1;
-         this.barDockControlTop.Size = new System.Drawing.Size(793, 22);
+         this.barDockControlTop.Size = new System.Drawing.Size(737, 22);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 389);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 403);
          this.barDockControlBottom.Manager = this.documentViewerBarManager1;
-         this.barDockControlBottom.Size = new System.Drawing.Size(793, 26);
+         this.barDockControlBottom.Size = new System.Drawing.Size(737, 26);
          // 
          // barDockControlLeft
          // 
@@ -675,15 +703,15 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
          this.barDockControlLeft.Manager = this.documentViewerBarManager1;
-         this.barDockControlLeft.Size = new System.Drawing.Size(35, 367);
+         this.barDockControlLeft.Size = new System.Drawing.Size(35, 381);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(793, 22);
+         this.barDockControlRight.Location = new System.Drawing.Point(737, 22);
          this.barDockControlRight.Manager = this.documentViewerBarManager1;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 367);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 381);
          // 
          // printPreviewBarCheckItem1
          // 
@@ -879,23 +907,59 @@
          this.printPreviewBarCheckItem19.Id = 58;
          this.printPreviewBarCheckItem19.Name = "printPreviewBarCheckItem19";
          // 
-         // frmDSDDHChuaCoPhieuNhap
+         // pnPickDepartment
+         // 
+         this.pnPickDepartment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(234)))), ((int)(((byte)(237)))));
+         this.pnPickDepartment.Controls.Add(this.labelControl1);
+         this.pnPickDepartment.Controls.Add(this.cboDepartment);
+         this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
+         this.pnPickDepartment.Location = new System.Drawing.Point(35, 22);
+         this.pnPickDepartment.Name = "pnPickDepartment";
+         this.pnPickDepartment.Size = new System.Drawing.Size(702, 33);
+         this.pnPickDepartment.TabIndex = 6;
+         // 
+         // labelControl1
+         // 
+         this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl1.Appearance.Options.UseFont = true;
+         this.labelControl1.Location = new System.Drawing.Point(12, 9);
+         this.labelControl1.Name = "labelControl1";
+         this.labelControl1.Size = new System.Drawing.Size(92, 15);
+         this.labelControl1.TabIndex = 2;
+         this.labelControl1.Text = "Chọn Chi Nhánh:";
+         // 
+         // cboDepartment
+         // 
+         this.cboDepartment.BackColor = System.Drawing.SystemColors.Window;
+         this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboDepartment.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.cboDepartment.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.cboDepartment.FormattingEnabled = true;
+         this.cboDepartment.Location = new System.Drawing.Point(110, 5);
+         this.cboDepartment.Name = "cboDepartment";
+         this.cboDepartment.Size = new System.Drawing.Size(193, 23);
+         this.cboDepartment.TabIndex = 3;
+         // 
+         // frmReportTongHopNhapXuat
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(793, 415);
+         this.ClientSize = new System.Drawing.Size(737, 429);
          this.Controls.Add(this.documentViewer);
+         this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
          this.Controls.Add(this.barDockControlBottom);
          this.Controls.Add(this.barDockControlTop);
-         this.Name = "frmDSDDHChuaCoPhieuNhap";
-         this.Text = "Danh sách đơn hàng chưa có phiếu nhập";
-         this.Load += new System.EventHandler(this.frmDSDDHChuaCoPhieuNhap_Load);
+         this.Name = "frmReportTongHopNhapXuat";
+         this.Text = "Tổng hợp nhập xuất";
+         this.Load += new System.EventHandler(this.frmReportTongHopNhapXuat_Load);
          ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
+         this.pnPickDepartment.ResumeLayout(false);
+         this.pnPickDepartment.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -912,6 +976,8 @@
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiFind;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiHighlightEditingFields;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiCustomize;
+      private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiOpen;
+      private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiSave;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiPrint;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiPrintDirect;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiPageSetup;
@@ -972,5 +1038,8 @@
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem17;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem18;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem19;
+      private System.Windows.Forms.Panel pnPickDepartment;
+      private DevExpress.XtraEditors.LabelControl labelControl1;
+      private System.Windows.Forms.ComboBox cboDepartment;
    }
 }

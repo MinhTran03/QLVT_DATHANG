@@ -140,6 +140,12 @@
     <Compile Include="Forms\frmReportDSNV.Designer.cs">
       <DependentUpon>frmReportDSNV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmReportTongHopNhapXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportTongHopNhapXuat.Designer.cs">
+      <DependentUpon>frmReportTongHopNhapXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\Xrpt_DanhSachDDHChuaCoPhieuNhap.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -151,6 +157,12 @@
     </Compile>
     <Compile Include="Report\Xrpt_DanhSachNhanVien.Designer.cs">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Xrpt_TongHopNhapXuat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Xrpt_TongHopNhapXuat.Designer.cs">
+      <DependentUpon>Xrpt_TongHopNhapXuat.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\frmAddOrder.cs">
       <SubType>UserControl</SubType>
@@ -272,11 +284,17 @@
     <EmbeddedResource Include="Forms\frmReportDSNV.resx">
       <DependentUpon>frmReportDSNV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportTongHopNhapXuat.resx">
+      <DependentUpon>frmReportTongHopNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_DanhSachDDHChuaCoPhieuNhap.resx">
       <DependentUpon>Xrpt_DanhSachDDHChuaCoPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_DanhSachNhanVien.resx">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Xrpt_TongHopNhapXuat.resx">
+      <DependentUpon>Xrpt_TongHopNhapXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\frmAddOrder.resx">
       <DependentUpon>frmAddOrder.cs</DependentUpon>

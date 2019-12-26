@@ -892,7 +892,7 @@
          this.Controls.Add(this.barDockControlBottom);
          this.Controls.Add(this.barDockControlTop);
          this.Name = "frmReportDSNV";
-         this.Text = "frmReportDSNV";
+         this.Text = "Danh sách nhân viên";
          this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReportDSNV_FormClosing);
          this.Load += new System.EventHandler(this.frmReportDSNV_Load);
          ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).EndInit();
