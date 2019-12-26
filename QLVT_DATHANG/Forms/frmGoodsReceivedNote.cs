@@ -22,6 +22,9 @@ namespace QLVT_DATHANG.Forms
         private BindingSource _bdsCTPN;
         private CTPNTableAdapter _taCTPN;
         private DataSet _dataSet;
+        private BindingSource _bdsDSVTDH;
+        private DSVTDHTableAdapter _taDSVTDH;
+        private string _maDDH;
 
         public frmGoodsReceivedNote()
       {
@@ -32,6 +35,8 @@ namespace QLVT_DATHANG.Forms
             _bdsCTPN = bdsCTPN;
             _taCTPN = taCTPN;
             _dataSet = dataSet;
+            _bdsDSVTDH = bdsDSVTDH;
+            _taDSVTDH = taDSVTDH;
 
             this.gcCTPN.DataSource = _bdsCTPN;
             _bdsCTPN.ListChanged += bdsCTPN_ListChanged;
@@ -98,6 +103,7 @@ namespace QLVT_DATHANG.Forms
                 this.taDDH.Connection.ConnectionString =
                 this.taDSNV.Connection.ConnectionString =
                 this.taDSVT.Connection.ConnectionString =
+                this.taDSVTDH.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
@@ -105,15 +111,16 @@ namespace QLVT_DATHANG.Forms
 
             this.taPN.Fill(this.dataSet.PhieuNhap);
 
-                this.taCTPN.Fill(this.dataSet.CTPN);
+            this.taCTPN.Fill(this.dataSet.CTPN);
 
             this.taDSKHO.Fill(this.dataSet.DSKHO);
 
-                this.taDDH.Fill(this.dataSet.DatHang);
+            this.taDDH.Fill(this.dataSet.DatHang);
 
-                this.taDSNV.Fill(this.dataSet.DSNV);
+            this.taDSNV.Fill(this.dataSet.DSNV);
 
             this.taDSVT.Fill(this.dataSet.DSVT);
+
 
             //this.dataSet.EnforceConstraints = true;
 
@@ -377,5 +384,34 @@ namespace QLVT_DATHANG.Forms
         {
             _bdsCTPN.RemoveCurrent();
         }
-    }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.taDSVTDH.Fill(this.dataSet.DSVTDH, madhToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void lkeMaDDH_EditValueChanged(object sender, EventArgs e)
+        {
+            _maDDH = lkeMaDDH.EditValue.ToString();
+
+            try
+            {
+                this.taDSVTDH.Fill(this.dataSet.DSVTDH, _maDDH);
+
+            }
+            catch (Exception ex)
+            {
+                UtilDB.ShowError(ex);
+            }
+
+        }
+   }
 }

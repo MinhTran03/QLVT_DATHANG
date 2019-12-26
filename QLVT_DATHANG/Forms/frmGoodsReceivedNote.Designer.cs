@@ -82,6 +82,8 @@
             this.gvCTPN = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAPN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bdsDSVT = new System.Windows.Forms.BindingSource(this.components);
@@ -94,6 +96,12 @@
             this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
             this.taDSKHO = new QLVT_DATHANG.DataSetTableAdapters.DSKHOTableAdapter();
+            this.bdsDSVTDH = new System.Windows.Forms.BindingSource(this.components);
+            this.taDSVTDH = new QLVT_DATHANG.DataSetTableAdapters.DSVTDHTableAdapter();
+            this.fillToolStrip = new System.Windows.Forms.ToolStrip();
+            this.madhToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.madhToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.fillToolStripButton = new System.Windows.Forms.ToolStripButton();
             mAPNLabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             masoDDHLabel = new System.Windows.Forms.Label();
@@ -128,9 +136,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCTPN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).BeginInit();
             this.cmsCTPN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).BeginInit();
+            this.fillToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mAPNLabel
@@ -268,7 +280,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.bmPN;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1066, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1108, 30);
             // 
             // barDockControlBottom
             // 
@@ -277,7 +289,7 @@
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 1067);
             this.barDockControlBottom.Manager = this.bmPN;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1066, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1108, 0);
             // 
             // barDockControlLeft
             // 
@@ -292,7 +304,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1066, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1108, 30);
             this.barDockControlRight.Manager = this.bmPN;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 1037);
@@ -305,7 +317,7 @@
             this.pnPickDepartment.Location = new System.Drawing.Point(0, 30);
             this.pnPickDepartment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnPickDepartment.Name = "pnPickDepartment";
-            this.pnPickDepartment.Size = new System.Drawing.Size(1066, 39);
+            this.pnPickDepartment.Size = new System.Drawing.Size(1108, 39);
             this.pnPickDepartment.TabIndex = 0;
             this.pnPickDepartment.Visible = false;
             // 
@@ -354,7 +366,7 @@
             this.gcReceivedNote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gcReceivedNote.MenuManager = this.bmPN;
             this.gcReceivedNote.Name = "gcReceivedNote";
-            this.gcReceivedNote.Size = new System.Drawing.Size(1066, 704);
+            this.gcReceivedNote.Size = new System.Drawing.Size(1108, 704);
             this.gcReceivedNote.TabIndex = 1;
             this.gcReceivedNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvReceivedNote});
@@ -427,7 +439,7 @@
             this.splitterControl1.Location = new System.Drawing.Point(0, 773);
             this.splitterControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1066, 6);
+            this.splitterControl1.Size = new System.Drawing.Size(1108, 6);
             this.splitterControl1.TabIndex = 2;
             this.splitterControl1.TabStop = false;
             // 
@@ -441,7 +453,7 @@
             this.sccReceived.Panel1.Text = "Panel1";
             this.sccReceived.Panel2.Controls.Add(this.gbCTPN);
             this.sccReceived.Panel2.Text = "Panel2";
-            this.sccReceived.Size = new System.Drawing.Size(1066, 288);
+            this.sccReceived.Size = new System.Drawing.Size(1108, 288);
             this.sccReceived.SplitterPosition = 551;
             this.sccReceived.TabIndex = 28;
             // 
@@ -550,6 +562,7 @@
             this.lkeMaDDH.Properties.ValueMember = "MasoDDH";
             this.lkeMaDDH.Size = new System.Drawing.Size(201, 26);
             this.lkeMaDDH.TabIndex = 3;
+            this.lkeMaDDH.EditValueChanged += new System.EventHandler(this.lkeMaDDH_EditValueChanged);
             // 
             // bdsDDH
             // 
@@ -607,7 +620,7 @@
             this.gbCTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCTPN.Location = new System.Drawing.Point(0, 0);
             this.gbCTPN.Name = "gbCTPN";
-            this.gbCTPN.Size = new System.Drawing.Size(509, 288);
+            this.gbCTPN.Size = new System.Drawing.Size(551, 288);
             this.gbCTPN.TabIndex = 0;
             this.gbCTPN.Text = " Chi tiết Phiếu Nhập";
             // 
@@ -618,7 +631,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(2, 251);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(505, 35);
+            this.panel1.Size = new System.Drawing.Size(547, 35);
             this.panel1.TabIndex = 1;
             // 
             // btnRemoveDataRow
@@ -647,7 +660,9 @@
             this.gcCTPN.MainView = this.gvCTPN;
             this.gcCTPN.MenuManager = this.bmPN;
             this.gcCTPN.Name = "gcCTPN";
-            this.gcCTPN.Size = new System.Drawing.Size(505, 257);
+            this.gcCTPN.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemSearchLookUpEdit1});
+            this.gcCTPN.Size = new System.Drawing.Size(547, 257);
             this.gcCTPN.TabIndex = 0;
             this.gcCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTPN});
@@ -678,12 +693,31 @@
             // 
             // colMAVT
             // 
+            this.colMAVT.ColumnEdit = this.repositoryItemSearchLookUpEdit1;
             this.colMAVT.FieldName = "MAVT";
             this.colMAVT.MinWidth = 25;
             this.colMAVT.Name = "colMAVT";
             this.colMAVT.Visible = true;
             this.colMAVT.VisibleIndex = 0;
             this.colMAVT.Width = 94;
+            // 
+            // repositoryItemSearchLookUpEdit1
+            // 
+            this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
+            this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchLookUpEdit1.DataSource = this.bdsDSVTDH;
+            this.repositoryItemSearchLookUpEdit1.DisplayMember = "TENVT";
+            this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
+            this.repositoryItemSearchLookUpEdit1.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            this.repositoryItemSearchLookUpEdit1.ValueMember = "MAVT";
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // colSOLUONG
             // 
@@ -762,12 +796,53 @@
             // 
             this.taDSKHO.ClearBeforeFill = true;
             // 
+            // bdsDSVTDH
+            // 
+            this.bdsDSVTDH.DataMember = "DSVTDH";
+            this.bdsDSVTDH.DataSource = this.dataSet;
+            // 
+            // taDSVTDH
+            // 
+            this.taDSVTDH.ClearBeforeFill = true;
+            // 
+            // fillToolStrip
+            // 
+            this.fillToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.fillToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.madhToolStripLabel,
+            this.madhToolStripTextBox,
+            this.fillToolStripButton});
+            this.fillToolStrip.Location = new System.Drawing.Point(0, 69);
+            this.fillToolStrip.Name = "fillToolStrip";
+            this.fillToolStrip.Size = new System.Drawing.Size(1108, 27);
+            this.fillToolStrip.TabIndex = 38;
+            this.fillToolStrip.Text = "fillToolStrip";
+            // 
+            // madhToolStripLabel
+            // 
+            this.madhToolStripLabel.Name = "madhToolStripLabel";
+            this.madhToolStripLabel.Size = new System.Drawing.Size(50, 24);
+            this.madhToolStripLabel.Text = "madh:";
+            // 
+            // madhToolStripTextBox
+            // 
+            this.madhToolStripTextBox.Name = "madhToolStripTextBox";
+            this.madhToolStripTextBox.Size = new System.Drawing.Size(100, 27);
+            // 
+            // fillToolStripButton
+            // 
+            this.fillToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillToolStripButton.Name = "fillToolStripButton";
+            this.fillToolStripButton.Size = new System.Drawing.Size(32, 24);
+            this.fillToolStripButton.Text = "Fill";
+            // 
             // frmGoodsReceivedNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1066, 1067);
+            this.ClientSize = new System.Drawing.Size(1108, 1067);
+            this.Controls.Add(this.fillToolStrip);
             this.Controls.Add(this.gcReceivedNote);
             this.Controls.Add(this.pnPickDepartment);
             this.Controls.Add(this.splitterControl1);
@@ -813,9 +888,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCTPN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).EndInit();
             this.cmsCTPN.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).EndInit();
+            this.fillToolStrip.ResumeLayout(false);
+            this.fillToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -882,5 +962,13 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private System.Windows.Forms.BindingSource bdsDSKHO;
         private DataSetTableAdapters.DSKHOTableAdapter taDSKHO;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private System.Windows.Forms.ToolStrip fillToolStrip;
+        private System.Windows.Forms.ToolStripLabel madhToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox madhToolStripTextBox;
+        private System.Windows.Forms.ToolStripButton fillToolStripButton;
+        private System.Windows.Forms.BindingSource bdsDSVTDH;
+        private DataSetTableAdapters.DSVTDHTableAdapter taDSVTDH;
     }
 }

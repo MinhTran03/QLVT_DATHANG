@@ -154,6 +154,22 @@
         </Point>
       </RoutePoints>
     </Connector>
+    <Connector ID="DesignRelation:FK_PhieuNhap_NhanVien" ZOrder="21" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>231</X>
+          <Y>124</Y>
+        </Point>
+        <Point>
+          <X>231</X>
+          <Y>190</Y>
+        </Point>
+        <Point>
+          <X>340</X>
+          <Y>190</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
     <Connector ID="DesignRelation:FK_PhieuNhap_DatHang" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
