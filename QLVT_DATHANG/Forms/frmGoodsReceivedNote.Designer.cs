@@ -83,6 +83,7 @@
             this.colMAPN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.bdsDSVTDH = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,7 +97,6 @@
             this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
             this.tableAdapterManager = new QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager();
             this.taDSKHO = new QLVT_DATHANG.DataSetTableAdapters.DSKHOTableAdapter();
-            this.bdsDSVTDH = new System.Windows.Forms.BindingSource(this.components);
             this.taDSVTDH = new QLVT_DATHANG.DataSetTableAdapters.DSVTDHTableAdapter();
             this.fillToolStrip = new System.Windows.Forms.ToolStrip();
             this.madhToolStripLabel = new System.Windows.Forms.ToolStripLabel();
@@ -137,11 +137,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCTPN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).BeginInit();
             this.cmsCTPN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).BeginInit();
             this.fillToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -712,6 +712,11 @@
             this.repositoryItemSearchLookUpEdit1.PopupView = this.repositoryItemSearchLookUpEdit1View;
             this.repositoryItemSearchLookUpEdit1.ValueMember = "MAVT";
             // 
+            // bdsDSVTDH
+            // 
+            this.bdsDSVTDH.DataMember = "DSVTDH";
+            this.bdsDSVTDH.DataSource = this.dataSet;
+            // 
             // repositoryItemSearchLookUpEdit1View
             // 
             this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
@@ -795,11 +800,6 @@
             // taDSKHO
             // 
             this.taDSKHO.ClearBeforeFill = true;
-            // 
-            // bdsDSVTDH
-            // 
-            this.bdsDSVTDH.DataMember = "DSVTDH";
-            this.bdsDSVTDH.DataSource = this.dataSet;
             // 
             // taDSVTDH
             // 
@@ -889,11 +889,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCTPN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).EndInit();
             this.cmsCTPN.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).EndInit();
             this.fillToolStrip.ResumeLayout(false);
             this.fillToolStrip.PerformLayout();
             this.ResumeLayout(false);

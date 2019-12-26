@@ -8,14 +8,15 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraEditors;
    using System.Data.SqlClient;
    using System.Windows.Forms;
-   using System.Drawing;
    using Utility;
+    using System.Collections.Generic;
 
-   public partial class frmGoodsReceivedNote : XtraForm
+    public partial class frmGoodsReceivedNote : XtraForm
    {
       private string _currentDeploymentId;
       private int _currentPosition;
       private int _backupWidth;
+      private List<string> materialsId;
 
         private BindingSource _bdsPN;
         private PhieuNhapTableAdapter _taPN;
@@ -401,6 +402,26 @@ namespace QLVT_DATHANG.Forms
         private void lkeMaDDH_EditValueChanged(object sender, EventArgs e)
         {
             _maDDH = lkeMaDDH.EditValue.ToString();
+
+            foreach (var item in gvCTPN.GetSelectedRows())
+            {
+                string id = gvCTPN.GetDataRow(item).Field<string>("MAVT");
+                materialsId.Add(id);
+            }
+
+            var dsMaterialsId = materialsId;
+            foreach (var id in dsMaterialsId)
+            {
+                if (IsMaterialExistInView(id) == false)
+                {
+                    _bdsCTPN.AddNew();
+                    int position = _bdsCTPN.Position;
+                    ((DataRowView)_bdsCTPN[position])["MAVT"] = id;
+                    ((DataRowView)_bdsCTPN[position])["SOLUONG"] = 0;
+                    ((DataRowView)_bdsCTPN[position])["DONGIA"] = 0;
+                }
+            }
+            _bdsCTPN.EndEdit();
 
             try
             {
