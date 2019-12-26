@@ -247,7 +247,8 @@ namespace QLVT_DATHANG.Forms
 
       private bool SaveEmployee()
       {
-         txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
+         if (_buttonAction == ButtonActionType.Add)
+            txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
 
          if (!IsValidEmptyValue())
          {

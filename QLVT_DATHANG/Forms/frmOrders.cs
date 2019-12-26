@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
@@ -7,12 +9,9 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraBars;
    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
    using DevExpress.XtraEditors;
-   using System.Data.SqlClient;
-   using System.Drawing;
-   using Utility;
-   using UserControls;
    using DevExpress.XtraGrid.Views.Base;
-   using System.Linq;
+   using DevExpress.XtraEditors.Controls;
+   using Utility;
 
    public partial class frmOrders : XtraForm
    {
@@ -157,11 +156,12 @@ namespace QLVT_DATHANG.Forms
 
       private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
       {
+         bdsDDH.AddNew();
+
          dtpOrderDate.EditValue = DateTime.Now;
          lkeEmployee.EditValue = int.Parse(UtilDB.UserName);
          cboNCC.SelectedIndex = -1;
-
-         bdsDDH.AddNew();
+         txtEmployeeId.Text = UtilDB.UserName;
 
          EnableEditMode();
       }
@@ -173,7 +173,7 @@ namespace QLVT_DATHANG.Forms
 
       private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
       {
-         if(SaveOrder())
+         if (SaveOrder())
             DisableEditMode();
       }
 
@@ -202,13 +202,14 @@ namespace QLVT_DATHANG.Forms
 
       private object[] GetDataOrder()
       {
-         object[] data = new object[5];
-
-         data[0] = txtOrderId.Text;
-         data[1] = dtpOrderDate.EditValue;
-         data[2] = cboNCC.Text;
-         data[3] = lkeEmployee.EditValue;
-         data[4] = lkeDepot.EditValue;
+         object[] data = new object[]
+         {
+            txtOrderId.Text,
+            dtpOrderDate.EditValue,
+            cboNCC.Text,
+            lkeEmployee.EditValue,
+            lkeDepot.EditValue
+         };
 
          return data;
       }
@@ -216,9 +217,9 @@ namespace QLVT_DATHANG.Forms
       private void SaveALlDataOrderDetailOnView()
       {
          int orderDetailCount = gvOrderDetail.DataRowCount;
-         ((DataRowView)bdsCTDDH.Current).BeginEdit();
          for (int i = 0; i < orderDetailCount; i++)
          {
+            ((DataRowView)bdsCTDDH.Current).BeginEdit();
             ((DataRowView)bdsCTDDH.Current).Row["MasoDDH"] = txtOrderId.Text;
             bdsCTDDH.MovePrevious();
          }
@@ -233,15 +234,21 @@ namespace QLVT_DATHANG.Forms
 
             SaveALlDataOrderDetailOnView();
 
-            ((DataRowView)bdsDDH[bdsDDH.Position]).Row.ItemArray = GetDataOrder();
+            ((DataRowView)bdsDDH.Current).Row.ItemArray = GetDataOrder();
             bdsDDH.EndEdit();
 
-            this.taDDH.Update(this.dataSet.DatHang);
-            this.taCTDDH.Update(this.dataSet.CTDDH);
+            UtilDB.UpdateWithTransaction(() =>
+            {
+               this.taDDH.Update(this.dataSet.DatHang);
+               this.taCTDDH.Update(this.dataSet.CTDDH);
+            }, taDDH, taCTDDH);
          }
          catch (Exception ex)
          {
             UtilDB.ShowError(ex);
+            // xử lý tạm thời
+            DisableEditMode();
+            btnRefresh.PerformClick();
             return false;
          }
          return true;
@@ -282,7 +289,7 @@ namespace QLVT_DATHANG.Forms
 
       private void frmOrders_FormClosing(object sender, FormClosingEventArgs e)
       {
-         
+
       }
 
       private void gvOrderDetail_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
@@ -310,7 +317,7 @@ namespace QLVT_DATHANG.Forms
          return false;
       }
 
-      private void gvOrderDetail_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+      private void gvOrderDetail_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
       {
          var fieldName = gvOrderDetail.FocusedColumn.FieldName;
          switch (fieldName)
@@ -330,6 +337,11 @@ namespace QLVT_DATHANG.Forms
                      e.ErrorText = "Mã vật tư bị trùng";
                      break;
                   }
+               }
+               if (e.Valid == true)
+               {
+                  ((DataRowView)bdsCTDDH.Current)["SOLUONG"] = 1;
+                  ((DataRowView)bdsCTDDH.Current)["DONGIA"] = 1;
                }
                break;
             case "SOLUONG":
@@ -357,7 +369,7 @@ namespace QLVT_DATHANG.Forms
                }
                else
                {
-                  if (donGia <= 0)
+                  if (donGia < 0)
                   {
                      e.Valid = false;
                      e.ErrorText = "Đơn giá phải lớn hơn 0";
@@ -416,8 +428,8 @@ namespace QLVT_DATHANG.Forms
                   bdsCTDDH.AddNew();
                   int position = bdsCTDDH.Position;
                   ((DataRowView)bdsCTDDH[position])["MAVT"] = id;
-                  ((DataRowView)bdsCTDDH[position])["SOLUONG"] = 0;
-                  ((DataRowView)bdsCTDDH[position])["DONGIA"] = 0;
+                  ((DataRowView)bdsCTDDH[position])["SOLUONG"] = 1;
+                  ((DataRowView)bdsCTDDH[position])["DONGIA"] = 1;
                }
             }
             bdsCTDDH.EndEdit();
@@ -431,12 +443,11 @@ namespace QLVT_DATHANG.Forms
 
       private void bdsCTDDH_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
       {
-         if (gvOrderDetail.DataRowCount == 0) btnRemoveLine.Enabled = false;
+         if (bdsCTDDH.Count == 0 || btnAdd.Enabled == true) btnRemoveLine.Enabled = false;
          else
          {
             btnRemoveLine.Enabled = true;
          }
       }
-
    }
 }
