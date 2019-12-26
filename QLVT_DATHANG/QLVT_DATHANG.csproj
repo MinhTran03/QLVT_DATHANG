@@ -124,6 +124,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetReport.cs">
+      <DependentUpon>DataSetReport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetReport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,11 +138,23 @@
     <Compile Include="Forms\frmDSDDHChuaCoPhieuNhap.Designer.cs">
       <DependentUpon>frmDSDDHChuaCoPhieuNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmReportDSDVT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportDSDVT.Designer.cs">
+      <DependentUpon>frmReportDSDVT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmReportDSNV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmReportDSNV.Designer.cs">
       <DependentUpon>frmReportDSNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReportDSVT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportDSVT.Designer.cs">
+      <DependentUpon>frmReportDSVT.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Report\Xrpt_DanhSachDDHChuaCoPhieuNhap.cs">
@@ -153,6 +168,18 @@
     </Compile>
     <Compile Include="Report\Xrpt_DanhSachNhanVien.Designer.cs">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Xrpt_DanhSachvatTu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Xrpt_DanhSachvatTu.Designer.cs">
+      <DependentUpon>Xrpt_DanhSachvatTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Xrpt_ReportDSCTVT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Xrpt_ReportDSCTVT.Designer.cs">
+      <DependentUpon>Xrpt_ReportDSCTVT.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\frmAddOrder.cs">
       <SubType>UserControl</SubType>
@@ -265,14 +292,26 @@
     <EmbeddedResource Include="Forms\frmDSDDHChuaCoPhieuNhap.resx">
       <DependentUpon>frmDSDDHChuaCoPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportDSDVT.resx">
+      <DependentUpon>frmReportDSDVT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmReportDSNV.resx">
       <DependentUpon>frmReportDSNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportDSVT.resx">
+      <DependentUpon>frmReportDSVT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_DanhSachDDHChuaCoPhieuNhap.resx">
       <DependentUpon>Xrpt_DanhSachDDHChuaCoPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_DanhSachNhanVien.resx">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Xrpt_DanhSachvatTu.resx">
+      <DependentUpon>Xrpt_DanhSachvatTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Xrpt_ReportDSCTVT.resx">
+      <DependentUpon>Xrpt_ReportDSCTVT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\frmAddOrder.resx">
       <DependentUpon>frmAddOrder.cs</DependentUpon>
