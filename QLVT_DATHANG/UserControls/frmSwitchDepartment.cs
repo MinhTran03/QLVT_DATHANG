@@ -1,10 +1,9 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using QLVT_DATHANG.Utility;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,8 +11,6 @@ namespace QLVT_DATHANG.UserControls
 {
    public partial class frmSwitchDepartment : XtraUserControl
    {
-      public bool isSuccess = false;
-
       public frmSwitchDepartment(int employeeId, string employeeName)
       {
          InitializeComponent();
@@ -47,17 +44,18 @@ namespace QLVT_DATHANG.UserControls
 
          int oldEmployeeId = int.Parse(txtEmployeeId.Text);
          string newDepartId = UtilDB.GetDepartIdInFilterClause(cboDepartment.SelectedValue.ToString());
-
+         SplashScreenManager.ShowForm(null, typeof(WaitFormCustom), true, true, false);
          if (await SwitchDepartment(oldEmployeeId, newDepartId) == false)
          {
+            SplashScreenManager.CloseForm(false);
             XtraMessageBox.Show(Cons.ErrorSwitchDepart, Cons.CaptionError,
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
          else
          {
+            SplashScreenManager.CloseForm(false);
             XtraMessageBox.Show(Cons.SuccessSwitchDepart, Cons.CaptionSuccess,
                               MessageBoxButtons.OK, MessageBoxIcon.Information);
-            isSuccess = true;
          }
       }
 

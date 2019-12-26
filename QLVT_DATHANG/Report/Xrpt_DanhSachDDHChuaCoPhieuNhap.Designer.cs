@@ -32,7 +32,8 @@
          DevExpress.DataAccess.ConnectionParameters.MsSqlConnectionParameters msSqlConnectionParameters1 = new DevExpress.DataAccess.ConnectionParameters.MsSqlConnectionParameters();
          DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Xrpt_DanhSachDDHChuaCoPhieuNhap));
-         this.sqlDataSource = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+         DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
+         this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
          this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
          this.GroupCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
          this.GroupData1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -74,6 +75,9 @@
          this.label2 = new DevExpress.XtraReports.UI.XRLabel();
          this.dataSetReport = new QLVT_DATHANG.DataSetReport();
          this.taReportDSDDHChuaCoPN = new QLVT_DATHANG.DataSetReportTableAdapters.Report_DanhSachDDHChuaCoPhieuNhapTableAdapter();
+         this.Sumary = new DevExpress.XtraReports.UI.CalculatedField();
+         this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+         this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
          ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
@@ -85,13 +89,13 @@
          msSqlConnectionParameters1.AuthorizationType = DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.SqlServer;
          msSqlConnectionParameters1.DatabaseName = null;
          msSqlConnectionParameters1.ServerName = null;
-         this.sqlDataSource.ConnectionParameters = msSqlConnectionParameters1;
-         this.sqlDataSource.Name = "sqlDataSource1";
+         this.sqlDataSource1.ConnectionParameters = msSqlConnectionParameters1;
+         this.sqlDataSource1.Name = "sqlDataSource1";
          storedProcQuery1.Name = "sp_rep_DSDDHChuaCoPhieuNhap";
          storedProcQuery1.StoredProcName = "sp_rep_DSDDHChuaCoPhieuNhap";
-         this.sqlDataSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+         this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
-         this.sqlDataSource.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+         this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
          // 
          // Title
          // 
@@ -264,9 +268,11 @@
          // 
          // tableCell1
          // 
+         this.tableCell1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
          this.tableCell1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.tableCell1.Name = "tableCell1";
          this.tableCell1.StyleName = "GroupCaption1";
+         this.tableCell1.StylePriority.UseBackColor = false;
          this.tableCell1.StylePriority.UseFont = false;
          this.tableCell1.StylePriority.UseTextAlignment = false;
          this.tableCell1.Text = "Mã số DDH";
@@ -275,11 +281,13 @@
          // 
          // tableCell2
          // 
+         this.tableCell2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
          this.tableCell2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Mã số DDH]")});
          this.tableCell2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.tableCell2.Name = "tableCell2";
          this.tableCell2.StyleName = "GroupData1";
+         this.tableCell2.StylePriority.UseBackColor = false;
          this.tableCell2.StylePriority.UseFont = false;
          this.tableCell2.Weight = 0.83052665387874081D;
          // 
@@ -505,9 +513,11 @@
          // GroupFooter1
          // 
          this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel2,
+            this.xrLabel1,
             this.label2});
          this.GroupFooter1.GroupUnion = DevExpress.XtraReports.UI.GroupFooterUnion.WithLastDetail;
-         this.GroupFooter1.HeightF = 6F;
+         this.GroupFooter1.HeightF = 25.08002F;
          this.GroupFooter1.Name = "GroupFooter1";
          // 
          // label2
@@ -528,6 +538,48 @@
          // 
          this.taReportDSDDHChuaCoPN.ClearBeforeFill = true;
          // 
+         // Sumary
+         // 
+         this.Sumary.DataMember = "Report_DanhSachDDHChuaCoPhieuNhap";
+         this.Sumary.Expression = "[][[Mã số DDH]=[^.Mã số DDH]].Sum([Đơn giá] * [Số lượng])";
+         this.Sumary.Name = "Sumary";
+         // 
+         // xrLabel1
+         // 
+         this.xrLabel1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([Sumary])")});
+         this.xrLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(517.6368F, 2.080027F);
+         this.xrLabel1.Multiline = true;
+         this.xrLabel1.Name = "xrLabel1";
+         this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+         this.xrLabel1.SizeF = new System.Drawing.SizeF(132.3632F, 23F);
+         this.xrLabel1.StylePriority.UseFont = false;
+         this.xrLabel1.StylePriority.UseTextAlignment = false;
+         xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
+         this.xrLabel1.Summary = xrSummary1;
+         this.xrLabel1.Text = "xrLabel1";
+         this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+         this.xrLabel1.TextFormatString = "{0:#,# đ}";
+         // 
+         // xrLabel2
+         // 
+         this.xrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.None;
+         this.xrLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.xrLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(434.232F, 2.080027F);
+         this.xrLabel2.Multiline = true;
+         this.xrLabel2.Name = "xrLabel2";
+         this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+         this.xrLabel2.SizeF = new System.Drawing.SizeF(83.40482F, 23F);
+         this.xrLabel2.StylePriority.UseBorders = false;
+         this.xrLabel2.StylePriority.UseFont = false;
+         this.xrLabel2.StylePriority.UseForeColor = false;
+         this.xrLabel2.StylePriority.UseTextAlignment = false;
+         this.xrLabel2.Text = "Thành tiền:";
+         this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+         this.xrLabel2.TextFormatString = "{0:}";
+         // 
          // Xrpt_DanhSachDDHChuaCoPhieuNhap
          // 
          this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -538,8 +590,10 @@
             this.GroupHeader2,
             this.Detail,
             this.GroupFooter1});
+         this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
+            this.Sumary});
          this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource,
+            this.sqlDataSource1,
             this.dataSetReport});
          this.DataAdapter = this.taReportDSDDHChuaCoPN;
          this.DataMember = "Report_DanhSachDDHChuaCoPhieuNhap";
@@ -605,7 +659,10 @@
       private DevExpress.XtraReports.UI.XRLabel label2;
       private DataSetReport dataSetReport;
       private DataSetReportTableAdapters.Report_DanhSachDDHChuaCoPhieuNhapTableAdapter taReportDSDDHChuaCoPN;
-      private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource;
       private DevExpress.XtraReports.UI.XRLabel lblDate;
+      private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+      private DevExpress.XtraReports.UI.XRLabel xrLabel1;
+      private DevExpress.XtraReports.UI.CalculatedField Sumary;
+      private DevExpress.XtraReports.UI.XRLabel xrLabel2;
    }
 }
