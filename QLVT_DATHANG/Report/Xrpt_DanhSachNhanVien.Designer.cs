@@ -33,7 +33,7 @@
          DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
          DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Xrpt_DanhSachNhanVien));
-         this.sqlDataSource = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+         this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
          this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
          this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
          this.DetailData1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -41,6 +41,7 @@
          this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
          this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
          this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+         this.lblDate = new DevExpress.XtraReports.UI.XRLabel();
          this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
          this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
          this.lblChiNhanh = new DevExpress.XtraReports.UI.XRLabel();
@@ -63,7 +64,6 @@
          this.tcLuong = new DevExpress.XtraReports.UI.XRTableCell();
          this.taReportDSNV = new QLVT_DATHANG.DataSetReportTableAdapters.Report_DSNVTableAdapter();
          this.dataSetReport = new QLVT_DATHANG.DataSetReport();
-         this.lblDate = new DevExpress.XtraReports.UI.XRLabel();
          ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSetReport)).BeginInit();
@@ -74,16 +74,16 @@
          msSqlConnectionParameters1.AuthorizationType = DevExpress.DataAccess.ConnectionParameters.MsSqlAuthorizationType.SqlServer;
          msSqlConnectionParameters1.DatabaseName = null;
          msSqlConnectionParameters1.ServerName = null;
-         this.sqlDataSource.ConnectionParameters = msSqlConnectionParameters1;
-         this.sqlDataSource.Name = "sqlDataSource1";
+         this.sqlDataSource1.ConnectionParameters = msSqlConnectionParameters1;
+         this.sqlDataSource1.Name = "sqlDataSource1";
          storedProcQuery1.Name = "Report_DSNV";
          queryParameter1.Name = "@macn";
          queryParameter1.Type = typeof(string);
          storedProcQuery1.Parameters.Add(queryParameter1);
          storedProcQuery1.StoredProcName = "Report_DSNV";
-         this.sqlDataSource.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+         this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
-         this.sqlDataSource.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+         this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
          // 
          // Title
          // 
@@ -151,6 +151,20 @@
          this.BottomMargin.Dpi = 96F;
          this.BottomMargin.HeightF = 206.1999F;
          this.BottomMargin.Name = "BottomMargin";
+         // 
+         // lblDate
+         // 
+         this.lblDate.Dpi = 96F;
+         this.lblDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.lblDate.LocationFloat = new DevExpress.Utils.PointFloat(5.76001F, 5.76001F);
+         this.lblDate.Multiline = true;
+         this.lblDate.Name = "lblDate";
+         this.lblDate.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+         this.lblDate.SizeF = new System.Drawing.SizeF(299F, 22.08F);
+         this.lblDate.StylePriority.UseFont = false;
+         this.lblDate.StylePriority.UseForeColor = false;
+         this.lblDate.Text = "lblDate";
          // 
          // pageInfo2
          // 
@@ -454,20 +468,6 @@
          this.dataSetReport.DataSetName = "DataSetReport";
          this.dataSetReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
          // 
-         // lblDate
-         // 
-         this.lblDate.Dpi = 96F;
-         this.lblDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.lblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-         this.lblDate.LocationFloat = new DevExpress.Utils.PointFloat(5.76001F, 5.76001F);
-         this.lblDate.Multiline = true;
-         this.lblDate.Name = "lblDate";
-         this.lblDate.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-         this.lblDate.SizeF = new System.Drawing.SizeF(299F, 22.08F);
-         this.lblDate.StylePriority.UseFont = false;
-         this.lblDate.StylePriority.UseForeColor = false;
-         this.lblDate.Text = "lblDate";
-         // 
          // Xrpt_DanhSachNhanVien
          // 
          this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -478,7 +478,7 @@
             this.Detail});
          this.BorderWidth = 0.5F;
          this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource,
+            this.sqlDataSource1,
             this.dataSetReport});
          this.DataAdapter = this.taReportDSNV;
          this.DataMember = "Report_DSNV";
@@ -506,7 +506,6 @@
 
       #endregion
 
-      private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource;
       private DevExpress.XtraReports.UI.XRControlStyle Title;
       private DevExpress.XtraReports.UI.XRControlStyle DetailCaption1;
       private DevExpress.XtraReports.UI.XRControlStyle DetailData1;
@@ -537,5 +536,6 @@
       private DataSetReport dataSetReport;
       private DevExpress.XtraReports.UI.XRLabel lblChiNhanh;
       private DevExpress.XtraReports.UI.XRLabel lblDate;
+      private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
    }
 }

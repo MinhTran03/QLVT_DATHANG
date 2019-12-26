@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -234,18 +235,79 @@ namespace QLVT_DATHANG.Utility
                 {
                     command.Parameters.AddWithValue("@key", key);
 
-                    try
-                    {
-                        await command.ExecuteNonQueryAsync();
-                        isSuccess = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                }
+               try
+               {
+                  await command.ExecuteNonQueryAsync();
+                  isSuccess = true;
+               }
+               catch (Exception ex)
+               {
+                  throw ex;
+               }
             }
-            return isSuccess;
-        }
-    }
+         }
+         return isSuccess;
+      }
+
+      public static SqlDataAdapter GetAdapter(object tableAdapter)
+      {
+         Type tableAdapterType = tableAdapter.GetType();
+         SqlDataAdapter adapter = (SqlDataAdapter)tableAdapterType.GetProperty("Adapter",
+                BindingFlags.Instance | BindingFlags.NonPublic).GetValue(tableAdapter, null);
+         return adapter;
+      }
+
+      public static void UpdateWithTransaction(Action updateAction, params object[] tableAdapters)
+      {
+         using (var connection = new SqlConnection(UtilDB.ConnectionString))
+         {
+            connection.Open();
+            var trans = connection.BeginTransaction();
+
+            SqlDataAdapter[] sqlDataAdapters = new SqlDataAdapter[tableAdapters.Length];
+            for (int index = 0; index < tableAdapters.Length; index++)
+            {
+               sqlDataAdapters[index] = GetAdapter(tableAdapters[index]);
+               sqlDataAdapters[index].InsertCommand.Connection = trans.Connection;
+               sqlDataAdapters[index].InsertCommand.Transaction = trans;
+            }
+
+            try
+            {
+               updateAction();
+               trans.Commit();
+            }
+            catch (Exception ex)
+            {
+               trans.Rollback();
+               throw ex;
+            }
+         }
+      }
+      private static SqlTransaction transaction = null;
+
+      public static void SetIsolationOnRow(string tableName, object key)
+      {
+         var connection = new SqlConnection(UtilDB.ConnectionString);
+         connection.Open();
+         transaction = connection.BeginTransaction();
+
+         // block row
+         using (var command = connection.CreateCommand())
+         {
+            command.Connection = connection;
+            command.Transaction = transaction;
+            command.CommandText = "SET TRANSACTION ISOLATION LEVEL REPEATABLE READ\nSELECT * FROM NHANVIEN WHERE MANV=14";
+            command.CommandType = CommandType.Text;
+            try
+            {
+               command.ExecuteNonQueryAsync();
+            }
+            catch (Exception ex)
+            {
+               throw ex;
+            }
+         }
+      }
+   }
 }

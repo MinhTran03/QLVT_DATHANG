@@ -37,8 +37,8 @@ namespace QLVT_DATHANG.Forms
 
       private void frmReportDSNV_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
       {
-         danhSachNhanVien?.Dispose();
-         documentViewer?.Dispose();
+         //danhSachNhanVien?.Dispose();
+         //documentViewer?.Dispose();
       }
    }
 }

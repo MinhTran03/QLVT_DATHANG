@@ -73,6 +73,7 @@
          this.btnRemoveLine = new DevExpress.XtraEditors.SimpleButton();
          this.btnAddMaterials = new DevExpress.XtraEditors.SimpleButton();
          this.gbOrder = new DevExpress.XtraEditors.GroupControl();
+         this.bdsDSNCC = new System.Windows.Forms.BindingSource(this.components);
          this.txtEmployeeId = new DevExpress.XtraEditors.TextEdit();
          this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
          this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -80,8 +81,6 @@
          this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
          this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
          this.txtOrderId = new DevExpress.XtraEditors.TextEdit();
-         this.cboNCC = new System.Windows.Forms.ComboBox();
-         this.bdsDSNCC = new System.Windows.Forms.BindingSource(this.components);
          this.dtpOrderDate = new DevExpress.XtraEditors.DateEdit();
          this.lkeDepot = new DevExpress.XtraEditors.LookUpEdit();
          this.bdsDSKHO = new System.Windows.Forms.BindingSource(this.components);
@@ -92,6 +91,7 @@
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.taDSNCC = new QLVT_DATHANG.DataSetTableAdapters.DSNCCTableAdapter();
          this.dsvtTableAdapter1 = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
+         this.cboNCC = new System.Windows.Forms.ComboBox();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
@@ -111,9 +111,9 @@
          this.pnBtnOrderDetail.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          this.gbOrder.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNCC)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNCC)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeDepot.Properties)).BeginInit();
@@ -534,6 +534,7 @@
          // 
          this.gbOrder.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbOrder.AppearanceCaption.Options.UseFont = true;
+         this.gbOrder.Controls.Add(this.cboNCC);
          this.gbOrder.Controls.Add(this.txtEmployeeId);
          this.gbOrder.Controls.Add(this.labelControl4);
          this.gbOrder.Controls.Add(this.labelControl3);
@@ -541,7 +542,6 @@
          this.gbOrder.Controls.Add(this.labelControl5);
          this.gbOrder.Controls.Add(this.labelControl6);
          this.gbOrder.Controls.Add(this.txtOrderId);
-         this.gbOrder.Controls.Add(this.cboNCC);
          this.gbOrder.Controls.Add(this.dtpOrderDate);
          this.gbOrder.Controls.Add(this.lkeDepot);
          this.gbOrder.Controls.Add(this.lkeEmployee);
@@ -552,8 +552,14 @@
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin đơn đặt hàng";
          // 
+         // bdsDSNCC
+         // 
+         this.bdsDSNCC.DataMember = "DSNCC";
+         this.bdsDSNCC.DataSource = this.dataSet;
+         // 
          // txtEmployeeId
          // 
+         this.txtEmployeeId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MANV", true));
          this.txtEmployeeId.Location = new System.Drawing.Point(108, 87);
          this.txtEmployeeId.Name = "txtEmployeeId";
          this.txtEmployeeId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -614,6 +620,7 @@
          // 
          // txtOrderId
          // 
+         this.txtOrderId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "MasoDDH", true));
          this.txtOrderId.Location = new System.Drawing.Point(108, 32);
          this.txtOrderId.Name = "txtOrderId";
          this.txtOrderId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -624,27 +631,9 @@
          this.txtOrderId.TabIndex = 1;
          this.txtOrderId.Tag = "0";
          // 
-         // cboNCC
-         // 
-         this.cboNCC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-         this.cboNCC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-         this.cboNCC.DataSource = this.bdsDSNCC;
-         this.cboNCC.DisplayMember = "NhaCC";
-         this.cboNCC.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.cboNCC.FormattingEnabled = true;
-         this.cboNCC.Location = new System.Drawing.Point(108, 58);
-         this.cboNCC.Name = "cboNCC";
-         this.cboNCC.Size = new System.Drawing.Size(173, 23);
-         this.cboNCC.TabIndex = 5;
-         this.cboNCC.Tag = "2";
-         // 
-         // bdsDSNCC
-         // 
-         this.bdsDSNCC.DataMember = "DSNCC";
-         this.bdsDSNCC.DataSource = this.dataSet;
-         // 
          // dtpOrderDate
          // 
+         this.dtpOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDDH, "NGAY", true));
          this.dtpOrderDate.EditValue = null;
          this.dtpOrderDate.Location = new System.Drawing.Point(304, 32);
          this.dtpOrderDate.Name = "dtpOrderDate";
@@ -731,6 +720,18 @@
          // 
          this.dsvtTableAdapter1.ClearBeforeFill = true;
          // 
+         // cboNCC
+         // 
+         this.cboNCC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+         this.cboNCC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+         this.cboNCC.DataSource = this.bdsDSNCC;
+         this.cboNCC.DisplayMember = "NhaCC";
+         this.cboNCC.FormattingEnabled = true;
+         this.cboNCC.Location = new System.Drawing.Point(108, 59);
+         this.cboNCC.Name = "cboNCC";
+         this.cboNCC.Size = new System.Drawing.Size(173, 21);
+         this.cboNCC.TabIndex = 5;
+         // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -770,9 +771,9 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
          this.gbOrder.ResumeLayout(false);
          this.gbOrder.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNCC)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtEmployeeId.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtOrderId.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsDSNCC)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties.CalendarTimeProperties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpOrderDate.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeDepot.Properties)).EndInit();
@@ -845,9 +846,9 @@
       private DevExpress.XtraEditors.LabelControl labelControl5;
       private DevExpress.XtraEditors.LabelControl labelControl6;
       private DevExpress.XtraEditors.TextEdit txtOrderId;
-      private System.Windows.Forms.ComboBox cboNCC;
       private DevExpress.XtraEditors.DateEdit dtpOrderDate;
       private DevExpress.XtraEditors.LookUpEdit lkeDepot;
       private DevExpress.XtraEditors.LookUpEdit lkeEmployee;
+      private System.Windows.Forms.ComboBox cboNCC;
    }
 }
