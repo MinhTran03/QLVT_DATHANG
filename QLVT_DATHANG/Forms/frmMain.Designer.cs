@@ -32,21 +32,17 @@
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
          this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
          this.btnNhanVien = new DevExpress.XtraBars.BarButtonItem();
-         this.bsiMaNV = new DevExpress.XtraBars.BarStaticItem();
-         this.bsiHoTenNV = new DevExpress.XtraBars.BarStaticItem();
-         this.bsiNhom = new DevExpress.XtraBars.BarStaticItem();
          this.btnVatTu = new DevExpress.XtraBars.BarButtonItem();
          this.btnPN = new DevExpress.XtraBars.BarButtonItem();
          this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
          this.btnDepot = new DevExpress.XtraBars.BarButtonItem();
          this.btnOrder = new DevExpress.XtraBars.BarButtonItem();
          this.btnRegister = new DevExpress.XtraBars.BarButtonItem();
-         this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-         this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
          this.btnReportDSNV = new DevExpress.XtraBars.BarButtonItem();
          this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
          this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
          this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+         this.btnTongHopNhapXuat = new DevExpress.XtraBars.BarButtonItem();
          this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
          this.rbpCategory = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
          this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -56,7 +52,9 @@
          this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
          this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
          this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-         this.btnTongHopNhapXuat = new DevExpress.XtraBars.BarButtonItem();
+         this.bsiUserInfo = new DevExpress.XtraBars.BarSubItem();
+         this.bsiHoTenNV = new DevExpress.XtraBars.BarStaticItem();
+         this.bliUserInfo = new DevExpress.XtraBars.BarSubItem();
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -64,30 +62,29 @@
          // 
          // ribbonControl1
          // 
+         this.ribbonControl1.CaptionBarItemLinks.Add(this.bsiHoTenNV);
+         this.ribbonControl1.CaptionBarItemLinks.Add(this.bliUserInfo);
          this.ribbonControl1.ExpandCollapseItem.Id = 0;
          this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
             this.btnNhanVien,
-            this.bsiMaNV,
-            this.bsiHoTenNV,
-            this.bsiNhom,
             this.btnVatTu,
             this.btnPN,
             this.barButtonItem1,
             this.btnDepot,
             this.btnOrder,
             this.btnRegister,
-            this.barStaticItem1,
-            this.barStaticItem2,
             this.btnReportDSNV,
             this.barButtonItem3,
             this.barButtonItem2,
             this.barButtonItem4,
-            this.btnTongHopNhapXuat});
+            this.btnTongHopNhapXuat,
+            this.bsiHoTenNV,
+            this.bliUserInfo});
          this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
          this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-         this.ribbonControl1.MaxItemId = 21;
+         this.ribbonControl1.MaxItemId = 26;
          this.ribbonControl1.Name = "ribbonControl1";
          this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -108,35 +105,6 @@
          this.btnNhanVien.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          this.btnNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
          this.btnNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNhanVien_ItemClick);
-         // 
-         // bsiMaNV
-         // 
-         this.bsiMaNV.Caption = "MANV";
-         this.bsiMaNV.Id = 2;
-         this.bsiMaNV.ItemAppearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-         this.bsiMaNV.ItemAppearance.Hovered.FontStyleDelta = System.Drawing.FontStyle.Bold;
-         this.bsiMaNV.ItemAppearance.Hovered.Options.UseFont = true;
-         this.bsiMaNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-         this.bsiMaNV.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-         this.bsiMaNV.ItemAppearance.Normal.Options.UseFont = true;
-         this.bsiMaNV.Name = "bsiMaNV";
-         // 
-         // bsiHoTenNV
-         // 
-         this.bsiHoTenNV.Caption = "HOTENNV";
-         this.bsiHoTenNV.Id = 3;
-         this.bsiHoTenNV.ItemAppearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-         this.bsiHoTenNV.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-         this.bsiHoTenNV.ItemAppearance.Normal.Options.UseFont = true;
-         this.bsiHoTenNV.Name = "bsiHoTenNV";
-         // 
-         // bsiNhom
-         // 
-         this.bsiNhom.Caption = "NHOM";
-         this.bsiNhom.Id = 4;
-         this.bsiNhom.ItemAppearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-         this.bsiNhom.ItemAppearance.Normal.Options.UseFont = true;
-         this.bsiNhom.Name = "bsiNhom";
          // 
          // btnVatTu
          // 
@@ -189,18 +157,6 @@
          this.btnRegister.Name = "btnRegister";
          this.btnRegister.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegister_ItemClick);
          // 
-         // barStaticItem1
-         // 
-         this.barStaticItem1.Caption = "|";
-         this.barStaticItem1.Id = 12;
-         this.barStaticItem1.Name = "barStaticItem1";
-         // 
-         // barStaticItem2
-         // 
-         this.barStaticItem2.Caption = "|";
-         this.barStaticItem2.Id = 13;
-         this.barStaticItem2.Name = "barStaticItem2";
-         // 
          // btnReportDSNV
          // 
          this.btnReportDSNV.Caption = "Nhân Viên";
@@ -230,6 +186,14 @@
          this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
          this.barButtonItem4.Name = "barButtonItem4";
          this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+         // 
+         // btnTongHopNhapXuat
+         // 
+         this.btnTongHopNhapXuat.Caption = "Tổng Hợp Nhập Xuất";
+         this.btnTongHopNhapXuat.Id = 20;
+         this.btnTongHopNhapXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTongHopNhapXuat.ImageOptions.SvgImage")));
+         this.btnTongHopNhapXuat.Name = "btnTongHopNhapXuat";
+         this.btnTongHopNhapXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTongHopNhapXuat_ItemClick);
          // 
          // ribbonPage1
          // 
@@ -290,11 +254,6 @@
          // ribbonStatusBar1
          // 
          this.ribbonStatusBar1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.ribbonStatusBar1.ItemLinks.Add(this.bsiMaNV);
-         this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem1);
-         this.ribbonStatusBar1.ItemLinks.Add(this.bsiHoTenNV);
-         this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem2);
-         this.ribbonStatusBar1.ItemLinks.Add(this.bsiNhom);
          this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 422);
          this.ribbonStatusBar1.Name = "ribbonStatusBar1";
          this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
@@ -305,13 +264,29 @@
          // 
          this.xtraTabbedMdiManager1.MdiParent = this;
          // 
-         // btnTongHopNhapXuat
+         // bsiUserInfo
          // 
-         this.btnTongHopNhapXuat.Caption = "Tổng Hợp Nhập Xuất";
-         this.btnTongHopNhapXuat.Id = 20;
-         this.btnTongHopNhapXuat.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-         this.btnTongHopNhapXuat.Name = "btnTongHopNhapXuat";
-         this.btnTongHopNhapXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTongHopNhapXuat_ItemClick);
+         this.bsiUserInfo.Caption = "Thông tin chi tiết";
+         this.bsiUserInfo.Enabled = false;
+         this.bsiUserInfo.Id = 23;
+         this.bsiUserInfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bsiUserInfo.ImageOptions.SvgImage")));
+         this.bsiUserInfo.Name = "bsiUserInfo";
+         this.bsiUserInfo.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+         // 
+         // bsiHoTenNV
+         // 
+         this.bsiHoTenNV.Caption = "HOTENNV";
+         this.bsiHoTenNV.Id = 24;
+         this.bsiHoTenNV.Name = "bsiHoTenNV";
+         this.bsiHoTenNV.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+         // 
+         // bliUserInfo
+         // 
+         this.bliUserInfo.Caption = "Thông tin chi tiết";
+         this.bliUserInfo.Id = 25;
+         this.bliUserInfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
+         this.bliUserInfo.Name = "bliUserInfo";
+         this.bliUserInfo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          // 
          // frmMain
          // 
@@ -347,9 +322,6 @@
       private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbpCategory;
       private DevExpress.XtraBars.BarButtonItem btnNhanVien;
       private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
-      private DevExpress.XtraBars.BarStaticItem bsiMaNV;
-      private DevExpress.XtraBars.BarStaticItem bsiHoTenNV;
-      private DevExpress.XtraBars.BarStaticItem bsiNhom;
       private DevExpress.XtraBars.BarButtonItem btnVatTu;
       private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
       private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
@@ -358,8 +330,6 @@
       private DevExpress.XtraBars.BarButtonItem btnDepot;
       private DevExpress.XtraBars.BarButtonItem btnOrder;
       private DevExpress.XtraBars.BarButtonItem btnRegister;
-      private DevExpress.XtraBars.BarStaticItem barStaticItem1;
-      private DevExpress.XtraBars.BarStaticItem barStaticItem2;
       private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
       private DevExpress.XtraBars.BarButtonItem btnReportDSNV;
       private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
@@ -369,6 +339,9 @@
       private DevExpress.XtraBars.BarButtonItem barButtonItem2;
       private DevExpress.XtraBars.BarButtonItem barButtonItem4;
       private DevExpress.XtraBars.BarButtonItem btnTongHopNhapXuat;
+      private DevExpress.XtraBars.BarSubItem bsiUserInfo;
+      private DevExpress.XtraBars.BarStaticItem bsiHoTenNV;
+      private DevExpress.XtraBars.BarSubItem bliUserInfo;
    }
 }
 

@@ -6,7 +6,10 @@ namespace QLVT_DATHANG.Forms
    using DataSetTableAdapters;
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
+   using DevExpress.XtraGrid.Views.Base;
+   using DevExpress.XtraGrid.Views.Grid;
    using System.Data.SqlClient;
+   using System.Linq;
    using System.Windows.Forms;
    using Utility;
 
@@ -14,39 +17,16 @@ namespace QLVT_DATHANG.Forms
    {
       private string _currentDeploymentId;
       private int _currentPosition;
-      private ButtonActionType _buttonAction;
-      private MyStack _userDo;
-
-      private BindingSource _bdsPX;
-      private PhieuXuatTableAdapter _taPX;
-      private BindingSource _bdsCTPX;
-      private CTPXTableAdapter _taCTPX;
-      private DataSet _dataSet;
 
       public frmGoodsDeliveryNote()
       {
          InitializeComponent();
-
-         _bdsPX = bdsPX;
-         _taPX = taPX;
-         _bdsCTPX = bdsCTPX;
-         _taCTPX = taCTPX;
-         _dataSet = dataSet;
-
-         this.gcCTPX.DataSource = _bdsCTPX;
-         _bdsCTPX.ListChanged += _bdsCTPX_ListChanged;
 
          SetupControls();
       }
 
       private void frmGoodsDeliveryNote_Load(object sender, EventArgs e)
       {
-
-         _buttonAction = ButtonActionType.None;
-         _userDo = new MyStack();
-         _userDo.StackPushed += userDo_StackPushed;
-         _userDo.StackPopped += userDo_StackPopped;
-
          LoadTable();
          DisableEditMode();
 
@@ -56,10 +36,10 @@ namespace QLVT_DATHANG.Forms
          ShowControlsByGroup(UtilDB.CurrentGroup);
       }
 
-      private void _bdsCTPX_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+      private void bdsCTPX_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
       {
-         if (gvCTPX.DataRowCount == 0) btnRemoveDataRow.Enabled = false;
-         else btnRemoveDataRow.Enabled = true;
+         if (gvCTPX.DataRowCount == 0) btnRemoveLine.Enabled = false;
+         else btnRemoveLine.Enabled = true;
       }
 
       #region METHOD
@@ -69,11 +49,9 @@ namespace QLVT_DATHANG.Forms
          if (grName.Equals("congty"))
          {
             UtilDB.SetupDSCN(cboDeployment, LoadTable);
-            cboDeployment.Visible = true;
+            this.pnPickDepartment.Visible = true;
 
             btnAdd.Enabled = false;
-            btnEdit.Enabled = false;
-            btnDel.Enabled = false;
          }
       }
 
@@ -118,22 +96,6 @@ namespace QLVT_DATHANG.Forms
          ////dtpEmpBirth.Properties.NullValuePrompt = "Pick a day";
       }
 
-      private void userDo_StackPopped(object sender, StackEventAgrs e)
-      {
-         if (_userDo.Count == 0)
-         {
-            btnUndo.Enabled = false;
-         }
-      }
-
-      private void userDo_StackPushed(object sender, StackEventAgrs e)
-      {
-         if (_userDo.Count == 1)
-         {
-            btnUndo.Enabled = true;
-         }
-      }
-
       private void LoadTable()
       {
          // Đoạn này quan trọng. Đăng nhập bằng user nào => connectionString tương ứng
@@ -167,12 +129,7 @@ namespace QLVT_DATHANG.Forms
 
       private void EnableEditMode()
       {
-         //gbOrderDetail.Enabled = false;
-
          gcDeliveryNote.Enabled = false;
-         gbDeliveryNote.Enabled = true;
-
-         gbCTPX.Enabled = true;
 
          btnAdd.Enabled = false;
          btnExit.Enabled = false;
@@ -183,85 +140,58 @@ namespace QLVT_DATHANG.Forms
 
          btnSave.Enabled = true;
          btnSave.Visibility = BarItemVisibility.Always;
+
+         gvCTPX.OptionsBehavior.Editable = true;
+         gbDeliveryNote.Controls.OfType<Control>().Where(c => !(c is LabelControl)).ToList().ForEach(c => c.Enabled = true);
+
+         //pnBtnOrderDetail.Controls.OfType<SimpleButton>().ToList().ForEach(btn => btn.Enabled = true);
+         btnAddDataRow.Enabled = true;
       }
 
       private void DisableEditMode()
       {
-         btnDel.Enabled = (bdsPX.Count == 0) ? false : true;
-
          gcDeliveryNote.Enabled = true;
-         gbDeliveryNote.Enabled = false;
-
-         gbCTPX.Enabled = false;
 
          btnAdd.Enabled = true;
-         btnDel.Enabled = true;
-         btnEdit.Enabled = true;
          btnExit.Enabled = true;
          btnRefresh.Enabled = true;
-         btnUndo.Enabled = (_userDo.Count == 0) ? false : true;
 
          btnCancelEdit.Enabled = false;
          btnCancelEdit.Visibility = BarItemVisibility.Never;
 
          btnSave.Enabled = false;
          btnSave.Visibility = BarItemVisibility.Never;
-      }
 
-      #endregion
+         this.gvCTPX.OptionsBehavior.Editable = false;
+         gbDeliveryNote.Controls.OfType<Control>().Where(c => !(c is LabelControl)).ToList().ForEach(c => c.Enabled = false);
 
-      private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
-      {
-         _currentPosition = bdsPX.Position;
-         _buttonAction = ButtonActionType.Add;
-
-         bdsPX.AddNew();
-
-         txtDate.EditValue = DateTime.Now;
-         lkeEmployee.EditValue = UtilDB.UserName;
-
-         EnableEditMode();
-         txtPX.Focus();
-      }
-
-      private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
-      {
-         SaveDeliveryNote();
+         btnAddDataRow.Enabled = false;
+         btnRemoveLine.Enabled = false;
       }
 
       private bool SaveDeliveryNote()
       {
          try
          {
-            if (_buttonAction == ButtonActionType.Add)
+            if (IsSaveGoodsDeliveryNote() == false) return false;
+
+            SaveALlDataDetail();
+
+            ((DataRowView)bdsPX.Current).Row.ItemArray = GetDataOrder();
+            bdsPX.EndEdit();
+
+            UtilDB.UpdateWithTransaction(() =>
             {
-               if (IsExistGoodsDeliveryNote(txtPX.EditValue.ToString()))
-               {
-                  XtraMessageBox.Show(Cons.ErrorDuplicateOrderId, Cons.CaptionWarning,
-                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                  txtPX.Focus();
-                  return false;
-               }
-            }
-
-            SaveALlDataOrderDetailOnView();
-
-            ((DataRowView)_bdsPX[_bdsPX.Position]).Row.ItemArray = GetDataOrder();
-            _bdsPX.EndEdit();
-
-            this._taPX.Update(this._dataSet.PhieuXuat);
-            this._taCTPX.Update(this._dataSet.CTPX);
-
-            DisableEditMode();
+               this.taPX.Update(this.dataSet.PhieuXuat);
+               this.taCTPX.Update(this.dataSet.CTPX);
+            }, taPX, taCTPX);
          }
          catch (Exception ex)
          {
-            // #load lại từ database
-            //dataSet.EnforceConstraints = false;
-            //this.taPX.Fill(this.dataSet.PhieuXuat);
-            //dataSet.EnforceConstraints = true;
-
             UtilDB.ShowError(ex);
+            // xử lý tạm thời
+            DisableEditMode();
+            btnRefresh.PerformClick();
             return false;
          }
          return true;
@@ -271,27 +201,39 @@ namespace QLVT_DATHANG.Forms
       {
          object[] data = new object[5];
 
-         data[0] = txtPX.Text;
-         data[1] = txtDate.EditValue;
-         data[2] = txtName.Text;
+         data[0] = txtId.Text;
+         data[1] = dtpDate.EditValue;
+         data[2] = txtCustomerName.Text;
          data[3] = lkeEmployee.EditValue;
          data[4] = lkeMaKho.EditValue;
 
          return data;
       }
 
-      private void SaveALlDataOrderDetailOnView()
+      private void SaveALlDataDetail()
       {
          int orderDetailCount = gvCTPX.DataRowCount;
-         ((DataRowView)_bdsCTPX.Current).BeginEdit();
+         ((DataRowView)bdsCTPX.Current).BeginEdit();
          for (int i = 0; i < orderDetailCount; i++)
          {
-            ((DataRowView)_bdsCTPX.Current).Row["MAPX"] = txtPX.Text;
-            _bdsCTPX.MovePrevious();
+            ((DataRowView)bdsCTPX.Current).Row["MAPX"] = txtId.Text;
+            bdsCTPX.MovePrevious();
          }
-         _bdsCTPX.EndEdit();
+         bdsCTPX.EndEdit();
       }
 
+      private bool IsSaveGoodsDeliveryNote()
+      {
+         if (IsExistGoodsDeliveryNote(txtId.Text))
+         {
+            XtraMessageBox.Show(Cons.ErrorDuplicateDeliveryNoteId, Cons.CaptionError,
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            txtId.Focus();
+            txtId.SelectAll();
+            return false;
+         }
+         return true;
+      }
 
       private bool IsExistGoodsDeliveryNote(string id)
       {
@@ -322,6 +264,39 @@ namespace QLVT_DATHANG.Forms
          return exist;
       }
 
+      private bool IsMaterialExistInView(object materialId)
+      {
+         for (int index = 0; index < gvCTPX.RowCount; index++)
+         {
+            if (gvCTPX.GetRowCellValue(index, "MAVT").Equals(materialId))
+            {
+               return true;
+            }
+         }
+         return false;
+      }
+
+      #endregion
+
+      private void btnAdd_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         _currentPosition = bdsPX.Position;
+
+         bdsPX.AddNew();
+
+         dtpDate.EditValue = DateTime.Now;
+         lkeEmployee.EditValue = int.Parse(UtilDB.UserName);
+
+         EnableEditMode();
+         txtId.Focus();
+      }
+
+      private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         if (SaveDeliveryNote())
+            DisableEditMode();
+      }
+
       private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
       {
          LoadTable();
@@ -332,13 +307,11 @@ namespace QLVT_DATHANG.Forms
          dxErrorProvider.ClearErrors();
          try
          {
-            gbDeliveryNote.Enabled = false;
             bdsPX.CancelEdit();
             bdsPX.ResetCurrentItem();
             bdsPX.Position = _currentPosition;
 
             bdsCTPX.CancelEdit();
-            bdsPX.ResetCurrentItem();
 
             DisableEditMode();
          }
@@ -346,7 +319,6 @@ namespace QLVT_DATHANG.Forms
          {
             UtilDB.ShowError(ex);
          }
-         DisableEditMode();
       }
 
       private void btnExit_ItemClick(object sender, ItemClickEventArgs e)
@@ -361,7 +333,7 @@ namespace QLVT_DATHANG.Forms
 
       private void frmGoodsDeliveryNote_FormClosing(object sender, FormClosingEventArgs e)
       {
-         if (gbDeliveryNote.Enabled == true)
+         if (btnAdd.Enabled == false)
          {
             var result = XtraMessageBox.Show(Cons.AskExitWhileEditing, Cons.CaptionQuestion,
                                        MessageBoxButtons.YesNoCancel,
@@ -386,21 +358,9 @@ namespace QLVT_DATHANG.Forms
          }
       }
 
-      private bool IsMaterialExistInView(object materialId)
-      {
-         for (int index = 0; index < gvCTPX.RowCount; index++)
-         {
-            if (gvCTPX.GetRowCellValue(index, "MAVT").Equals(materialId))
-            {
-               return true;
-            }
-         }
-         return false;
-      }
-
       private void btnRemoveDataRow_Click(object sender, EventArgs e)
       {
-         _bdsCTPX.RemoveCurrent();
+         bdsCTPX.RemoveCurrent();
       }
 
       private void btnAddDateRow_Click(object sender, EventArgs e)
@@ -414,15 +374,117 @@ namespace QLVT_DATHANG.Forms
             {
                if (IsMaterialExistInView(id) == false)
                {
-                  _bdsCTPX.AddNew();
-                  int position = _bdsCTPX.Position;
-                  ((DataRowView)_bdsCTPX[position])["MAVT"] = id;
-                  ((DataRowView)_bdsCTPX[position])["SOLUONG"] = 0;
-                  ((DataRowView)_bdsCTPX[position])["DONGIA"] = 0;
+                  bdsCTPX.AddNew();
+                  int position = bdsCTPX.Position;
+                  ((DataRowView)bdsCTPX[position])["MAVT"] = id;
+                  ((DataRowView)bdsCTPX[position])["SOLUONG"] = 1;
+                  ((DataRowView)bdsCTPX[position])["DONGIA"] = 1;
                }
             }
-            _bdsCTPX.EndEdit();
+            bdsCTPX.EndEdit();
          };
       }
+
+      private void bdsCTPX_ListChanged_1(object sender, System.ComponentModel.ListChangedEventArgs e)
+      {
+         if (bdsCTPX.Count == 0 || btnAdd.Enabled == true) btnRemoveLine.Enabled = false;
+         else
+         {
+            btnRemoveLine.Enabled = true;
+         }
+      }
+
+      private void gvCTPX_ValidateRow(object sender, ValidateRowEventArgs e)
+      {
+         object[] data = ((DataRowView)bdsCTPX.Current).Row.ItemArray;
+         // chạy từ 1 để chừa mã ddh ko kiểm tra
+         for (int index = 1; index < data.Length; index++)
+         {
+            if (data[index] is DBNull)
+            {
+               e.Valid = false;
+               e.ErrorText = "Vui lòng nhập đầy đủ thông tin";
+               return;
+            }
+         }
+      }
+
+      private void gvCTPX_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+      {
+         var fieldName = gvCTPX.FocusedColumn.FieldName;
+         switch (fieldName)
+         {
+            case "MAVT":
+               var materialId = e.Value;
+               if (materialId == null)
+               {
+                  e.Valid = false;
+                  e.ErrorText = "Vui lòng chọn vật tư";
+               }
+               for (int index = 0; index < gvCTPX.RowCount; index++)
+               {
+                  if (IsMaterialExistInView(materialId) && gvCTPX.GetSelectedRows()[0] != index)
+                  {
+                     e.Valid = false;
+                     e.ErrorText = "Mã vật tư bị trùng";
+                     break;
+                  }
+               }
+               if (e.Valid == true)
+               {
+                  ((DataRowView)bdsCTPX.Current)["SOLUONG"] = 1;
+                  ((DataRowView)bdsCTPX.Current)["DONGIA"] = 1;
+               }
+               break;
+            case "SOLUONG":
+               int quantity = -1;
+               if (int.TryParse(e.Value.ToString(), out quantity) == false)
+               {
+                  e.Valid = false;
+                  e.ErrorText = "Giá trị không hợp lệ";
+               }
+               else
+               {
+                  if (quantity <= 0)
+                  {
+                     e.Valid = false;
+                     e.ErrorText = "Số lượng phải lớn hơn 0";
+                  }
+               }
+               break;
+            case "DONGIA":
+               float donGia = -1;
+               if (float.TryParse(e.Value.ToString(), out donGia) == false)
+               {
+                  e.Valid = false;
+                  e.ErrorText = "Giá trị không hợp lệ";
+               }
+               else
+               {
+                  if (donGia <= 0)
+                  {
+                     e.Valid = false;
+                     e.ErrorText = "Đơn giá phải lớn hơn 0";
+                  }
+               }
+               break;
+            default:
+               break;
+         }
+      }
+
+      private void gvCTPX_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+      {
+         ColumnView view = sender as ColumnView;
+         if ((e.Column.FieldName == "DONGIA" || e.Column.FieldName == "THANHTIEN") && e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+         {
+            if (!(e.Value is DBNull))
+            {
+               decimal price = Convert.ToDecimal(e.Value);
+               e.DisplayText = string.Format(Cons.CiVNI, "{0:c0}", price);
+            }
+         }
+      }
+
    }
 }

@@ -62,6 +62,8 @@
          this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
          this.pnSubform = new System.Windows.Forms.Panel();
          this.gbDetails = new DevExpress.XtraEditors.GroupControl();
+         this.btnRemoveLine = new DevExpress.XtraEditors.SimpleButton();
+         this.btnAddMaterials = new DevExpress.XtraEditors.SimpleButton();
          this.gcOrderDetail = new DevExpress.XtraGrid.GridControl();
          this.gvOrderDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,10 +71,9 @@
          this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
          this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.pnBtnOrderDetail = new System.Windows.Forms.Panel();
-         this.btnRemoveLine = new DevExpress.XtraEditors.SimpleButton();
-         this.btnAddMaterials = new DevExpress.XtraEditors.SimpleButton();
+         this.colTHANHTIEN = new DevExpress.XtraGrid.Columns.GridColumn();
          this.gbOrder = new DevExpress.XtraEditors.GroupControl();
+         this.cboNCC = new System.Windows.Forms.ComboBox();
          this.bdsDSNCC = new System.Windows.Forms.BindingSource(this.components);
          this.txtEmployeeId = new DevExpress.XtraEditors.TextEdit();
          this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -91,7 +92,6 @@
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.taDSNCC = new QLVT_DATHANG.DataSetTableAdapters.DSNCCTableAdapter();
          this.dsvtTableAdapter1 = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
-         this.cboNCC = new System.Windows.Forms.ComboBox();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
@@ -108,7 +108,6 @@
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvOrderDetail)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-         this.pnBtnOrderDetail.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).BeginInit();
          this.gbOrder.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNCC)).BeginInit();
@@ -410,14 +409,42 @@
          // 
          this.gbDetails.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbDetails.AppearanceCaption.Options.UseFont = true;
+         this.gbDetails.Controls.Add(this.btnRemoveLine);
+         this.gbDetails.Controls.Add(this.btnAddMaterials);
          this.gbDetails.Controls.Add(this.gcOrderDetail);
-         this.gbDetails.Controls.Add(this.pnBtnOrderDetail);
          this.gbDetails.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gbDetails.Location = new System.Drawing.Point(459, 0);
          this.gbDetails.Name = "gbDetails";
          this.gbDetails.Size = new System.Drawing.Size(528, 205);
          this.gbDetails.TabIndex = 1;
          this.gbDetails.Text = "Chi tiết đơn đặt hàng";
+         // 
+         // btnRemoveLine
+         // 
+         this.btnRemoveLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+         this.btnRemoveLine.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.btnRemoveLine.Appearance.Options.UseFont = true;
+         this.btnRemoveLine.Enabled = false;
+         this.btnRemoveLine.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_delete_sign_16;
+         this.btnRemoveLine.Location = new System.Drawing.Point(111, 180);
+         this.btnRemoveLine.Name = "btnRemoveLine";
+         this.btnRemoveLine.Size = new System.Drawing.Size(100, 20);
+         this.btnRemoveLine.TabIndex = 1;
+         this.btnRemoveLine.Text = "Xóa dòng";
+         this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveLine_Click);
+         // 
+         // btnAddMaterials
+         // 
+         this.btnAddMaterials.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+         this.btnAddMaterials.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.btnAddMaterials.Appearance.Options.UseFont = true;
+         this.btnAddMaterials.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_add_list_16;
+         this.btnAddMaterials.Location = new System.Drawing.Point(5, 180);
+         this.btnAddMaterials.Name = "btnAddMaterials";
+         this.btnAddMaterials.Size = new System.Drawing.Size(100, 20);
+         this.btnAddMaterials.TabIndex = 0;
+         this.btnAddMaterials.Text = "Thêm nhiều";
+         this.btnAddMaterials.Click += new System.EventHandler(this.btnAddMaterials_Click);
          // 
          // gcOrderDetail
          // 
@@ -428,7 +455,7 @@
          this.gcOrderDetail.Name = "gcOrderDetail";
          this.gcOrderDetail.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-         this.gcOrderDetail.Size = new System.Drawing.Size(524, 154);
+         this.gcOrderDetail.Size = new System.Drawing.Size(524, 181);
          this.gcOrderDetail.TabIndex = 0;
          this.gcOrderDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvOrderDetail});
@@ -442,10 +469,12 @@
             this.gridColumn1,
             this.colMAVT,
             this.colSOLUONG,
-            this.colDONGIA});
+            this.colDONGIA,
+            this.colTHANHTIEN});
          this.gvOrderDetail.GridControl = this.gcOrderDetail;
          this.gvOrderDetail.Name = "gvOrderDetail";
          this.gvOrderDetail.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+         this.gvOrderDetail.OptionsView.ShowFooter = true;
          this.gvOrderDetail.OptionsView.ShowGroupPanel = false;
          this.gvOrderDetail.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gvOrderDetail_ValidateRow);
          this.gvOrderDetail.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvOrderDetail_CustomColumnDisplayText);
@@ -494,41 +523,20 @@
          this.colDONGIA.Visible = true;
          this.colDONGIA.VisibleIndex = 2;
          // 
-         // pnBtnOrderDetail
+         // colTHANHTIEN
          // 
-         this.pnBtnOrderDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-         this.pnBtnOrderDetail.Controls.Add(this.btnRemoveLine);
-         this.pnBtnOrderDetail.Controls.Add(this.btnAddMaterials);
-         this.pnBtnOrderDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.pnBtnOrderDetail.Location = new System.Drawing.Point(2, 176);
-         this.pnBtnOrderDetail.Name = "pnBtnOrderDetail";
-         this.pnBtnOrderDetail.Size = new System.Drawing.Size(524, 27);
-         this.pnBtnOrderDetail.TabIndex = 1;
-         // 
-         // btnRemoveLine
-         // 
-         this.btnRemoveLine.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnRemoveLine.Appearance.Options.UseFont = true;
-         this.btnRemoveLine.Enabled = false;
-         this.btnRemoveLine.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_delete_sign_16;
-         this.btnRemoveLine.Location = new System.Drawing.Point(109, 3);
-         this.btnRemoveLine.Name = "btnRemoveLine";
-         this.btnRemoveLine.Size = new System.Drawing.Size(100, 20);
-         this.btnRemoveLine.TabIndex = 1;
-         this.btnRemoveLine.Text = "Xóa dòng";
-         this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveLine_Click);
-         // 
-         // btnAddMaterials
-         // 
-         this.btnAddMaterials.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.btnAddMaterials.Appearance.Options.UseFont = true;
-         this.btnAddMaterials.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_add_list_16;
-         this.btnAddMaterials.Location = new System.Drawing.Point(3, 3);
-         this.btnAddMaterials.Name = "btnAddMaterials";
-         this.btnAddMaterials.Size = new System.Drawing.Size(100, 20);
-         this.btnAddMaterials.TabIndex = 0;
-         this.btnAddMaterials.Text = "Thêm nhiều";
-         this.btnAddMaterials.Click += new System.EventHandler(this.btnAddMaterials_Click);
+         this.colTHANHTIEN.Caption = "THÀNH TIỀN";
+         this.colTHANHTIEN.FieldName = "THANHTIEN";
+         this.colTHANHTIEN.Name = "colTHANHTIEN";
+         this.colTHANHTIEN.OptionsColumn.AllowFocus = false;
+         this.colTHANHTIEN.OptionsColumn.ReadOnly = true;
+         this.colTHANHTIEN.ShowUnboundExpressionMenu = true;
+         this.colTHANHTIEN.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "THANHTIEN", "TỔNG TIỀN: {0:#,## đ}")});
+         this.colTHANHTIEN.UnboundExpression = "[SOLUONG] * [DONGIA]";
+         this.colTHANHTIEN.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+         this.colTHANHTIEN.Visible = true;
+         this.colTHANHTIEN.VisibleIndex = 3;
          // 
          // gbOrder
          // 
@@ -551,6 +559,18 @@
          this.gbOrder.Size = new System.Drawing.Size(459, 205);
          this.gbOrder.TabIndex = 0;
          this.gbOrder.Text = "Thông tin đơn đặt hàng";
+         // 
+         // cboNCC
+         // 
+         this.cboNCC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+         this.cboNCC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+         this.cboNCC.DataSource = this.bdsDSNCC;
+         this.cboNCC.DisplayMember = "NhaCC";
+         this.cboNCC.FormattingEnabled = true;
+         this.cboNCC.Location = new System.Drawing.Point(108, 59);
+         this.cboNCC.Name = "cboNCC";
+         this.cboNCC.Size = new System.Drawing.Size(173, 21);
+         this.cboNCC.TabIndex = 5;
          // 
          // bdsDSNCC
          // 
@@ -720,18 +740,6 @@
          // 
          this.dsvtTableAdapter1.ClearBeforeFill = true;
          // 
-         // cboNCC
-         // 
-         this.cboNCC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-         this.cboNCC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-         this.cboNCC.DataSource = this.bdsDSNCC;
-         this.cboNCC.DisplayMember = "NhaCC";
-         this.cboNCC.FormattingEnabled = true;
-         this.cboNCC.Location = new System.Drawing.Point(108, 59);
-         this.cboNCC.Name = "cboNCC";
-         this.cboNCC.Size = new System.Drawing.Size(173, 21);
-         this.cboNCC.TabIndex = 5;
-         // 
          // frmOrders
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -767,7 +775,6 @@
          ((System.ComponentModel.ISupportInitialize)(this.gcOrderDetail)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvOrderDetail)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-         this.pnBtnOrderDetail.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gbOrder)).EndInit();
          this.gbOrder.ResumeLayout(false);
          this.gbOrder.PerformLayout();
@@ -821,7 +828,6 @@
       private System.Windows.Forms.Panel pnSubform;
       private DevExpress.XtraEditors.GroupControl gbOrder;
       private DevExpress.XtraEditors.GroupControl gbDetails;
-      private System.Windows.Forms.Panel pnBtnOrderDetail;
       private DevExpress.XtraEditors.SimpleButton btnRemoveLine;
       private DevExpress.XtraEditors.SimpleButton btnAddMaterials;
       private DevExpress.XtraGrid.GridControl gcOrderDetail;
@@ -850,5 +856,6 @@
       private DevExpress.XtraEditors.LookUpEdit lkeDepot;
       private DevExpress.XtraEditors.LookUpEdit lkeEmployee;
       private System.Windows.Forms.ComboBox cboNCC;
+      private DevExpress.XtraGrid.Columns.GridColumn colTHANHTIEN;
    }
 }

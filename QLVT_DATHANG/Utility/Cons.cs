@@ -41,6 +41,7 @@ namespace QLVT_DATHANG.Utility
       public const string ErrorDuplicateMaterialId = "Mã vật tư đã tồn tại";
       public const string ErrorDuplicateDeportId = "Mã kho đã tồn tại";
       public const string ErrorDuplicateOrderId = "Mã đơn đặt hàng đã tồn tại";
+      public const string ErrorDuplicateDeliveryNoteId = "Mã phiếu xuất đã tồn tại";
       public const string ErrorDuplicatePNId = "Mã phiếu nhập đã tồn tại";
       public const string ErrorDuplicatePXId = "Mã phiếu xuất đã tồn tại";
 

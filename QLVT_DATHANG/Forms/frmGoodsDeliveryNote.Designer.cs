@@ -29,12 +29,12 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoodsDeliveryNote));
          System.Windows.Forms.Label mANVLabel;
          System.Windows.Forms.Label hOTENKHLabel;
          System.Windows.Forms.Label nGAYLabel;
          System.Windows.Forms.Label mAPXLabel;
          System.Windows.Forms.Label mAKHOLabel;
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoodsDeliveryNote));
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
          this.bmPN = new DevExpress.XtraBars.BarManager(this.components);
@@ -48,8 +48,6 @@
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-         this.btnDel = new DevExpress.XtraBars.BarButtonItem();
-         this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
          this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
          this.bdsDSKHO = new System.Windows.Forms.BindingSource(this.components);
          this.bdsPX = new System.Windows.Forms.BindingSource(this.components);
@@ -80,23 +78,24 @@
          this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
          this.taDSKHO = new QLVT_DATHANG.DataSetTableAdapters.DSKHOTableAdapter();
          this.gbCTPX = new DevExpress.XtraEditors.GroupControl();
+         this.btnRemoveLine = new DevExpress.XtraEditors.SimpleButton();
+         this.btnAddDataRow = new DevExpress.XtraEditors.SimpleButton();
          this.gcCTPX = new DevExpress.XtraGrid.GridControl();
-         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.gvCTPX = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.colMAPX1 = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.repositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
          this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
-         this.panel1 = new System.Windows.Forms.Panel();
-         this.btnAddDateRow = new DevExpress.XtraEditors.SimpleButton();
-         this.btnRemoveDataRow = new DevExpress.XtraEditors.SimpleButton();
+         this.colTHANHTIEN = new DevExpress.XtraGrid.Columns.GridColumn();
+         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.gbDeliveryNote = new DevExpress.XtraEditors.GroupControl();
-         this.txtName = new DevExpress.XtraEditors.TextEdit();
-         this.txtDate = new DevExpress.XtraEditors.DateEdit();
-         this.txtPX = new DevExpress.XtraEditors.TextEdit();
-         this.pnSub = new DevExpress.XtraEditors.PanelControl();
+         this.txtId = new DevExpress.XtraEditors.TextEdit();
+         this.dtpDate = new DevExpress.XtraEditors.DateEdit();
+         this.txtCustomerName = new DevExpress.XtraEditors.TextEdit();
          this.lkeEmployee = new DevExpress.XtraEditors.LookUpEdit();
          this.lkeMaKho = new DevExpress.XtraEditors.LookUpEdit();
+         this.pnSub = new DevExpress.XtraEditors.PanelControl();
          mANVLabel = new System.Windows.Forms.Label();
          hOTENKHLabel = new System.Windows.Forms.Label();
          nGAYLabel = new System.Windows.Forms.Label();
@@ -117,20 +116,65 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbCTPX)).BeginInit();
          this.gbCTPX.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gcCTPX)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvCTPX)).BeginInit();
-         this.panel1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDeliveryNote)).BeginInit();
          this.gbDeliveryNote.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtPX.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.pnSub)).BeginInit();
-         this.pnSub.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpDate.Properties.CalendarTimeProperties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpDate.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtCustomerName.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeMaKho.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pnSub)).BeginInit();
+         this.pnSub.SuspendLayout();
          this.SuspendLayout();
+         // 
+         // mANVLabel
+         // 
+         mANVLabel.AutoSize = true;
+         mANVLabel.Location = new System.Drawing.Point(5, 79);
+         mANVLabel.Name = "mANVLabel";
+         mANVLabel.Size = new System.Drawing.Size(77, 13);
+         mANVLabel.TabIndex = 6;
+         mANVLabel.Text = "Mã nhân viên";
+         // 
+         // hOTENKHLabel
+         // 
+         hOTENKHLabel.AutoSize = true;
+         hOTENKHLabel.Location = new System.Drawing.Point(5, 55);
+         hOTENKHLabel.Name = "hOTENKHLabel";
+         hOTENKHLabel.Size = new System.Drawing.Size(109, 13);
+         hOTENKHLabel.TabIndex = 4;
+         hOTENKHLabel.Text = "Họ tên khách hàng:";
+         // 
+         // nGAYLabel
+         // 
+         nGAYLabel.AutoSize = true;
+         nGAYLabel.Location = new System.Drawing.Point(193, 31);
+         nGAYLabel.Name = "nGAYLabel";
+         nGAYLabel.Size = new System.Drawing.Size(61, 13);
+         nGAYLabel.TabIndex = 2;
+         nGAYLabel.Text = "Ngày xuất:";
+         // 
+         // mAPXLabel
+         // 
+         mAPXLabel.AutoSize = true;
+         mAPXLabel.Location = new System.Drawing.Point(5, 31);
+         mAPXLabel.Name = "mAPXLabel";
+         mAPXLabel.Size = new System.Drawing.Size(84, 13);
+         mAPXLabel.TabIndex = 0;
+         mAPXLabel.Text = "Mã phiếu xuất:";
+         // 
+         // mAKHOLabel
+         // 
+         mAKHOLabel.AutoSize = true;
+         mAKHOLabel.Location = new System.Drawing.Point(191, 79);
+         mAKHOLabel.Name = "mAKHOLabel";
+         mAKHOLabel.Size = new System.Drawing.Size(49, 13);
+         mAKHOLabel.TabIndex = 8;
+         mAKHOLabel.Text = "Mã kho:";
          // 
          // dataSet
          // 
@@ -140,9 +184,9 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 257);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 233);
          this.splitterControl1.Name = "splitterControl1";
-         this.splitterControl1.Size = new System.Drawing.Size(891, 5);
+         this.splitterControl1.Size = new System.Drawing.Size(969, 5);
          this.splitterControl1.TabIndex = 6;
          this.splitterControl1.TabStop = false;
          // 
@@ -157,8 +201,6 @@
          this.bmPN.Form = this;
          this.bmPN.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnAdd,
-            this.btnDel,
-            this.btnEdit,
             this.btnSave,
             this.btnUndo,
             this.btnRefresh,
@@ -234,15 +276,15 @@
          this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.bmPN;
-         this.barDockControlTop.Size = new System.Drawing.Size(891, 24);
+         this.barDockControlTop.Size = new System.Drawing.Size(969, 24);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 439);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 438);
          this.barDockControlBottom.Manager = this.bmPN;
-         this.barDockControlBottom.Size = new System.Drawing.Size(891, 0);
+         this.barDockControlBottom.Size = new System.Drawing.Size(969, 0);
          // 
          // barDockControlLeft
          // 
@@ -250,31 +292,15 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 415);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 414);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(891, 24);
+         this.barDockControlRight.Location = new System.Drawing.Point(969, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 415);
-         // 
-         // btnDel
-         // 
-         this.btnDel.Caption = "XÓA";
-         this.btnDel.Id = 1;
-         this.btnDel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDel.ImageOptions.SvgImage")));
-         this.btnDel.Name = "btnDel";
-         this.btnDel.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-         // 
-         // btnEdit
-         // 
-         this.btnEdit.Caption = "SỬA";
-         this.btnEdit.Id = 2;
-         this.btnEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEdit.ImageOptions.SvgImage")));
-         this.btnEdit.Name = "btnEdit";
-         this.btnEdit.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 414);
          // 
          // btnUndo
          // 
@@ -303,6 +329,7 @@
          // 
          this.bdsCTPX.DataMember = "FK_CTPX_PX";
          this.bdsCTPX.DataSource = this.bdsPX;
+         this.bdsCTPX.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsCTPX_ListChanged_1);
          // 
          // taPX
          // 
@@ -325,6 +352,7 @@
          // 
          // colMAPX
          // 
+         this.colMAPX.Caption = "MÃ PHIẾU XUẤT";
          this.colMAPX.FieldName = "MAPX";
          this.colMAPX.Name = "colMAPX";
          this.colMAPX.Visible = true;
@@ -332,13 +360,20 @@
          // 
          // colNGAY
          // 
+         this.colNGAY.Caption = "NGÀY";
+         this.colNGAY.DisplayFormat.FormatString = "dd/MM/yyyy";
+         this.colNGAY.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.colNGAY.FieldName = "NGAY";
+         this.colNGAY.GroupFormat.FormatString = "dd/MM/yyyy";
+         this.colNGAY.GroupFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.colNGAY.Name = "colNGAY";
+         this.colNGAY.OptionsEditForm.Caption = "NGÀY XUẤT:";
          this.colNGAY.Visible = true;
          this.colNGAY.VisibleIndex = 1;
          // 
          // colHOTENKH
          // 
+         this.colHOTENKH.Caption = "HỌ TÊN KHÁCH HÀNG";
          this.colHOTENKH.FieldName = "HOTENKH";
          this.colHOTENKH.Name = "colHOTENKH";
          this.colHOTENKH.Visible = true;
@@ -346,6 +381,7 @@
          // 
          // colMANV
          // 
+         this.colMANV.Caption = "MÃ NHÂN VIÊN";
          this.colMANV.FieldName = "MANV";
          this.colMANV.Name = "colMANV";
          this.colMANV.Visible = true;
@@ -353,6 +389,7 @@
          // 
          // colMAKHO
          // 
+         this.colMAKHO.Caption = "MÃ KHO";
          this.colMAKHO.FieldName = "MAKHO";
          this.colMAKHO.Name = "colMAKHO";
          this.colMAKHO.Visible = true;
@@ -366,7 +403,7 @@
          this.gcDeliveryNote.MainView = this.gvDeliveryNote;
          this.gcDeliveryNote.MenuManager = this.bmPN;
          this.gcDeliveryNote.Name = "gcDeliveryNote";
-         this.gcDeliveryNote.Size = new System.Drawing.Size(891, 203);
+         this.gcDeliveryNote.Size = new System.Drawing.Size(969, 179);
          this.gcDeliveryNote.TabIndex = 0;
          this.gcDeliveryNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDeliveryNote});
@@ -409,7 +446,7 @@
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(0, 24);
          this.pnPickDepartment.Name = "pnPickDepartment";
-         this.pnPickDepartment.Size = new System.Drawing.Size(891, 30);
+         this.pnPickDepartment.Size = new System.Drawing.Size(969, 30);
          this.pnPickDepartment.TabIndex = 24;
          this.pnPickDepartment.Visible = false;
          // 
@@ -469,9 +506,9 @@
          // 
          this.barDockControl4.CausesValidation = false;
          this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControl4.Location = new System.Drawing.Point(891, 24);
+         this.barDockControl4.Location = new System.Drawing.Point(969, 24);
          this.barDockControl4.Manager = null;
-         this.barDockControl4.Size = new System.Drawing.Size(0, 415);
+         this.barDockControl4.Size = new System.Drawing.Size(0, 414);
          // 
          // bdsDSVT
          // 
@@ -488,35 +525,58 @@
          // 
          // gbCTPX
          // 
-         this.gbCTPX.Controls.Add(this.panel1);
+         this.gbCTPX.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbCTPX.AppearanceCaption.Options.UseFont = true;
+         this.gbCTPX.Controls.Add(this.btnRemoveLine);
+         this.gbCTPX.Controls.Add(this.btnAddDataRow);
          this.gbCTPX.Controls.Add(this.gcCTPX);
          this.gbCTPX.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbCTPX.Location = new System.Drawing.Point(320, 2);
+         this.gbCTPX.Location = new System.Drawing.Point(371, 2);
          this.gbCTPX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.gbCTPX.Name = "gbCTPX";
-         this.gbCTPX.Size = new System.Drawing.Size(569, 173);
+         this.gbCTPX.Size = new System.Drawing.Size(596, 196);
          this.gbCTPX.TabIndex = 0;
          this.gbCTPX.Text = "Chi tiết Phiếu Xuất";
+         // 
+         // btnRemoveLine
+         // 
+         this.btnRemoveLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+         this.btnRemoveLine.Location = new System.Drawing.Point(93, 170);
+         this.btnRemoveLine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+         this.btnRemoveLine.Name = "btnRemoveLine";
+         this.btnRemoveLine.Size = new System.Drawing.Size(81, 22);
+         this.btnRemoveLine.TabIndex = 1;
+         this.btnRemoveLine.Text = "Xóa Dòng";
+         this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveDataRow_Click);
+         // 
+         // btnAddDataRow
+         // 
+         this.btnAddDataRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+         this.btnAddDataRow.Location = new System.Drawing.Point(6, 170);
+         this.btnAddDataRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+         this.btnAddDataRow.Name = "btnAddDataRow";
+         this.btnAddDataRow.Size = new System.Drawing.Size(81, 22);
+         this.btnAddDataRow.TabIndex = 0;
+         this.btnAddDataRow.Text = "Thêm Dòng";
+         this.btnAddDataRow.Click += new System.EventHandler(this.btnAddDateRow_Click);
          // 
          // gcCTPX
          // 
          this.gcCTPX.DataSource = this.bdsCTPX;
-         this.gcCTPX.Dock = System.Windows.Forms.DockStyle.Top;
+         this.gcCTPX.Dock = System.Windows.Forms.DockStyle.Fill;
          this.gcCTPX.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.gcCTPX.Location = new System.Drawing.Point(2, 20);
+         this.gcCTPX.Location = new System.Drawing.Point(2, 22);
          this.gcCTPX.MainView = this.gvCTPX;
          this.gcCTPX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.gcCTPX.MenuManager = this.bmPN;
          this.gcCTPX.Name = "gcCTPX";
-         this.gcCTPX.Size = new System.Drawing.Size(565, 168);
+         this.gcCTPX.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit});
+         this.gcCTPX.Size = new System.Drawing.Size(592, 172);
          this.gcCTPX.TabIndex = 0;
          this.gcCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvCTPX});
-         // 
-         // gridView1
-         // 
-         this.gridView1.GridControl = this.gcCTPX;
-         this.gridView1.Name = "gridView1";
+            this.gvCTPX,
+            this.gridView1});
          // 
          // gvCTPX
          // 
@@ -524,12 +584,17 @@
             this.colMAPX1,
             this.colMAVT,
             this.colSOLUONG,
-            this.colDONGIA});
+            this.colDONGIA,
+            this.colTHANHTIEN});
          this.gvCTPX.DetailHeight = 268;
          this.gvCTPX.GridControl = this.gcCTPX;
          this.gvCTPX.Name = "gvCTPX";
          this.gvCTPX.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+         this.gvCTPX.OptionsView.ShowFooter = true;
          this.gvCTPX.OptionsView.ShowGroupPanel = false;
+         this.gvCTPX.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gvCTPX_ValidateRow);
+         this.gvCTPX.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvCTPX_CustomColumnDisplayText);
+         this.gvCTPX.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gvCTPX_ValidatingEditor);
          // 
          // colMAPX1
          // 
@@ -540,6 +605,8 @@
          // 
          // colMAVT
          // 
+         this.colMAVT.Caption = "VẬT TƯ";
+         this.colMAVT.ColumnEdit = this.repositoryItemLookUpEdit;
          this.colMAVT.FieldName = "MAVT";
          this.colMAVT.MinWidth = 21;
          this.colMAVT.Name = "colMAVT";
@@ -547,8 +614,20 @@
          this.colMAVT.VisibleIndex = 0;
          this.colMAVT.Width = 81;
          // 
+         // repositoryItemLookUpEdit
+         // 
+         this.repositoryItemLookUpEdit.AutoHeight = false;
+         this.repositoryItemLookUpEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.repositoryItemLookUpEdit.DataSource = this.bdsDSVT;
+         this.repositoryItemLookUpEdit.DisplayMember = "TENVT";
+         this.repositoryItemLookUpEdit.Name = "repositoryItemLookUpEdit";
+         this.repositoryItemLookUpEdit.NullText = "Chọn 1 vật tư";
+         this.repositoryItemLookUpEdit.ValueMember = "MAVT";
+         // 
          // colSOLUONG
          // 
+         this.colSOLUONG.Caption = "SỐ LƯỢNG";
          this.colSOLUONG.FieldName = "SOLUONG";
          this.colSOLUONG.MinWidth = 21;
          this.colSOLUONG.Name = "colSOLUONG";
@@ -558,6 +637,7 @@
          // 
          // colDONGIA
          // 
+         this.colDONGIA.Caption = "ĐƠN GIÁ";
          this.colDONGIA.FieldName = "DONGIA";
          this.colDONGIA.MinWidth = 21;
          this.colDONGIA.Name = "colDONGIA";
@@ -565,153 +645,93 @@
          this.colDONGIA.VisibleIndex = 2;
          this.colDONGIA.Width = 81;
          // 
-         // panel1
+         // colTHANHTIEN
          // 
-         this.panel1.Controls.Add(this.btnRemoveDataRow);
-         this.panel1.Controls.Add(this.btnAddDateRow);
-         this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.panel1.Location = new System.Drawing.Point(2, 138);
-         this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.panel1.Name = "panel1";
-         this.panel1.Size = new System.Drawing.Size(565, 33);
-         this.panel1.TabIndex = 1;
+         this.colTHANHTIEN.Caption = "THÀNH TIỀN";
+         this.colTHANHTIEN.FieldName = "THANHTIEN";
+         this.colTHANHTIEN.Name = "colTHANHTIEN";
+         this.colTHANHTIEN.OptionsColumn.AllowFocus = false;
+         this.colTHANHTIEN.OptionsColumn.ReadOnly = true;
+         this.colTHANHTIEN.ShowUnboundExpressionMenu = true;
+         this.colTHANHTIEN.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "THANHTIEN", "TỔNG TIỀN: {0:#,## đ}")});
+         this.colTHANHTIEN.UnboundExpression = "[SOLUONG] * [DONGIA]";
+         this.colTHANHTIEN.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+         this.colTHANHTIEN.Visible = true;
+         this.colTHANHTIEN.VisibleIndex = 3;
          // 
-         // btnAddDateRow
+         // gridView1
          // 
-         this.btnAddDateRow.Location = new System.Drawing.Point(3, 5);
-         this.btnAddDateRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.btnAddDateRow.Name = "btnAddDateRow";
-         this.btnAddDateRow.Size = new System.Drawing.Size(81, 22);
-         this.btnAddDateRow.TabIndex = 0;
-         this.btnAddDateRow.Text = "Thêm Dòng";
-         this.btnAddDateRow.Click += new System.EventHandler(this.btnAddDateRow_Click);
-         // 
-         // btnRemoveDataRow
-         // 
-         this.btnRemoveDataRow.Location = new System.Drawing.Point(88, 5);
-         this.btnRemoveDataRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.btnRemoveDataRow.Name = "btnRemoveDataRow";
-         this.btnRemoveDataRow.Size = new System.Drawing.Size(81, 22);
-         this.btnRemoveDataRow.TabIndex = 1;
-         this.btnRemoveDataRow.Text = "Xóa Dòng";
-         this.btnRemoveDataRow.Click += new System.EventHandler(this.btnRemoveDataRow_Click);
+         this.gridView1.GridControl = this.gcCTPX;
+         this.gridView1.Name = "gridView1";
          // 
          // gbDeliveryNote
          // 
+         this.gbDeliveryNote.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.gbDeliveryNote.AppearanceCaption.Options.UseFont = true;
          this.gbDeliveryNote.Controls.Add(mAKHOLabel);
          this.gbDeliveryNote.Controls.Add(mAPXLabel);
-         this.gbDeliveryNote.Controls.Add(this.txtPX);
+         this.gbDeliveryNote.Controls.Add(this.txtId);
          this.gbDeliveryNote.Controls.Add(nGAYLabel);
-         this.gbDeliveryNote.Controls.Add(this.txtDate);
+         this.gbDeliveryNote.Controls.Add(this.dtpDate);
          this.gbDeliveryNote.Controls.Add(hOTENKHLabel);
-         this.gbDeliveryNote.Controls.Add(this.txtName);
+         this.gbDeliveryNote.Controls.Add(this.txtCustomerName);
          this.gbDeliveryNote.Controls.Add(mANVLabel);
          this.gbDeliveryNote.Controls.Add(this.lkeEmployee);
          this.gbDeliveryNote.Controls.Add(this.lkeMaKho);
          this.gbDeliveryNote.Dock = System.Windows.Forms.DockStyle.Left;
          this.gbDeliveryNote.Location = new System.Drawing.Point(2, 2);
          this.gbDeliveryNote.Name = "gbDeliveryNote";
-         this.gbDeliveryNote.Size = new System.Drawing.Size(318, 173);
+         this.gbDeliveryNote.Size = new System.Drawing.Size(369, 196);
          this.gbDeliveryNote.TabIndex = 0;
          this.gbDeliveryNote.Text = "Thông tin Phiếu Xuất";
          // 
-         // mANVLabel
+         // txtId
          // 
-         mANVLabel.AutoSize = true;
-         mANVLabel.Location = new System.Drawing.Point(10, 97);
-         mANVLabel.Name = "mANVLabel";
-         mANVLabel.Size = new System.Drawing.Size(77, 13);
-         mANVLabel.TabIndex = 6;
-         mANVLabel.Text = "Mã nhân viên";
+         this.txtId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "MAPX", true));
+         this.txtId.Location = new System.Drawing.Point(95, 26);
+         this.txtId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+         this.txtId.MenuManager = this.bmPN;
+         this.txtId.Name = "txtId";
+         this.txtId.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+         this.txtId.Properties.MaxLength = 8;
+         this.txtId.Size = new System.Drawing.Size(92, 20);
+         this.txtId.TabIndex = 1;
          // 
-         // txtName
+         // dtpDate
          // 
-         this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "HOTENKH", true));
-         this.txtName.Location = new System.Drawing.Point(122, 72);
-         this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.txtName.MenuManager = this.bmPN;
-         this.txtName.Name = "txtName";
-         this.txtName.Size = new System.Drawing.Size(146, 20);
-         this.txtName.TabIndex = 5;
-         // 
-         // hOTENKHLabel
-         // 
-         hOTENKHLabel.AutoSize = true;
-         hOTENKHLabel.Location = new System.Drawing.Point(10, 74);
-         hOTENKHLabel.Name = "hOTENKHLabel";
-         hOTENKHLabel.Size = new System.Drawing.Size(109, 13);
-         hOTENKHLabel.TabIndex = 4;
-         hOTENKHLabel.Text = "Họ tên khách hàng:";
-         // 
-         // txtDate
-         // 
-         this.txtDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "NGAY", true));
-         this.txtDate.EditValue = null;
-         this.txtDate.Enabled = false;
-         this.txtDate.Location = new System.Drawing.Point(122, 49);
-         this.txtDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.txtDate.MenuManager = this.bmPN;
-         this.txtDate.Name = "txtDate";
-         this.txtDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+         this.dtpDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "NGAY", true));
+         this.dtpDate.EditValue = null;
+         this.dtpDate.Location = new System.Drawing.Point(260, 26);
+         this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+         this.dtpDate.MenuManager = this.bmPN;
+         this.dtpDate.Name = "dtpDate";
+         this.dtpDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.txtDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+         this.dtpDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.txtDate.Size = new System.Drawing.Size(146, 20);
-         this.txtDate.TabIndex = 3;
+         this.dtpDate.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+         this.dtpDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+         this.dtpDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+         this.dtpDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+         this.dtpDate.Properties.Mask.EditMask = "dd/MM/yyyy";
+         this.dtpDate.Size = new System.Drawing.Size(103, 20);
+         this.dtpDate.TabIndex = 3;
          // 
-         // nGAYLabel
+         // txtCustomerName
          // 
-         nGAYLabel.AutoSize = true;
-         nGAYLabel.Location = new System.Drawing.Point(10, 52);
-         nGAYLabel.Name = "nGAYLabel";
-         nGAYLabel.Size = new System.Drawing.Size(61, 13);
-         nGAYLabel.TabIndex = 2;
-         nGAYLabel.Text = "Ngày xuất:";
-         // 
-         // txtPX
-         // 
-         this.txtPX.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "MAPX", true));
-         this.txtPX.Location = new System.Drawing.Point(122, 26);
-         this.txtPX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.txtPX.MenuManager = this.bmPN;
-         this.txtPX.Name = "txtPX";
-         this.txtPX.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-         this.txtPX.Properties.MaxLength = 8;
-         this.txtPX.Size = new System.Drawing.Size(146, 20);
-         this.txtPX.TabIndex = 1;
-         // 
-         // mAPXLabel
-         // 
-         mAPXLabel.AutoSize = true;
-         mAPXLabel.Location = new System.Drawing.Point(10, 29);
-         mAPXLabel.Name = "mAPXLabel";
-         mAPXLabel.Size = new System.Drawing.Size(84, 13);
-         mAPXLabel.TabIndex = 0;
-         mAPXLabel.Text = "Mã phiếu xuất:";
-         // 
-         // mAKHOLabel
-         // 
-         mAKHOLabel.AutoSize = true;
-         mAKHOLabel.Location = new System.Drawing.Point(10, 120);
-         mAKHOLabel.Name = "mAKHOLabel";
-         mAKHOLabel.Size = new System.Drawing.Size(49, 13);
-         mAKHOLabel.TabIndex = 8;
-         mAKHOLabel.Text = "Mã kho:";
-         // 
-         // pnSub
-         // 
-         this.pnSub.Controls.Add(this.gbCTPX);
-         this.pnSub.Controls.Add(this.gbDeliveryNote);
-         this.pnSub.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.pnSub.Location = new System.Drawing.Point(0, 262);
-         this.pnSub.Name = "pnSub";
-         this.pnSub.Size = new System.Drawing.Size(891, 177);
-         this.pnSub.TabIndex = 30;
+         this.txtCustomerName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "HOTENKH", true));
+         this.txtCustomerName.Location = new System.Drawing.Point(120, 50);
+         this.txtCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+         this.txtCustomerName.MenuManager = this.bmPN;
+         this.txtCustomerName.Name = "txtCustomerName";
+         this.txtCustomerName.Size = new System.Drawing.Size(243, 20);
+         this.txtCustomerName.TabIndex = 5;
          // 
          // lkeEmployee
          // 
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "MANV", true));
-         this.lkeEmployee.Location = new System.Drawing.Point(122, 95);
+         this.lkeEmployee.Location = new System.Drawing.Point(88, 74);
          this.lkeEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.lkeEmployee.MenuManager = this.bmPN;
          this.lkeEmployee.Name = "lkeEmployee";
@@ -721,13 +741,13 @@
          this.lkeEmployee.Properties.DisplayMember = "HOTEN";
          this.lkeEmployee.Properties.NullText = "";
          this.lkeEmployee.Properties.ValueMember = "MANV";
-         this.lkeEmployee.Size = new System.Drawing.Size(146, 20);
+         this.lkeEmployee.Size = new System.Drawing.Size(97, 20);
          this.lkeEmployee.TabIndex = 7;
          // 
          // lkeMaKho
          // 
          this.lkeMaKho.EditValue = "";
-         this.lkeMaKho.Location = new System.Drawing.Point(122, 118);
+         this.lkeMaKho.Location = new System.Drawing.Point(246, 74);
          this.lkeMaKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.lkeMaKho.MenuManager = this.bmPN;
          this.lkeMaKho.Name = "lkeMaKho";
@@ -737,15 +757,25 @@
          this.lkeMaKho.Properties.DisplayMember = "TENKHO";
          this.lkeMaKho.Properties.NullText = "";
          this.lkeMaKho.Properties.ValueMember = "MAKHO";
-         this.lkeMaKho.Size = new System.Drawing.Size(146, 20);
+         this.lkeMaKho.Size = new System.Drawing.Size(117, 20);
          this.lkeMaKho.TabIndex = 9;
+         // 
+         // pnSub
+         // 
+         this.pnSub.Controls.Add(this.gbCTPX);
+         this.pnSub.Controls.Add(this.gbDeliveryNote);
+         this.pnSub.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.pnSub.Location = new System.Drawing.Point(0, 238);
+         this.pnSub.Name = "pnSub";
+         this.pnSub.Size = new System.Drawing.Size(969, 200);
+         this.pnSub.TabIndex = 30;
          // 
          // frmGoodsDeliveryNote
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(891, 439);
+         this.ClientSize = new System.Drawing.Size(969, 438);
          this.Controls.Add(this.gcDeliveryNote);
          this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.pnPickDepartment);
@@ -775,20 +805,20 @@
          ((System.ComponentModel.ISupportInitialize)(this.gbCTPX)).EndInit();
          this.gbCTPX.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gcCTPX)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvCTPX)).EndInit();
-         this.panel1.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDeliveryNote)).EndInit();
          this.gbDeliveryNote.ResumeLayout(false);
          this.gbDeliveryNote.PerformLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtPX.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.pnSub)).EndInit();
-         this.pnSub.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpDate.Properties.CalendarTimeProperties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpDate.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtCustomerName.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeMaKho.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.pnSub)).EndInit();
+         this.pnSub.ResumeLayout(false);
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -800,8 +830,6 @@
       private DevExpress.XtraBars.BarManager bmPN;
       private DevExpress.XtraBars.Bar bar2;
       private DevExpress.XtraBars.BarButtonItem btnAdd;
-      private DevExpress.XtraBars.BarButtonItem btnDel;
-      private DevExpress.XtraBars.BarButtonItem btnEdit;
       private DevExpress.XtraBars.BarButtonItem btnSave;
       private DevExpress.XtraBars.BarDockControl barDockControlTop;
       private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -819,34 +847,33 @@
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDeployment;
       private DevExpress.XtraBars.Bar bar3;
-        private System.Windows.Forms.BindingSource bdsDSNV;
-        private DataSetTableAdapters.DSNVTableAdepter taDSNV;
-        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
-        private System.Windows.Forms.BindingSource bdsCTPX;
-        private DataSetTableAdapters.CTPXTableAdapter taCTPX;
+      private System.Windows.Forms.BindingSource bdsDSNV;
+      private DataSetTableAdapters.DSNVTableAdepter taDSNV;
+      private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
+      private System.Windows.Forms.BindingSource bdsCTPX;
+      private DataSetTableAdapters.CTPXTableAdapter taCTPX;
       private DevExpress.XtraGrid.Columns.GridColumn colMAPX;
       private DevExpress.XtraGrid.Columns.GridColumn colNGAY;
       private DevExpress.XtraGrid.Columns.GridColumn colHOTENKH;
       private DevExpress.XtraGrid.Columns.GridColumn colMANV;
       private DevExpress.XtraGrid.Columns.GridColumn colMAKHO;
-        private DevExpress.XtraBars.BarDockControl barDockControl4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private System.Windows.Forms.BindingSource bdsDSVT;
-        private DataSetTableAdapters.DSVTTableAdapter taDSVT;
-        private System.Windows.Forms.BindingSource bdsDSKHO;
-        private DataSetTableAdapters.DSKHOTableAdapter taDSKHO;
+      private DevExpress.XtraBars.BarDockControl barDockControl4;
+      private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+      private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+      private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+      private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+      private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+      private System.Windows.Forms.BindingSource bdsDSVT;
+      private DataSetTableAdapters.DSVTTableAdapter taDSVT;
+      private System.Windows.Forms.BindingSource bdsDSKHO;
+      private DataSetTableAdapters.DSKHOTableAdapter taDSKHO;
       private DevExpress.XtraEditors.GroupControl gbDeliveryNote;
-      private DevExpress.XtraEditors.TextEdit txtPX;
-      private DevExpress.XtraEditors.DateEdit txtDate;
-      private DevExpress.XtraEditors.TextEdit txtName;
+      private DevExpress.XtraEditors.TextEdit txtId;
+      private DevExpress.XtraEditors.DateEdit dtpDate;
+      private DevExpress.XtraEditors.TextEdit txtCustomerName;
       private DevExpress.XtraEditors.GroupControl gbCTPX;
-      private System.Windows.Forms.Panel panel1;
-      private DevExpress.XtraEditors.SimpleButton btnRemoveDataRow;
-      private DevExpress.XtraEditors.SimpleButton btnAddDateRow;
+      private DevExpress.XtraEditors.SimpleButton btnRemoveLine;
+      private DevExpress.XtraEditors.SimpleButton btnAddDataRow;
       private DevExpress.XtraGrid.GridControl gcCTPX;
       private DevExpress.XtraGrid.Views.Grid.GridView gvCTPX;
       private DevExpress.XtraGrid.Columns.GridColumn colMAPX1;
@@ -857,5 +884,7 @@
       private DevExpress.XtraEditors.PanelControl pnSub;
       private DevExpress.XtraEditors.LookUpEdit lkeEmployee;
       private DevExpress.XtraEditors.LookUpEdit lkeMaKho;
+      private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit;
+      private DevExpress.XtraGrid.Columns.GridColumn colTHANHTIEN;
    }
 }

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace QLVT_DATHANG.Forms
 {
+   using DevExpress.XtraBars;
    using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
    using DevExpress.XtraEditors;
    using UserControls;
@@ -13,8 +14,8 @@ namespace QLVT_DATHANG.Forms
       public frmMain()
       {
          InitializeComponent();
-         bsiMaNV.Caption = "Mã NV : " + UtilDB.UserName;
-         bsiHoTenNV.Caption = "Họ tên nhân viên : " + UtilDB.CurrentFullName;
+         bsiHoTenNV.Caption = UtilDB.CurrentFullName;
+
          string gr = null;
          switch (UtilDB.CurrentGroup)
          {
@@ -30,7 +31,16 @@ namespace QLVT_DATHANG.Forms
             default:
                break;
          }
-         bsiNhom.Caption = "Nhóm : " + gr;
+
+         BarButtonItem btnMaNV = new BarButtonItem(null, "Mã Nhân Viên: " + UtilDB.UserName);
+         BarButtonItem btnQuyen = new BarButtonItem(null, "Nhóm Quyền: " + gr);
+         BarButtonItem btnLogout = new BarButtonItem(null, "Đăng Xuất");
+         btnLogout.ItemClick += (o, e) =>
+         {
+            this.Close();
+         };
+
+         bliUserInfo.AddItems(new BarItem[] { btnMaNV, btnQuyen, btnLogout });
       }
 
       private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

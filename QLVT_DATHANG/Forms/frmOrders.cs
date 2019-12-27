@@ -119,7 +119,8 @@ namespace QLVT_DATHANG.Forms
          this.gvOrderDetail.OptionsBehavior.Editable = false;
          gbOrder.Controls.OfType<Control>().Where(c => !(c is LabelControl)).ToList().ForEach(c => c.Enabled = false);
 
-         pnBtnOrderDetail.Controls.OfType<SimpleButton>().ToList().ForEach(btn => btn.Enabled = false);
+         btnAddMaterials.Enabled = false;
+         btnRemoveLine.Enabled = false;
       }
 
       private bool IsExistOrder(string orderId)
@@ -261,41 +262,37 @@ namespace QLVT_DATHANG.Forms
 
       #endregion
 
-      private void btnAddOrderDetail_Click(object sender, EventArgs e)
-      {
-         FlyoutAction flyoutAction = new FlyoutAction()
-         {
-            Caption = Cons.CaptionCreateOrderDetail,
-         };
-
-         //string orderId = txtOrderId.EditValue.ToString();
-         //using (frmInputOrderDetail inputOrderDetail = new frmInputOrderDetail(orderId, bdsCTDDH, bdsVT, taCTDDH, dataSet))
-         //{
-         //   CustomFlyoutDialog.ShowForm(this, flyoutAction, inputOrderDetail);
-         //   //inputOrderDetail.Disposed += (o, arg) =>
-         //   //{
-         //   //   try
-         //   //   {
-         //   //      this.taCTDDH.Update(this.dataSet.CTDDH);
-         //   //      this.taVT.Update(this.dataSet.Vattu);
-         //   //   }
-         //   //   catch (Exception ex)
-         //   //   {
-         //   //      UtilDB.ShowError(ex);
-         //   //   }
-         //   //};
-         //}
-      }
-
       private void frmOrders_FormClosing(object sender, FormClosingEventArgs e)
       {
-
+         if (btnAdd.Enabled == false)
+         {
+            var result = XtraMessageBox.Show(Cons.AskExitWhileEditing, Cons.CaptionQuestion,
+                                       MessageBoxButtons.YesNoCancel,
+                                       MessageBoxIcon.Question);
+            switch (result)
+            {
+               case DialogResult.Yes:
+                  // kiểm tra nút được nhấn [thêm, sửa] => [Lưu lại, update]
+                  e.Cancel = !(SaveOrder());
+                  break;
+               case DialogResult.No:
+                  // thoát bất chấp
+                  btnCancelEdit.PerformClick();
+                  break;
+               case DialogResult.Cancel:
+                  // hủy thoát
+                  e.Cancel = true;
+                  break;
+               default:
+                  break;
+            }
+         }
       }
 
       private void gvOrderDetail_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
       {
          ColumnView view = sender as ColumnView;
-         if (e.Column.FieldName == "DONGIA" && e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+         if ((e.Column.FieldName == "DONGIA" || e.Column.FieldName == "THANHTIEN") && e.ListSourceRowIndex != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
          {
             if (!(e.Value is DBNull))
             {
@@ -369,7 +366,7 @@ namespace QLVT_DATHANG.Forms
                }
                else
                {
-                  if (donGia < 0)
+                  if (donGia <= 0)
                   {
                      e.Valid = false;
                      e.ErrorText = "Đơn giá phải lớn hơn 0";
