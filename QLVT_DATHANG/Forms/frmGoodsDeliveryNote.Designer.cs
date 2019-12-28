@@ -29,11 +29,6 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
-         System.Windows.Forms.Label mANVLabel;
-         System.Windows.Forms.Label hOTENKHLabel;
-         System.Windows.Forms.Label nGAYLabel;
-         System.Windows.Forms.Label mAPXLabel;
-         System.Windows.Forms.Label mAKHOLabel;
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGoodsDeliveryNote));
          this.dataSet = new QLVT_DATHANG.DataSet();
          this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
@@ -74,8 +69,6 @@
          this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
          this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
          this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
-         this.bdsDSVT = new System.Windows.Forms.BindingSource(this.components);
-         this.taDSVT = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
          this.taDSKHO = new QLVT_DATHANG.DataSetTableAdapters.DSKHOTableAdapter();
          this.gbCTPX = new DevExpress.XtraEditors.GroupControl();
          this.btnRemoveLine = new DevExpress.XtraEditors.SimpleButton();
@@ -85,6 +78,7 @@
          this.colMAPX1 = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
          this.repositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+         this.bdsDSVTCH = new System.Windows.Forms.BindingSource(this.components);
          this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
          this.colTHANHTIEN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,11 +90,12 @@
          this.lkeEmployee = new DevExpress.XtraEditors.LookUpEdit();
          this.lkeMaKho = new DevExpress.XtraEditors.LookUpEdit();
          this.pnSub = new DevExpress.XtraEditors.PanelControl();
-         mANVLabel = new System.Windows.Forms.Label();
-         hOTENKHLabel = new System.Windows.Forms.Label();
-         nGAYLabel = new System.Windows.Forms.Label();
-         mAPXLabel = new System.Windows.Forms.Label();
-         mAKHOLabel = new System.Windows.Forms.Label();
+         this.taDSVTCH = new QLVT_DATHANG.DataSetTableAdapters.DSVTCONHANGTableAdapter();
+         this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSKHO)).BeginInit();
@@ -112,12 +107,12 @@
          ((System.ComponentModel.ISupportInitialize)(this.pnPickDepartment)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbCTPX)).BeginInit();
          this.gbCTPX.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gcCTPX)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvCTPX)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTCH)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDeliveryNote)).BeginInit();
          this.gbDeliveryNote.SuspendLayout();
@@ -131,51 +126,6 @@
          this.pnSub.SuspendLayout();
          this.SuspendLayout();
          // 
-         // mANVLabel
-         // 
-         mANVLabel.AutoSize = true;
-         mANVLabel.Location = new System.Drawing.Point(5, 79);
-         mANVLabel.Name = "mANVLabel";
-         mANVLabel.Size = new System.Drawing.Size(77, 13);
-         mANVLabel.TabIndex = 6;
-         mANVLabel.Text = "Mã nhân viên";
-         // 
-         // hOTENKHLabel
-         // 
-         hOTENKHLabel.AutoSize = true;
-         hOTENKHLabel.Location = new System.Drawing.Point(5, 55);
-         hOTENKHLabel.Name = "hOTENKHLabel";
-         hOTENKHLabel.Size = new System.Drawing.Size(109, 13);
-         hOTENKHLabel.TabIndex = 4;
-         hOTENKHLabel.Text = "Họ tên khách hàng:";
-         // 
-         // nGAYLabel
-         // 
-         nGAYLabel.AutoSize = true;
-         nGAYLabel.Location = new System.Drawing.Point(193, 31);
-         nGAYLabel.Name = "nGAYLabel";
-         nGAYLabel.Size = new System.Drawing.Size(61, 13);
-         nGAYLabel.TabIndex = 2;
-         nGAYLabel.Text = "Ngày xuất:";
-         // 
-         // mAPXLabel
-         // 
-         mAPXLabel.AutoSize = true;
-         mAPXLabel.Location = new System.Drawing.Point(5, 31);
-         mAPXLabel.Name = "mAPXLabel";
-         mAPXLabel.Size = new System.Drawing.Size(84, 13);
-         mAPXLabel.TabIndex = 0;
-         mAPXLabel.Text = "Mã phiếu xuất:";
-         // 
-         // mAKHOLabel
-         // 
-         mAKHOLabel.AutoSize = true;
-         mAKHOLabel.Location = new System.Drawing.Point(191, 79);
-         mAKHOLabel.Name = "mAKHOLabel";
-         mAKHOLabel.Size = new System.Drawing.Size(49, 13);
-         mAKHOLabel.TabIndex = 8;
-         mAKHOLabel.Text = "Mã kho:";
-         // 
          // dataSet
          // 
          this.dataSet.DataSetName = "DataSet";
@@ -184,7 +134,7 @@
          // splitterControl1
          // 
          this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.splitterControl1.Location = new System.Drawing.Point(0, 233);
+         this.splitterControl1.Location = new System.Drawing.Point(0, 252);
          this.splitterControl1.Name = "splitterControl1";
          this.splitterControl1.Size = new System.Drawing.Size(969, 5);
          this.splitterControl1.TabIndex = 6;
@@ -282,7 +232,7 @@
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 438);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 457);
          this.barDockControlBottom.Manager = this.bmPN;
          this.barDockControlBottom.Size = new System.Drawing.Size(969, 0);
          // 
@@ -292,7 +242,7 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
          this.barDockControlLeft.Manager = this.bmPN;
-         this.barDockControlLeft.Size = new System.Drawing.Size(0, 414);
+         this.barDockControlLeft.Size = new System.Drawing.Size(0, 433);
          // 
          // barDockControlRight
          // 
@@ -300,7 +250,7 @@
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControlRight.Location = new System.Drawing.Point(969, 24);
          this.barDockControlRight.Manager = this.bmPN;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 414);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 433);
          // 
          // btnUndo
          // 
@@ -329,7 +279,7 @@
          // 
          this.bdsCTPX.DataMember = "FK_CTPX_PX";
          this.bdsCTPX.DataSource = this.bdsPX;
-         this.bdsCTPX.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsCTPX_ListChanged_1);
+         this.bdsCTPX.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bdsCTPX_ListChanged);
          // 
          // taPX
          // 
@@ -403,7 +353,7 @@
          this.gcDeliveryNote.MainView = this.gvDeliveryNote;
          this.gcDeliveryNote.MenuManager = this.bmPN;
          this.gcDeliveryNote.Name = "gcDeliveryNote";
-         this.gcDeliveryNote.Size = new System.Drawing.Size(969, 179);
+         this.gcDeliveryNote.Size = new System.Drawing.Size(969, 198);
          this.gcDeliveryNote.TabIndex = 0;
          this.gcDeliveryNote.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDeliveryNote});
@@ -508,16 +458,7 @@
          this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
          this.barDockControl4.Location = new System.Drawing.Point(969, 24);
          this.barDockControl4.Manager = null;
-         this.barDockControl4.Size = new System.Drawing.Size(0, 414);
-         // 
-         // bdsDSVT
-         // 
-         this.bdsDSVT.DataMember = "DSVT";
-         this.bdsDSVT.DataSource = this.dataSet;
-         // 
-         // taDSVT
-         // 
-         this.taDSVT.ClearBeforeFill = true;
+         this.barDockControl4.Size = new System.Drawing.Size(0, 433);
          // 
          // taDSKHO
          // 
@@ -531,10 +472,10 @@
          this.gbCTPX.Controls.Add(this.btnAddDataRow);
          this.gbCTPX.Controls.Add(this.gcCTPX);
          this.gbCTPX.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.gbCTPX.Location = new System.Drawing.Point(371, 2);
+         this.gbCTPX.Location = new System.Drawing.Point(385, 2);
          this.gbCTPX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.gbCTPX.Name = "gbCTPX";
-         this.gbCTPX.Size = new System.Drawing.Size(596, 196);
+         this.gbCTPX.Size = new System.Drawing.Size(582, 196);
          this.gbCTPX.TabIndex = 0;
          this.gbCTPX.Text = "Chi tiết Phiếu Xuất";
          // 
@@ -572,7 +513,7 @@
          this.gcCTPX.Name = "gcCTPX";
          this.gcCTPX.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit});
-         this.gcCTPX.Size = new System.Drawing.Size(592, 172);
+         this.gcCTPX.Size = new System.Drawing.Size(578, 172);
          this.gcCTPX.TabIndex = 0;
          this.gcCTPX.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCTPX,
@@ -619,11 +560,16 @@
          this.repositoryItemLookUpEdit.AutoHeight = false;
          this.repositoryItemLookUpEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.repositoryItemLookUpEdit.DataSource = this.bdsDSVT;
+         this.repositoryItemLookUpEdit.DataSource = this.bdsDSVTCH;
          this.repositoryItemLookUpEdit.DisplayMember = "TENVT";
          this.repositoryItemLookUpEdit.Name = "repositoryItemLookUpEdit";
          this.repositoryItemLookUpEdit.NullText = "Chọn 1 vật tư";
          this.repositoryItemLookUpEdit.ValueMember = "MAVT";
+         // 
+         // bdsDSVTCH
+         // 
+         this.bdsDSVTCH.DataMember = "DSVTCONHANG";
+         this.bdsDSVTCH.DataSource = this.dataSet;
          // 
          // colSOLUONG
          // 
@@ -669,20 +615,20 @@
          // 
          this.gbDeliveryNote.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.gbDeliveryNote.AppearanceCaption.Options.UseFont = true;
-         this.gbDeliveryNote.Controls.Add(mAKHOLabel);
-         this.gbDeliveryNote.Controls.Add(mAPXLabel);
+         this.gbDeliveryNote.Controls.Add(this.labelControl6);
+         this.gbDeliveryNote.Controls.Add(this.labelControl5);
+         this.gbDeliveryNote.Controls.Add(this.labelControl4);
+         this.gbDeliveryNote.Controls.Add(this.labelControl3);
+         this.gbDeliveryNote.Controls.Add(this.labelControl2);
          this.gbDeliveryNote.Controls.Add(this.txtId);
-         this.gbDeliveryNote.Controls.Add(nGAYLabel);
          this.gbDeliveryNote.Controls.Add(this.dtpDate);
-         this.gbDeliveryNote.Controls.Add(hOTENKHLabel);
          this.gbDeliveryNote.Controls.Add(this.txtCustomerName);
-         this.gbDeliveryNote.Controls.Add(mANVLabel);
          this.gbDeliveryNote.Controls.Add(this.lkeEmployee);
          this.gbDeliveryNote.Controls.Add(this.lkeMaKho);
          this.gbDeliveryNote.Dock = System.Windows.Forms.DockStyle.Left;
          this.gbDeliveryNote.Location = new System.Drawing.Point(2, 2);
          this.gbDeliveryNote.Name = "gbDeliveryNote";
-         this.gbDeliveryNote.Size = new System.Drawing.Size(369, 196);
+         this.gbDeliveryNote.Size = new System.Drawing.Size(383, 196);
          this.gbDeliveryNote.TabIndex = 0;
          this.gbDeliveryNote.Text = "Thông tin Phiếu Xuất";
          // 
@@ -702,7 +648,7 @@
          // 
          this.dtpDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "NGAY", true));
          this.dtpDate.EditValue = null;
-         this.dtpDate.Location = new System.Drawing.Point(260, 26);
+         this.dtpDate.Location = new System.Drawing.Point(253, 26);
          this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.dtpDate.MenuManager = this.bmPN;
          this.dtpDate.Name = "dtpDate";
@@ -715,7 +661,7 @@
          this.dtpDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
          this.dtpDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.dtpDate.Properties.Mask.EditMask = "dd/MM/yyyy";
-         this.dtpDate.Size = new System.Drawing.Size(103, 20);
+         this.dtpDate.Size = new System.Drawing.Size(110, 20);
          this.dtpDate.TabIndex = 3;
          // 
          // txtCustomerName
@@ -765,17 +711,61 @@
          this.pnSub.Controls.Add(this.gbCTPX);
          this.pnSub.Controls.Add(this.gbDeliveryNote);
          this.pnSub.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.pnSub.Location = new System.Drawing.Point(0, 238);
+         this.pnSub.Location = new System.Drawing.Point(0, 257);
          this.pnSub.Name = "pnSub";
          this.pnSub.Size = new System.Drawing.Size(969, 200);
          this.pnSub.TabIndex = 30;
+         // 
+         // taDSVTCH
+         // 
+         this.taDSVTCH.ClearBeforeFill = true;
+         // 
+         // labelControl2
+         // 
+         this.labelControl2.Location = new System.Drawing.Point(8, 29);
+         this.labelControl2.Name = "labelControl2";
+         this.labelControl2.Size = new System.Drawing.Size(77, 13);
+         this.labelControl2.TabIndex = 10;
+         this.labelControl2.Text = "Mã phiếu xuất:";
+         // 
+         // labelControl3
+         // 
+         this.labelControl3.Location = new System.Drawing.Point(193, 29);
+         this.labelControl3.Name = "labelControl3";
+         this.labelControl3.Size = new System.Drawing.Size(54, 13);
+         this.labelControl3.TabIndex = 10;
+         this.labelControl3.Text = "Ngày xuất:";
+         // 
+         // labelControl4
+         // 
+         this.labelControl4.Location = new System.Drawing.Point(8, 53);
+         this.labelControl4.Name = "labelControl4";
+         this.labelControl4.Size = new System.Drawing.Size(102, 13);
+         this.labelControl4.TabIndex = 10;
+         this.labelControl4.Text = "Họ tên khách hàng:";
+         // 
+         // labelControl5
+         // 
+         this.labelControl5.Location = new System.Drawing.Point(8, 77);
+         this.labelControl5.Name = "labelControl5";
+         this.labelControl5.Size = new System.Drawing.Size(73, 13);
+         this.labelControl5.TabIndex = 10;
+         this.labelControl5.Text = "Mã nhân viên:";
+         // 
+         // labelControl6
+         // 
+         this.labelControl6.Location = new System.Drawing.Point(193, 77);
+         this.labelControl6.Name = "labelControl6";
+         this.labelControl6.Size = new System.Drawing.Size(42, 13);
+         this.labelControl6.TabIndex = 10;
+         this.labelControl6.Text = "Mã kho:";
          // 
          // frmGoodsDeliveryNote
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.AutoScroll = true;
-         this.ClientSize = new System.Drawing.Size(969, 438);
+         this.ClientSize = new System.Drawing.Size(969, 457);
          this.Controls.Add(this.gcDeliveryNote);
          this.Controls.Add(this.splitterControl1);
          this.Controls.Add(this.pnPickDepartment);
@@ -801,12 +791,12 @@
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbCTPX)).EndInit();
          this.gbCTPX.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gcCTPX)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gvCTPX)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTCH)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.gbDeliveryNote)).EndInit();
          this.gbDeliveryNote.ResumeLayout(false);
@@ -863,8 +853,6 @@
       private DevExpress.XtraBars.BarButtonItem barButtonItem2;
       private DevExpress.XtraBars.BarButtonItem barButtonItem5;
       private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-      private System.Windows.Forms.BindingSource bdsDSVT;
-      private DataSetTableAdapters.DSVTTableAdapter taDSVT;
       private System.Windows.Forms.BindingSource bdsDSKHO;
       private DataSetTableAdapters.DSKHOTableAdapter taDSKHO;
       private DevExpress.XtraEditors.GroupControl gbDeliveryNote;
@@ -886,5 +874,12 @@
       private DevExpress.XtraEditors.LookUpEdit lkeMaKho;
       private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit;
       private DevExpress.XtraGrid.Columns.GridColumn colTHANHTIEN;
+      private System.Windows.Forms.BindingSource bdsDSVTCH;
+      private DataSetTableAdapters.DSVTCONHANGTableAdapter taDSVTCH;
+      private DevExpress.XtraEditors.LabelControl labelControl2;
+      private DevExpress.XtraEditors.LabelControl labelControl3;
+      private DevExpress.XtraEditors.LabelControl labelControl4;
+      private DevExpress.XtraEditors.LabelControl labelControl5;
+      private DevExpress.XtraEditors.LabelControl labelControl6;
    }
 }

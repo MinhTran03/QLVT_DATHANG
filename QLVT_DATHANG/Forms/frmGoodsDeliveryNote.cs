@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace QLVT_DATHANG.Forms
 {
-   using DataSetTableAdapters;
    using DevExpress.XtraBars;
    using DevExpress.XtraEditors;
    using DevExpress.XtraGrid.Views.Base;
-   using DevExpress.XtraGrid.Views.Grid;
-   using System.Data.SqlClient;
-   using System.Linq;
-   using System.Windows.Forms;
    using Utility;
 
    public partial class frmGoodsDeliveryNote : XtraForm
@@ -34,12 +32,6 @@ namespace QLVT_DATHANG.Forms
 
          // Quyền công ty => enable combobox chi nhánh
          ShowControlsByGroup(UtilDB.CurrentGroup);
-      }
-
-      private void bdsCTPX_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
-      {
-         if (gvCTPX.DataRowCount == 0) btnRemoveLine.Enabled = false;
-         else btnRemoveLine.Enabled = true;
       }
 
       #region METHOD
@@ -103,7 +95,7 @@ namespace QLVT_DATHANG.Forms
                 this.taDSNV.Connection.ConnectionString =
                 this.taCTPX.Connection.ConnectionString =
                 this.taDSKHO.Connection.ConnectionString =
-                this.taDSVT.Connection.ConnectionString =
+                this.taDSVTCH.Connection.ConnectionString =
             UtilDB.ConnectionString;
          try
          {
@@ -117,7 +109,7 @@ namespace QLVT_DATHANG.Forms
 
             this.taDSKHO.Fill(this.dataSet.DSKHO);
 
-            this.taDSVT.Fill(this.dataSet.DSVT);
+            this.taDSVTCH.Fill(this.dataSet.DSVTCONHANG);
 
             //this.dataSet.EnforceConstraints = true;
          }
@@ -378,14 +370,14 @@ namespace QLVT_DATHANG.Forms
                   int position = bdsCTPX.Position;
                   ((DataRowView)bdsCTPX[position])["MAVT"] = id;
                   ((DataRowView)bdsCTPX[position])["SOLUONG"] = 1;
-                  ((DataRowView)bdsCTPX[position])["DONGIA"] = 1;
+                  ((DataRowView)bdsCTPX[position])["DONGIA"] = 0;
                }
             }
             bdsCTPX.EndEdit();
          };
       }
 
-      private void bdsCTPX_ListChanged_1(object sender, System.ComponentModel.ListChangedEventArgs e)
+      private void bdsCTPX_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
       {
          if (bdsCTPX.Count == 0 || btnAdd.Enabled == true) btnRemoveLine.Enabled = false;
          else
@@ -415,7 +407,7 @@ namespace QLVT_DATHANG.Forms
          switch (fieldName)
          {
             case "MAVT":
-               var materialId = e.Value;
+               object materialId = e.Value;
                if (materialId == null)
                {
                   e.Valid = false;
@@ -433,7 +425,7 @@ namespace QLVT_DATHANG.Forms
                if (e.Valid == true)
                {
                   ((DataRowView)bdsCTPX.Current)["SOLUONG"] = 1;
-                  ((DataRowView)bdsCTPX.Current)["DONGIA"] = 1;
+                  ((DataRowView)bdsCTPX.Current)["DONGIA"] = 0;
                }
                break;
             case "SOLUONG":
@@ -450,6 +442,18 @@ namespace QLVT_DATHANG.Forms
                      e.Valid = false;
                      e.ErrorText = "Số lượng phải lớn hơn 0";
                   }
+                  var maVT = ((DataRowView)bdsCTPX.Current)["MAVT"].ToString();
+                  for (int index = 0; index < bdsDSVTCH.Count; index++)
+                  {
+                     var current = ((DataRowView)bdsDSVTCH[index]);
+                     if (current["MAVT"].ToString().Equals(maVT)
+                        && quantity > int.Parse(current["SOLUONGTON"].ToString()))
+                     {
+                        e.Valid = false;
+                        e.ErrorText = "Số lượng quá lớn...";
+                        break;
+                     }
+                  }
                }
                break;
             case "DONGIA":
@@ -461,10 +465,10 @@ namespace QLVT_DATHANG.Forms
                }
                else
                {
-                  if (donGia <= 0)
+                  if (donGia < 0)
                   {
                      e.Valid = false;
-                     e.ErrorText = "Đơn giá phải lớn hơn 0";
+                     e.ErrorText = "Đơn giá phải lớn hơn hoặc bằng 0";
                   }
                }
                break;
