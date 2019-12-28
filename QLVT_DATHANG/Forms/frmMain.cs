@@ -234,5 +234,35 @@ namespace QLVT_DATHANG.Forms
             f.Show();
          }
       }
-   }
+
+        private void barButtonItem3_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form nvForm = CheckExists(typeof(frmReportDSVT));
+            if (nvForm != null)
+            {
+                nvForm.Activate();
+            }
+            else
+            {
+                frmReportDSVT f = new frmReportDSVT();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form nvForm = CheckExists(typeof(frmReportDSDVT));
+            if (nvForm != null)
+            {
+                nvForm.Activate();
+            }
+            else
+            {
+                frmReportDSDVT f = new frmReportDSDVT();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+    }
 }

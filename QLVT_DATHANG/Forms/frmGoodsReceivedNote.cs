@@ -17,7 +17,10 @@ namespace QLVT_DATHANG.Forms
         private string _currentDeploymentId;
         private int _currentPosition;
         private int _backupWidth;
-        private List<object> listCTPN;
+
+        private float _donGia;
+        private string _maVattu;
+        private int _soLuong;
 
         private BindingSource _bdsPN;
         private PhieuNhapTableAdapter _taPN;
@@ -272,6 +275,10 @@ namespace QLVT_DATHANG.Forms
             for (int i = 0; i < orderDetailCount; i++)
             {
                 ((DataRowView)_bdsCTPN.Current).Row["MAPN"] = txtMaPN.Text;
+                UpdateMaterials(txtMaPN.Text,
+                                ((DataRowView)_bdsCTPN.Current).Row["MAVT"].ToString(),
+                                float.Parse(((DataRowView)_bdsCTPN.Current).Row["DONGIA"].ToString()),
+                                Int32.Parse(((DataRowView)_bdsCTPN.Current).Row["DONGIA"].ToString()));
                 _bdsCTPN.MovePrevious();
             }
             _bdsCTPN.EndEdit();
@@ -416,7 +423,7 @@ namespace QLVT_DATHANG.Forms
 
         }
 
-        private bool UpdateMaterials()
+        private bool UpdateMaterials(string maPhieu, string maVattu, float donGia, int soLuong)
         {
             bool exist = true;
             using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
@@ -425,13 +432,11 @@ namespace QLVT_DATHANG.Forms
                 using (SqlCommand sqlcmd = new SqlCommand(MyConfig.ExecSPCapNhatPhieuNhap, connection))
                 {
                     sqlcmd.CommandType = CommandType.StoredProcedure;
-                    for (int index = 0; index < gvCTPN.RowCount; index++)
-                    {
-                        sqlcmd.Parameters.AddWithValue("@MAPHIEU", gvCTPN.GetRowCellValue(index, "MAPN"));
-                        sqlcmd.Parameters.AddWithValue("@MAVT", gvCTPN.GetRowCellValue(index, "MAVT"));
-                        sqlcmd.Parameters.AddWithValue("@DONGIA", gvCTPN.GetRowCellValue(index, "DONGIA"));
-                        sqlcmd.Parameters.AddWithValue("@SOLUONG", gvCTPN.GetRowCellValue(index, "SOLUONG"));
-                    }
+                    
+                        sqlcmd.Parameters.AddWithValue("@MAPHIEU", maPhieu);
+                        sqlcmd.Parameters.AddWithValue("@MAVT", maVattu);
+                        sqlcmd.Parameters.AddWithValue("@DONGIA", donGia);
+                        sqlcmd.Parameters.AddWithValue("@SOLUONG", soLuong);
 
                     try
                     {
@@ -451,7 +456,7 @@ namespace QLVT_DATHANG.Forms
             return exist;
         }
 
-        private bool chechInStockMaterials()
+        private bool chechInStockMaterials(string maPhieu, string maVattu,int quantity)
         {
             bool exist = true;
             using (SqlConnection connection = new SqlConnection(UtilDB.ConnectionString))
@@ -460,13 +465,10 @@ namespace QLVT_DATHANG.Forms
                 using (SqlCommand sqlcmd = new SqlCommand(MyConfig.ExecSPCheckInStockMaterial, connection))
                 {
                     sqlcmd.CommandType = CommandType.StoredProcedure;
-                    for (int index = 0; index < gvCTPN.RowCount; index++)
-                    {
-                        sqlcmd.Parameters.AddWithValue("@MAPHIEU", gvCTPN.GetRowCellValue(index, "MAPN"));
-                        sqlcmd.Parameters.AddWithValue("@MAVT", gvCTPN.GetRowCellValue(index, "MAVT"));
-                        sqlcmd.Parameters.AddWithValue("@SOLUONG", gvCTPN.GetRowCellValue(index, "SOLUONG"));
-                    }
-
+                    
+                        sqlcmd.Parameters.AddWithValue("@MAPHIEU", maPhieu);
+                        sqlcmd.Parameters.AddWithValue("@MAVT", maVattu);
+                        sqlcmd.Parameters.AddWithValue("@SOLUONG", quantity);
                     try
                     {
                         sqlcmd.ExecuteNonQuery();
@@ -500,12 +502,13 @@ namespace QLVT_DATHANG.Forms
         }
 
         private void gvCTPN_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
-        {
+         {
             var fieldName = gvCTPN.FocusedColumn.FieldName;
             switch (fieldName)
             {
                 case "MAVT":
-                    var materialId = e.Value;
+                    object materialId = e.Value;
+                    _maVattu = materialId.ToString();
                     if (materialId == null)
                     {
                         e.Valid = false;
@@ -539,6 +542,12 @@ namespace QLVT_DATHANG.Forms
                         {
                             e.Valid = false;
                             e.ErrorText = "Số lượng phải lớn hơn 0";
+                        }
+                        _soLuong = quantity;
+                        if (chechInStockMaterials(_maDDH, _maVattu, _soLuong))
+                        {
+                            e.Valid = false;
+                            e.ErrorText = "Số lượng nhập trong phiếu phải nhỏ hơn số lượng nhập trong Dơnd đặt hàng";
                         }
                     }
                     break;

@@ -590,7 +590,6 @@
             this.txtMaPN.Properties.MaxLength = 8;
             this.txtMaPN.Size = new System.Drawing.Size(201, 26);
             this.txtMaPN.TabIndex = 1;
-            // 
             // txtDate
             // 
             this.txtDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPN, "NGAY", true));

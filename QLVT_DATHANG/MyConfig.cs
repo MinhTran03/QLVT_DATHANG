@@ -32,7 +32,7 @@ namespace QLVT_DATHANG
 
       public const string ExecSPTimPhieuNhap = "sp_timphieunhap";
       public const string SpKiemTraNVCoTaiKhoan = "sp_timtaikhoannhanvien";
-      public const string ExecSPCheckInStockMaterial = "sp_checkinstockmaterials";
+      public const string ExecSPCheckInStockMaterial = "sp_checkinstockmaterials '{0}', '{1}', '{2}'";
       public const string SpGetAllMaNV = "sp_getallmanv";
       public const string SpGetDanhSachDVT = "sp_getdsdvt";
       public const string SpChuyenChiNhanh = "sp_chuyenchinhanh";
