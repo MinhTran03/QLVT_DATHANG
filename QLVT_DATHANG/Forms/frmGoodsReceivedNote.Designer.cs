@@ -86,6 +86,7 @@
             this.bdsDSVTDH = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bdsDSVT = new System.Windows.Forms.BindingSource(this.components);
             this.cmsCTPN = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -139,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).BeginInit();
             this.cmsCTPN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
@@ -661,7 +663,8 @@
             this.gcCTPN.MenuManager = this.bmPN;
             this.gcCTPN.Name = "gcCTPN";
             this.gcCTPN.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemSearchLookUpEdit1});
+            this.repositoryItemSearchLookUpEdit1,
+            this.repositoryItemTextEdit1});
             this.gcCTPN.Size = new System.Drawing.Size(547, 257);
             this.gcCTPN.TabIndex = 0;
             this.gcCTPN.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -683,6 +686,9 @@
             this.gvCTPN.Name = "gvCTPN";
             this.gvCTPN.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gvCTPN.OptionsView.ShowGroupPanel = false;
+            this.gvCTPN.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gvCTPN_ValidateRow);
+            this.gvCTPN.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gvCTPN_CustomColumnDisplayText);
+            this.gvCTPN.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gvCTPN_ValidatingEditor);
             // 
             // colMAPN1
             // 
@@ -709,6 +715,7 @@
             this.repositoryItemSearchLookUpEdit1.DataSource = this.bdsDSVTDH;
             this.repositoryItemSearchLookUpEdit1.DisplayMember = "TENVT";
             this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
+            this.repositoryItemSearchLookUpEdit1.NullText = "";
             this.repositoryItemSearchLookUpEdit1.PopupView = this.repositoryItemSearchLookUpEdit1View;
             this.repositoryItemSearchLookUpEdit1.ValueMember = "MAVT";
             // 
@@ -726,12 +733,17 @@
             // 
             // colSOLUONG
             // 
+            this.colSOLUONG.ColumnEdit = this.repositoryItemTextEdit1;
             this.colSOLUONG.FieldName = "SOLUONG";
             this.colSOLUONG.MinWidth = 25;
             this.colSOLUONG.Name = "colSOLUONG";
             this.colSOLUONG.Visible = true;
             this.colSOLUONG.VisibleIndex = 1;
             this.colSOLUONG.Width = 94;
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // colDONGIA
             // 
@@ -795,6 +807,7 @@
             this.tableAdapterManager.PhieuNhapTableAdapter = this.taPN;
             this.tableAdapterManager.PhieuXuatTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLVT_DATHANG.DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateVTTableAdapter = null;
             this.tableAdapterManager.VattuTableAdapter = null;
             // 
             // taDSKHO
@@ -891,6 +904,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVTDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSVT)).EndInit();
             this.cmsCTPN.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
@@ -970,5 +984,6 @@
         private System.Windows.Forms.ToolStripButton fillToolStripButton;
         private System.Windows.Forms.BindingSource bdsDSVTDH;
         private DataSetTableAdapters.DSVTDHTableAdapter taDSVTDH;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
     }
 }
