@@ -102,6 +102,12 @@
          this.printPreviewBarCheckItem18 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
          this.printPreviewBarCheckItem19 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
          this.pnPickDepartment = new System.Windows.Forms.Panel();
+         this.btnFull = new DevExpress.XtraEditors.SimpleButton();
+         this.btnCurrent = new DevExpress.XtraEditors.SimpleButton();
+         this.dtpTo = new DevExpress.XtraEditors.DateEdit();
+         this.dtpFrom = new DevExpress.XtraEditors.DateEdit();
+         this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.cboDepartment = new System.Windows.Forms.ComboBox();
          ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
@@ -109,15 +115,19 @@
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
          this.pnPickDepartment.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties.CalendarTimeProperties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).BeginInit();
          this.SuspendLayout();
          // 
          // documentViewer
          // 
          this.documentViewer.Dock = System.Windows.Forms.DockStyle.Fill;
          this.documentViewer.IsMetric = false;
-         this.documentViewer.Location = new System.Drawing.Point(35, 55);
+         this.documentViewer.Location = new System.Drawing.Point(35, 84);
          this.documentViewer.Name = "documentViewer";
-         this.documentViewer.Size = new System.Drawing.Size(702, 348);
+         this.documentViewer.Size = new System.Drawing.Size(861, 338);
          this.documentViewer.TabIndex = 0;
          // 
          // documentViewerBarManager1
@@ -687,15 +697,15 @@
          this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
          this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
          this.barDockControlTop.Manager = this.documentViewerBarManager1;
-         this.barDockControlTop.Size = new System.Drawing.Size(737, 22);
+         this.barDockControlTop.Size = new System.Drawing.Size(896, 22);
          // 
          // barDockControlBottom
          // 
          this.barDockControlBottom.CausesValidation = false;
          this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-         this.barDockControlBottom.Location = new System.Drawing.Point(0, 403);
+         this.barDockControlBottom.Location = new System.Drawing.Point(0, 422);
          this.barDockControlBottom.Manager = this.documentViewerBarManager1;
-         this.barDockControlBottom.Size = new System.Drawing.Size(737, 26);
+         this.barDockControlBottom.Size = new System.Drawing.Size(896, 26);
          // 
          // barDockControlLeft
          // 
@@ -703,15 +713,15 @@
          this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
          this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
          this.barDockControlLeft.Manager = this.documentViewerBarManager1;
-         this.barDockControlLeft.Size = new System.Drawing.Size(35, 381);
+         this.barDockControlLeft.Size = new System.Drawing.Size(35, 400);
          // 
          // barDockControlRight
          // 
          this.barDockControlRight.CausesValidation = false;
          this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-         this.barDockControlRight.Location = new System.Drawing.Point(737, 22);
+         this.barDockControlRight.Location = new System.Drawing.Point(896, 22);
          this.barDockControlRight.Manager = this.documentViewerBarManager1;
-         this.barDockControlRight.Size = new System.Drawing.Size(0, 381);
+         this.barDockControlRight.Size = new System.Drawing.Size(0, 400);
          // 
          // printPreviewBarCheckItem1
          // 
@@ -910,13 +920,79 @@
          // pnPickDepartment
          // 
          this.pnPickDepartment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(234)))), ((int)(((byte)(237)))));
+         this.pnPickDepartment.Controls.Add(this.btnFull);
+         this.pnPickDepartment.Controls.Add(this.btnCurrent);
+         this.pnPickDepartment.Controls.Add(this.dtpTo);
+         this.pnPickDepartment.Controls.Add(this.dtpFrom);
+         this.pnPickDepartment.Controls.Add(this.labelControl3);
+         this.pnPickDepartment.Controls.Add(this.labelControl2);
          this.pnPickDepartment.Controls.Add(this.labelControl1);
          this.pnPickDepartment.Controls.Add(this.cboDepartment);
          this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
          this.pnPickDepartment.Location = new System.Drawing.Point(35, 22);
          this.pnPickDepartment.Name = "pnPickDepartment";
-         this.pnPickDepartment.Size = new System.Drawing.Size(702, 33);
+         this.pnPickDepartment.Size = new System.Drawing.Size(861, 62);
          this.pnPickDepartment.TabIndex = 6;
+         // 
+         // btnFull
+         // 
+         this.btnFull.Location = new System.Drawing.Point(359, 32);
+         this.btnFull.Name = "btnFull";
+         this.btnFull.Size = new System.Drawing.Size(157, 23);
+         this.btnFull.TabIndex = 8;
+         this.btnFull.Text = "In toàn bộ chi nhánh";
+         this.btnFull.Click += new System.EventHandler(this.btnFull_Click);
+         // 
+         // btnCurrent
+         // 
+         this.btnCurrent.Location = new System.Drawing.Point(177, 34);
+         this.btnCurrent.Name = "btnCurrent";
+         this.btnCurrent.Size = new System.Drawing.Size(157, 23);
+         this.btnCurrent.TabIndex = 7;
+         this.btnCurrent.Text = "In theo chi nhánh";
+         this.btnCurrent.Click += new System.EventHandler(this.btnCurrent_Click);
+         // 
+         // dtpTo
+         // 
+         this.dtpTo.EditValue = null;
+         this.dtpTo.Location = new System.Drawing.Point(522, 6);
+         this.dtpTo.MenuManager = this.documentViewerBarManager1;
+         this.dtpTo.Name = "dtpTo";
+         this.dtpTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpTo.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpTo.Size = new System.Drawing.Size(94, 20);
+         this.dtpTo.TabIndex = 6;
+         // 
+         // dtpFrom
+         // 
+         this.dtpFrom.EditValue = null;
+         this.dtpFrom.Location = new System.Drawing.Point(359, 6);
+         this.dtpFrom.MenuManager = this.documentViewerBarManager1;
+         this.dtpFrom.Name = "dtpFrom";
+         this.dtpFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpFrom.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpFrom.Size = new System.Drawing.Size(99, 20);
+         this.dtpFrom.TabIndex = 5;
+         // 
+         // labelControl3
+         // 
+         this.labelControl3.Location = new System.Drawing.Point(464, 9);
+         this.labelControl3.Name = "labelControl3";
+         this.labelControl3.Size = new System.Drawing.Size(52, 13);
+         this.labelControl3.TabIndex = 4;
+         this.labelControl3.Text = "Đến ngày:";
+         // 
+         // labelControl2
+         // 
+         this.labelControl2.Location = new System.Drawing.Point(309, 10);
+         this.labelControl2.Name = "labelControl2";
+         this.labelControl2.Size = new System.Drawing.Size(44, 13);
+         this.labelControl2.TabIndex = 4;
+         this.labelControl2.Text = "Từ ngày:";
          // 
          // labelControl1
          // 
@@ -939,12 +1015,13 @@
          this.cboDepartment.Name = "cboDepartment";
          this.cboDepartment.Size = new System.Drawing.Size(193, 23);
          this.cboDepartment.TabIndex = 3;
+         this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.cboDepartment_SelectedIndexChanged);
          // 
          // frmReportTongHopNhapXuat
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(737, 429);
+         this.ClientSize = new System.Drawing.Size(896, 448);
          this.Controls.Add(this.documentViewer);
          this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.barDockControlLeft);
@@ -960,6 +1037,10 @@
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
          this.pnPickDepartment.ResumeLayout(false);
          this.pnPickDepartment.PerformLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties.CalendarTimeProperties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -1041,5 +1122,11 @@
       private System.Windows.Forms.Panel pnPickDepartment;
       private DevExpress.XtraEditors.LabelControl labelControl1;
       private System.Windows.Forms.ComboBox cboDepartment;
+      private DevExpress.XtraEditors.DateEdit dtpTo;
+      private DevExpress.XtraEditors.DateEdit dtpFrom;
+      private DevExpress.XtraEditors.LabelControl labelControl3;
+      private DevExpress.XtraEditors.LabelControl labelControl2;
+      private DevExpress.XtraEditors.SimpleButton btnFull;
+      private DevExpress.XtraEditors.SimpleButton btnCurrent;
    }
 }

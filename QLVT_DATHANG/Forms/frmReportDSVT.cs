@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using QLVT_DATHANG.Report;
 
 namespace QLVT_DATHANG.Forms
 {
@@ -21,9 +12,9 @@ namespace QLVT_DATHANG.Forms
 
       private void frmReportDSVT_Load(object sender, EventArgs e)
       {
-         Xrpt_DanhSachvatTu danhSachvatTu = new Xrpt_DanhSachvatTu();
-         docDSVT.DocumentSource = danhSachvatTu;
-         danhSachvatTu.CreateDocument();
+         //Xrpt_DanhSachvatTu danhSachvatTu = new Xrpt_DanhSachvatTu();
+         //docDSVT.DocumentSource = danhSachvatTu;
+         //danhSachvatTu.CreateDocument();
       }
    }
 }

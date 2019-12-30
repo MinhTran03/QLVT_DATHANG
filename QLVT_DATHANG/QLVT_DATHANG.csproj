@@ -125,9 +125,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSetReport.cs">
-      <DependentUpon>DataSetReport.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DataSetReport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,18 +171,6 @@
     </Compile>
     <Compile Include="Report\Xrpt_DanhSachNhanVien.Designer.cs">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\Xrpt_DanhSachvatTu.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\Xrpt_DanhSachvatTu.Designer.cs">
-      <DependentUpon>Xrpt_DanhSachvatTu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\Xrpt_ReportDSCTVT.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\Xrpt_ReportDSCTVT.Designer.cs">
-      <DependentUpon>Xrpt_ReportDSCTVT.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Xrpt_TongHopNhapXuat.cs">
       <SubType>Component</SubType>
@@ -327,12 +312,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_DanhSachNhanVien.resx">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\Xrpt_DanhSachvatTu.resx">
-      <DependentUpon>Xrpt_DanhSachvatTu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\Xrpt_ReportDSCTVT.resx">
-      <DependentUpon>Xrpt_ReportDSCTVT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_TongHopNhapXuat.resx">
       <DependentUpon>Xrpt_TongHopNhapXuat.cs</DependentUpon>

@@ -99,10 +99,14 @@
          this.printPreviewBarCheckItem17 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
          this.printPreviewBarCheckItem18 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
          this.printPreviewBarCheckItem19 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
+         this.pnPickDepartment = new System.Windows.Forms.Panel();
+         this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+         this.cboDepartment = new System.Windows.Forms.ComboBox();
          ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
+         this.pnPickDepartment.SuspendLayout();
          this.SuspendLayout();
          // 
          // documentViewer
@@ -879,11 +883,45 @@
          this.printPreviewBarCheckItem19.Id = 58;
          this.printPreviewBarCheckItem19.Name = "printPreviewBarCheckItem19";
          // 
+         // pnPickDepartment
+         // 
+         this.pnPickDepartment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(234)))), ((int)(((byte)(237)))));
+         this.pnPickDepartment.Controls.Add(this.labelControl1);
+         this.pnPickDepartment.Controls.Add(this.cboDepartment);
+         this.pnPickDepartment.Dock = System.Windows.Forms.DockStyle.Top;
+         this.pnPickDepartment.Location = new System.Drawing.Point(35, 22);
+         this.pnPickDepartment.Name = "pnPickDepartment";
+         this.pnPickDepartment.Size = new System.Drawing.Size(758, 33);
+         this.pnPickDepartment.TabIndex = 6;
+         // 
+         // labelControl1
+         // 
+         this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.labelControl1.Appearance.Options.UseFont = true;
+         this.labelControl1.Location = new System.Drawing.Point(12, 9);
+         this.labelControl1.Name = "labelControl1";
+         this.labelControl1.Size = new System.Drawing.Size(92, 15);
+         this.labelControl1.TabIndex = 2;
+         this.labelControl1.Text = "Chọn Chi Nhánh:";
+         // 
+         // cboDepartment
+         // 
+         this.cboDepartment.BackColor = System.Drawing.SystemColors.Window;
+         this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cboDepartment.FlatStyle = System.Windows.Forms.FlatStyle.System;
+         this.cboDepartment.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.cboDepartment.FormattingEnabled = true;
+         this.cboDepartment.Location = new System.Drawing.Point(110, 5);
+         this.cboDepartment.Name = "cboDepartment";
+         this.cboDepartment.Size = new System.Drawing.Size(193, 23);
+         this.cboDepartment.TabIndex = 3;
+         // 
          // frmDSDDHChuaCoPhieuNhap
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(793, 415);
+         this.Controls.Add(this.pnPickDepartment);
          this.Controls.Add(this.documentViewer);
          this.Controls.Add(this.barDockControlLeft);
          this.Controls.Add(this.barDockControlRight);
@@ -896,6 +934,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
+         this.pnPickDepartment.ResumeLayout(false);
+         this.pnPickDepartment.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -972,5 +1012,8 @@
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem17;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem18;
       private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem19;
+      private System.Windows.Forms.Panel pnPickDepartment;
+      private DevExpress.XtraEditors.LabelControl labelControl1;
+      private System.Windows.Forms.ComboBox cboDepartment;
    }
 }
