@@ -187,14 +187,14 @@ namespace QLVT_DATHANG.Forms
 
       private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
-         Form nvForm = CheckExists(typeof(frmDSDDHChuaCoPhieuNhap));
+         Form nvForm = CheckExists(typeof(frmReportDSDDHChuaCoPhieuNhap));
          if (nvForm != null)
          {
             nvForm.Activate();
          }
          else
          {
-            frmDSDDHChuaCoPhieuNhap f = new frmDSDDHChuaCoPhieuNhap();
+            frmReportDSDDHChuaCoPhieuNhap f = new frmReportDSDDHChuaCoPhieuNhap();
             f.MdiParent = this;
             f.Show();
          }

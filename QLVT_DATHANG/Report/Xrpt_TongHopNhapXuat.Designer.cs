@@ -49,6 +49,9 @@
          this.lblDate = new DevExpress.XtraReports.UI.XRLabel();
          this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
          this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+         this.lblCN = new DevExpress.XtraReports.UI.XRLabel();
+         this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+         this.lblNhanVienLap = new DevExpress.XtraReports.UI.XRLabel();
          this.lblFromTo = new DevExpress.XtraReports.UI.XRLabel();
          this.label1 = new DevExpress.XtraReports.UI.XRLabel();
          this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
@@ -192,20 +195,70 @@
          // ReportHeader
          // 
          this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblCN,
+            this.xrLabel4,
+            this.lblNhanVienLap,
             this.lblFromTo,
             this.label1});
-         this.ReportHeader.HeightF = 96.45834F;
+         this.ReportHeader.HeightF = 167.2917F;
          this.ReportHeader.Name = "ReportHeader";
+         // 
+         // lblCN
+         // 
+         this.lblCN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblCN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.lblCN.LocationFloat = new DevExpress.Utils.PointFloat(331F, 98.37497F);
+         this.lblCN.Multiline = true;
+         this.lblCN.Name = "lblCN";
+         this.lblCN.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+         this.lblCN.SizeF = new System.Drawing.SizeF(313F, 23F);
+         this.lblCN.StylePriority.UseFont = false;
+         this.lblCN.StylePriority.UseForeColor = false;
+         this.lblCN.StylePriority.UseTextAlignment = false;
+         this.lblCN.Text = "lblCN";
+         this.lblCN.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+         // 
+         // xrLabel4
+         // 
+         this.xrLabel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.xrLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(331F, 134.2917F);
+         this.xrLabel4.Multiline = true;
+         this.xrLabel4.Name = "xrLabel4";
+         this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+         this.xrLabel4.SizeF = new System.Drawing.SizeF(166.7736F, 23F);
+         this.xrLabel4.StylePriority.UseFont = false;
+         this.xrLabel4.StylePriority.UseForeColor = false;
+         this.xrLabel4.StylePriority.UseTextAlignment = false;
+         this.xrLabel4.Text = "Nhân viên lập phiếu:";
+         this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+         // 
+         // lblNhanVienLap
+         // 
+         this.lblNhanVienLap.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblNhanVienLap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.lblNhanVienLap.LocationFloat = new DevExpress.Utils.PointFloat(503.7736F, 134.2917F);
+         this.lblNhanVienLap.Multiline = true;
+         this.lblNhanVienLap.Name = "lblNhanVienLap";
+         this.lblNhanVienLap.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+         this.lblNhanVienLap.SizeF = new System.Drawing.SizeF(146.2264F, 23F);
+         this.lblNhanVienLap.StylePriority.UseFont = false;
+         this.lblNhanVienLap.StylePriority.UseForeColor = false;
+         this.lblNhanVienLap.StylePriority.UseTextAlignment = false;
+         this.lblNhanVienLap.Text = "lblNhanVienLap";
+         this.lblNhanVienLap.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
          // 
          // lblFromTo
          // 
          this.lblFromTo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblFromTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
          this.lblFromTo.LocationFloat = new DevExpress.Utils.PointFloat(6.00001F, 50F);
          this.lblFromTo.Multiline = true;
          this.lblFromTo.Name = "lblFromTo";
          this.lblFromTo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
          this.lblFromTo.SizeF = new System.Drawing.SizeF(638F, 36.45834F);
          this.lblFromTo.StylePriority.UseFont = false;
+         this.lblFromTo.StylePriority.UseForeColor = false;
          this.lblFromTo.StylePriority.UseTextAlignment = false;
          this.lblFromTo.Text = "TỪ {0} ĐẾN {1}";
          this.lblFromTo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -615,5 +668,8 @@
       private DevExpress.XtraReports.UI.XRLabel lblSumTX;
       private DevExpress.XtraReports.UI.XRLabel lblSumTLN;
       private DataSetReportTableAdapters.Report_TongHopNhapXuatTableAdapter taTongHopNhapXuat;
+      private DevExpress.XtraReports.UI.XRLabel lblCN;
+      private DevExpress.XtraReports.UI.XRLabel xrLabel4;
+      private DevExpress.XtraReports.UI.XRLabel lblNhanVienLap;
    }
 }

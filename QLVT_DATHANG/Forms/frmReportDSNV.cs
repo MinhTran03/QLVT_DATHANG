@@ -11,30 +11,23 @@ namespace QLVT_DATHANG.Forms
       public frmReportDSNV()
       {
          InitializeComponent();
-         UtilDB.SetupDSCN(cboDepartment, () =>
+         if (UtilDB.CurrentGroup.Equals(MyConfig.CongTyGroupName))
          {
-            danhSachNhanVien = new Xrpt_DanhSachNhanVien(cboDepartment.Text);
-            documentViewer.DocumentSource = danhSachNhanVien;
-            danhSachNhanVien.CreateDocument();
-         });
+            pnPickDepartment.Visible = true;
+            UtilDB.SetupDSCN(cboDepartment, () =>
+            {
+               danhSachNhanVien = new Xrpt_DanhSachNhanVien(cboDepartment.Text);
+               documentViewer.DocumentSource = danhSachNhanVien;
+               danhSachNhanVien.CreateDocument();
+            });
+         }
       }
 
       private void frmReportDSNV_Load(object sender, System.EventArgs e)
       {
-         danhSachNhanVien = new Xrpt_DanhSachNhanVien(cboDepartment.Text);
+         danhSachNhanVien = new Xrpt_DanhSachNhanVien(((DataRowView)UtilDB.BdsDSPM.Current)[MyConfig.DisplayMemberDSPM].ToString());
          documentViewer.DocumentSource = danhSachNhanVien;
          danhSachNhanVien.CreateDocument();
-      }
-
-      private void cboDeployment_SelectedIndexChanged(object sender, System.EventArgs e)
-      {
-         //if (cboDepartment.SelectedValue.ToString().Equals("System.Data.DataRowView")) return;
-
-         //string departId = UtilDB.GetDepartIdInFilterClause(cboDepartment.SelectedValue.ToString());
-
-         //danhSachNhanVien = new Xrpt_DanhSachNhanVien(departId.Trim());
-         //documentViewer.DocumentSource = danhSachNhanVien;
-         //danhSachNhanVien.CreateDocument();
       }
    }
 }

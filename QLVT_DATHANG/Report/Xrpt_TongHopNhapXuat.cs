@@ -6,11 +6,13 @@ namespace QLVT_DATHANG.Report
 {
    public partial class Xrpt_TongHopNhapXuat : XtraReport
    {
-      public Xrpt_TongHopNhapXuat(DateTime from, DateTime to, string mode)
+      public Xrpt_TongHopNhapXuat(DateTime from, DateTime to, string mode, string tenCN)
       {
          InitializeComponent();
 
          lblDate.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy", Cons.CiVNI);
+         lblNhanVienLap.Text = UtilDB.CurrentFullName;
+         lblCN.Text = tenCN;
 
          this.taTongHopNhapXuat.Connection.ConnectionString = UtilDB.ConnectionString;
          this.taTongHopNhapXuat.Fill(this.dataSetReport.Report_TongHopNhapXuat, from, to, mode);

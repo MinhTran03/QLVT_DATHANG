@@ -235,30 +235,46 @@
          // 
          // lblCN
          // 
-         this.lblCN.LocationFloat = new DevExpress.Utils.PointFloat(392.5653F, 118.5833F);
+         this.lblCN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblCN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.lblCN.LocationFloat = new DevExpress.Utils.PointFloat(331F, 118.5833F);
          this.lblCN.Multiline = true;
          this.lblCN.Name = "lblCN";
          this.lblCN.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-         this.lblCN.SizeF = new System.Drawing.SizeF(251.4347F, 23F);
+         this.lblCN.SizeF = new System.Drawing.SizeF(313F, 23F);
+         this.lblCN.StylePriority.UseFont = false;
+         this.lblCN.StylePriority.UseForeColor = false;
+         this.lblCN.StylePriority.UseTextAlignment = false;
          this.lblCN.Text = "lblCN";
+         this.lblCN.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
          // 
          // xrLabel4
          // 
-         this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(392.5653F, 156.1667F);
+         this.xrLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(331F, 156.1667F);
          this.xrLabel4.Multiline = true;
          this.xrLabel4.Name = "xrLabel4";
          this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-         this.xrLabel4.SizeF = new System.Drawing.SizeF(141.6667F, 23F);
+         this.xrLabel4.SizeF = new System.Drawing.SizeF(166.7736F, 23F);
+         this.xrLabel4.StylePriority.UseForeColor = false;
+         this.xrLabel4.StylePriority.UseTextAlignment = false;
          this.xrLabel4.Text = "Nhân viên lập phiếu:";
+         this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
          // 
          // lblNhanVienLap
          // 
-         this.lblNhanVienLap.LocationFloat = new DevExpress.Utils.PointFloat(544F, 156.1667F);
+         this.lblNhanVienLap.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblNhanVienLap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.lblNhanVienLap.LocationFloat = new DevExpress.Utils.PointFloat(497.7736F, 156.1667F);
          this.lblNhanVienLap.Multiline = true;
          this.lblNhanVienLap.Name = "lblNhanVienLap";
          this.lblNhanVienLap.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-         this.lblNhanVienLap.SizeF = new System.Drawing.SizeF(100F, 23F);
+         this.lblNhanVienLap.SizeF = new System.Drawing.SizeF(146.2264F, 23F);
+         this.lblNhanVienLap.StylePriority.UseFont = false;
+         this.lblNhanVienLap.StylePriority.UseForeColor = false;
+         this.lblNhanVienLap.StylePriority.UseTextAlignment = false;
          this.lblNhanVienLap.Text = "lblNhanVienLap";
+         this.lblNhanVienLap.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
          // 
          // label1
          // 
@@ -632,7 +648,7 @@
          this.DataAdapter = this.taReportDSDDHChuaCoPN;
          this.DataMember = "Report_DanhSachDDHChuaCoPhieuNhap";
          this.DataSource = this.dataSetReport;
-         this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+         this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.GroupCaption1,

@@ -44,7 +44,9 @@
          this.lblDate = new DevExpress.XtraReports.UI.XRLabel();
          this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
          this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-         this.lblChiNhanh = new DevExpress.XtraReports.UI.XRLabel();
+         this.lblCN = new DevExpress.XtraReports.UI.XRLabel();
+         this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+         this.lblNhanVienLap = new DevExpress.XtraReports.UI.XRLabel();
          this.label1 = new DevExpress.XtraReports.UI.XRLabel();
          this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
          this.table1 = new DevExpress.XtraReports.UI.XRTable();
@@ -149,7 +151,7 @@
             this.lblDate,
             this.pageInfo2});
          this.BottomMargin.Dpi = 96F;
-         this.BottomMargin.HeightF = 206.1999F;
+         this.BottomMargin.HeightF = 206F;
          this.BottomMargin.Name = "BottomMargin";
          // 
          // lblDate
@@ -181,26 +183,61 @@
          // ReportHeader
          // 
          this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lblChiNhanh,
+            this.lblCN,
+            this.xrLabel4,
+            this.lblNhanVienLap,
             this.label1});
          this.ReportHeader.Dpi = 96F;
-         this.ReportHeader.HeightF = 88.60001F;
+         this.ReportHeader.HeightF = 137.6F;
          this.ReportHeader.Name = "ReportHeader";
          // 
-         // lblChiNhanh
+         // lblCN
          // 
-         this.lblChiNhanh.Dpi = 96F;
-         this.lblChiNhanh.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.lblChiNhanh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-         this.lblChiNhanh.LocationFloat = new DevExpress.Utils.PointFloat(426.24F, 59.52002F);
-         this.lblChiNhanh.Multiline = true;
-         this.lblChiNhanh.Name = "lblChiNhanh";
-         this.lblChiNhanh.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-         this.lblChiNhanh.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.Yes;
-         this.lblChiNhanh.SizeF = new System.Drawing.SizeF(192F, 22.08F);
-         this.lblChiNhanh.StylePriority.UseFont = false;
-         this.lblChiNhanh.StylePriority.UseForeColor = false;
-         this.lblChiNhanh.Text = "lblChiNhanh";
+         this.lblCN.Dpi = 96F;
+         this.lblCN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblCN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.lblCN.LocationFloat = new DevExpress.Utils.PointFloat(317.76F, 66.93594F);
+         this.lblCN.Multiline = true;
+         this.lblCN.Name = "lblCN";
+         this.lblCN.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+         this.lblCN.SizeF = new System.Drawing.SizeF(300.48F, 22.08F);
+         this.lblCN.StylePriority.UseFont = false;
+         this.lblCN.StylePriority.UseForeColor = false;
+         this.lblCN.StylePriority.UseTextAlignment = false;
+         this.lblCN.Text = "lblCN";
+         this.lblCN.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+         // 
+         // xrLabel4
+         // 
+         this.xrLabel4.Dpi = 96F;
+         this.xrLabel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.xrLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(317.76F, 103.016F);
+         this.xrLabel4.Multiline = true;
+         this.xrLabel4.Name = "xrLabel4";
+         this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+         this.xrLabel4.SizeF = new System.Drawing.SizeF(160.1027F, 22.08F);
+         this.xrLabel4.StylePriority.UseFont = false;
+         this.xrLabel4.StylePriority.UseForeColor = false;
+         this.xrLabel4.StylePriority.UseTextAlignment = false;
+         this.xrLabel4.Text = "Nhân viên lập phiếu:";
+         this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+         // 
+         // lblNhanVienLap
+         // 
+         this.lblNhanVienLap.Dpi = 96F;
+         this.lblNhanVienLap.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.lblNhanVienLap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+         this.lblNhanVienLap.LocationFloat = new DevExpress.Utils.PointFloat(477.8627F, 103.016F);
+         this.lblNhanVienLap.Multiline = true;
+         this.lblNhanVienLap.Name = "lblNhanVienLap";
+         this.lblNhanVienLap.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+         this.lblNhanVienLap.SizeF = new System.Drawing.SizeF(140.3773F, 22.08F);
+         this.lblNhanVienLap.StylePriority.UseFont = false;
+         this.lblNhanVienLap.StylePriority.UseForeColor = false;
+         this.lblNhanVienLap.StylePriority.UseTextAlignment = false;
+         this.lblNhanVienLap.Text = "lblNhanVienLap";
+         this.lblNhanVienLap.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
          // 
          // label1
          // 
@@ -534,8 +571,10 @@
       private DevExpress.XtraReports.UI.XRTableCell tcLuong;
       private DataSetReportTableAdapters.Report_DSNVTableAdapter taReportDSNV;
       private DataSetReport dataSetReport;
-      private DevExpress.XtraReports.UI.XRLabel lblChiNhanh;
       private DevExpress.XtraReports.UI.XRLabel lblDate;
       private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+      private DevExpress.XtraReports.UI.XRLabel lblCN;
+      private DevExpress.XtraReports.UI.XRLabel xrLabel4;
+      private DevExpress.XtraReports.UI.XRLabel lblNhanVienLap;
    }
 }

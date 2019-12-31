@@ -18,7 +18,8 @@ namespace QLVT_DATHANG.Report
 
          var bds = UtilDB.BdsDSPM;
 
-         lblChiNhanh.Text = tenCN;
+         lblCN.Text = tenCN;
+         lblNhanVienLap.Text = UtilDB.CurrentFullName;
       }
    }
 }

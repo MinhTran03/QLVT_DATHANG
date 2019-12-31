@@ -110,6 +110,7 @@
          this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
          this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
          this.cboDepartment = new System.Windows.Forms.ComboBox();
+         this.errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
          ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -119,6 +120,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
          this.SuspendLayout();
          // 
          // documentViewer
@@ -936,16 +938,17 @@
          // 
          // btnFull
          // 
-         this.btnFull.Location = new System.Drawing.Point(359, 32);
+         this.btnFull.Location = new System.Drawing.Point(472, 34);
          this.btnFull.Name = "btnFull";
          this.btnFull.Size = new System.Drawing.Size(157, 23);
          this.btnFull.TabIndex = 8;
          this.btnFull.Text = "In toàn bộ chi nhánh";
+         this.btnFull.Visible = false;
          this.btnFull.Click += new System.EventHandler(this.btnFull_Click);
          // 
          // btnCurrent
          // 
-         this.btnCurrent.Location = new System.Drawing.Point(177, 34);
+         this.btnCurrent.Location = new System.Drawing.Point(309, 34);
          this.btnCurrent.Name = "btnCurrent";
          this.btnCurrent.Size = new System.Drawing.Size(157, 23);
          this.btnCurrent.TabIndex = 7;
@@ -962,8 +965,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.dtpTo.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-         this.dtpTo.Size = new System.Drawing.Size(94, 20);
+         this.dtpTo.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+         this.dtpTo.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+         this.dtpTo.Properties.Mask.EditMask = "dd/MM/yyyy";
+         this.dtpTo.Properties.MaxValue = new System.DateTime(2019, 12, 31, 8, 27, 44, 567);
+         this.dtpTo.Size = new System.Drawing.Size(107, 20);
          this.dtpTo.TabIndex = 6;
+         this.dtpTo.Validating += new System.ComponentModel.CancelEventHandler(this.dtpNotNull_Validating);
          // 
          // dtpFrom
          // 
@@ -975,8 +983,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
          this.dtpFrom.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+         this.dtpFrom.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+         this.dtpFrom.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+         this.dtpFrom.Properties.Mask.EditMask = "dd/MM/yyyy";
+         this.dtpFrom.Properties.MaxValue = new System.DateTime(2019, 12, 31, 8, 27, 44, 579);
          this.dtpFrom.Size = new System.Drawing.Size(99, 20);
          this.dtpFrom.TabIndex = 5;
+         this.dtpFrom.Validating += new System.ComponentModel.CancelEventHandler(this.dtpNotNull_Validating);
          // 
          // labelControl3
          // 
@@ -1003,6 +1016,7 @@
          this.labelControl1.Size = new System.Drawing.Size(92, 15);
          this.labelControl1.TabIndex = 2;
          this.labelControl1.Text = "Chọn Chi Nhánh:";
+         this.labelControl1.Visible = false;
          // 
          // cboDepartment
          // 
@@ -1015,7 +1029,11 @@
          this.cboDepartment.Name = "cboDepartment";
          this.cboDepartment.Size = new System.Drawing.Size(193, 23);
          this.cboDepartment.TabIndex = 3;
-         this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.cboDepartment_SelectedIndexChanged);
+         this.cboDepartment.Visible = false;
+         // 
+         // errorProvider
+         // 
+         this.errorProvider.ContainerControl = this;
          // 
          // frmReportTongHopNhapXuat
          // 
@@ -1041,6 +1059,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -1128,5 +1147,6 @@
       private DevExpress.XtraEditors.LabelControl labelControl2;
       private DevExpress.XtraEditors.SimpleButton btnFull;
       private DevExpress.XtraEditors.SimpleButton btnCurrent;
+      private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
    }
 }

@@ -856,6 +856,7 @@
          this.pnPickDepartment.Name = "pnPickDepartment";
          this.pnPickDepartment.Size = new System.Drawing.Size(934, 33);
          this.pnPickDepartment.TabIndex = 5;
+         this.pnPickDepartment.Visible = false;
          // 
          // labelControl1
          // 
@@ -878,7 +879,6 @@
          this.cboDepartment.Name = "cboDepartment";
          this.cboDepartment.Size = new System.Drawing.Size(193, 23);
          this.cboDepartment.TabIndex = 3;
-         this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.cboDeployment_SelectedIndexChanged);
          // 
          // frmReportDSNV
          // 

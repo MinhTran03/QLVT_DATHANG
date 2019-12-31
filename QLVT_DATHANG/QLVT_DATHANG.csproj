@@ -130,11 +130,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetReport.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmDSDDHChuaCoPhieuNhap.cs">
+    <Compile Include="Forms\frmReportDSDDHChuaCoPhieuNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmDSDDHChuaCoPhieuNhap.Designer.cs">
-      <DependentUpon>frmDSDDHChuaCoPhieuNhap.cs</DependentUpon>
+    <Compile Include="Forms\frmReportDSDDHChuaCoPhieuNhap.Designer.cs">
+      <DependentUpon>frmReportDSDDHChuaCoPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmReportDSDVT.cs">
       <SubType>Form</SubType>
@@ -292,8 +292,8 @@
     <Compile Include="Utility\UtilDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\frmDSDDHChuaCoPhieuNhap.resx">
-      <DependentUpon>frmDSDDHChuaCoPhieuNhap.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmReportDSDDHChuaCoPhieuNhap.resx">
+      <DependentUpon>frmReportDSDDHChuaCoPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmReportDSDVT.resx">
       <DependentUpon>frmReportDSDVT.cs</DependentUpon>
