@@ -252,7 +252,7 @@
          // 
          // pictureEdit1
          // 
-         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources._164_9_register_icon_iconbunny_removebg;
+         this.pictureEdit1.EditValue = global::QLVT_DATHANG.Properties.Resources.icon8_register_64;
          this.pictureEdit1.Location = new System.Drawing.Point(12, 12);
          this.pictureEdit1.Name = "pictureEdit1";
          this.pictureEdit1.Properties.AllowFocused = false;

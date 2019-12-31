@@ -195,6 +195,11 @@ namespace QLVT_DATHANG.Forms
             (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
             return false;
          }
+         if (bdsCTPX.Count == 0)
+         {
+            XtraMessageBox.Show("Vui lòng nhập chi tiết phiếu xuất", Cons.CaptionWarning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+         }
          return true;
       }
 

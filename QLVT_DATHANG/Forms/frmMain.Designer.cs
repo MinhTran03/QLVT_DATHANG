@@ -151,9 +151,9 @@
          // 
          this.btnDepot.Caption = "Kho";
          this.btnDepot.Id = 8;
-         this.btnDepot.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDepot.ImageOptions.SvgImage")));
+         this.btnDepot.ImageOptions.Image = global::QLVT_DATHANG.Properties.Resources.icons8_warehouse_64;
          this.btnDepot.Name = "btnDepot";
-         this.btnDepot.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+         this.btnDepot.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
          this.btnDepot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDepot_ItemClick);
          // 
          // btnOrder

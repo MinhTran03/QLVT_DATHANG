@@ -160,6 +160,11 @@
     <Compile Include="Forms\frmReportTongHopNhapXuat.Designer.cs">
       <DependentUpon>frmReportTongHopNhapXuat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Report\Xrpt_DanhSachDDHChuaCoPhieuNhap.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -225,11 +230,6 @@
     </Compile>
     <Compile Include="Forms\frmSelectMaterials.Designer.cs">
       <DependentUpon>frmSelectMaterials.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\frmDeliveryNote.cs">
       <SubType>UserControl</SubType>
@@ -405,18 +405,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="icon\icons8_exit_16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\icons8_cancel_file_16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\id_card_96px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\icons8_show_password_16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
@@ -429,46 +417,34 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="icon\icons8_edit_property_16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\164.9-register-icon-iconbunny-removebg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\icons8_plus_math_16.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\icons8_switch_16.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="icon\icons8_cancel_file_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\icons8_exit_16.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="icon\icons8_add_user_male_16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icon\icons8_add_user_16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\manager-clipart-material-management-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\162-512.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\Download-Warehouse-PNG-Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\28-512.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icon\icons8_add_list_32.png" />
+    <None Include="icon\icons8_show_password_16.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\icons8_add_list_16.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\icons8_delete_sign_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\icon8_register_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\icons8_warehouse_64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
