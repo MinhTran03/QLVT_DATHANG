@@ -87,11 +87,10 @@
          this.bdsDSKHO = new System.Windows.Forms.BindingSource(this.components);
          this.lkeEmployee = new DevExpress.XtraEditors.LookUpEdit();
          this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
-         this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
          this.taDSKHO = new QLVT_DATHANG.DataSetTableAdapters.DSKHOTableAdapter();
          this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
          this.taDSNCC = new QLVT_DATHANG.DataSetTableAdapters.DSNCCTableAdapter();
-         this.dsvtTableAdapter1 = new QLVT_DATHANG.DataSetTableAdapters.DSVTTableAdapter();
+         this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDDH)).BeginInit();
@@ -119,7 +118,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSKHO)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
          this.SuspendLayout();
          // 
          // bmPN
@@ -569,7 +568,7 @@
          this.cboNCC.FormattingEnabled = true;
          this.cboNCC.Location = new System.Drawing.Point(108, 59);
          this.cboNCC.Name = "cboNCC";
-         this.cboNCC.Size = new System.Drawing.Size(173, 21);
+         this.cboNCC.Size = new System.Drawing.Size(158, 21);
          this.cboNCC.TabIndex = 5;
          // 
          // bdsDSNCC
@@ -719,11 +718,6 @@
          this.bdsDSNV.DataMember = "DSNV";
          this.bdsDSNV.DataSource = this.dataSet;
          // 
-         // bindingSource1
-         // 
-         this.bindingSource1.DataMember = "DSVT";
-         this.bindingSource1.DataSource = this.dataSet;
-         // 
          // taDSKHO
          // 
          this.taDSKHO.ClearBeforeFill = true;
@@ -736,9 +730,11 @@
          // 
          this.taDSNCC.ClearBeforeFill = true;
          // 
-         // dsvtTableAdapter1
+         // errorProvider
          // 
-         this.dsvtTableAdapter1.ClearBeforeFill = true;
+         this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+         this.errorProvider.ContainerControl = this;
+         this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
          // 
          // frmOrders
          // 
@@ -787,7 +783,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSKHO)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.lkeEmployee.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -840,11 +836,9 @@
       private System.Windows.Forms.BindingSource bdsDSNCC;
       private System.Windows.Forms.BindingSource bdsDSKHO;
       private System.Windows.Forms.BindingSource bdsDSNV;
-      private System.Windows.Forms.BindingSource bindingSource1;
       private DataSetTableAdapters.DSKHOTableAdapter taDSKHO;
       private DataSetTableAdapters.DSNVTableAdepter taDSNV;
       private DataSetTableAdapters.DSNCCTableAdapter taDSNCC;
-      private DataSetTableAdapters.DSVTTableAdapter dsvtTableAdapter1;
       private DevExpress.XtraEditors.TextEdit txtEmployeeId;
       private DevExpress.XtraEditors.LabelControl labelControl4;
       private DevExpress.XtraEditors.LabelControl labelControl3;
@@ -857,5 +851,6 @@
       private DevExpress.XtraEditors.LookUpEdit lkeEmployee;
       private System.Windows.Forms.ComboBox cboNCC;
       private DevExpress.XtraGrid.Columns.GridColumn colTHANHTIEN;
+      private System.Windows.Forms.ErrorProvider errorProvider;
    }
 }

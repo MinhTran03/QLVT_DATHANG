@@ -165,6 +165,8 @@ namespace QLVT_DATHANG.Forms
       {
          try
          {
+            txtCustomerName.Text = txtCustomerName.Text.Trim();
+
             if (IsSaveGoodsDeliveryNote() == false) return false;
 
             SaveALlDataDetail();
@@ -222,6 +224,11 @@ namespace QLVT_DATHANG.Forms
                MessageBoxButtons.OK, MessageBoxIcon.Error);
             txtId.Focus();
             txtId.SelectAll();
+            return false;
+         }
+         if (!IsValidEmptyValue())
+         {
+            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
             return false;
          }
          return true;
@@ -488,6 +495,20 @@ namespace QLVT_DATHANG.Forms
                e.DisplayText = string.Format(Cons.CiVNI, "{0:c0}", price);
             }
          }
+      }
+
+      private bool IsValidEmptyValue()
+      {
+         dxErrorProvider.ClearErrors();
+
+         var controlsNotValid = gbDeliveryNote.Controls.OfType<BaseEdit>().Where(c => string.IsNullOrWhiteSpace(c.Text));
+
+         controlsNotValid.ToList().ForEach(c =>
+         {
+            dxErrorProvider.SetError(c, Cons.ErrorNotNull);
+         });
+
+         return !dxErrorProvider.HasErrors;
       }
 
    }

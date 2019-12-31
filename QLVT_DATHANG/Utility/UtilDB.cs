@@ -284,30 +284,29 @@ namespace QLVT_DATHANG.Utility
             }
          }
       }
-      private static SqlTransaction transaction = null;
 
-      public static void SetIsolationOnRow(string tableName, object key)
-      {
-         var connection = new SqlConnection(UtilDB.ConnectionString);
-         connection.Open();
-         transaction = connection.BeginTransaction();
+      //public static void SetIsolationOnRow(string tableName, object key)
+      //{
+      //   var connection = new SqlConnection(UtilDB.ConnectionString);
+      //   connection.Open();
+      //   transaction = connection.BeginTransaction();
 
-         // block row
-         using (var command = connection.CreateCommand())
-         {
-            command.Connection = connection;
-            command.Transaction = transaction;
-            command.CommandText = "SET TRANSACTION ISOLATION LEVEL REPEATABLE READ\nSELECT * FROM NHANVIEN WHERE MANV=14";
-            command.CommandType = CommandType.Text;
-            try
-            {
-               command.ExecuteNonQueryAsync();
-            }
-            catch (Exception ex)
-            {
-               throw ex;
-            }
-         }
-      }
+      //   // block row
+      //   using (var command = connection.CreateCommand())
+      //   {
+      //      command.Connection = connection;
+      //      command.Transaction = transaction;
+      //      command.CommandText = "SET TRANSACTION ISOLATION LEVEL REPEATABLE READ\nSELECT * FROM NHANVIEN WHERE MANV=14";
+      //      command.CommandType = CommandType.Text;
+      //      try
+      //      {
+      //         command.ExecuteNonQueryAsync();
+      //      }
+      //      catch (Exception ex)
+      //      {
+      //         throw ex;
+      //      }
+      //   }
+      //}
    }
 }

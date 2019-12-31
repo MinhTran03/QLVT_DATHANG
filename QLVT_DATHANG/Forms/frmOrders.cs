@@ -159,6 +159,7 @@ namespace QLVT_DATHANG.Forms
       {
          bdsDDH.AddNew();
 
+         txtOrderId.Text = Cons.PrefixDDH;
          dtpOrderDate.EditValue = DateTime.Now;
          lkeEmployee.EditValue = int.Parse(UtilDB.UserName);
          cboNCC.SelectedIndex = -1;
@@ -197,7 +198,11 @@ namespace QLVT_DATHANG.Forms
             txtOrderId.SelectAll();
             return false;
          }
-
+         if (!IsValidEmptyValue())
+         {
+            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
+            return false;
+         }
          return true;
       }
 
@@ -445,6 +450,26 @@ namespace QLVT_DATHANG.Forms
          {
             btnRemoveLine.Enabled = true;
          }
+      }
+
+      private bool IsValidEmptyValue()
+      {
+         dxErrorProvider.ClearErrors();
+         errorProvider.Clear();
+
+         var controlsNotValid = gbOrder.Controls.OfType<BaseEdit>().Where(c => string.IsNullOrWhiteSpace(c.Text));
+
+         if (string.IsNullOrWhiteSpace(cboNCC.Text))
+         {
+            errorProvider.SetError(cboNCC, Cons.ErrorNotNull);
+         }
+
+         controlsNotValid.ToList().ForEach(c =>
+         {
+            dxErrorProvider.SetError(c, Cons.ErrorNotNull);
+         });
+
+         return !(dxErrorProvider.HasErrors && errorProvider.GetError(cboNCC) != null);
       }
    }
 }

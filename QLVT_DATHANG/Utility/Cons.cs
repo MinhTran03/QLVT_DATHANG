@@ -6,6 +6,7 @@ namespace QLVT_DATHANG.Utility
    public class Cons
    {
       public static CultureInfo CiVNI = new CultureInfo("vi-VN", false);
+      public const string PrefixDDH = "MDDH";
 
       public const int ErrorDuplicateLoginNameCode = 15025;
       public const int ErrorDuplicateUserNameCode = 15023;

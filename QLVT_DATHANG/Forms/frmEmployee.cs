@@ -15,6 +15,7 @@ namespace QLVT_DATHANG.Forms
    using DevExpress.XtraEditors.Mask;
    using DevExpress.XtraGrid.Views.Base;
    using DevExpress.XtraSplashScreen;
+   using System.Collections.Generic;
    using System.Threading.Tasks;
    using UserControls;
    using Utility;
@@ -103,7 +104,7 @@ namespace QLVT_DATHANG.Forms
 
          dtpEmpBirth.Properties.Mask.MaskType = MaskType.DateTime;
          dtpEmpBirth.Properties.Mask.EditMask = "dd/MM/yyyy";
-         dtpEmpBirth.Properties.MaxValue = DateTime.Today.AddDays(-(365 * 18));
+         dtpEmpBirth.Properties.MaxValue = DateTime.Today;//.AddDays(-(365 * 18));
          dtpEmpBirth.Properties.Mask.BeepOnError = true;
          dtpEmpBirth.Properties.AllowNullInput = DefaultBoolean.True;
          //dtpEmpBirth.Properties.NullValuePrompt = "Pick a day";
@@ -250,7 +251,14 @@ namespace QLVT_DATHANG.Forms
          if (_buttonAction == ButtonActionType.Add)
             txtEmpId.EditValue = UtilDB.GenerateEmployeeId();
 
+         TrimAll();
+
          if (!IsValidEmptyValue())
+         {
+            (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
+            return false;
+         }
+         if (!IsValidCustom())
          {
             (dxErrorProvider.GetControlsWithError()[0] as BaseEdit).SelectAll();
             return false;
@@ -614,6 +622,14 @@ namespace QLVT_DATHANG.Forms
 
       #region VALIDATE
 
+      private void TrimAll()
+      {
+         lcEmplyee.Controls.OfType<BaseEdit>().Where(c => !(c is SpinEdit || c is DateEdit)).ToList().ForEach(c =>
+         {
+            c.Text = c.Text.Trim();
+         });
+      }
+
       private bool IsExistEmployee(int employeeId)
       {
          bool exist = true;
@@ -662,9 +678,14 @@ namespace QLVT_DATHANG.Forms
 
       private bool IsValidEmptyValue()
       {
-         var controlsNotValid = gbEmployee.Controls.OfType<BaseEdit>()
-                                       .Where(control => string.IsNullOrEmpty(control.EditValue.ToString()))
-                                       .OrderBy(control => control.TabIndex);
+         //lcEmplyee.Controls.OfType<BaseEdit>().ToList().ForEach(c =>
+         //{
+         //   dxErrorProvider.SetError(c, string.Empty);
+         //});
+
+         dxErrorProvider.ClearErrors();
+
+         var controlsNotValid = lcEmplyee.Controls.OfType<BaseEdit>().Where(c => string.IsNullOrWhiteSpace(c.Text));
 
          controlsNotValid.ToList().ForEach(c =>
          {
@@ -672,6 +693,17 @@ namespace QLVT_DATHANG.Forms
          });
 
          return !dxErrorProvider.HasErrors;
+      }
+
+      private bool IsValidCustom()
+      {
+         if(int.Parse(spiEmpSalary.EditValue.ToString()) < Cons.MinSalary)
+         {
+            dxErrorProvider.SetError(spiEmpSalary, Cons.ErrorSalary);
+            return false;
+         }
+
+         return true;
       }
 
       #endregion

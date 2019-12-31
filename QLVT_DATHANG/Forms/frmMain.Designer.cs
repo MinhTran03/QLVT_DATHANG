@@ -31,6 +31,8 @@
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
          this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+         this.bsiHoTenNV = new DevExpress.XtraBars.BarStaticItem();
+         this.bliUserInfo = new DevExpress.XtraBars.BarSubItem();
          this.btnNhanVien = new DevExpress.XtraBars.BarButtonItem();
          this.btnVatTu = new DevExpress.XtraBars.BarButtonItem();
          this.btnPN = new DevExpress.XtraBars.BarButtonItem();
@@ -53,8 +55,6 @@
          this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
          this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
          this.bsiUserInfo = new DevExpress.XtraBars.BarSubItem();
-         this.bsiHoTenNV = new DevExpress.XtraBars.BarStaticItem();
-         this.bliUserInfo = new DevExpress.XtraBars.BarSubItem();
          ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -66,6 +66,8 @@
          this.ribbonControl1.CaptionBarItemLinks.Add(this.bliUserInfo);
          this.ribbonControl1.ExpandCollapseItem.Id = 0;
          this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bsiHoTenNV,
+            this.bliUserInfo,
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
             this.btnNhanVien,
@@ -79,9 +81,7 @@
             this.barButtonItem3,
             this.barButtonItem2,
             this.barButtonItem4,
-            this.btnTongHopNhapXuat,
-            this.bsiHoTenNV,
-            this.bliUserInfo});
+            this.btnTongHopNhapXuat});
          this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
          this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
          this.ribbonControl1.MaxItemId = 26;
@@ -94,6 +94,21 @@
             this.repositoryItemLookUpEdit1});
          this.ribbonControl1.Size = new System.Drawing.Size(730, 143);
          this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
+         // 
+         // bsiHoTenNV
+         // 
+         this.bsiHoTenNV.Caption = "HOTENNV";
+         this.bsiHoTenNV.Id = 24;
+         this.bsiHoTenNV.Name = "bsiHoTenNV";
+         this.bsiHoTenNV.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+         // 
+         // bliUserInfo
+         // 
+         this.bliUserInfo.Caption = "Thông tin chi tiết";
+         this.bliUserInfo.Id = 25;
+         this.bliUserInfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bliUserInfo.ImageOptions.SvgImage")));
+         this.bliUserInfo.Name = "bliUserInfo";
+         this.bliUserInfo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          // 
          // btnNhanVien
          // 
@@ -216,13 +231,13 @@
          this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1});
          this.ribbonPage2.Name = "ribbonPage2";
-         this.ribbonPage2.Text = "ĐẶT HÀNG";
+         this.ribbonPage2.Text = "QUẢN LÝ PHIẾU";
          // 
          // ribbonPageGroup1
          // 
          this.ribbonPageGroup1.ItemLinks.Add(this.btnOrder);
-         this.ribbonPageGroup1.ItemLinks.Add(this.btnPN);
          this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
+         this.ribbonPageGroup1.ItemLinks.Add(this.btnPN);
          this.ribbonPageGroup1.Name = "ribbonPageGroup1";
          this.ribbonPageGroup1.Text = "LẬP PHIẾU";
          // 
@@ -272,21 +287,6 @@
          this.bsiUserInfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bsiUserInfo.ImageOptions.SvgImage")));
          this.bsiUserInfo.Name = "bsiUserInfo";
          this.bsiUserInfo.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-         // 
-         // bsiHoTenNV
-         // 
-         this.bsiHoTenNV.Caption = "HOTENNV";
-         this.bsiHoTenNV.Id = 24;
-         this.bsiHoTenNV.Name = "bsiHoTenNV";
-         this.bsiHoTenNV.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-         // 
-         // bliUserInfo
-         // 
-         this.bliUserInfo.Caption = "Thông tin chi tiết";
-         this.bliUserInfo.Id = 25;
-         this.bliUserInfo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
-         this.bliUserInfo.Name = "bliUserInfo";
-         this.bliUserInfo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
          // 
          // frmMain
          // 

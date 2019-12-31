@@ -21,9 +21,21 @@
     <Shape ID="DesignTable:DSKHO" ZOrder="10" X="515" Y="-17" Height="54" Width="174" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="45" OldDataTableHeight="64" SplitterPosition="24" />
     <Shape ID="DesignTable:DSNCC" ZOrder="8" X="722" Y="-18" Height="54" Width="186" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="44" OldDataTableHeight="46" SplitterPosition="24" />
     <Shape ID="DesignTable:DSVTDH" ZOrder="3" X="51" Y="144" Height="54" Width="158" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="45" OldDataTableHeight="102" SplitterPosition="24" />
-    <Shape ID="DesignTable:DSVTCONHANG" ZOrder="1" X="51" Y="273" Height="134" Width="167" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
+    <Shape ID="DesignTable:DSVTCONHANG" ZOrder="1" X="51" Y="273" Height="54" Width="167" AdapterExpanded="false" DataTableExpanded="false" OldAdapterHeight="45" OldDataTableHeight="83" SplitterPosition="24" />
   </Shapes>
   <Connectors>
+    <Connector ID="DesignRelation:FK_CTDDH_VatTu" ZOrder="14" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>865</X>
+          <Y>124</Y>
+        </Point>
+        <Point>
+          <X>795</X>
+          <Y>124</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
     <Connector ID="DesignRelation:FK_CTDDH_DatHang" ZOrder="6" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -36,15 +48,15 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_CTDDH_VatTu" ZOrder="14" LineWidth="11">
+    <Connector ID="DesignRelation:FK_CTPN_PhieuNhap" ZOrder="17" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>865</X>
-          <Y>124</Y>
+          <X>549</X>
+          <Y>204</Y>
         </Point>
         <Point>
-          <X>795</X>
-          <Y>124</Y>
+          <X>608</X>
+          <Y>204</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -64,30 +76,6 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_CTPN_PhieuNhap" ZOrder="17" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>549</X>
-          <Y>204</Y>
-        </Point>
-        <Point>
-          <X>608</X>
-          <Y>204</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_CTPX_PX" ZOrder="20" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>544</X>
-          <Y>286</Y>
-        </Point>
-        <Point>
-          <X>606</X>
-          <Y>286</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:FK_CTPX_VatTu" ZOrder="18" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -101,6 +89,18 @@
         <Point>
           <X>781</X>
           <Y>283</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_CTPX_PX" ZOrder="20" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>544</X>
+          <Y>286</Y>
+        </Point>
+        <Point>
+          <X>606</X>
+          <Y>286</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -144,22 +144,6 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_PhieuNhap_NhanVien" ZOrder="24" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>255</X>
-          <Y>124</Y>
-        </Point>
-        <Point>
-          <X>255</X>
-          <Y>190</Y>
-        </Point>
-        <Point>
-          <X>340</X>
-          <Y>190</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:FK_PhieuNhap_DatHang" ZOrder="7" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -177,6 +161,22 @@
         <Point>
           <X>549</X>
           <Y>182</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_PhieuNhap_NhanVien" ZOrder="24" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>255</X>
+          <Y>124</Y>
+        </Point>
+        <Point>
+          <X>255</X>
+          <Y>190</Y>
+        </Point>
+        <Point>
+          <X>340</X>
+          <Y>190</Y>
         </Point>
       </RoutePoints>
     </Connector>

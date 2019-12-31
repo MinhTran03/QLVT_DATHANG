@@ -84,6 +84,11 @@
          this.colTHANHTIEN = new DevExpress.XtraGrid.Columns.GridColumn();
          this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.gbDeliveryNote = new DevExpress.XtraEditors.GroupControl();
+         this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+         this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
          this.txtId = new DevExpress.XtraEditors.TextEdit();
          this.dtpDate = new DevExpress.XtraEditors.DateEdit();
          this.txtCustomerName = new DevExpress.XtraEditors.TextEdit();
@@ -91,11 +96,6 @@
          this.lkeMaKho = new DevExpress.XtraEditors.LookUpEdit();
          this.pnSub = new DevExpress.XtraEditors.PanelControl();
          this.taDSVTCH = new QLVT_DATHANG.DataSetTableAdapters.DSVTCONHANGTableAdapter();
-         this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-         this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-         this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-         this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-         this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
          ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bmPN)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.bdsDSKHO)).BeginInit();
@@ -632,9 +632,50 @@
          this.gbDeliveryNote.TabIndex = 0;
          this.gbDeliveryNote.Text = "Thông tin Phiếu Xuất";
          // 
+         // labelControl6
+         // 
+         this.labelControl6.Location = new System.Drawing.Point(193, 77);
+         this.labelControl6.Name = "labelControl6";
+         this.labelControl6.Size = new System.Drawing.Size(42, 13);
+         this.labelControl6.TabIndex = 10;
+         this.labelControl6.Text = "Mã kho:";
+         // 
+         // labelControl5
+         // 
+         this.labelControl5.Location = new System.Drawing.Point(8, 77);
+         this.labelControl5.Name = "labelControl5";
+         this.labelControl5.Size = new System.Drawing.Size(73, 13);
+         this.labelControl5.TabIndex = 10;
+         this.labelControl5.Text = "Mã nhân viên:";
+         // 
+         // labelControl4
+         // 
+         this.labelControl4.Location = new System.Drawing.Point(8, 53);
+         this.labelControl4.Name = "labelControl4";
+         this.labelControl4.Size = new System.Drawing.Size(102, 13);
+         this.labelControl4.TabIndex = 10;
+         this.labelControl4.Text = "Họ tên khách hàng:";
+         // 
+         // labelControl3
+         // 
+         this.labelControl3.Location = new System.Drawing.Point(193, 29);
+         this.labelControl3.Name = "labelControl3";
+         this.labelControl3.Size = new System.Drawing.Size(54, 13);
+         this.labelControl3.TabIndex = 10;
+         this.labelControl3.Text = "Ngày xuất:";
+         // 
+         // labelControl2
+         // 
+         this.labelControl2.Location = new System.Drawing.Point(8, 29);
+         this.labelControl2.Name = "labelControl2";
+         this.labelControl2.Size = new System.Drawing.Size(77, 13);
+         this.labelControl2.TabIndex = 10;
+         this.labelControl2.Text = "Mã phiếu xuất:";
+         // 
          // txtId
          // 
          this.txtId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "MAPX", true));
+         this.dxErrorProvider.SetIconAlignment(this.txtId, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.txtId.Location = new System.Drawing.Point(95, 26);
          this.txtId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.txtId.MenuManager = this.bmPN;
@@ -648,6 +689,7 @@
          // 
          this.dtpDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "NGAY", true));
          this.dtpDate.EditValue = null;
+         this.dxErrorProvider.SetIconAlignment(this.dtpDate, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.dtpDate.Location = new System.Drawing.Point(253, 26);
          this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.dtpDate.MenuManager = this.bmPN;
@@ -667,6 +709,7 @@
          // txtCustomerName
          // 
          this.txtCustomerName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "HOTENKH", true));
+         this.dxErrorProvider.SetIconAlignment(this.txtCustomerName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.txtCustomerName.Location = new System.Drawing.Point(120, 50);
          this.txtCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.txtCustomerName.MenuManager = this.bmPN;
@@ -677,6 +720,7 @@
          // lkeEmployee
          // 
          this.lkeEmployee.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsPX, "MANV", true));
+         this.dxErrorProvider.SetIconAlignment(this.lkeEmployee, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.lkeEmployee.Location = new System.Drawing.Point(88, 74);
          this.lkeEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.lkeEmployee.MenuManager = this.bmPN;
@@ -693,6 +737,7 @@
          // lkeMaKho
          // 
          this.lkeMaKho.EditValue = "";
+         this.dxErrorProvider.SetIconAlignment(this.lkeMaKho, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
          this.lkeMaKho.Location = new System.Drawing.Point(246, 74);
          this.lkeMaKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.lkeMaKho.MenuManager = this.bmPN;
@@ -719,46 +764,6 @@
          // taDSVTCH
          // 
          this.taDSVTCH.ClearBeforeFill = true;
-         // 
-         // labelControl2
-         // 
-         this.labelControl2.Location = new System.Drawing.Point(8, 29);
-         this.labelControl2.Name = "labelControl2";
-         this.labelControl2.Size = new System.Drawing.Size(77, 13);
-         this.labelControl2.TabIndex = 10;
-         this.labelControl2.Text = "Mã phiếu xuất:";
-         // 
-         // labelControl3
-         // 
-         this.labelControl3.Location = new System.Drawing.Point(193, 29);
-         this.labelControl3.Name = "labelControl3";
-         this.labelControl3.Size = new System.Drawing.Size(54, 13);
-         this.labelControl3.TabIndex = 10;
-         this.labelControl3.Text = "Ngày xuất:";
-         // 
-         // labelControl4
-         // 
-         this.labelControl4.Location = new System.Drawing.Point(8, 53);
-         this.labelControl4.Name = "labelControl4";
-         this.labelControl4.Size = new System.Drawing.Size(102, 13);
-         this.labelControl4.TabIndex = 10;
-         this.labelControl4.Text = "Họ tên khách hàng:";
-         // 
-         // labelControl5
-         // 
-         this.labelControl5.Location = new System.Drawing.Point(8, 77);
-         this.labelControl5.Name = "labelControl5";
-         this.labelControl5.Size = new System.Drawing.Size(73, 13);
-         this.labelControl5.TabIndex = 10;
-         this.labelControl5.Text = "Mã nhân viên:";
-         // 
-         // labelControl6
-         // 
-         this.labelControl6.Location = new System.Drawing.Point(193, 77);
-         this.labelControl6.Name = "labelControl6";
-         this.labelControl6.Size = new System.Drawing.Size(42, 13);
-         this.labelControl6.TabIndex = 10;
-         this.labelControl6.Text = "Mã kho:";
          // 
          // frmGoodsDeliveryNote
          // 
