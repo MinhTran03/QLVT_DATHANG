@@ -49,6 +49,7 @@ namespace QLVT_DATHANG.Forms
 
       private void SetupControls()
       {
+         dtpOrderDate.Properties.MaxValue = DateTime.Today;
       }
 
       private void LoadTable()
