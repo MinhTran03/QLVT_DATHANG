@@ -1,5 +1,6 @@
 ﻿using System;
 using DevExpress.XtraEditors;
+using QLVT_DATHANG.Report;
 
 namespace QLVT_DATHANG.Forms
 {
@@ -12,9 +13,9 @@ namespace QLVT_DATHANG.Forms
 
       private void frmReportDSVT_Load(object sender, EventArgs e)
       {
-         //Xrpt_DanhSachvatTu danhSachvatTu = new Xrpt_DanhSachvatTu();
-         //docDSVT.DocumentSource = danhSachvatTu;
-         //danhSachvatTu.CreateDocument();
+         Xrpt_ReportDSVT danhSachvatTu = new Xrpt_ReportDSVT();
+         docDSVT.DocumentSource = danhSachvatTu;
+         danhSachvatTu.CreateDocument();
       }
    }
 }

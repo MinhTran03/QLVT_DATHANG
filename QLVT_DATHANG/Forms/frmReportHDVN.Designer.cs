@@ -1,6 +1,6 @@
 ﻿namespace QLVT_DATHANG.Forms
 {
-    partial class frmReportDSDVT
+    partial class frmReportHDVN
     {
         /// <summary>
         /// Required designer variable.
@@ -29,18 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportDSDVT));
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.dtpEnd = new DevExpress.XtraEditors.DateEdit();
-            this.dtpBegin = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.cboPhieu = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.docDSDVT = new DevExpress.XtraPrinting.Preview.DocumentViewer();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportHDVN));
+            this.docView = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             this.documentViewerBarManager1 = new DevExpress.XtraPrinting.Preview.DocumentViewerBarManager(this.components);
-            this.tobDSDVT = new DevExpress.XtraPrinting.Preview.PreviewBar();
+            this.previewBar1 = new DevExpress.XtraPrinting.Preview.PreviewBar();
             this.bbiDocumentMap = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.bbiParameters = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.bbiThumbnails = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
@@ -70,7 +62,7 @@
             this.bbiExportFile = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.bbiSendFile = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             this.bbiClosePreview = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
-            this.stbDSDVT = new DevExpress.XtraPrinting.Preview.PreviewBar();
+            this.previewBar2 = new DevExpress.XtraPrinting.Preview.PreviewBar();
             this.printPreviewStaticItem1 = new DevExpress.XtraPrinting.Preview.PrintPreviewStaticItem();
             this.progressBarEditItem1 = new DevExpress.XtraPrinting.Preview.ProgressBarEditItem();
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
@@ -78,7 +70,7 @@
             this.printPreviewStaticItem2 = new DevExpress.XtraPrinting.Preview.PrintPreviewStaticItem();
             this.zoomTrackBarEditItem1 = new DevExpress.XtraPrinting.Preview.ZoomTrackBarEditItem();
             this.repositoryItemZoomTrackBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar();
-            this.preDSDVT = new DevExpress.XtraPrinting.Preview.PreviewBar();
+            this.previewBar3 = new DevExpress.XtraPrinting.Preview.PreviewBar();
             this.miFile = new DevExpress.XtraPrinting.Preview.PrintPreviewSubItem();
             this.miView = new DevExpress.XtraPrinting.Preview.PrintPreviewSubItem();
             this.miPageLayout = new DevExpress.XtraPrinting.Preview.PrintPreviewSubItem();
@@ -109,128 +101,60 @@
             this.printPreviewBarCheckItem17 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             this.printPreviewBarCheckItem18 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             this.printPreviewBarCheckItem19 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.lkeMaNV = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.dtpEnd = new DevExpress.XtraEditors.DateEdit();
+            this.dtpBegin = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cboPhieu = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.dataSet = new QLVT_DATHANG.DataSet();
+            this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
+            this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
+            ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkeMaNV.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPhieu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelControl1
+            // docView
             // 
-            this.panelControl1.Controls.Add(this.btnPrint);
-            this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.dtpEnd);
-            this.panelControl1.Controls.Add(this.dtpBegin);
-            this.panelControl1.Controls.Add(this.labelControl2);
-            this.panelControl1.Controls.Add(this.cboPhieu);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 66);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1216, 46);
-            this.panelControl1.TabIndex = 2;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(915, 9);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(94, 29);
-            this.btnPrint.TabIndex = 15;
-            this.btnPrint.Text = "In Danh Sách";
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(635, 15);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(28, 19);
-            this.labelControl3.TabIndex = 14;
-            this.labelControl3.Text = "Đến:";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(356, 15);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(18, 19);
-            this.labelControl1.TabIndex = 13;
-            this.labelControl1.Text = "Từ:";
-            // 
-            // dtpEnd
-            // 
-            this.dtpEnd.EditValue = null;
-            this.dtpEnd.Location = new System.Drawing.Point(669, 12);
-            this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpEnd.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
-            this.dtpEnd.Size = new System.Drawing.Size(194, 24);
-            this.dtpEnd.TabIndex = 12;
-            // 
-            // dtpBegin
-            // 
-            this.dtpBegin.EditValue = null;
-            this.dtpBegin.Location = new System.Drawing.Point(380, 12);
-            this.dtpBegin.Name = "dtpBegin";
-            this.dtpBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtpBegin.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
-            this.dtpBegin.Size = new System.Drawing.Size(194, 24);
-            this.dtpBegin.TabIndex = 11;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(52, 15);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(28, 19);
-            this.labelControl2.TabIndex = 9;
-            this.labelControl2.Text = "Loại:";
-            // 
-            // cboPhieu
-            // 
-            this.cboPhieu.EditValue = "Phiếu Nhập";
-            this.cboPhieu.Location = new System.Drawing.Point(111, 12);
-            this.cboPhieu.Name = "cboPhieu";
-            this.cboPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboPhieu.Properties.DropDownRows = 2;
-            this.cboPhieu.Properties.Items.AddRange(new object[] {
-            "Phiếu Nhập",
-            "Phiếu Xuất"});
-            this.cboPhieu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboPhieu.Size = new System.Drawing.Size(185, 24);
-            this.cboPhieu.TabIndex = 10;
-            // 
-            // docDSDVT
-            // 
-            this.docDSDVT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.docDSDVT.IsMetric = false;
-            this.docDSDVT.Location = new System.Drawing.Point(0, 112);
-            this.docDSDVT.Name = "docDSDVT";
-            this.docDSDVT.Size = new System.Drawing.Size(1216, 606);
-            this.docDSDVT.TabIndex = 3;
+            this.docView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.docView.IsMetric = false;
+            this.docView.Location = new System.Drawing.Point(0, 66);
+            this.docView.Name = "docView";
+            this.docView.Size = new System.Drawing.Size(1382, 635);
+            this.docView.TabIndex = 0;
             // 
             // documentViewerBarManager1
             // 
             this.documentViewerBarManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.tobDSDVT,
-            this.stbDSDVT,
-            this.preDSDVT});
+            this.previewBar1,
+            this.previewBar2,
+            this.previewBar3});
             this.documentViewerBarManager1.DockControls.Add(this.barDockControlTop);
             this.documentViewerBarManager1.DockControls.Add(this.barDockControlBottom);
             this.documentViewerBarManager1.DockControls.Add(this.barDockControlLeft);
             this.documentViewerBarManager1.DockControls.Add(this.barDockControlRight);
-            this.documentViewerBarManager1.DocumentViewer = this.docDSDVT;
+            this.documentViewerBarManager1.DocumentViewer = this.docView;
             this.documentViewerBarManager1.Form = this;
             this.documentViewerBarManager1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("documentViewerBarManager1.ImageStream")));
             this.documentViewerBarManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -293,23 +217,23 @@
             this.printPreviewBarCheckItem17,
             this.printPreviewBarCheckItem18,
             this.printPreviewBarCheckItem19});
-            this.documentViewerBarManager1.MainMenu = this.preDSDVT;
+            this.documentViewerBarManager1.MainMenu = this.previewBar3;
             this.documentViewerBarManager1.MaxItemId = 59;
-            this.documentViewerBarManager1.PreviewBar = this.tobDSDVT;
+            this.documentViewerBarManager1.PreviewBar = this.previewBar1;
             this.documentViewerBarManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1,
             this.repositoryItemZoomTrackBar1,
             this.printPreviewRepositoryItemComboBox1});
-            this.documentViewerBarManager1.StatusBar = this.stbDSDVT;
+            this.documentViewerBarManager1.StatusBar = this.previewBar2;
             this.documentViewerBarManager1.TransparentEditorsMode = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // tobDSDVT
+            // previewBar1
             // 
-            this.tobDSDVT.BarName = "Toolbar";
-            this.tobDSDVT.DockCol = 0;
-            this.tobDSDVT.DockRow = 1;
-            this.tobDSDVT.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.tobDSDVT.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.previewBar1.BarName = "Toolbar";
+            this.previewBar1.DockCol = 0;
+            this.previewBar1.DockRow = 1;
+            this.previewBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.previewBar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDocumentMap),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiParameters),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiThumbnails),
@@ -338,7 +262,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiExportFile, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSendFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiClosePreview, true)});
-            this.tobDSDVT.Text = "Toolbar";
+            this.previewBar1.Text = "Toolbar";
             // 
             // bbiDocumentMap
             // 
@@ -615,23 +539,23 @@
             this.bbiClosePreview.Id = 32;
             this.bbiClosePreview.Name = "bbiClosePreview";
             // 
-            // stbDSDVT
+            // previewBar2
             // 
-            this.stbDSDVT.BarName = "Status Bar";
-            this.stbDSDVT.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.stbDSDVT.DockCol = 0;
-            this.stbDSDVT.DockRow = 0;
-            this.stbDSDVT.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.stbDSDVT.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.previewBar2.BarName = "Status Bar";
+            this.previewBar2.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.previewBar2.DockCol = 0;
+            this.previewBar2.DockRow = 0;
+            this.previewBar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.previewBar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.printPreviewStaticItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.progressBarEditItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.printPreviewBarItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.printPreviewStaticItem2, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.zoomTrackBarEditItem1)});
-            this.stbDSDVT.OptionsBar.AllowQuickCustomization = false;
-            this.stbDSDVT.OptionsBar.DrawDragBorder = false;
-            this.stbDSDVT.OptionsBar.UseWholeRow = true;
-            this.stbDSDVT.Text = "Status Bar";
+            this.previewBar2.OptionsBar.AllowQuickCustomization = false;
+            this.previewBar2.OptionsBar.DrawDragBorder = false;
+            this.previewBar2.OptionsBar.UseWholeRow = true;
+            this.previewBar2.Text = "Status Bar";
             // 
             // printPreviewStaticItem1
             // 
@@ -697,19 +621,19 @@
             this.repositoryItemZoomTrackBar1.Maximum = 180;
             this.repositoryItemZoomTrackBar1.Name = "repositoryItemZoomTrackBar1";
             // 
-            // preDSDVT
+            // previewBar3
             // 
-            this.preDSDVT.BarName = "Main Menu";
-            this.preDSDVT.DockCol = 0;
-            this.preDSDVT.DockRow = 0;
-            this.preDSDVT.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.preDSDVT.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.previewBar3.BarName = "Main Menu";
+            this.previewBar3.DockCol = 0;
+            this.previewBar3.DockRow = 0;
+            this.previewBar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.previewBar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.miFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.miView),
             new DevExpress.XtraBars.LinkPersistInfo(this.miBackground)});
-            this.preDSDVT.OptionsBar.MultiLine = true;
-            this.preDSDVT.OptionsBar.UseWholeRow = true;
-            this.preDSDVT.Text = "Main Menu";
+            this.previewBar3.OptionsBar.MultiLine = true;
+            this.previewBar3.OptionsBar.UseWholeRow = true;
+            this.previewBar3.Text = "Main Menu";
             // 
             // miFile
             // 
@@ -787,15 +711,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.documentViewerBarManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1216, 66);
+            this.barDockControlTop.Size = new System.Drawing.Size(1382, 66);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 718);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 701);
             this.barDockControlBottom.Manager = this.documentViewerBarManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1216, 31);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1382, 31);
             // 
             // barDockControlLeft
             // 
@@ -803,15 +727,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 66);
             this.barDockControlLeft.Manager = this.documentViewerBarManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 652);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 635);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1216, 66);
+            this.barDockControlRight.Location = new System.Drawing.Point(1382, 66);
             this.barDockControlRight.Manager = this.documentViewerBarManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 652);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
             // 
             // printPreviewBarCheckItem1
             // 
@@ -1007,31 +931,193 @@
             this.printPreviewBarCheckItem19.Id = 58;
             this.printPreviewBarCheckItem19.Name = "printPreviewBarCheckItem19";
             // 
-            // frmReportDSDVT
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.txtName);
+            this.panelControl2.Controls.Add(this.labelControl5);
+            this.panelControl2.Controls.Add(this.lkeMaNV);
+            this.panelControl2.Controls.Add(this.labelControl4);
+            this.panelControl2.Controls.Add(this.btnPrint);
+            this.panelControl2.Controls.Add(this.labelControl3);
+            this.panelControl2.Controls.Add(this.labelControl1);
+            this.panelControl2.Controls.Add(this.dtpEnd);
+            this.panelControl2.Controls.Add(this.dtpBegin);
+            this.panelControl2.Controls.Add(this.labelControl2);
+            this.panelControl2.Controls.Add(this.cboPhieu);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl2.Location = new System.Drawing.Point(0, 66);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(1382, 46);
+            this.panelControl2.TabIndex = 6;
+            // 
+            // txtName
+            // 
+            this.txtName.Enabled = false;
+            this.txtName.Location = new System.Drawing.Point(270, 12);
+            this.txtName.MenuManager = this.documentViewerBarManager1;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(173, 24);
+            this.txtName.TabIndex = 19;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(200, 15);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(64, 19);
+            this.labelControl5.TabIndex = 18;
+            this.labelControl5.Text = "Họ và Tên:";
+            // 
+            // lkeMaNV
+            // 
+            this.lkeMaNV.EditValue = "";
+            this.lkeMaNV.Location = new System.Drawing.Point(114, 12);
+            this.lkeMaNV.MenuManager = this.documentViewerBarManager1;
+            this.lkeMaNV.Name = "lkeMaNV";
+            this.lkeMaNV.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkeMaNV.Properties.DataSource = this.bdsDSNV;
+            this.lkeMaNV.Properties.DisplayMember = "MANV";
+            this.lkeMaNV.Properties.NullText = "";
+            this.lkeMaNV.Properties.PopupView = this.searchLookUpEdit1View;
+            this.lkeMaNV.Properties.ValueMember = "MANV";
+            this.lkeMaNV.Size = new System.Drawing.Size(57, 24);
+            this.lkeMaNV.TabIndex = 17;
+            this.lkeMaNV.EditValueChanged += new System.EventHandler(this.lkeMaNV_EditValueChanged);
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(22, 15);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(86, 17);
+            this.labelControl4.TabIndex = 16;
+            this.labelControl4.Text = "Mã Nhân Viên:";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(1250, 9);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(94, 29);
+            this.btnPrint.TabIndex = 15;
+            this.btnPrint.Text = "In Danh Sách";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(988, 15);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(28, 19);
+            this.labelControl3.TabIndex = 14;
+            this.labelControl3.Text = "Đến:";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(735, 15);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(18, 19);
+            this.labelControl1.TabIndex = 13;
+            this.labelControl1.Text = "Từ:";
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.EditValue = null;
+            this.dtpEnd.Location = new System.Drawing.Point(1022, 12);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpEnd.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
+            this.dtpEnd.Size = new System.Drawing.Size(194, 24);
+            this.dtpEnd.TabIndex = 12;
+            // 
+            // dtpBegin
+            // 
+            this.dtpBegin.EditValue = null;
+            this.dtpBegin.Location = new System.Drawing.Point(759, 12);
+            this.dtpBegin.Name = "dtpBegin";
+            this.dtpBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpBegin.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
+            this.dtpBegin.Size = new System.Drawing.Size(194, 24);
+            this.dtpBegin.TabIndex = 11;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(477, 15);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(28, 19);
+            this.labelControl2.TabIndex = 9;
+            this.labelControl2.Text = "Loại:";
+            // 
+            // cboPhieu
+            // 
+            this.cboPhieu.EditValue = "Phiếu Nhập";
+            this.cboPhieu.Location = new System.Drawing.Point(511, 12);
+            this.cboPhieu.Name = "cboPhieu";
+            this.cboPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboPhieu.Properties.DropDownRows = 2;
+            this.cboPhieu.Properties.Items.AddRange(new object[] {
+            "Phiếu Nhập",
+            "Phiếu Xuất"});
+            this.cboPhieu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cboPhieu.Size = new System.Drawing.Size(185, 24);
+            this.cboPhieu.TabIndex = 10;
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bdsDSNV
+            // 
+            this.bdsDSNV.DataMember = "DSNV";
+            this.bdsDSNV.DataSource = this.dataSet;
+            // 
+            // taDSNV
+            // 
+            this.taDSNV.ClearBeforeFill = true;
+            // 
+            // frmReportHDVN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1216, 749);
-            this.Controls.Add(this.docDSDVT);
-            this.Controls.Add(this.panelControl1);
+            this.ClientSize = new System.Drawing.Size(1382, 732);
+            this.Controls.Add(this.panelControl2);
+            this.Controls.Add(this.docView);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmReportDSDVT";
-            this.Text = "frmReportDSDVT";
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
+            this.Name = "frmReportHDVN";
+            this.Text = "frmReportHDVN";
+            this.Load += new System.EventHandler(this.frmReportHDVN_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkeMaNV.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPhieu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1039,16 +1125,9 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnPrint;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.DateEdit dtpEnd;
-        private DevExpress.XtraEditors.DateEdit dtpBegin;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraPrinting.Preview.DocumentViewer docDSDVT;
+        private DevExpress.XtraPrinting.Preview.DocumentViewer docView;
         private DevExpress.XtraPrinting.Preview.DocumentViewerBarManager documentViewerBarManager1;
-        private DevExpress.XtraPrinting.Preview.PreviewBar tobDSDVT;
+        private DevExpress.XtraPrinting.Preview.PreviewBar previewBar1;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiDocumentMap;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiParameters;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiThumbnails;
@@ -1078,7 +1157,7 @@
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiExportFile;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiSendFile;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarItem bbiClosePreview;
-        private DevExpress.XtraPrinting.Preview.PreviewBar stbDSDVT;
+        private DevExpress.XtraPrinting.Preview.PreviewBar previewBar2;
         private DevExpress.XtraPrinting.Preview.PrintPreviewStaticItem printPreviewStaticItem1;
         private DevExpress.XtraPrinting.Preview.ProgressBarEditItem progressBarEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
@@ -1086,7 +1165,7 @@
         private DevExpress.XtraPrinting.Preview.PrintPreviewStaticItem printPreviewStaticItem2;
         private DevExpress.XtraPrinting.Preview.ZoomTrackBarEditItem zoomTrackBarEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar repositoryItemZoomTrackBar1;
-        private DevExpress.XtraPrinting.Preview.PreviewBar preDSDVT;
+        private DevExpress.XtraPrinting.Preview.PreviewBar previewBar3;
         private DevExpress.XtraPrinting.Preview.PrintPreviewSubItem miFile;
         private DevExpress.XtraPrinting.Preview.PrintPreviewSubItem miView;
         private DevExpress.XtraPrinting.Preview.PrintPreviewSubItem miPageLayout;
@@ -1117,6 +1196,21 @@
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem17;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem18;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem19;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.TextEdit txtName;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.SearchLookUpEdit lkeMaNV;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.SimpleButton btnPrint;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.DateEdit dtpEnd;
+        private DevExpress.XtraEditors.DateEdit dtpBegin;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.ComboBoxEdit cboPhieu;
+        private DataSet dataSet;
+        private System.Windows.Forms.BindingSource bdsDSNV;
+        private DataSetTableAdapters.DSNVTableAdepter taDSNV;
     }
 }
