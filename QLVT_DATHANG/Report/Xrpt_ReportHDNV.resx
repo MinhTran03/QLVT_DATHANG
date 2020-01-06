@@ -123,13 +123,10 @@
   <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
     <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InNwX3JlcF9oZG52Ij48RmllbGQgTmFtZT0iTmfDoHkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iTcOjIFBoaeG6v3UiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSOG7jSB2w6AgVMOqbiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJUw6puIFbhuq10IFTGsCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJUw6puIEtobyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJT4buRIEzGsOG7o25nIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0ixJDGoW4gR2nDoSIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJUcuG7iyBHacOhIiBUeXBlPSJEb3VibGUiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
   </data>
-  <metadata name="dataSetReport1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+  <metadata name="dataSetReport.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 60</value>
   </metadata>
-  <metadata name="report_DanhSachDDHChuaCoPhieuNhapTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
-  </metadata>
-  <metadata name="report_HDNVTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
+  <metadata name="taReport_HDNV.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 103</value>
   </metadata>
 </root>

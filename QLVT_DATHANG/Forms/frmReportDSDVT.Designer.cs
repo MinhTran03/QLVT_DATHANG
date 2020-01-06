@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportDSDVT));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnPrintByCN = new DevExpress.XtraEditors.SimpleButton();
+            this.cboDepartment = new System.Windows.Forms.ComboBox();
+            this.lblCN = new DevExpress.XtraEditors.LabelControl();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -109,6 +112,7 @@
             this.printPreviewBarCheckItem17 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             this.printPreviewBarCheckItem18 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             this.printPreviewBarCheckItem19 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties.CalendarTimeProperties)).BeginInit();
@@ -120,10 +124,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnPrintByCN);
+            this.panelControl1.Controls.Add(this.cboDepartment);
+            this.panelControl1.Controls.Add(this.lblCN);
             this.panelControl1.Controls.Add(this.btnPrint);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -137,9 +145,35 @@
             this.panelControl1.Size = new System.Drawing.Size(1216, 46);
             this.panelControl1.TabIndex = 2;
             // 
+            // btnPrintByCN
+            // 
+            this.btnPrintByCN.Location = new System.Drawing.Point(947, 9);
+            this.btnPrintByCN.Name = "btnPrintByCN";
+            this.btnPrintByCN.Size = new System.Drawing.Size(94, 29);
+            this.btnPrintByCN.TabIndex = 18;
+            this.btnPrintByCN.Text = "In theo CN";
+            this.btnPrintByCN.Click += new System.EventHandler(this.btnPrintByCN_Click);
+            // 
+            // cboDepartment
+            // 
+            this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDepartment.FormattingEnabled = true;
+            this.cboDepartment.Location = new System.Drawing.Point(77, 12);
+            this.cboDepartment.Name = "cboDepartment";
+            this.cboDepartment.Size = new System.Drawing.Size(183, 25);
+            this.cboDepartment.TabIndex = 8;
+            // 
+            // lblCN
+            // 
+            this.lblCN.Location = new System.Drawing.Point(12, 15);
+            this.lblCN.Name = "lblCN";
+            this.lblCN.Size = new System.Drawing.Size(59, 19);
+            this.lblCN.TabIndex = 16;
+            this.lblCN.Text = "Chọn CN:";
+            // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(915, 9);
+            this.btnPrint.Location = new System.Drawing.Point(1090, 9);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(94, 29);
             this.btnPrint.TabIndex = 15;
@@ -148,7 +182,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(635, 15);
+            this.labelControl3.Location = new System.Drawing.Point(701, 15);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(28, 19);
             this.labelControl3.TabIndex = 14;
@@ -156,7 +190,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(356, 15);
+            this.labelControl1.Location = new System.Drawing.Point(470, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(18, 19);
             this.labelControl1.TabIndex = 13;
@@ -165,32 +199,32 @@
             // dtpEnd
             // 
             this.dtpEnd.EditValue = null;
-            this.dtpEnd.Location = new System.Drawing.Point(669, 12);
+            this.dtpEnd.Location = new System.Drawing.Point(735, 12);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpEnd.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
-            this.dtpEnd.Size = new System.Drawing.Size(194, 24);
+            this.dtpEnd.Size = new System.Drawing.Size(162, 24);
             this.dtpEnd.TabIndex = 12;
             // 
             // dtpBegin
             // 
             this.dtpBegin.EditValue = null;
-            this.dtpBegin.Location = new System.Drawing.Point(380, 12);
+            this.dtpBegin.Location = new System.Drawing.Point(494, 12);
             this.dtpBegin.Name = "dtpBegin";
             this.dtpBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpBegin.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
-            this.dtpBegin.Size = new System.Drawing.Size(194, 24);
+            this.dtpBegin.Size = new System.Drawing.Size(165, 24);
             this.dtpBegin.TabIndex = 11;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(52, 15);
+            this.labelControl2.Location = new System.Drawing.Point(292, 15);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(28, 19);
             this.labelControl2.TabIndex = 9;
@@ -199,7 +233,7 @@
             // cboPhieu
             // 
             this.cboPhieu.EditValue = "Phiếu Nhập";
-            this.cboPhieu.Location = new System.Drawing.Point(111, 12);
+            this.cboPhieu.Location = new System.Drawing.Point(326, 12);
             this.cboPhieu.Name = "cboPhieu";
             this.cboPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -208,7 +242,7 @@
             "Phiếu Nhập",
             "Phiếu Xuất"});
             this.cboPhieu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboPhieu.Size = new System.Drawing.Size(185, 24);
+            this.cboPhieu.Size = new System.Drawing.Size(115, 24);
             this.cboPhieu.TabIndex = 10;
             // 
             // docDSDVT
@@ -1007,6 +1041,10 @@
             this.printPreviewBarCheckItem19.Id = 58;
             this.printPreviewBarCheckItem19.Name = "printPreviewBarCheckItem19";
             // 
+            // dxErrorProvider
+            // 
+            this.dxErrorProvider.ContainerControl = this;
+            // 
             // frmReportDSDVT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1032,6 +1070,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1118,5 +1157,9 @@
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem18;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem19;
         private DevExpress.XtraEditors.ComboBoxEdit cboPhieu;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
+        private DevExpress.XtraEditors.LabelControl lblCN;
+        private System.Windows.Forms.ComboBox cboDepartment;
+        private DevExpress.XtraEditors.SimpleButton btnPrintByCN;
     }
 }

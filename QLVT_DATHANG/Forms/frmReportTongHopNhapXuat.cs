@@ -53,7 +53,7 @@ namespace QLVT_DATHANG.Forms
 
          DateTime from = DateTime.Parse(dtpFrom.EditValue.ToString());
          DateTime to = DateTime.Parse(dtpTo.EditValue.ToString());
-         if(from.CompareTo(to) >= 0)
+         if(from.CompareTo(to) > 0)
          {
             errorProvider.SetError(dtpFrom, "Phải nhỏ hơn ngày đến");
             return false;

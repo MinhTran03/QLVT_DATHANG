@@ -105,6 +105,8 @@
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.lkeMaNV = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet = new QLVT_DATHANG.DataSet();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
@@ -114,9 +116,8 @@
             this.dtpBegin = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cboPhieu = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.dataSet = new QLVT_DATHANG.DataSet();
-            this.bdsDSNV = new System.Windows.Forms.BindingSource(this.components);
             this.taDSNV = new QLVT_DATHANG.DataSetTableAdapters.DSNVTableAdepter();
+            this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
@@ -125,23 +126,24 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkeMaNV.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPhieu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // docView
             // 
             this.docView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.docView.IsMetric = false;
-            this.docView.Location = new System.Drawing.Point(0, 66);
+            this.docView.Location = new System.Drawing.Point(0, 64);
             this.docView.Name = "docView";
-            this.docView.Size = new System.Drawing.Size(1382, 635);
+            this.docView.Size = new System.Drawing.Size(1382, 638);
             this.docView.TabIndex = 0;
             // 
             // documentViewerBarManager1
@@ -711,31 +713,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.documentViewerBarManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1382, 66);
+            this.barDockControlTop.Size = new System.Drawing.Size(1382, 64);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 701);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 702);
             this.barDockControlBottom.Manager = this.documentViewerBarManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1382, 31);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1382, 30);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 66);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 64);
             this.barDockControlLeft.Manager = this.documentViewerBarManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 635);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 638);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1382, 66);
+            this.barDockControlRight.Location = new System.Drawing.Point(1382, 64);
             this.barDockControlRight.Manager = this.documentViewerBarManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 638);
             // 
             // printPreviewBarCheckItem1
             // 
@@ -945,7 +947,7 @@
             this.panelControl2.Controls.Add(this.labelControl2);
             this.panelControl2.Controls.Add(this.cboPhieu);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(0, 66);
+            this.panelControl2.Location = new System.Drawing.Point(0, 64);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1382, 46);
             this.panelControl2.TabIndex = 6;
@@ -953,7 +955,7 @@
             // txtName
             // 
             this.txtName.Enabled = false;
-            this.txtName.Location = new System.Drawing.Point(270, 12);
+            this.txtName.Location = new System.Drawing.Point(279, 12);
             this.txtName.MenuManager = this.documentViewerBarManager1;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(173, 24);
@@ -961,7 +963,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(200, 15);
+            this.labelControl5.Location = new System.Drawing.Point(209, 15);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(64, 19);
             this.labelControl5.TabIndex = 18;
@@ -970,6 +972,7 @@
             // lkeMaNV
             // 
             this.lkeMaNV.EditValue = "";
+            this.dxErrorProvider.SetIconAlignment(this.lkeMaNV, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.lkeMaNV.Location = new System.Drawing.Point(114, 12);
             this.lkeMaNV.MenuManager = this.documentViewerBarManager1;
             this.lkeMaNV.Name = "lkeMaNV";
@@ -983,6 +986,16 @@
             this.lkeMaNV.Size = new System.Drawing.Size(57, 24);
             this.lkeMaNV.TabIndex = 17;
             this.lkeMaNV.EditValueChanged += new System.EventHandler(this.lkeMaNV_EditValueChanged);
+            // 
+            // bdsDSNV
+            // 
+            this.bdsDSNV.DataMember = "DSNV";
+            this.bdsDSNV.DataSource = this.dataSet;
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // searchLookUpEdit1View
             // 
@@ -1027,6 +1040,7 @@
             // dtpEnd
             // 
             this.dtpEnd.EditValue = null;
+            this.dxErrorProvider.SetIconAlignment(this.dtpEnd, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.dtpEnd.Location = new System.Drawing.Point(1022, 12);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1034,12 +1048,13 @@
             this.dtpEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpEnd.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
-            this.dtpEnd.Size = new System.Drawing.Size(194, 24);
+            this.dtpEnd.Size = new System.Drawing.Size(162, 24);
             this.dtpEnd.TabIndex = 12;
             // 
             // dtpBegin
             // 
             this.dtpBegin.EditValue = null;
+            this.dxErrorProvider.SetIconAlignment(this.dtpBegin, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
             this.dtpBegin.Location = new System.Drawing.Point(759, 12);
             this.dtpBegin.Name = "dtpBegin";
             this.dtpBegin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1047,12 +1062,12 @@
             this.dtpBegin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtpBegin.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView;
-            this.dtpBegin.Size = new System.Drawing.Size(194, 24);
+            this.dtpBegin.Size = new System.Drawing.Size(163, 24);
             this.dtpBegin.TabIndex = 11;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(477, 15);
+            this.labelControl2.Location = new System.Drawing.Point(495, 15);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(28, 19);
             this.labelControl2.TabIndex = 9;
@@ -1061,7 +1076,8 @@
             // cboPhieu
             // 
             this.cboPhieu.EditValue = "Phiếu Nhập";
-            this.cboPhieu.Location = new System.Drawing.Point(511, 12);
+            this.dxErrorProvider.SetIconAlignment(this.cboPhieu, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.cboPhieu.Location = new System.Drawing.Point(529, 12);
             this.cboPhieu.Name = "cboPhieu";
             this.cboPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1070,22 +1086,16 @@
             "Phiếu Nhập",
             "Phiếu Xuất"});
             this.cboPhieu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboPhieu.Size = new System.Drawing.Size(185, 24);
+            this.cboPhieu.Size = new System.Drawing.Size(158, 24);
             this.cboPhieu.TabIndex = 10;
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bdsDSNV
-            // 
-            this.bdsDSNV.DataMember = "DSNV";
-            this.bdsDSNV.DataSource = this.dataSet;
             // 
             // taDSNV
             // 
             this.taDSNV.ClearBeforeFill = true;
+            // 
+            // dxErrorProvider
+            // 
+            this.dxErrorProvider.ContainerControl = this;
             // 
             // frmReportHDVN
             // 
@@ -1110,14 +1120,15 @@
             this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkeMaNV.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpEnd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpBegin.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPhieu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDSNV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1212,5 +1223,6 @@
         private DataSet dataSet;
         private System.Windows.Forms.BindingSource bdsDSNV;
         private DataSetTableAdapters.DSNVTableAdepter taDSNV;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
     }
 }

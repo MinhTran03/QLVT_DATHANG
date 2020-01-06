@@ -2,7 +2,10 @@
 {
 
 
-   partial class DataSet
-   {
-   }
+    partial class DataSet
+    {
+        partial class DSDDHChuaCoPhieuNhapDataTable
+        {
+        }
+    }
 }

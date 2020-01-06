@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using DevExpress.XtraEditors;
 using QLVT_DATHANG.Utility;
 
 namespace QLVT_DATHANG.Forms
 {
-    public partial class frmSelectMaterials : DevExpress.XtraEditors.XtraForm
+    public partial class frmSelectMaterialsConHang : XtraForm
     {
         public List<string> selectedMaterialsId;
 
-        public frmSelectMaterials()
+        public frmSelectMaterialsConHang()
         {
             InitializeComponent();
             selectedMaterialsId = new List<string>();
         }
 
-        private void frmSelectMaterials_Load(object sender, EventArgs e)
+        private void frmSelectMaterialsConHang_Load(object sender, EventArgs e)
         {
             LoadTable();
             gvMaterial.OptionsSelection.MultiSelect = true;
@@ -25,14 +26,14 @@ namespace QLVT_DATHANG.Forms
 
         private void LoadTable()
         {
-            this.taVT.Connection.ConnectionString =
+            this.taVTCONHANG.Connection.ConnectionString =
                UtilDB.ConnectionString;
 
             try
             {
                 this.dataSet.EnforceConstraints = false;
 
-                this.taVT.Fill(this.dataSet.Vattu);
+                this.taVTCONHANG.Fill(this.dataSet.DSVTCONHANG);
             }
             catch (Exception ex)
             {

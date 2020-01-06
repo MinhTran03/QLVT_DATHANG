@@ -52,7 +52,6 @@ namespace QLVT_DATHANG.Forms
          try
          {
             UtilDB.ServerName = cboChiNhanh.SelectedValue.ToString();
-            lblServerPM.Text = UtilDB.ServerName;
          }
          catch (Exception ex) { UtilDB.ShowError(ex); }
       }

@@ -169,6 +169,12 @@
     <Compile Include="Forms\frmReportTongHopNhapXuat.Designer.cs">
       <DependentUpon>frmReportTongHopNhapXuat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmSelectMaterialsConHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSelectMaterialsConHang.Designer.cs">
+      <DependentUpon>frmSelectMaterialsConHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,11 +192,11 @@
     <Compile Include="Report\Xrpt_DanhSachNhanVien.Designer.cs">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\Xrpt_ReportDSCTVT.cs">
+    <Compile Include="Report\Xrpt_ReportDemo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\Xrpt_ReportDSCTVT.Designer.cs">
-      <DependentUpon>Xrpt_ReportDSCTVT.cs</DependentUpon>
+    <Compile Include="Report\Xrpt_ReportDemo.Designer.cs">
+      <DependentUpon>Xrpt_ReportDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Xrpt_ReportDSVT.cs">
       <SubType>Component</SubType>
@@ -337,14 +343,17 @@
     <EmbeddedResource Include="Forms\frmReportDSVT.resx">
       <DependentUpon>frmReportDSVT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSelectMaterialsConHang.resx">
+      <DependentUpon>frmSelectMaterialsConHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_DanhSachDDHChuaCoPhieuNhap.resx">
       <DependentUpon>Xrpt_DanhSachDDHChuaCoPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_DanhSachNhanVien.resx">
       <DependentUpon>Xrpt_DanhSachNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Xrpt_ReportDSCTVT.resx">
-      <DependentUpon>Xrpt_ReportDSCTVT.cs</DependentUpon>
+    <EmbeddedResource Include="Report\Xrpt_ReportDemo.resx">
+      <DependentUpon>Xrpt_ReportDemo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Xrpt_ReportDSVT.resx">
       <DependentUpon>Xrpt_ReportDSVT.cs</DependentUpon>

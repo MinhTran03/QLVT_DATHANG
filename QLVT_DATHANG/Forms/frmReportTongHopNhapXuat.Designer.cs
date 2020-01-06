@@ -968,7 +968,7 @@
          this.dtpTo.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
          this.dtpTo.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.dtpTo.Properties.Mask.EditMask = "dd/MM/yyyy";
-         this.dtpTo.Properties.MaxValue = new System.DateTime(2019, 12, 31, 8, 27, 44, 567);
+         this.dtpTo.Properties.MaxValue = System.DateTime.Now;
          this.dtpTo.Size = new System.Drawing.Size(107, 20);
          this.dtpTo.TabIndex = 6;
          this.dtpTo.Validating += new System.ComponentModel.CancelEventHandler(this.dtpNotNull_Validating);
@@ -986,7 +986,7 @@
          this.dtpFrom.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
          this.dtpFrom.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
          this.dtpFrom.Properties.Mask.EditMask = "dd/MM/yyyy";
-         this.dtpFrom.Properties.MaxValue = new System.DateTime(2019, 12, 31, 8, 27, 44, 579);
+         this.dtpFrom.Properties.MaxValue = System.DateTime.Now;
          this.dtpFrom.Size = new System.Drawing.Size(99, 20);
          this.dtpFrom.TabIndex = 5;
          this.dtpFrom.Validating += new System.ComponentModel.CancelEventHandler(this.dtpNotNull_Validating);

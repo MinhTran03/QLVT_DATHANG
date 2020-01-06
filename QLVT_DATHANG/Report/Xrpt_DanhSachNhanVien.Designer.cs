@@ -79,8 +79,8 @@
          this.sqlDataSource1.ConnectionParameters = msSqlConnectionParameters1;
          this.sqlDataSource1.Name = "sqlDataSource1";
          storedProcQuery1.Name = "Report_DSNV";
-         queryParameter1.Name = "@macn";
-         queryParameter1.Type = typeof(string);
+         //queryParameter1.Name = "@macn";
+         //queryParameter1.Type = typeof(string);
          storedProcQuery1.Parameters.Add(queryParameter1);
          storedProcQuery1.StoredProcName = "Report_DSNV";
          this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {

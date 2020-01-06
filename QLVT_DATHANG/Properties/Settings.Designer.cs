@@ -26,7 +26,7 @@ namespace QLVT_DATHANG.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MINHTRAN\\SERVER_2;Initial Catalog=QLVT_DATHANG;User ID=ngha;password=" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\MSI_SERVER1;Initial Catalog=QLVT_DATHANG;User ID=trang;password=" +
             "123456")]
         public string QLVT_DATHANGConnectionString {
             get {
@@ -37,7 +37,8 @@ namespace QLVT_DATHANG.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MINHTRAN;Initial Catalog=QLVT_DATHANG;User ID=sa;Password=123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\MSI_SERVER1;Initial Catalog=QLVT_DATHANG;User ID=trang;password=" +
+            "123456")]
         public string QLVT_DATHANGConnectionStringRoot {
             get {
                 return ((string)(this["QLVT_DATHANGConnectionStringRoot"]));
@@ -47,7 +48,7 @@ namespace QLVT_DATHANG.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MINHTRAN\\SERVER_1;Initial Catalog=QLVT_DATHANG;User ID=ltrang;Passwor" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\MSI_SERVER1;Initial Catalog=QLVT_DATHANG;User ID=trang;Passwor" +
             "d=123456")]
         public string QLVT_DATHANGConnectionString1 {
             get {
@@ -58,7 +59,7 @@ namespace QLVT_DATHANG.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MINHTRAN\\SERVER_1;Initial Catalog=QLVT_DATHANG;User ID=trang;Password" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\MSI_SERVER1;Initial Catalog=QLVT_DATHANG;User ID=trang;Password" +
             "=123456")]
         public string QLVT_ConnectionString {
             get {
